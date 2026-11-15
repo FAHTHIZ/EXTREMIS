@@ -21,3 +21,6 @@ export { exportSchemas, inlineRefs, toolName, toolIdFromName, SCHEMA_FORMATS } f
 export { parseSkillDocument, parseYamlSubset, FrontmatterError } from './frontmatter.mjs';
 export { lintCapabilities } from './lint.mjs';
 export { computeFolderHash } from './hash.mjs';
+export { install, update, remove, verifyLock, listInstalled, parseSource, installScope, readLock, InstallError, LOCK_FILE } from './install.mjs';
+export { scanDirectory, scanFiles, scanText, verdictOf } from './scan.mjs';
+export { unpackArchive, ArchiveError } from './archive.mjs';

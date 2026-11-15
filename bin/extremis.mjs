@@ -32,7 +32,8 @@ Integrate
   schema <format>            print tool schemas                (openai|anthropic|mcp|gemini|json)
 
 Manage
-  install <source>           install capabilities              (local path, owner/repo[/path][#ref], git URL)
+  install <source>           install capabilities              (path, owner/repo[/path][#ref], git URL, https site)
+                             [--skill name] [--project] [--accept-risk] [--force] [--dry-run]
   update [name...] | remove <name...> | lock [--verify]
   validate [dir...]          validate capability folders
   scan <dir>                 security-scan a capability package
@@ -67,7 +68,7 @@ export function parseArgs(argv) {
   }
   return { positional, flags };
 }
-const BOOLEAN_FLAGS = new Set(['json', 'help', 'version', 'verify', 'holdout', 'include_suggests', 'force', 'dry_run', 'global', 'project', 'check', 'yes', 'all', 'full', 'gateway', 'misses']);
+const BOOLEAN_FLAGS = new Set(['json', 'help', 'version', 'verify', 'holdout', 'include_suggests', 'force', 'dry_run', 'global', 'project', 'check', 'yes', 'all', 'full', 'gateway', 'misses', 'accept_risk', 'verbose']);
 const MULTI_FLAGS = new Set(['param', 'skill', 'target']);
 
 function coerce(v) {

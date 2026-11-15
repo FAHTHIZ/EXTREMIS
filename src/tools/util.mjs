@@ -373,6 +373,7 @@ export function readZip(buffer, { maxEntries = 5000, maxTotal = 200 * 1024 * 102
     const nameLen = buffer.readUInt16LE(offset + 28);
     const extraLen = buffer.readUInt16LE(offset + 30);
     const commentLen = buffer.readUInt16LE(offset + 32);
+    const external = buffer.readUInt32LE(offset + 38);
     const local = buffer.readUInt32LE(offset + 42);
     const name = buffer.slice(offset + 46, offset + 46 + nameLen).toString('utf8');
     offset += 46 + nameLen + extraLen + commentLen;
@@ -383,10 +384,12 @@ export function readZip(buffer, { maxEntries = 5000, maxTotal = 200 * 1024 * 102
     const lExtraLen = buffer.readUInt16LE(local + 28);
     const start = local + 30 + lNameLen + lExtraLen;
     const data = buffer.slice(start, start + compSize);
-    entries.set(name, { method, size, data });
+    entries.set(name, { method, size, data, mode: external >>> 16 });
   }
   return {
     names: [...entries.keys()],
+    /** Unix mode bits from the central directory (0 when the archiver did not record them). */
+    mode(name) { return entries.get(name)?.mode || 0; },
     read(name) {
       const e = entries.get(name);
       if (!e) return null;
