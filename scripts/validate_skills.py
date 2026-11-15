@@ -46,6 +46,16 @@ def main():
                 errors.append(f"{skill_file}: instruction body is empty")
             if len(raw.splitlines()) > 500:
                 errors.append(f"{skill_file}: exceeds recommended 500-line limit")
+            eval_file = skill_file.parent / "evals" / "evals.json"
+            try:
+                cases = json.loads(eval_file.read_text(encoding="utf-8")).get("cases", [])
+                if len(cases) < 5:
+                    errors.append(f"{eval_file}: at least five evaluation cases are required")
+                for case in cases:
+                    if not {"id", "prompt", "should_activate", "must"}.issubset(case):
+                        errors.append(f"{eval_file}: every case needs id, prompt, should_activate, and must")
+            except (OSError, UnicodeError, json.JSONDecodeError, AttributeError) as exc:
+                errors.append(f"{eval_file}: cannot read valid evaluations: {exc}")
             if name in discovered:
                 errors.append(f"{skill_file}: duplicate skill name '{name}'")
             discovered[name] = skill_file
