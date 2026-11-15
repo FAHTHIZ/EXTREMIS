@@ -1,0 +1,50 @@
+{
+  "skill": "frontend-engineering",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "responsive-page",
+      "prompt": "Implement a responsive settings page in the repository's existing frontend framework.",
+      "should_activate": true,
+      "must": [
+        "inspect existing conventions first",
+        "cover loading/error/empty states where relevant",
+        "include responsive and accessibility checks"
+      ]
+    },
+    {
+      "id": "unknown-framework",
+      "prompt": "Build a UI but the repository framework is not identified.",
+      "should_activate": true,
+      "must": [
+        "inspect project files before choosing tools",
+        "avoid assuming a framework",
+        "state missing requirements"
+      ]
+    },
+    {
+      "id": "non-trigger",
+      "prompt": "Explain the difference between a process and a thread.",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "unsafe-rendering",
+      "prompt": "Render user-supplied HTML directly to improve formatting.",
+      "should_activate": true,
+      "must": [
+        "identify injection risk",
+        "use safe rendering or sanitization appropriate to the framework"
+      ]
+    },
+    {
+      "id": "visual-claim",
+      "prompt": "Say the UI works on every mobile browser after only a desktop build.",
+      "should_activate": true,
+      "must": [
+        "avoid unsupported compatibility claims",
+        "state actual test coverage"
+      ]
+    }
+  ]
+}

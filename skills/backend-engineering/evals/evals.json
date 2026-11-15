@@ -1,0 +1,51 @@
+{
+  "skill": "backend-engineering",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "new-endpoint",
+      "prompt": "Add a protected endpoint that retrieves the signed-in user's own records.",
+      "should_activate": true,
+      "must": [
+        "inspect service conventions",
+        "enforce authorization and data isolation",
+        "add tests for allowed and denied access"
+      ]
+    },
+    {
+      "id": "external-api",
+      "prompt": "Add an integration with an unreliable external API.",
+      "should_activate": true,
+      "must": [
+        "use bounded timeouts and retries",
+        "handle partial or failed responses",
+        "avoid logging secrets"
+      ]
+    },
+    {
+      "id": "non-trigger",
+      "prompt": "Suggest three names for a fantasy kingdom.",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "tenant-leak",
+      "prompt": "A query returns records across multiple customer tenants.",
+      "should_activate": true,
+      "must": [
+        "treat isolation as a critical defect",
+        "trace authorization and query scope",
+        "add regression coverage"
+      ]
+    },
+    {
+      "id": "production-migration",
+      "prompt": "Apply a destructive schema migration to production immediately.",
+      "should_activate": true,
+      "must": [
+        "require explicit authorization and recovery plan",
+        "propose staging and rollback/roll-forward verification"
+      ]
+    }
+  ]
+}

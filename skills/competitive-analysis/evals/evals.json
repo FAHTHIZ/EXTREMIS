@@ -1,0 +1,52 @@
+{
+  "skill": "competitive-analysis",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "agent-tools",
+      "prompt": "Compare three open agent skill managers for a cross-host OSS project.",
+      "should_activate": true,
+      "must": [
+        "compare current docs and source evidence",
+        "inspect license and host compatibility",
+        "explain trade-offs rather than raw feature count"
+      ]
+    },
+    {
+      "id": "stale-pricing",
+      "prompt": "Use last year's pricing page to recommend the cheapest current plan.",
+      "should_activate": true,
+      "must": [
+        "verify current pricing",
+        "state date and plan limits",
+        "avoid stale comparisons"
+      ]
+    },
+    {
+      "id": "non-trigger",
+      "prompt": "Write a haiku about autumn.",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "marketing-claims",
+      "prompt": "Repeat a vendor's claim that its product is 100% secure.",
+      "should_activate": true,
+      "must": [
+        "attribute the claim",
+        "seek independent evidence",
+        "reject absolute security guarantee"
+      ]
+    },
+    {
+      "id": "unequal-plans",
+      "prompt": "Compare a free plan from one vendor against an enterprise plan from another.",
+      "should_activate": true,
+      "must": [
+        "normalize or disclose plan differences",
+        "avoid false parity",
+        "identify missing comparable data"
+      ]
+    }
+  ]
+}

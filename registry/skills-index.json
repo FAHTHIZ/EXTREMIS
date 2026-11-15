@@ -572,6 +572,204 @@
       "summary": "Create durable decision records with context, alternatives, consequences, owners, and revisit triggers.",
       "provenance": "original-extremis-content",
       "evaluation_cases": 5
+    },
+    {
+      "name": "frontend-engineering",
+      "path": "skills/frontend-engineering",
+      "category": "software-engineering",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "repository access and the relevant application entry points",
+        "the target browsers/platforms and design or behavior requirements"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Build usable, maintainable frontend behavior that matches the product contract.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "backend-engineering",
+      "path": "skills/backend-engineering",
+      "category": "software-engineering",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "repository and service context",
+        "API, data, and deployment constraints where available"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Build reliable backend behavior around explicit contracts, data integrity, and failure handling.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "performance-optimization",
+      "path": "skills/performance-optimization",
+      "category": "software-engineering",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "reproducible workload or user-visible performance symptom",
+        "profiling, tracing, metrics, or benchmark capability recommended"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Measure bottlenecks first and optimize the dominant cause with regression checks.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "devops-release",
+      "path": "skills/devops-release",
+      "category": "software-engineering",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "high",
+      "requires": [
+        "repository and deployment context",
+        "release target, environment, and authorization for any deployment"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Make releases reproducible, observable, and recoverable with explicit gates.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "data-analysis",
+      "path": "skills/data-analysis",
+      "category": "data",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "dataset or query access actually provided by the host",
+        "question, data dictionary, and relevant time window where available"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Translate a data question into reproducible analysis with explicit grain and limitations.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "data-visualization",
+      "path": "skills/data-visualization",
+      "category": "data",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "low",
+      "requires": [
+        "the data or a well-defined metric table",
+        "intended audience, message, and delivery context"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Match visual encodings to the analytical question and make charts readable and honest.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "spreadsheet-analysis",
+      "path": "skills/spreadsheet-analysis",
+      "category": "data",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "the workbook or tabular source",
+        "the intended calculation and spreadsheet application or library access"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Make spreadsheet logic auditable and protect data integrity across sheets and formulas.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "competitive-analysis",
+      "path": "skills/competitive-analysis",
+      "category": "business",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "the decision and comparison set",
+        "comparison dimensions, geography, and time horizon"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Compare competitors using current sources, consistent criteria, and evidence-backed trade-offs.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "content-writing",
+      "path": "skills/content-writing",
+      "category": "creative-communication",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "low",
+      "requires": [
+        "audience and purpose",
+        "key facts, source material, length, and tone constraints"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Create clear original content that meets the audience, purpose, tone, and factual requirements.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "presentation-design",
+      "path": "skills/presentation-design",
+      "category": "creative-communication",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "low",
+      "requires": [
+        "audience, purpose, and time available",
+        "source facts, data, or approved claims"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Build a focused slide narrative with clear hierarchy and evidence-matched visuals.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "customer-support",
+      "path": "skills/customer-support",
+      "category": "customer-operations",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "the customer's message and available product knowledge",
+        "support policies, account tools, and escalation paths if provided"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Resolve or route customer issues with empathy, accuracy, and clear ownership.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
     }
   ]
 }

@@ -99,6 +99,30 @@
         "meeting-synthesis",
         "decision-log"
       ]
+    },
+    {
+      "name": "data",
+      "summary": "Analyze structured datasets, communicate patterns, and audit spreadsheets.",
+      "skills": [
+        "data-analysis",
+        "data-visualization",
+        "spreadsheet-analysis"
+      ]
+    },
+    {
+      "name": "creative-communication",
+      "summary": "Write original content and design presentations with evidence and audience fit.",
+      "skills": [
+        "content-writing",
+        "presentation-design"
+      ]
+    },
+    {
+      "name": "customer-operations",
+      "summary": "Triage support requests and guide customers through verified next steps.",
+      "skills": [
+        "customer-support"
+      ]
     }
   ]
 }

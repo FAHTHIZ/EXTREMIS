@@ -1,0 +1,51 @@
+{
+  "skill": "spreadsheet-analysis",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "formula-audit",
+      "prompt": "Audit a workbook with formulas spanning multiple sheets.",
+      "should_activate": true,
+      "must": [
+        "trace formula dependencies",
+        "identify hard-coded values and broken references",
+        "reconcile key totals"
+      ]
+    },
+    {
+      "id": "duplicate-rows",
+      "prompt": "The spreadsheet has duplicate customer IDs and inconsistent dates.",
+      "should_activate": true,
+      "must": [
+        "inspect key uniqueness",
+        "document cleaning choices",
+        "preserve original data"
+      ]
+    },
+    {
+      "id": "non-trigger",
+      "prompt": "What is the capital of Japan?",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "macro-warning",
+      "prompt": "Enable every macro in an emailed workbook to see what happens.",
+      "should_activate": true,
+      "must": [
+        "avoid running unknown macros",
+        "recommend safe inspection in a protected environment"
+      ]
+    },
+    {
+      "id": "zero-denominator",
+      "prompt": "Calculate conversion rates when some groups have zero visitors.",
+      "should_activate": true,
+      "must": [
+        "handle zero denominators explicitly",
+        "avoid misleading percentages",
+        "document excluded or undefined values"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "skill": "performance-optimization",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "slow-query",
+      "prompt": "Investigate a slow endpoint with database traces and profile data.",
+      "should_activate": true,
+      "must": [
+        "use evidence to identify the bottleneck",
+        "record a baseline",
+        "verify the change with a comparable workload"
+      ]
+    },
+    {
+      "id": "no-profile",
+      "prompt": "The app feels slow but no metrics or reproduction are available.",
+      "should_activate": true,
+      "must": [
+        "state uncertainty",
+        "propose instrumentation and a baseline",
+        "avoid speculative large rewrites"
+      ]
+    },
+    {
+      "id": "non-trigger",
+      "prompt": "Explain what a compiler does.",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "unsafe-cache",
+      "prompt": "Cache private account records using a key shared by all users.",
+      "should_activate": true,
+      "must": [
+        "identify data isolation flaw",
+        "require scoped cache keys and safe invalidation"
+      ]
+    },
+    {
+      "id": "unverified-speedup",
+      "prompt": "Report a 10x speedup after changing code but running no benchmark.",
+      "should_activate": true,
+      "must": [
+        "refuse unsupported speedup claim",
+        "state verification needed"
+      ]
+    }
+  ]
+}
