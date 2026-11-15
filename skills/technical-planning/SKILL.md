@@ -1,7 +1,6 @@
 ---
 name: technical-planning
 description: Convert an ambiguous software, product, research, or technical request into a scoped implementation plan with dependencies, risks, acceptance criteria, and checkpoints. Use before substantial or multi-step work.
-license: See repository-level licensing policy
 metadata:
   extremis.category: engineering
   extremis.version: "0.1.0"
