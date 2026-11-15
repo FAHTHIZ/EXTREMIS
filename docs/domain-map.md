@@ -1,6 +1,6 @@
 # EXTREMIS domain map
 
-The catalog is organized into **14 domains** and **47 skills**. Machine-readable taxonomy: [`registry/domains.json`](../registry/domains.json). Package metadata: [`registry/skills-index.json`](../registry/skills-index.json).
+The catalog is organized into **15 domains** and **54 skills**. Machine-readable taxonomy: [`registry/domains.json`](../registry/domains.json). Package metadata: [`registry/skills-index.json`](../registry/skills-index.json).
 
 ## meta
 
@@ -43,12 +43,13 @@ Analyze statements and model business scenarios with visible assumptions.
 
 ## business
 
-Discover product opportunities, estimate markets, and improve processes.
+Discover product opportunities, estimate markets, improve processes, and evaluate suppliers.
 
 - [`product-discovery`](../skills/product-discovery/SKILL.md)
 - [`market-sizing`](../skills/market-sizing/SKILL.md)
 - [`process-mapping`](../skills/process-mapping/SKILL.md)
 - [`competitive-analysis`](../skills/competitive-analysis/SKILL.md)
+- [`procurement-analysis`](../skills/procurement-analysis/SKILL.md)
 
 ## design
 
@@ -80,6 +81,8 @@ Translate system needs into requirements and assess resilience and operations.
 - [`systems-engineering`](../skills/systems-engineering/SKILL.md)
 - [`reliability-analysis`](../skills/reliability-analysis/SKILL.md)
 - [`cloud-architecture`](../skills/cloud-architecture/SKILL.md)
+- [`incident-management`](../skills/incident-management/SKILL.md)
+- [`requirements-engineering`](../skills/requirements-engineering/SKILL.md)
 
 ## security
 
@@ -88,14 +91,6 @@ Defensively review authorized systems and reduce security/privacy risks.
 - [`secure-code-review`](../skills/secure-code-review/SKILL.md)
 - [`threat-modeling`](../skills/threat-modeling/SKILL.md)
 - [`privacy-impact-review`](../skills/privacy-impact-review/SKILL.md)
-
-## productivity
-
-Coordinate projects, synthesize meetings, and preserve decisions.
-
-- [`project-management`](../skills/project-management/SKILL.md)
-- [`meeting-synthesis`](../skills/meeting-synthesis/SKILL.md)
-- [`decision-log`](../skills/decision-log/SKILL.md)
 
 ## data
 
@@ -106,12 +101,20 @@ Analyze structured datasets, communicate patterns, and measure product behavior.
 - [`spreadsheet-analysis`](../skills/spreadsheet-analysis/SKILL.md)
 - [`product-analytics`](../skills/product-analytics/SKILL.md)
 
+## marketing
+
+Improve audience understanding and ethical product discoverability.
+
+- [`marketing-strategy`](../skills/marketing-strategy/SKILL.md)
+- [`search-optimization`](../skills/search-optimization/SKILL.md)
+
 ## creative-communication
 
-Write original content and design presentations with evidence and audience fit.
+Write, localize, and design communications with audience and context fit.
 
 - [`content-writing`](../skills/content-writing/SKILL.md)
 - [`presentation-design`](../skills/presentation-design/SKILL.md)
+- [`localization`](../skills/localization/SKILL.md)
 
 ## customer-operations
 
@@ -119,6 +122,15 @@ Triage support requests and guide customers through verified next steps.
 
 - [`customer-support`](../skills/customer-support/SKILL.md)
 
+## productivity
+
+Coordinate projects, preserve decisions, and maintain organizational knowledge.
+
+- [`project-management`](../skills/project-management/SKILL.md)
+- [`meeting-synthesis`](../skills/meeting-synthesis/SKILL.md)
+- [`decision-log`](../skills/decision-log/SKILL.md)
+- [`knowledge-management`](../skills/knowledge-management/SKILL.md)
+
 ## Expansion policy
 
-This taxonomy is a starting point, not a claim of complete coverage. Add a domain only for a distinct group of recurring tasks. Add a skill only when it has a coherent activation boundary, explicit prerequisites, a useful output contract, and evaluation fixtures. If a capability requires external access, declare the integration requirement rather than implying the skill supplies the tool.
+This taxonomy is a starting point, not a claim of complete coverage. Add a domain only for a distinct group of recurring tasks. Add a skill only when it has a coherent activation boundary, explicit prerequisites, a useful output contract, and evaluation fixtures. Declare external integration requirements rather than implying the skill supplies the tool.
