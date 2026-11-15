@@ -1,7 +1,6 @@
 ---
 name: skill-authoring
 description: Design, write, revise, or evaluate portable Agent Skills. Use when creating a new skill, improving an existing SKILL.md, reviewing skill quality, or deciding whether a capability belongs in a skill, workflow, tool, or runtime.
-license: See repository-level licensing policy
 metadata:
   extremis.category: meta
   extremis.version: "0.1.0"
