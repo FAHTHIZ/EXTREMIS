@@ -356,6 +356,222 @@
       "summary": "Create a coherent, accessible, implementation-ready system of reusable design decisions.",
       "provenance": "original-extremis-content",
       "evaluation_cases": 5
+    },
+    {
+      "name": "study-coaching",
+      "path": "skills/study-coaching",
+      "category": "education",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "low",
+      "requires": [
+        "the learner's topic, level, and goal",
+        "the learner's attempt or available course materials when giving feedback"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Coach learning through explanation, retrieval practice, scaffolding, and feedback.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "learning-design",
+      "path": "skills/learning-design",
+      "category": "education",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "learner audience and context",
+        "topic, learning time, delivery format, and any curriculum constraints"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Design accessible learning experiences with aligned outcomes, activities, and evidence of learning.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "experimental-design",
+      "path": "skills/experimental-design",
+      "category": "science",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "high",
+      "requires": [
+        "the research question and field context",
+        "available equipment/data, relevant standards, and appropriate supervision for regulated work"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Design a transparent, ethical study with testable hypotheses and defensible methods.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "scientific-data-analysis",
+      "path": "skills/scientific-data-analysis",
+      "category": "science",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "the dataset or a precise data dictionary",
+        "research question, units, collection method, and analysis environment"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Produce reproducible data analysis with suitable methods, diagnostics, and limitations.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "systems-engineering",
+      "path": "skills/systems-engineering",
+      "category": "engineering",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "high",
+      "requires": [
+        "system purpose and stakeholder context",
+        "available architecture, constraints, standards, and interface information"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Connect stakeholder needs to verifiable system requirements and lifecycle decisions.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "reliability-analysis",
+      "path": "skills/reliability-analysis",
+      "category": "engineering",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "high",
+      "requires": [
+        "system boundary and operating context",
+        "failure, maintenance, incident, or usage data when available"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Structure reliability evidence, failure modes, mitigations, and measurable operational goals.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "secure-code-review",
+      "path": "skills/secure-code-review",
+      "category": "security",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "authorized read access to the code or configuration",
+        "repository context and test tooling recommended"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Identify and prioritize defensive code risks with evidence and practical remediation.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "threat-modeling",
+      "path": "skills/threat-modeling",
+      "category": "security",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "system description or architecture diagram",
+        "authorized scope and relevant security requirements"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Map assets, trust boundaries, threats, mitigations, and residual risk for an authorized system.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "privacy-impact-review",
+      "path": "skills/privacy-impact-review",
+      "category": "security",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "high",
+      "requires": [
+        "feature or processing description",
+        "data categories, purposes, recipients, retention, and jurisdiction where known"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Map personal-data flows and assess purpose, minimization, safeguards, retention, and user impact.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "project-management",
+      "path": "skills/project-management",
+      "category": "productivity",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "project outcome and stakeholders",
+        "known constraints, resources, and delivery expectations"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Turn project goals into an executable plan with ownership, dependencies, and control points.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "meeting-synthesis",
+      "path": "skills/meeting-synthesis",
+      "category": "productivity",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "meeting notes, transcript, or recording transcript supplied by the user",
+        "meeting purpose and date when available"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Separate discussion from decisions and capture actions without inventing commitments.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "decision-log",
+      "path": "skills/decision-log",
+      "category": "productivity",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "low",
+      "requires": [
+        "the decision question and available context",
+        "options and decision status; decision owner if known"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Create durable decision records with context, alternatives, consequences, owners, and revisit triggers.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
     }
   ]
 }

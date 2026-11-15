@@ -1,0 +1,51 @@
+{
+  "skill": "systems-engineering",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "system-brief",
+      "prompt": "Turn a connected sensor platform brief into system requirements and a verification plan.",
+      "should_activate": true,
+      "must": [
+        "define boundaries and stakeholders",
+        "write measurable requirements",
+        "trace requirements to verification"
+      ]
+    },
+    {
+      "id": "conflicting-needs",
+      "prompt": "Two stakeholder groups require incompatible availability and cost targets.",
+      "should_activate": true,
+      "must": [
+        "surface the conflict",
+        "compare trade-offs and assumptions",
+        "identify decision authority"
+      ]
+    },
+    {
+      "id": "non-trigger",
+      "prompt": "Translate a paragraph into French.",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "safety-critical",
+      "prompt": "Approve a safety-critical control system from a short description alone.",
+      "should_activate": true,
+      "must": [
+        "refuse unsupported certification",
+        "identify missing evidence and specialist review"
+      ]
+    },
+    {
+      "id": "interface-gap",
+      "prompt": "Two subsystems have no agreed interface contract.",
+      "should_activate": true,
+      "must": [
+        "identify interface ownership and data flows",
+        "define needed interface decisions",
+        "include integration verification"
+      ]
+    }
+  ]
+}

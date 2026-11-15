@@ -24,8 +24,41 @@ def parse_frontmatter(text: str):
     for line in lines[1:end]:
         match = FIELD_RE.match(line)
         if match:
-            fields[match.group(1)] = match.group(2).strip().strip('"\'')
+            fields[match.group(1)] = match.group(2).strip().strip("\"'")
     return fields, "\n".join(lines[end + 1:]).strip()
+
+def validate_eval_payload(payload, skill_name: str):
+    """Return structural errors for one skill's evaluation fixture file."""
+    errors = []
+    if not isinstance(payload, dict):
+        return ["evaluation root must be an object"]
+    if payload.get("skill") != skill_name:
+        errors.append(f"evaluation skill must be '{skill_name}'")
+    cases = payload.get("cases")
+    if not isinstance(cases, list) or len(cases) < 5:
+        errors.append("at least five evaluation cases are required")
+        return errors
+    seen = set()
+    for number, case in enumerate(cases, start=1):
+        label = f"case {number}"
+        if not isinstance(case, dict):
+            errors.append(f"{label} must be an object")
+            continue
+        case_id = case.get("id")
+        if not isinstance(case_id, str) or not case_id.strip():
+            errors.append(f"{label} needs a non-empty id")
+        elif case_id in seen:
+            errors.append(f"duplicate evaluation id '{case_id}'")
+        else:
+            seen.add(case_id)
+        if not isinstance(case.get("prompt"), str) or not case["prompt"].strip():
+            errors.append(f"{label} needs a non-empty prompt")
+        if not isinstance(case.get("should_activate"), bool):
+            errors.append(f"{label} needs boolean should_activate")
+        must = case.get("must")
+        if not isinstance(must, list) or any(not isinstance(item, str) or not item.strip() for item in must):
+            errors.append(f"{label} must contain a list of non-empty strings")
+    return errors
 
 def main():
     errors = []
@@ -48,13 +81,9 @@ def main():
                 errors.append(f"{skill_file}: exceeds recommended 500-line limit")
             eval_file = skill_file.parent / "evals" / "evals.json"
             try:
-                cases = json.loads(eval_file.read_text(encoding="utf-8")).get("cases", [])
-                if len(cases) < 5:
-                    errors.append(f"{eval_file}: at least five evaluation cases are required")
-                for case in cases:
-                    if not {"id", "prompt", "should_activate", "must"}.issubset(case):
-                        errors.append(f"{eval_file}: every case needs id, prompt, should_activate, and must")
-            except (OSError, UnicodeError, json.JSONDecodeError, AttributeError) as exc:
+                payload = json.loads(eval_file.read_text(encoding="utf-8"))
+                errors.extend(f"{eval_file}: {item}" for item in validate_eval_payload(payload, name))
+            except (OSError, UnicodeError, json.JSONDecodeError) as exc:
                 errors.append(f"{eval_file}: cannot read valid evaluations: {exc}")
             if name in discovered:
                 errors.append(f"{skill_file}: duplicate skill name '{name}'")
@@ -76,6 +105,8 @@ def main():
                 errors.append(f"{path}: missing registry entry for '{name}'")
             elif indexed[name].get("path") != path.parent.relative_to(ROOT).as_posix():
                 errors.append(f"{path}: registry path mismatch")
+            elif indexed[name].get("evaluation_cases", 0) < 5:
+                errors.append(f"{path}: registry must declare at least five evaluation cases")
         for name in indexed:
             if name not in discovered:
                 errors.append(f"registry: '{name}' has no corresponding SKILL.md")

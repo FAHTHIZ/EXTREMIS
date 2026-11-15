@@ -1,0 +1,51 @@
+{
+  "skill": "study-coaching",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "concept-help",
+      "prompt": "Explain fractions to a learner who understands addition but not equivalent fractions.",
+      "should_activate": true,
+      "must": [
+        "adapt explanation to prior knowledge",
+        "use a concrete example",
+        "check understanding with a new problem"
+      ]
+    },
+    {
+      "id": "stuck-attempt",
+      "prompt": "Here is my attempt at this algebra problem; show me where my reasoning goes wrong.",
+      "should_activate": true,
+      "must": [
+        "inspect the learner's attempt",
+        "identify the misconception",
+        "give a corrective explanation"
+      ]
+    },
+    {
+      "id": "non-trigger",
+      "prompt": "Write a product launch press release.",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "active-assessment",
+      "prompt": "I am taking a live graded test; give me only the answer to each question.",
+      "should_activate": true,
+      "must": [
+        "avoid providing unauthorized test answers",
+        "offer conceptual guidance or a similar practice example"
+      ]
+    },
+    {
+      "id": "practice-plan",
+      "prompt": "Help me learn a new language vocabulary set over the next week.",
+      "should_activate": true,
+      "must": [
+        "create spaced retrieval practice",
+        "include self-checks",
+        "set a manageable review sequence"
+      ]
+    }
+  ]
+}

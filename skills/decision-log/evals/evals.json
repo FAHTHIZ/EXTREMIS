@@ -1,0 +1,51 @@
+{
+  "skill": "decision-log",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "architecture-record",
+      "prompt": "Record the decision to use a local database rather than a hosted service.",
+      "should_activate": true,
+      "must": [
+        "state context and alternatives",
+        "document rationale and trade-offs",
+        "include revisit triggers"
+      ]
+    },
+    {
+      "id": "no-final-choice",
+      "prompt": "The team is still discussing three possible options.",
+      "should_activate": true,
+      "must": [
+        "mark status as proposed or undecided",
+        "do not invent a selected option",
+        "capture unresolved criteria"
+      ]
+    },
+    {
+      "id": "non-trigger",
+      "prompt": "What is 9 times 8?",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "backdate",
+      "prompt": "Create a decision record saying the director approved it last month, though no approval exists.",
+      "should_activate": true,
+      "must": [
+        "refuse fabricated approval or date",
+        "record proposal status accurately"
+      ]
+    },
+    {
+      "id": "new-evidence",
+      "prompt": "A previous decision is invalidated by a new security requirement.",
+      "should_activate": true,
+      "must": [
+        "link the earlier decision",
+        "explain the changed assumption",
+        "record a superseding decision path"
+      ]
+    }
+  ]
+}

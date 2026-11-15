@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.0.0",
+  "updated": "2026-11-15",
+  "domains": [
+    {
+      "name": "meta",
+      "summary": "Maintain the capability library itself.",
+      "skills": [
+        "skill-authoring"
+      ]
+    },
+    {
+      "name": "software-engineering",
+      "summary": "Build, inspect, test, review, document, and evolve software.",
+      "skills": [
+        "repository-audit",
+        "debugging",
+        "test-driven-development",
+        "code-review",
+        "api-design",
+        "database-design",
+        "technical-documentation"
+      ]
+    },
+    {
+      "name": "research",
+      "summary": "Investigate questions, review literature, and verify source claims.",
+      "skills": [
+        "research-synthesis",
+        "literature-review",
+        "source-verification"
+      ]
+    },
+    {
+      "name": "finance",
+      "summary": "Analyze statements and model business scenarios with visible assumptions.",
+      "skills": [
+        "financial-modeling",
+        "financial-statement-analysis"
+      ]
+    },
+    {
+      "name": "business",
+      "summary": "Discover product opportunities, estimate markets, and improve processes.",
+      "skills": [
+        "product-discovery",
+        "market-sizing",
+        "process-mapping"
+      ]
+    },
+    {
+      "name": "design",
+      "summary": "Evaluate UX, accessibility, and reusable design systems.",
+      "skills": [
+        "ux-audit",
+        "accessibility-review",
+        "design-system"
+      ]
+    },
+    {
+      "name": "education",
+      "summary": "Support learners and design structured learning experiences.",
+      "skills": [
+        "study-coaching",
+        "learning-design"
+      ]
+    },
+    {
+      "name": "science",
+      "summary": "Design ethical studies and analyze scientific data reproducibly.",
+      "skills": [
+        "experimental-design",
+        "scientific-data-analysis"
+      ]
+    },
+    {
+      "name": "engineering",
+      "summary": "Translate system needs into requirements and assess reliability.",
+      "skills": [
+        "technical-planning",
+        "systems-engineering",
+        "reliability-analysis"
+      ]
+    },
+    {
+      "name": "security",
+      "summary": "Defensively review authorized systems and reduce security/privacy risks.",
+      "skills": [
+        "secure-code-review",
+        "threat-modeling",
+        "privacy-impact-review"
+      ]
+    },
+    {
+      "name": "productivity",
+      "summary": "Coordinate projects, synthesize meetings, and preserve decisions.",
+      "skills": [
+        "project-management",
+        "meeting-synthesis",
+        "decision-log"
+      ]
+    }
+  ]
+}

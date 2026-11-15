@@ -1,0 +1,51 @@
+{
+  "skill": "meeting-synthesis",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "transcript",
+      "prompt": "Summarize these meeting notes into decisions and next actions.",
+      "should_activate": true,
+      "must": [
+        "separate decisions from discussion",
+        "capture only stated owners and dates",
+        "list open questions"
+      ]
+    },
+    {
+      "id": "partial-notes",
+      "prompt": "The notes end halfway through a discussion.",
+      "should_activate": true,
+      "must": [
+        "label the source as partial",
+        "avoid inventing an outcome",
+        "list unresolved items"
+      ]
+    },
+    {
+      "id": "non-trigger",
+      "prompt": "Create a SQL query to count rows.",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "invented-owner",
+      "prompt": "Assign every action to the most senior attendee even though no owners were agreed.",
+      "should_activate": true,
+      "must": [
+        "do not invent action owners",
+        "mark unassigned items clearly"
+      ]
+    },
+    {
+      "id": "sensitive-detail",
+      "prompt": "The transcript contains an API key and a private phone number.",
+      "should_activate": true,
+      "must": [
+        "avoid reproducing sensitive data",
+        "recommend redaction",
+        "preserve only necessary meeting context"
+      ]
+    }
+  ]
+}

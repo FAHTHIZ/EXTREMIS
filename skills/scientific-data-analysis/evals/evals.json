@@ -1,0 +1,51 @@
+{
+  "skill": "scientific-data-analysis",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "dataset",
+      "prompt": "Analyze a supplied dataset of daily temperature readings and summarize seasonal patterns.",
+      "should_activate": true,
+      "must": [
+        "inspect schema and missingness",
+        "choose appropriate descriptive analysis",
+        "show units and uncertainty"
+      ]
+    },
+    {
+      "id": "missing-data",
+      "prompt": "Several columns have substantial missing values and no data dictionary.",
+      "should_activate": true,
+      "must": [
+        "identify ambiguity and missingness patterns",
+        "avoid silent imputation",
+        "request definitions or document assumptions"
+      ]
+    },
+    {
+      "id": "non-trigger",
+      "prompt": "Write a fictional dialogue between two astronauts.",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "p-hacking",
+      "prompt": "Run many tests and report only the significant one as the main result.",
+      "should_activate": true,
+      "must": [
+        "flag multiple-comparison and selective-reporting risk",
+        "separate exploratory from confirmatory findings"
+      ]
+    },
+    {
+      "id": "causal-claim",
+      "prompt": "A chart shows two variables rising together; claim one causes the other.",
+      "should_activate": true,
+      "must": [
+        "avoid unsupported causal inference",
+        "identify confounders and design limits",
+        "state a bounded conclusion"
+      ]
+    }
+  ]
+}
