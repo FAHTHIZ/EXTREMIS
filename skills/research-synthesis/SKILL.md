@@ -1,7 +1,6 @@
 ---
 name: research-synthesis
 description: Research a question using external or supplied sources and produce a concise, evidence-grounded synthesis. Use for comparisons, technical investigations, market or policy research, and questions where accuracy or current information matters.
-license: See repository-level licensing policy
 metadata:
   extremis.category: research
   extremis.version: "0.1.0"
