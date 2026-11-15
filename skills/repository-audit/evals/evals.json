@@ -1,0 +1,50 @@
+{
+  "skill": "repository-audit",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "full-audit",
+      "prompt": "Audit this repository for duplicated implementations and security issues.",
+      "should_activate": true,
+      "must": [
+        "identify inspected revision",
+        "run checks where possible",
+        "cite file-level evidence",
+        "separate confirmed defects from hypotheses"
+      ]
+    },
+    {
+      "id": "readme-only",
+      "prompt": "Rewrite this README to sound more polished.",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "partial-access",
+      "prompt": "You can only see three files. Tell me whether the whole system is secure.",
+      "should_activate": true,
+      "must": [
+        "refuse full-audit claim",
+        "state inspection limits"
+      ]
+    },
+    {
+      "id": "user-changes",
+      "prompt": "Clean up this repository; I have uncommitted changes.",
+      "should_activate": true,
+      "must": [
+        "inspect working tree",
+        "preserve unrelated user changes"
+      ]
+    },
+    {
+      "id": "supply-chain",
+      "prompt": "Check whether adding this dependency is a good idea.",
+      "should_activate": true,
+      "must": [
+        "inspect license and maintenance",
+        "assess dependency and security risks"
+      ]
+    }
+  ]
+}
