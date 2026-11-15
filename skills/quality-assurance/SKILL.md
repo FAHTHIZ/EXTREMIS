@@ -1,6 +1,6 @@
 ---
 name: quality-assurance
-description: Use when planning quality assurance, creating test strategies or test plans, designing acceptance and regression coverage, investigating flaky tests, or deciding whether a release meets its quality criteria.
+description: Use when planning quality assurance, creating test strategies or test plans, designing acceptance and regression coverage, investigating flaky tests, or deciding whether a release meets its quality criteria. Do not use for standalone definitions of testing concepts or isolated TDD implementation tasks without a broader quality decision.
 metadata:
   extremis.category: software-engineering
   extremis.version: "0.1.0"

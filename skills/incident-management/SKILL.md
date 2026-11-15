@@ -1,6 +1,6 @@
 ---
 name: incident-management
-description: Use when coordinating response to a software or service outage, operational degradation, reliability event, or incident review, including triage, stakeholder updates, recovery tracking, and post-incident learning.
+description: Use when coordinating response to a software or service outage, operational degradation, reliability event, or incident review, including triage, stakeholder updates, recovery tracking, and post-incident learning. Do not use for routine planned feature releases or generic uptime definitions without an active incident.
 metadata:
   extremis.category: engineering
   extremis.version: "0.1.0"

@@ -156,6 +156,9 @@ def main():
                 errors.append(f"{path}: registry path mismatch")
             elif indexed[name].get("evaluation_cases", 0) < 5:
                 errors.append(f"{path}: registry must declare at least five evaluation cases")
+            not_for = indexed.get(name, {}).get("not_for", [])
+            if not isinstance(not_for, list) or any(not isinstance(item, str) or not item.strip() for item in not_for):
+                errors.append(f"{path}: registry not_for must be a list of non-empty strings")
         for name in indexed:
             if name not in discovered:
                 errors.append(f"registry: '{name}' has no corresponding SKILL.md")

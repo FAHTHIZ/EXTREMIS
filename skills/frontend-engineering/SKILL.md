@@ -1,6 +1,6 @@
 ---
 name: frontend-engineering
-description: Use when implementing, debugging, or improving browser-based user interfaces, components, responsive layouts, client-side state, routing, or frontend architecture.
+description: Use when implementing, debugging, or improving browser-based user interfaces, components, responsive layouts, client-side state, routing, or frontend architecture. Do not use for server-side endpoint handlers, persistence, or backend business logic without a browser-interface task.
 metadata:
   extremis.category: software-engineering
   extremis.version: "0.1.0"

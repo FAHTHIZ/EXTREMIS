@@ -1,6 +1,6 @@
 ---
 name: marketing-strategy
-description: Use when developing marketing positioning, audience segmentation, go-to-market plans, channel strategy, campaign priorities, or a measurable marketing plan for a product or service.
+description: Use when developing marketing positioning, audience segmentation, go-to-market plans, channel strategy, campaign priorities, or a measurable marketing plan for a product or service. Do not use for standalone grammar or punctuation correction, or spreadsheet formula explanations.
 metadata:
   extremis.category: marketing
   extremis.version: "0.1.0"

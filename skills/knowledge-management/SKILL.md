@@ -1,6 +1,6 @@
 ---
 name: knowledge-management
-description: Use when designing, reorganizing, or governing an internal knowledge base, wiki, document library, or retrieval collection, including taxonomy, metadata, content ownership, freshness, and access boundaries.
+description: Use when designing, reorganizing, or governing an internal knowledge base, wiki, document library, or retrieval collection, including taxonomy, metadata, content ownership, freshness, and access boundaries. Do not use for standalone public blog writing or isolated meeting-note summaries.
 metadata:
   extremis.category: productivity
   extremis.version: "0.1.0"
