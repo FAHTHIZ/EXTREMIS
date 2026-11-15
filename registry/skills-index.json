@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0.0",
+  "project": "EXTREMIS",
+  "updated": "2026-11-15",
+  "skills": [
+    {
+      "name": "skill-authoring",
+      "path": "skills/skill-authoring",
+      "category": "meta",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "low",
+      "requires": [],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Create, revise, and evaluate portable skills."
+    },
+    {
+      "name": "technical-planning",
+      "path": "skills/technical-planning",
+      "category": "engineering",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "low",
+      "requires": [],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Turn complex requests into scoped, verifiable plans."
+    },
+    {
+      "name": "repository-audit",
+      "path": "skills/repository-audit",
+      "category": "software-engineering",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "repository read access",
+        "shell/test tools recommended"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Inspect a repository and report evidence-backed findings."
+    },
+    {
+      "name": "debugging",
+      "path": "skills/debugging",
+      "category": "software-engineering",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "repository access",
+        "reproduction environment recommended"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Diagnose, fix, and verify software defects."
+    },
+    {
+      "name": "research-synthesis",
+      "path": "skills/research-synthesis",
+      "category": "research",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "source access"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Produce source-grounded research with explicit uncertainty."
+    }
+  ]
+}
