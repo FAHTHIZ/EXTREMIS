@@ -29,3 +29,15 @@
 ## What was not done
 
 This review did not exhaustively enumerate every public skill repository, install or run competitors, perform a security audit of their code, or benchmark them head-to-head. The conclusions are an architecture synthesis from public project documentation and repository structures, not claims of measured superiority.
+
+
+## Additional research findings and implementation implications
+
+1. **Activation is a quality problem.** Skill descriptions are a primary discovery/trigger surface. Test realistic positive and near-miss prompts, not only structural parsing. Every new package in this batch has eight trigger/boundary fixtures.
+2. **Progressive disclosure is essential.** Keep activation metadata small, the procedure focused, and supporting references or deterministic scripts separate.
+3. **Installation is a separate product layer.** Cross-host CLIs handle source resolution, targeted installs, host paths, project/global scope, updates, and lockfiles. Extremis should remain portable; the host project or marketplace should own native installation and runtime adapters.
+4. **Plugins bundle distinct artifact classes.** Plugins may combine skills, sub-agents, hooks, and connectors. Skills must not imply they grant tools or permissions.
+
+## Catalog consistency correction
+
+The domain registry omitted four software-engineering skills already present in the 43-skill index. This update brings the taxonomy into parity and adds automated checks so omissions, duplicate assignments, and category mismatches fail validation.

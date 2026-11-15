@@ -19,7 +19,13 @@
         "code-review",
         "api-design",
         "database-design",
-        "technical-documentation"
+        "technical-documentation",
+        "mobile-engineering",
+        "quality-assurance",
+        "backend-engineering",
+        "devops-release",
+        "frontend-engineering",
+        "performance-optimization"
       ]
     },
     {
@@ -45,7 +51,8 @@
       "skills": [
         "product-discovery",
         "market-sizing",
-        "process-mapping"
+        "process-mapping",
+        "competitive-analysis"
       ]
     },
     {
@@ -75,11 +82,12 @@
     },
     {
       "name": "engineering",
-      "summary": "Translate system needs into requirements and assess reliability.",
+      "summary": "Translate system needs into requirements and assess resilience and operations.",
       "skills": [
         "technical-planning",
         "systems-engineering",
-        "reliability-analysis"
+        "reliability-analysis",
+        "cloud-architecture"
       ]
     },
     {
@@ -102,11 +110,12 @@
     },
     {
       "name": "data",
-      "summary": "Analyze structured datasets, communicate patterns, and audit spreadsheets.",
+      "summary": "Analyze structured datasets, communicate patterns, and measure product behavior.",
       "skills": [
         "data-analysis",
         "data-visualization",
-        "spreadsheet-analysis"
+        "spreadsheet-analysis",
+        "product-analytics"
       ]
     },
     {

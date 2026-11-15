@@ -60,6 +60,55 @@ def validate_eval_payload(payload, skill_name: str):
             errors.append(f"{label} must contain a list of non-empty strings")
     return errors
 
+
+def validate_domain_registry(payload, indexed, discovered_names):
+    """Ensure every catalog skill belongs to exactly one matching domain."""
+    errors = []
+    if not isinstance(payload, dict):
+        return ["domain registry root must be an object"]
+    domains = payload.get("domains")
+    if not isinstance(domains, list) or not domains:
+        return ["domain registry must contain a non-empty domains list"]
+    seen_domains, memberships = set(), {}
+    for number, domain in enumerate(domains, start=1):
+        if not isinstance(domain, dict):
+            errors.append(f"domain {number} must be an object")
+            continue
+        name = domain.get("name")
+        if not isinstance(name, str) or not name.strip():
+            errors.append(f"domain {number} needs a non-empty name")
+            continue
+        if name in seen_domains:
+            errors.append(f"duplicate domain '{name}'")
+        seen_domains.add(name)
+        skills = domain.get("skills")
+        if not isinstance(skills, list):
+            errors.append(f"domain '{name}' skills must be a list")
+            continue
+        local = set()
+        for skill in skills:
+            if not isinstance(skill, str) or not skill.strip():
+                errors.append(f"domain '{name}' contains an invalid skill name")
+                continue
+            if skill in local:
+                errors.append(f"domain '{name}' repeats skill '{skill}'")
+            local.add(skill)
+            memberships[skill] = memberships.get(skill, 0) + 1
+            if skill not in indexed:
+                errors.append(f"domain '{name}' references unindexed skill '{skill}'")
+            elif indexed[skill].get("category") != name:
+                errors.append(f"skill '{skill}' category '{indexed[skill].get('category')}' does not match domain '{name}'")
+    for skill in discovered_names:
+        count = memberships.get(skill, 0)
+        if count == 0:
+            errors.append(f"domain registry: skill '{skill}' has no domain")
+        elif count > 1:
+            errors.append(f"domain registry: skill '{skill}' belongs to {count} domains")
+    for skill in memberships:
+        if skill not in discovered_names:
+            errors.append(f"domain registry: '{skill}' has no corresponding SKILL.md")
+    return errors
+
 def main():
     errors = []
     discovered = {}
@@ -110,6 +159,11 @@ def main():
         for name in indexed:
             if name not in discovered:
                 errors.append(f"registry: '{name}' has no corresponding SKILL.md")
+        try:
+            domain_registry = json.loads((ROOT / "registry" / "domains.json").read_text(encoding="utf-8"))
+            errors.extend(f"registry/domains.json: {item}" for item in validate_domain_registry(domain_registry, indexed, set(discovered)))
+        except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+            errors.append(f"{ROOT / 'registry' / 'domains.json'}: cannot read valid domain registry: {exc}")
     except (OSError, json.JSONDecodeError, AttributeError) as exc:
         errors.append(f"{INDEX}: cannot read valid registry: {exc}")
 

@@ -4,121 +4,20 @@
   "updated": "2026-11-15",
   "skills": [
     {
-      "name": "skill-authoring",
-      "path": "skills/skill-authoring",
-      "category": "meta",
+      "name": "accessibility-review",
+      "path": "skills/accessibility-review",
+      "category": "design",
       "version": "0.1.0",
       "maturity": "draft",
-      "risk": "low",
-      "requires": [],
-      "hosts": [
-        "agent-skills-compatible"
-      ],
-      "summary": "Create, revise, and evaluate portable skills.",
-      "provenance": "original-extremis-content",
-      "evaluation_cases": 5
-    },
-    {
-      "name": "technical-planning",
-      "path": "skills/technical-planning",
-      "category": "engineering",
-      "version": "0.1.0",
-      "maturity": "draft",
-      "risk": "low",
-      "requires": [],
-      "hosts": [
-        "agent-skills-compatible"
-      ],
-      "summary": "Turn complex requests into scoped, verifiable plans.",
-      "provenance": "original-extremis-content",
-      "evaluation_cases": 5
-    },
-    {
-      "name": "repository-audit",
-      "path": "skills/repository-audit",
-      "category": "software-engineering",
-      "version": "0.1.0",
-      "maturity": "draft",
-      "risk": "medium",
+      "risk": "high",
       "requires": [
-        "repository read access",
-        "shell/test tools recommended"
+        "the interface or document under review",
+        "target platforms and applicable accessibility standard or policy; assistive technology testing recommended"
       ],
       "hosts": [
         "agent-skills-compatible"
       ],
-      "summary": "Inspect a repository and report evidence-backed findings.",
-      "provenance": "original-extremis-content",
-      "evaluation_cases": 5
-    },
-    {
-      "name": "debugging",
-      "path": "skills/debugging",
-      "category": "software-engineering",
-      "version": "0.1.0",
-      "maturity": "draft",
-      "risk": "medium",
-      "requires": [
-        "repository access",
-        "reproduction environment recommended"
-      ],
-      "hosts": [
-        "agent-skills-compatible"
-      ],
-      "summary": "Diagnose, fix, and verify software defects.",
-      "provenance": "original-extremis-content",
-      "evaluation_cases": 5
-    },
-    {
-      "name": "research-synthesis",
-      "path": "skills/research-synthesis",
-      "category": "research",
-      "version": "0.1.0",
-      "maturity": "draft",
-      "risk": "medium",
-      "requires": [
-        "source access"
-      ],
-      "hosts": [
-        "agent-skills-compatible"
-      ],
-      "summary": "Produce source-grounded research with explicit uncertainty.",
-      "provenance": "original-extremis-content",
-      "evaluation_cases": 5
-    },
-    {
-      "name": "test-driven-development",
-      "path": "skills/test-driven-development",
-      "category": "software-engineering",
-      "version": "0.1.0",
-      "maturity": "draft",
-      "risk": "medium",
-      "requires": [
-        "repository access",
-        "project test tooling or an explicitly documented verification alternative"
-      ],
-      "hosts": [
-        "agent-skills-compatible"
-      ],
-      "summary": "Develop behavior through a verified failing test, a minimal implementation, and regression checks.",
-      "provenance": "original-extremis-content",
-      "evaluation_cases": 5
-    },
-    {
-      "name": "code-review",
-      "path": "skills/code-review",
-      "category": "software-engineering",
-      "version": "0.1.0",
-      "maturity": "draft",
-      "risk": "medium",
-      "requires": [
-        "the proposed diff or changed files",
-        "repository context; tests or runtime access recommended"
-      ],
-      "hosts": [
-        "agent-skills-compatible"
-      ],
-      "summary": "Review diffs for consequential defects and return prioritized, evidence-backed findings.",
+      "summary": "Find accessibility barriers and propose testable fixes using applicable standards and assistive-technology context.",
       "provenance": "original-extremis-content",
       "evaluation_cases": 5
     },
@@ -141,6 +40,151 @@
       "evaluation_cases": 5
     },
     {
+      "name": "backend-engineering",
+      "path": "skills/backend-engineering",
+      "category": "software-engineering",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "repository and service context",
+        "API, data, and deployment constraints where available"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Build reliable backend behavior around explicit contracts, data integrity, and failure handling.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "cloud-architecture",
+      "path": "skills/cloud-architecture",
+      "category": "engineering",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "high",
+      "requires": [
+        "workload purpose, critical user journeys, and service-level expectations",
+        "known provider, deployment constraints, data sensitivity, and regulatory context",
+        "traffic/load profile and operational ownership where available"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Design cloud workloads for resilience, security, cost, and operability.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 8
+    },
+    {
+      "name": "code-review",
+      "path": "skills/code-review",
+      "category": "software-engineering",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "the proposed diff or changed files",
+        "repository context; tests or runtime access recommended"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Review diffs for consequential defects and return prioritized, evidence-backed findings.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "competitive-analysis",
+      "path": "skills/competitive-analysis",
+      "category": "business",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "the decision and comparison set",
+        "comparison dimensions, geography, and time horizon"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Compare competitors using current sources, consistent criteria, and evidence-backed trade-offs.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "content-writing",
+      "path": "skills/content-writing",
+      "category": "creative-communication",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "low",
+      "requires": [
+        "audience and purpose",
+        "key facts, source material, length, and tone constraints"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Create clear original content that meets the audience, purpose, tone, and factual requirements.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "customer-support",
+      "path": "skills/customer-support",
+      "category": "customer-operations",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "the customer's message and available product knowledge",
+        "support policies, account tools, and escalation paths if provided"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Resolve or route customer issues with empathy, accuracy, and clear ownership.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "data-analysis",
+      "path": "skills/data-analysis",
+      "category": "data",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "dataset or query access actually provided by the host",
+        "question, data dictionary, and relevant time window where available"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Translate a data question into reproducible analysis with explicit grain and limitations.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "data-visualization",
+      "path": "skills/data-visualization",
+      "category": "data",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "low",
+      "requires": [
+        "the data or a well-defined metric table",
+        "intended audience, message, and delivery context"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Match visual encodings to the analytical question and make charts readable and honest.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
       "name": "database-design",
       "path": "skills/database-design",
       "category": "software-engineering",
@@ -159,56 +203,92 @@
       "evaluation_cases": 5
     },
     {
-      "name": "technical-documentation",
-      "path": "skills/technical-documentation",
+      "name": "debugging",
+      "path": "skills/debugging",
       "category": "software-engineering",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "repository access",
+        "reproduction environment recommended"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Diagnose, fix, and verify software defects.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "decision-log",
+      "path": "skills/decision-log",
+      "category": "productivity",
       "version": "0.1.0",
       "maturity": "draft",
       "risk": "low",
       "requires": [
-        "the actual implementation or authoritative source material",
-        "intended audience and documentation location"
+        "the decision question and available context",
+        "options and decision status; decision owner if known"
       ],
       "hosts": [
         "agent-skills-compatible"
       ],
-      "summary": "Produce accurate documentation aligned with the implemented product and its users.",
+      "summary": "Create durable decision records with context, alternatives, consequences, owners, and revisit triggers.",
       "provenance": "original-extremis-content",
       "evaluation_cases": 5
     },
     {
-      "name": "literature-review",
-      "path": "skills/literature-review",
-      "category": "research",
+      "name": "design-system",
+      "path": "skills/design-system",
+      "category": "design",
       "version": "0.1.0",
       "maturity": "draft",
-      "risk": "medium",
+      "risk": "low",
       "requires": [
-        "a research question or topic",
-        "access to bibliographic records and full text where available"
+        "product goals and brand constraints",
+        "existing UI, design files, or framework conventions; component implementation access optional"
       ],
       "hosts": [
         "agent-skills-compatible"
       ],
-      "summary": "Build a transparent evidence map and synthesis from traceable research sources.",
+      "summary": "Create a coherent, accessible, implementation-ready system of reusable design decisions.",
       "provenance": "original-extremis-content",
       "evaluation_cases": 5
     },
     {
-      "name": "source-verification",
-      "path": "skills/source-verification",
-      "category": "research",
+      "name": "devops-release",
+      "path": "skills/devops-release",
+      "category": "software-engineering",
       "version": "0.1.0",
       "maturity": "draft",
-      "risk": "medium",
+      "risk": "high",
       "requires": [
-        "the exact claim or material to verify",
-        "access to relevant public or user-provided sources"
+        "repository and deployment context",
+        "release target, environment, and authorization for any deployment"
       ],
       "hosts": [
         "agent-skills-compatible"
       ],
-      "summary": "Verify claims through provenance, primary evidence, cross-checks, and explicit uncertainty.",
+      "summary": "Make releases reproducible, observable, and recoverable with explicit gates.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "experimental-design",
+      "path": "skills/experimental-design",
+      "category": "science",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "high",
+      "requires": [
+        "the research question and field context",
+        "available equipment/data, relevant standards, and appropriate supervision for regulated work"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Design a transparent, ethical study with testable hypotheses and defensible methods.",
       "provenance": "original-extremis-content",
       "evaluation_cases": 5
     },
@@ -250,128 +330,20 @@
       "evaluation_cases": 5
     },
     {
-      "name": "product-discovery",
-      "path": "skills/product-discovery",
-      "category": "business",
+      "name": "frontend-engineering",
+      "path": "skills/frontend-engineering",
+      "category": "software-engineering",
       "version": "0.1.0",
       "maturity": "draft",
       "risk": "medium",
       "requires": [
-        "the product context or initial idea",
-        "access to user evidence or a plan to collect it"
+        "repository access and the relevant application entry points",
+        "the target browsers/platforms and design or behavior requirements"
       ],
       "hosts": [
         "agent-skills-compatible"
       ],
-      "summary": "Turn uncertain product ideas into testable user-problem and solution hypotheses.",
-      "provenance": "original-extremis-content",
-      "evaluation_cases": 5
-    },
-    {
-      "name": "market-sizing",
-      "path": "skills/market-sizing",
-      "category": "business",
-      "version": "0.1.0",
-      "maturity": "draft",
-      "risk": "medium",
-      "requires": [
-        "the product or service definition",
-        "target geography, customer segment, time horizon, and available market evidence"
-      ],
-      "hosts": [
-        "agent-skills-compatible"
-      ],
-      "summary": "Estimate opportunity size with explicit definitions, sourced inputs, and sensitivity ranges.",
-      "provenance": "original-extremis-content",
-      "evaluation_cases": 5
-    },
-    {
-      "name": "process-mapping",
-      "path": "skills/process-mapping",
-      "category": "business",
-      "version": "0.1.0",
-      "maturity": "draft",
-      "risk": "medium",
-      "requires": [
-        "process owner or source description",
-        "access to interviews, documents, or operational evidence recommended"
-      ],
-      "hosts": [
-        "agent-skills-compatible"
-      ],
-      "summary": "Map a real process, expose bottlenecks, and recommend measurable improvements.",
-      "provenance": "original-extremis-content",
-      "evaluation_cases": 5
-    },
-    {
-      "name": "ux-audit",
-      "path": "skills/ux-audit",
-      "category": "design",
-      "version": "0.1.0",
-      "maturity": "draft",
-      "risk": "medium",
-      "requires": [
-        "a working interface, screenshots, prototype, or user-journey description",
-        "target users and key tasks; user testing or analytics recommended"
-      ],
-      "hosts": [
-        "agent-skills-compatible"
-      ],
-      "summary": "Review real user journeys and turn observed usability issues into prioritized fixes.",
-      "provenance": "original-extremis-content",
-      "evaluation_cases": 5
-    },
-    {
-      "name": "accessibility-review",
-      "path": "skills/accessibility-review",
-      "category": "design",
-      "version": "0.1.0",
-      "maturity": "draft",
-      "risk": "high",
-      "requires": [
-        "the interface or document under review",
-        "target platforms and applicable accessibility standard or policy; assistive technology testing recommended"
-      ],
-      "hosts": [
-        "agent-skills-compatible"
-      ],
-      "summary": "Find accessibility barriers and propose testable fixes using applicable standards and assistive-technology context.",
-      "provenance": "original-extremis-content",
-      "evaluation_cases": 5
-    },
-    {
-      "name": "design-system",
-      "path": "skills/design-system",
-      "category": "design",
-      "version": "0.1.0",
-      "maturity": "draft",
-      "risk": "low",
-      "requires": [
-        "product goals and brand constraints",
-        "existing UI, design files, or framework conventions; component implementation access optional"
-      ],
-      "hosts": [
-        "agent-skills-compatible"
-      ],
-      "summary": "Create a coherent, accessible, implementation-ready system of reusable design decisions.",
-      "provenance": "original-extremis-content",
-      "evaluation_cases": 5
-    },
-    {
-      "name": "study-coaching",
-      "path": "skills/study-coaching",
-      "category": "education",
-      "version": "0.1.0",
-      "maturity": "draft",
-      "risk": "low",
-      "requires": [
-        "the learner's topic, level, and goal",
-        "the learner's attempt or available course materials when giving feedback"
-      ],
-      "hosts": [
-        "agent-skills-compatible"
-      ],
-      "summary": "Coach learning through explanation, retrieval practice, scaffolding, and feedback.",
+      "summary": "Build usable, maintainable frontend behavior that matches the product contract.",
       "provenance": "original-extremis-content",
       "evaluation_cases": 5
     },
@@ -394,146 +366,38 @@
       "evaluation_cases": 5
     },
     {
-      "name": "experimental-design",
-      "path": "skills/experimental-design",
-      "category": "science",
-      "version": "0.1.0",
-      "maturity": "draft",
-      "risk": "high",
-      "requires": [
-        "the research question and field context",
-        "available equipment/data, relevant standards, and appropriate supervision for regulated work"
-      ],
-      "hosts": [
-        "agent-skills-compatible"
-      ],
-      "summary": "Design a transparent, ethical study with testable hypotheses and defensible methods.",
-      "provenance": "original-extremis-content",
-      "evaluation_cases": 5
-    },
-    {
-      "name": "scientific-data-analysis",
-      "path": "skills/scientific-data-analysis",
-      "category": "science",
+      "name": "literature-review",
+      "path": "skills/literature-review",
+      "category": "research",
       "version": "0.1.0",
       "maturity": "draft",
       "risk": "medium",
       "requires": [
-        "the dataset or a precise data dictionary",
-        "research question, units, collection method, and analysis environment"
+        "a research question or topic",
+        "access to bibliographic records and full text where available"
       ],
       "hosts": [
         "agent-skills-compatible"
       ],
-      "summary": "Produce reproducible data analysis with suitable methods, diagnostics, and limitations.",
+      "summary": "Build a transparent evidence map and synthesis from traceable research sources.",
       "provenance": "original-extremis-content",
       "evaluation_cases": 5
     },
     {
-      "name": "systems-engineering",
-      "path": "skills/systems-engineering",
-      "category": "engineering",
-      "version": "0.1.0",
-      "maturity": "draft",
-      "risk": "high",
-      "requires": [
-        "system purpose and stakeholder context",
-        "available architecture, constraints, standards, and interface information"
-      ],
-      "hosts": [
-        "agent-skills-compatible"
-      ],
-      "summary": "Connect stakeholder needs to verifiable system requirements and lifecycle decisions.",
-      "provenance": "original-extremis-content",
-      "evaluation_cases": 5
-    },
-    {
-      "name": "reliability-analysis",
-      "path": "skills/reliability-analysis",
-      "category": "engineering",
-      "version": "0.1.0",
-      "maturity": "draft",
-      "risk": "high",
-      "requires": [
-        "system boundary and operating context",
-        "failure, maintenance, incident, or usage data when available"
-      ],
-      "hosts": [
-        "agent-skills-compatible"
-      ],
-      "summary": "Structure reliability evidence, failure modes, mitigations, and measurable operational goals.",
-      "provenance": "original-extremis-content",
-      "evaluation_cases": 5
-    },
-    {
-      "name": "secure-code-review",
-      "path": "skills/secure-code-review",
-      "category": "security",
+      "name": "market-sizing",
+      "path": "skills/market-sizing",
+      "category": "business",
       "version": "0.1.0",
       "maturity": "draft",
       "risk": "medium",
       "requires": [
-        "authorized read access to the code or configuration",
-        "repository context and test tooling recommended"
+        "the product or service definition",
+        "target geography, customer segment, time horizon, and available market evidence"
       ],
       "hosts": [
         "agent-skills-compatible"
       ],
-      "summary": "Identify and prioritize defensive code risks with evidence and practical remediation.",
-      "provenance": "original-extremis-content",
-      "evaluation_cases": 5
-    },
-    {
-      "name": "threat-modeling",
-      "path": "skills/threat-modeling",
-      "category": "security",
-      "version": "0.1.0",
-      "maturity": "draft",
-      "risk": "medium",
-      "requires": [
-        "system description or architecture diagram",
-        "authorized scope and relevant security requirements"
-      ],
-      "hosts": [
-        "agent-skills-compatible"
-      ],
-      "summary": "Map assets, trust boundaries, threats, mitigations, and residual risk for an authorized system.",
-      "provenance": "original-extremis-content",
-      "evaluation_cases": 5
-    },
-    {
-      "name": "privacy-impact-review",
-      "path": "skills/privacy-impact-review",
-      "category": "security",
-      "version": "0.1.0",
-      "maturity": "draft",
-      "risk": "high",
-      "requires": [
-        "feature or processing description",
-        "data categories, purposes, recipients, retention, and jurisdiction where known"
-      ],
-      "hosts": [
-        "agent-skills-compatible"
-      ],
-      "summary": "Map personal-data flows and assess purpose, minimization, safeguards, retention, and user impact.",
-      "provenance": "original-extremis-content",
-      "evaluation_cases": 5
-    },
-    {
-      "name": "project-management",
-      "path": "skills/project-management",
-      "category": "productivity",
-      "version": "0.1.0",
-      "maturity": "draft",
-      "risk": "medium",
-      "requires": [
-        "project outcome and stakeholders",
-        "known constraints, resources, and delivery expectations"
-      ],
-      "hosts": [
-        "agent-skills-compatible"
-      ],
-      "summary": "Turn project goals into an executable plan with ownership, dependencies, and control points.",
+      "summary": "Estimate opportunity size with explicit definitions, sourced inputs, and sensitivity ranges.",
       "provenance": "original-extremis-content",
       "evaluation_cases": 5
     },
@@ -556,58 +420,23 @@
       "evaluation_cases": 5
     },
     {
-      "name": "decision-log",
-      "path": "skills/decision-log",
-      "category": "productivity",
-      "version": "0.1.0",
-      "maturity": "draft",
-      "risk": "low",
-      "requires": [
-        "the decision question and available context",
-        "options and decision status; decision owner if known"
-      ],
-      "hosts": [
-        "agent-skills-compatible"
-      ],
-      "summary": "Create durable decision records with context, alternatives, consequences, owners, and revisit triggers.",
-      "provenance": "original-extremis-content",
-      "evaluation_cases": 5
-    },
-    {
-      "name": "frontend-engineering",
-      "path": "skills/frontend-engineering",
+      "name": "mobile-engineering",
+      "path": "skills/mobile-engineering",
       "category": "software-engineering",
       "version": "0.1.0",
       "maturity": "draft",
       "risk": "medium",
       "requires": [
-        "repository access and the relevant application entry points",
-        "the target browsers/platforms and design or behavior requirements"
+        "repository access and the current mobile framework or platform",
+        "target operating systems, supported versions, and device constraints",
+        "test devices, emulators, or documented verification alternatives recommended"
       ],
       "hosts": [
         "agent-skills-compatible"
       ],
-      "summary": "Build usable, maintainable frontend behavior that matches the product contract.",
+      "summary": "Build and review reliable native and cross-platform mobile applications.",
       "provenance": "original-extremis-content",
-      "evaluation_cases": 5
-    },
-    {
-      "name": "backend-engineering",
-      "path": "skills/backend-engineering",
-      "category": "software-engineering",
-      "version": "0.1.0",
-      "maturity": "draft",
-      "risk": "medium",
-      "requires": [
-        "repository and service context",
-        "API, data, and deployment constraints where available"
-      ],
-      "hosts": [
-        "agent-skills-compatible"
-      ],
-      "summary": "Build reliable backend behavior around explicit contracts, data integrity, and failure handling.",
-      "provenance": "original-extremis-content",
-      "evaluation_cases": 5
+      "evaluation_cases": 8
     },
     {
       "name": "performance-optimization",
@@ -624,114 +453,6 @@
         "agent-skills-compatible"
       ],
       "summary": "Measure bottlenecks first and optimize the dominant cause with regression checks.",
-      "provenance": "original-extremis-content",
-      "evaluation_cases": 5
-    },
-    {
-      "name": "devops-release",
-      "path": "skills/devops-release",
-      "category": "software-engineering",
-      "version": "0.1.0",
-      "maturity": "draft",
-      "risk": "high",
-      "requires": [
-        "repository and deployment context",
-        "release target, environment, and authorization for any deployment"
-      ],
-      "hosts": [
-        "agent-skills-compatible"
-      ],
-      "summary": "Make releases reproducible, observable, and recoverable with explicit gates.",
-      "provenance": "original-extremis-content",
-      "evaluation_cases": 5
-    },
-    {
-      "name": "data-analysis",
-      "path": "skills/data-analysis",
-      "category": "data",
-      "version": "0.1.0",
-      "maturity": "draft",
-      "risk": "medium",
-      "requires": [
-        "dataset or query access actually provided by the host",
-        "question, data dictionary, and relevant time window where available"
-      ],
-      "hosts": [
-        "agent-skills-compatible"
-      ],
-      "summary": "Translate a data question into reproducible analysis with explicit grain and limitations.",
-      "provenance": "original-extremis-content",
-      "evaluation_cases": 5
-    },
-    {
-      "name": "data-visualization",
-      "path": "skills/data-visualization",
-      "category": "data",
-      "version": "0.1.0",
-      "maturity": "draft",
-      "risk": "low",
-      "requires": [
-        "the data or a well-defined metric table",
-        "intended audience, message, and delivery context"
-      ],
-      "hosts": [
-        "agent-skills-compatible"
-      ],
-      "summary": "Match visual encodings to the analytical question and make charts readable and honest.",
-      "provenance": "original-extremis-content",
-      "evaluation_cases": 5
-    },
-    {
-      "name": "spreadsheet-analysis",
-      "path": "skills/spreadsheet-analysis",
-      "category": "data",
-      "version": "0.1.0",
-      "maturity": "draft",
-      "risk": "medium",
-      "requires": [
-        "the workbook or tabular source",
-        "the intended calculation and spreadsheet application or library access"
-      ],
-      "hosts": [
-        "agent-skills-compatible"
-      ],
-      "summary": "Make spreadsheet logic auditable and protect data integrity across sheets and formulas.",
-      "provenance": "original-extremis-content",
-      "evaluation_cases": 5
-    },
-    {
-      "name": "competitive-analysis",
-      "path": "skills/competitive-analysis",
-      "category": "business",
-      "version": "0.1.0",
-      "maturity": "draft",
-      "risk": "medium",
-      "requires": [
-        "the decision and comparison set",
-        "comparison dimensions, geography, and time horizon"
-      ],
-      "hosts": [
-        "agent-skills-compatible"
-      ],
-      "summary": "Compare competitors using current sources, consistent criteria, and evidence-backed trade-offs.",
-      "provenance": "original-extremis-content",
-      "evaluation_cases": 5
-    },
-    {
-      "name": "content-writing",
-      "path": "skills/content-writing",
-      "category": "creative-communication",
-      "version": "0.1.0",
-      "maturity": "draft",
-      "risk": "low",
-      "requires": [
-        "audience and purpose",
-        "key facts, source material, length, and tone constraints"
-      ],
-      "hosts": [
-        "agent-skills-compatible"
-      ],
-      "summary": "Create clear original content that meets the audience, purpose, tone, and factual requirements.",
       "provenance": "original-extremis-content",
       "evaluation_cases": 5
     },
@@ -754,20 +475,375 @@
       "evaluation_cases": 5
     },
     {
-      "name": "customer-support",
-      "path": "skills/customer-support",
-      "category": "customer-operations",
+      "name": "privacy-impact-review",
+      "path": "skills/privacy-impact-review",
+      "category": "security",
       "version": "0.1.0",
       "maturity": "draft",
-      "risk": "medium",
+      "risk": "high",
       "requires": [
-        "the customer's message and available product knowledge",
-        "support policies, account tools, and escalation paths if provided"
+        "feature or processing description",
+        "data categories, purposes, recipients, retention, and jurisdiction where known"
       ],
       "hosts": [
         "agent-skills-compatible"
       ],
-      "summary": "Resolve or route customer issues with empathy, accuracy, and clear ownership.",
+      "summary": "Map personal-data flows and assess purpose, minimization, safeguards, retention, and user impact.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "process-mapping",
+      "path": "skills/process-mapping",
+      "category": "business",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "process owner or source description",
+        "access to interviews, documents, or operational evidence recommended"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Map a real process, expose bottlenecks, and recommend measurable improvements.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "product-analytics",
+      "path": "skills/product-analytics",
+      "category": "data",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "product goals, user journeys, and the decision the analysis should inform",
+        "available event data, analytics schema, or an instrumentation environment",
+        "privacy, consent, retention, and data access requirements where applicable"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Define product metrics, event instrumentation, funnels, cohorts, and experiments.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 8
+    },
+    {
+      "name": "product-discovery",
+      "path": "skills/product-discovery",
+      "category": "business",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "the product context or initial idea",
+        "access to user evidence or a plan to collect it"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Turn uncertain product ideas into testable user-problem and solution hypotheses.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "project-management",
+      "path": "skills/project-management",
+      "category": "productivity",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "project outcome and stakeholders",
+        "known constraints, resources, and delivery expectations"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Turn project goals into an executable plan with ownership, dependencies, and control points.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "quality-assurance",
+      "path": "skills/quality-assurance",
+      "category": "software-engineering",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "product requirements, user journeys, or an observable behavior contract",
+        "repository, test environment, or a clear description of the system under test",
+        "known risk areas and release constraints where available"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Create risk-based test strategies and verify release acceptance.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 8
+    },
+    {
+      "name": "reliability-analysis",
+      "path": "skills/reliability-analysis",
+      "category": "engineering",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "high",
+      "requires": [
+        "system boundary and operating context",
+        "failure, maintenance, incident, or usage data when available"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Structure reliability evidence, failure modes, mitigations, and measurable operational goals.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "repository-audit",
+      "path": "skills/repository-audit",
+      "category": "software-engineering",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "repository read access",
+        "shell/test tools recommended"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Inspect a repository and report evidence-backed findings.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "research-synthesis",
+      "path": "skills/research-synthesis",
+      "category": "research",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "source access"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Produce source-grounded research with explicit uncertainty.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "scientific-data-analysis",
+      "path": "skills/scientific-data-analysis",
+      "category": "science",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "the dataset or a precise data dictionary",
+        "research question, units, collection method, and analysis environment"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Produce reproducible data analysis with suitable methods, diagnostics, and limitations.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "secure-code-review",
+      "path": "skills/secure-code-review",
+      "category": "security",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "authorized read access to the code or configuration",
+        "repository context and test tooling recommended"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Identify and prioritize defensive code risks with evidence and practical remediation.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "skill-authoring",
+      "path": "skills/skill-authoring",
+      "category": "meta",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "low",
+      "requires": [],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Create, revise, and evaluate portable skills.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "source-verification",
+      "path": "skills/source-verification",
+      "category": "research",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "the exact claim or material to verify",
+        "access to relevant public or user-provided sources"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Verify claims through provenance, primary evidence, cross-checks, and explicit uncertainty.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "spreadsheet-analysis",
+      "path": "skills/spreadsheet-analysis",
+      "category": "data",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "the workbook or tabular source",
+        "the intended calculation and spreadsheet application or library access"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Make spreadsheet logic auditable and protect data integrity across sheets and formulas.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "study-coaching",
+      "path": "skills/study-coaching",
+      "category": "education",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "low",
+      "requires": [
+        "the learner's topic, level, and goal",
+        "the learner's attempt or available course materials when giving feedback"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Coach learning through explanation, retrieval practice, scaffolding, and feedback.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "systems-engineering",
+      "path": "skills/systems-engineering",
+      "category": "engineering",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "high",
+      "requires": [
+        "system purpose and stakeholder context",
+        "available architecture, constraints, standards, and interface information"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Connect stakeholder needs to verifiable system requirements and lifecycle decisions.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "technical-documentation",
+      "path": "skills/technical-documentation",
+      "category": "software-engineering",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "low",
+      "requires": [
+        "the actual implementation or authoritative source material",
+        "intended audience and documentation location"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Produce accurate documentation aligned with the implemented product and its users.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "technical-planning",
+      "path": "skills/technical-planning",
+      "category": "engineering",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "low",
+      "requires": [],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Turn complex requests into scoped, verifiable plans.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "test-driven-development",
+      "path": "skills/test-driven-development",
+      "category": "software-engineering",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "repository access",
+        "project test tooling or an explicitly documented verification alternative"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Develop behavior through a verified failing test, a minimal implementation, and regression checks.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "threat-modeling",
+      "path": "skills/threat-modeling",
+      "category": "security",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "system description or architecture diagram",
+        "authorized scope and relevant security requirements"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Map assets, trust boundaries, threats, mitigations, and residual risk for an authorized system.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "ux-audit",
+      "path": "skills/ux-audit",
+      "category": "design",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "a working interface, screenshots, prototype, or user-journey description",
+        "target users and key tasks; user testing or analytics recommended"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Review real user journeys and turn observed usability issues into prioritized fixes.",
       "provenance": "original-extremis-content",
       "evaluation_cases": 5
     }
