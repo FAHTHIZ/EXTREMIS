@@ -22,5 +22,8 @@ class FrontmatterTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             MODULE.parse_frontmatter("---\nname: broken")
 
+    def test_repository_catalog_is_valid(self):
+        self.assertEqual(MODULE.main(), 0)
+
 if __name__ == "__main__":
     unittest.main()
