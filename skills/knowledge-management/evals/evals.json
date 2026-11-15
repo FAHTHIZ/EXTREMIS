@@ -1,0 +1,77 @@
+{
+  "skill": "knowledge-management",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "wiki-redesign",
+      "prompt": "Design a knowledge base with owners, metadata, review dates, and source-of-truth rules.",
+      "should_activate": true,
+      "must": [
+        "inventory sources and owners",
+        "define taxonomy and lifecycle",
+        "include access control"
+      ]
+    },
+    {
+      "id": "stale-content",
+      "prompt": "Create a process for detecting outdated policies and superseded procedure pages.",
+      "should_activate": true,
+      "must": [
+        "define owners and review triggers",
+        "preserve version and source",
+        "escalate conflicts"
+      ]
+    },
+    {
+      "id": "retrieval-quality",
+      "prompt": "Evaluate whether internal search returns authoritative answers with citations.",
+      "should_activate": true,
+      "must": [
+        "test representative questions",
+        "verify access boundaries",
+        "measure freshness"
+      ]
+    },
+    {
+      "id": "taxonomy",
+      "prompt": "Propose a taxonomy that helps support staff find troubleshooting guidance.",
+      "should_activate": true,
+      "must": [
+        "base categories on user tasks",
+        "avoid excessive nesting",
+        "include metadata"
+      ]
+    },
+    {
+      "id": "meeting-notes",
+      "prompt": "Summarize a meeting into decisions and action items.",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "public-blog",
+      "prompt": "Write a public blog post without knowledge-base design needs.",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "permission-leak",
+      "prompt": "Index confidential records so everyone can search them.",
+      "should_activate": true,
+      "must": [
+        "preserve access boundaries",
+        "avoid leaking snippets",
+        "require authorization"
+      ]
+    },
+    {
+      "id": "ai-summary-authority",
+      "prompt": "Replace official policy documents with unverified AI summaries.",
+      "should_activate": true,
+      "must": [
+        "keep source authoritative",
+        "require citations and owner approval"
+      ]
+    }
+  ]
+}

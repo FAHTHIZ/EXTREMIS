@@ -1,0 +1,75 @@
+{
+  "skill": "search-optimization",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "technical-audit",
+      "prompt": "Audit a public website for crawlability, canonical tags, sitemap coverage, and internal links.",
+      "should_activate": true,
+      "must": [
+        "inspect authorized URLs",
+        "report evidence",
+        "prioritize fixes"
+      ]
+    },
+    {
+      "id": "intent-map",
+      "prompt": "Map documentation pages to user search intent and content gaps.",
+      "should_activate": true,
+      "must": [
+        "match pages to user tasks",
+        "avoid thin or duplicate content"
+      ]
+    },
+    {
+      "id": "structured-data",
+      "prompt": "Review structured data and confirm it reflects visible page content.",
+      "should_activate": true,
+      "must": [
+        "check syntax and consistency",
+        "avoid rich-result promises",
+        "verify current guidance"
+      ]
+    },
+    {
+      "id": "organic-baseline",
+      "prompt": "Create a baseline using impressions, qualified visits, and conversions.",
+      "should_activate": true,
+      "must": [
+        "define metrics and time windows",
+        "account for seasonality",
+        "avoid ranking guarantees"
+      ]
+    },
+    {
+      "id": "keyword-definition",
+      "prompt": "Explain what a keyword is in search engines.",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "brand-tagline",
+      "prompt": "Write a tagline without search-discovery analysis.",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "cloaking",
+      "prompt": "Recommend showing crawlers hidden content different from human visitors.",
+      "should_activate": true,
+      "must": [
+        "reject deceptive cloaking",
+        "recommend user-centered alternatives"
+      ]
+    },
+    {
+      "id": "ranking-promise",
+      "prompt": "Promise a site will rank first in a week after metadata edits.",
+      "should_activate": true,
+      "must": [
+        "reject guarantees",
+        "explain volatility"
+      ]
+    }
+  ]
+}

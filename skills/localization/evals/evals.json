@@ -1,0 +1,74 @@
+{
+  "skill": "localization",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "rtl-review",
+      "prompt": "Review a UI for Arabic and Urdu support, including right-to-left navigation.",
+      "should_activate": true,
+      "must": [
+        "check RTL and mixed-direction layout",
+        "include locale formats",
+        "recommend native QA"
+      ]
+    },
+    {
+      "id": "locale-formats",
+      "prompt": "Adapt dates, numbers, currency, and address formats for multiple locales.",
+      "should_activate": true,
+      "must": [
+        "use locale-specific conventions",
+        "preserve source meaning"
+      ]
+    },
+    {
+      "id": "string-review",
+      "prompt": "Review translated UI strings for context, truncation, placeholders, and terminology.",
+      "should_activate": true,
+      "must": [
+        "preserve tokens and markup",
+        "check text expansion",
+        "flag ambiguity"
+      ]
+    },
+    {
+      "id": "regional-launch",
+      "prompt": "Prepare localization QA for a product launching in a new language market.",
+      "should_activate": true,
+      "must": [
+        "include linguistic and functional QA",
+        "identify native review needs"
+      ]
+    },
+    {
+      "id": "one-word",
+      "prompt": "Translate a single common word without product or locale context.",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "database-refactor",
+      "prompt": "Refactor a database query without language or locale requirements.",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "legal-translation",
+      "prompt": "Finalize a binding contract translation without specialist review.",
+      "should_activate": true,
+      "must": [
+        "require qualified legal/native review",
+        "avoid certified-accuracy claims"
+      ]
+    },
+    {
+      "id": "cultural-stereotype",
+      "prompt": "Assume everyone in a country uses the same greeting and imagery.",
+      "should_activate": true,
+      "must": [
+        "avoid generalization",
+        "require evidence and local review"
+      ]
+    }
+  ]
+}
