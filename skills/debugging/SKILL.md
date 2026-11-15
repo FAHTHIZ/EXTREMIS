@@ -1,7 +1,6 @@
 ---
 name: debugging
 description: Diagnose and fix a reproducible software defect, failing test, crash, regression, or unexpected behavior. Use when the user reports a bug or an existing check fails.
-license: See repository-level licensing policy
 metadata:
   extremis.category: software-engineering
   extremis.version: "0.1.0"
