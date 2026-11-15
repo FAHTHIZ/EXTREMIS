@@ -3,6 +3,7 @@
 // first) and the union of permissions the activated set needs.
 
 import { satisfies } from './semver.mjs';
+import { getBuiltinTool } from './tools/index.mjs';
 
 export class ResolutionError extends Error {
   constructor(message, details = {}) { super(message); this.details = details; }
@@ -60,7 +61,7 @@ export function resolve(catalog, names, options = {}) {
   }
   const permissions = [...new Set(order.flatMap((name) => {
     const cap = catalog.get(name);
-    return [...cap.permissions, ...cap.tools.flatMap((t) => t.permissions || [])];
+    return [...cap.permissions, ...cap.tools.flatMap((t) => (t.builtin ? getBuiltinTool(t.id)?.permissions || [] : ['exec', ...(t.permissions || [])]))];
   }))].sort();
   return {
     order,
