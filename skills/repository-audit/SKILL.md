@@ -1,7 +1,6 @@
 ---
 name: repository-audit
 description: Audit an existing software repository before making changes. Use when asked to inspect code quality, architecture, bugs, security posture, dependencies, duplication, test coverage, or readiness for a feature or release.
-license: See repository-level licensing policy
 metadata:
   extremis.category: software-engineering
   extremis.version: "0.1.0"
