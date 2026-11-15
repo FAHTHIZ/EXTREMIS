@@ -26,6 +26,7 @@ class RankingTests(unittest.TestCase):
                 "summary": "Define product metrics, event instrumentation, funnels, cohorts, and experiments.",
                 "description": "Use when defining product metrics or event taxonomies and analyzing funnels or retention.",
                 "body": "Define event schemas, instrumentation, activation funnels, retention cohorts, experiment guardrails.",
+                "keywords": "event tracking funnel analysis product metrics",
             },
             {
                 "name": "frontend-engineering",
@@ -51,6 +52,15 @@ class RankingTests(unittest.TestCase):
         )
         self.assertEqual(results[0]["name"], "product-analytics")
         self.assertIn("body", results[0]["field_matches"])
+
+    def test_curated_keywords_improve_task_language_matching(self):
+        results = MODULE.rank_documents(
+            "analyze activation funnels and product event tracking",
+            self.documents,
+            top_k=3,
+        )
+        self.assertEqual(results[0]["name"], "product-analytics")
+        self.assertIn("keywords", results[0]["field_matches"])
 
     def test_exact_skill_name_is_ranked_first(self):
         results = MODULE.rank_documents("mobile engineering", self.documents, top_k=3)

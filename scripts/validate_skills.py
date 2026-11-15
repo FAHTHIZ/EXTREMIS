@@ -159,6 +159,9 @@ def main():
             not_for = indexed.get(name, {}).get("not_for", [])
             if not isinstance(not_for, list) or any(not isinstance(item, str) or not item.strip() for item in not_for):
                 errors.append(f"{path}: registry not_for must be a list of non-empty strings")
+            keywords = indexed.get(name, {}).get("keywords", [])
+            if not isinstance(keywords, list) or any(not isinstance(item, str) or not item.strip() for item in keywords):
+                errors.append(f"{path}: registry keywords must be a list of non-empty strings")
         for name in indexed:
             if name not in discovered:
                 errors.append(f"registry: '{name}' has no corresponding SKILL.md")
