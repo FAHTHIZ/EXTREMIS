@@ -1,0 +1,34 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "engineering",
+  "version": "0.1.0",
+  "summary": "Transform stakeholder needs into testable, traceable requirements.",
+  "keywords": [
+    "product requirements",
+    "system requirements",
+    "acceptance criteria",
+    "traceability matrix",
+    "stakeholder needs",
+    "user stories",
+    "functional requirements",
+    "non-functional requirements"
+  ],
+  "intents": [],
+  "not_for": [],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "problem context, stakeholders, or source request",
+    "system boundary, intended users, and relevant constraints",
+    "existing requirements, standards, or architecture where available"
+  ],
+  "risk": "medium",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

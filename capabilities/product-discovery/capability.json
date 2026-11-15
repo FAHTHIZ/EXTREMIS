@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "business",
+  "version": "0.1.0",
+  "summary": "Turn uncertain product ideas into testable user-problem and solution hypotheses.",
+  "keywords": [
+    "user problem",
+    "customer discovery",
+    "product hypothesis",
+    "problem interviews",
+    "solution validation",
+    "product opportunity"
+  ],
+  "intents": [],
+  "not_for": [],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "the product context or initial idea",
+    "access to user evidence or a plan to collect it"
+  ],
+  "risk": "medium",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

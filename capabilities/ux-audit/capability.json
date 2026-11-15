@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "design",
+  "version": "0.1.0",
+  "summary": "Review real user journeys and turn observed usability issues into prioritized fixes.",
+  "keywords": [
+    "usability review",
+    "user flows",
+    "heuristic evaluation",
+    "information architecture",
+    "user journey",
+    "interaction design"
+  ],
+  "intents": [],
+  "not_for": [],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "a working interface, screenshots, prototype, or user-journey description",
+    "target users and key tasks; user testing or analytics recommended"
+  ],
+  "risk": "medium",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "software-engineering",
+  "version": "0.1.0",
+  "summary": "Inspect a repository and report evidence-backed findings.",
+  "keywords": [
+    "codebase audit",
+    "codebase inventory",
+    "architecture review",
+    "dependency audit",
+    "dead code",
+    "repository health"
+  ],
+  "intents": [],
+  "not_for": [],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "repository read access",
+    "shell/test tools recommended"
+  ],
+  "risk": "medium",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

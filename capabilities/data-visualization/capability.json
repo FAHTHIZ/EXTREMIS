@@ -1,0 +1,35 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "data",
+  "version": "0.1.0",
+  "summary": "Match visual encodings to the analytical question and make charts readable and honest.",
+  "keywords": [
+    "charts",
+    "graphs",
+    "plots",
+    "dashboards",
+    "visual encoding",
+    "chart selection",
+    "chart labels",
+    "axes",
+    "plotting data",
+    "data storytelling"
+  ],
+  "intents": [],
+  "not_for": [],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "the data or a well-defined metric table",
+    "intended audience, message, and delivery context"
+  ],
+  "risk": "low",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

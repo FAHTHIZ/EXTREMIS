@@ -1,0 +1,35 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "software-engineering",
+  "version": "0.1.0",
+  "summary": "Build reliable backend behavior around explicit contracts, data integrity, and failure handling.",
+  "keywords": [
+    "backend services",
+    "server-side code",
+    "endpoint handler",
+    "route handler",
+    "background worker",
+    "tenant isolation",
+    "external API integration",
+    "database-backed service"
+  ],
+  "intents": [],
+  "not_for": [
+    "frontend-only user interface implementation without server-side behavior"
+  ],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "repository and service context",
+    "API, data, and deployment constraints where available"
+  ],
+  "risk": "medium",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

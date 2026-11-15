@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "engineering",
+  "version": "0.1.0",
+  "summary": "Turn complex requests into scoped, verifiable plans.",
+  "keywords": [
+    "implementation plan",
+    "task decomposition",
+    "project sequencing",
+    "rollout plan",
+    "milestones",
+    "dependency planning",
+    "acceptance criteria",
+    "delivery planning",
+    "technical roadmap"
+  ],
+  "intents": [],
+  "not_for": [],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [],
+  "risk": "low",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "software-engineering",
+  "version": "0.1.0",
+  "summary": "Review diffs for consequential defects and return prioritized, evidence-backed findings.",
+  "keywords": [
+    "pull request review",
+    "diff review",
+    "code quality",
+    "defect detection",
+    "review findings",
+    "maintainability"
+  ],
+  "intents": [],
+  "not_for": [],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "the proposed diff or changed files",
+    "repository context; tests or runtime access recommended"
+  ],
+  "risk": "medium",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

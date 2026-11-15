@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "security",
+  "version": "0.1.0",
+  "summary": "Identify and prioritize defensive code risks with evidence and practical remediation.",
+  "keywords": [
+    "security code review",
+    "vulnerability review",
+    "input validation",
+    "authorization flaws",
+    "secure implementation"
+  ],
+  "intents": [],
+  "not_for": [],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "authorized read access to the code or configuration",
+    "repository context and test tooling recommended"
+  ],
+  "risk": "medium",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

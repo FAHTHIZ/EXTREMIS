@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "software-engineering",
+  "version": "0.1.0",
+  "summary": "Diagnose, fix, and verify software defects.",
+  "keywords": [
+    "bug diagnosis",
+    "defect reproduction",
+    "stack trace",
+    "root cause analysis",
+    "error logs",
+    "regression fix",
+    "fault isolation"
+  ],
+  "intents": [],
+  "not_for": [],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "repository access",
+    "reproduction environment recommended"
+  ],
+  "risk": "medium",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

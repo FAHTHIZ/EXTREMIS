@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "research",
+  "version": "0.1.0",
+  "summary": "Produce source-grounded research with explicit uncertainty.",
+  "keywords": [
+    "evidence synthesis",
+    "research summary",
+    "source comparison",
+    "research findings",
+    "literature synthesis",
+    "cross-source analysis",
+    "evidence review"
+  ],
+  "intents": [],
+  "not_for": [],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "source access"
+  ],
+  "risk": "medium",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

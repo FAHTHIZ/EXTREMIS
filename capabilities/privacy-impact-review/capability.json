@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "security",
+  "version": "0.1.0",
+  "summary": "Map personal-data flows and assess purpose, minimization, safeguards, retention, and user impact.",
+  "keywords": [
+    "privacy assessment",
+    "data minimization",
+    "personal data flows",
+    "retention policy",
+    "privacy risks",
+    "consent review"
+  ],
+  "intents": [],
+  "not_for": [],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "feature or processing description",
+    "data categories, purposes, recipients, retention, and jurisdiction where known"
+  ],
+  "risk": "high",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

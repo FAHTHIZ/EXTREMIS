@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "business",
+  "version": "0.1.0",
+  "summary": "Map a real process, expose bottlenecks, and recommend measurable improvements.",
+  "keywords": [
+    "business process",
+    "workflow mapping",
+    "process bottlenecks",
+    "swimlane diagram",
+    "process improvement",
+    "handoff analysis"
+  ],
+  "intents": [],
+  "not_for": [],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "process owner or source description",
+    "access to interviews, documents, or operational evidence recommended"
+  ],
+  "risk": "medium",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

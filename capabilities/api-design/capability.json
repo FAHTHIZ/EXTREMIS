@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "software-engineering",
+  "version": "0.1.0",
+  "summary": "Design APIs around stable contracts, explicit semantics, and safe evolution.",
+  "keywords": [
+    "OpenAPI",
+    "endpoint contracts",
+    "request schema",
+    "response schema",
+    "API versioning",
+    "REST API",
+    "RPC",
+    "error semantics"
+  ],
+  "intents": [],
+  "not_for": [
+    "implementation of server-side endpoint handlers or backend persistence rather than API contract design",
+    "frontend client implementation without API contract decisions"
+  ],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "the API's consumers and use cases",
+    "service constraints and existing conventions; protocol documentation where relevant"
+  ],
+  "risk": "medium",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

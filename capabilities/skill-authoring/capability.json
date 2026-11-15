@@ -1,0 +1,23 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "meta",
+  "version": "0.1.0",
+  "summary": "Create, revise, and evaluate portable skills.",
+  "keywords": [],
+  "intents": [],
+  "not_for": [
+    "general definitions of AI concepts unrelated to designing, authoring, reviewing, or evaluating agent skills"
+  ],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [],
+  "risk": "low",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

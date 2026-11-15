@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "science",
+  "version": "0.1.0",
+  "summary": "Produce reproducible data analysis with suitable methods, diagnostics, and limitations.",
+  "keywords": [
+    "statistical analysis",
+    "scientific computing",
+    "experimental data",
+    "measurement uncertainty",
+    "reproducible analysis",
+    "hypothesis testing",
+    "data cleaning",
+    "statistical methods"
+  ],
+  "intents": [],
+  "not_for": [],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "the dataset or a precise data dictionary",
+    "research question, units, collection method, and analysis environment"
+  ],
+  "risk": "medium",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

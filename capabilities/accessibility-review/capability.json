@@ -1,0 +1,24 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "design",
+  "version": "0.1.0",
+  "summary": "Find accessibility barriers and propose testable fixes using applicable standards and assistive-technology context.",
+  "keywords": [],
+  "intents": [],
+  "not_for": [],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "the interface or document under review",
+    "target platforms and applicable accessibility standard or policy; assistive technology testing recommended"
+  ],
+  "risk": "high",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

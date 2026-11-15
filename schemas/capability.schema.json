@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/FAHTHIZ/EXTREMIS/main/schemas/capability.schema.json",
+  "title": "EXTREMIS capability manifest (capability.json)",
+  "description": "Sidecar manifest next to an Agent Skills SKILL.md. It adds discovery, dependency, tool, permission and verification data without changing the skill itself.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "kind": { "enum": ["skill", "workflow"], "default": "skill" },
+    "domain": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+(-[0-9A-Za-z.-]+)?$" },
+    "summary": { "type": "string", "minLength": 10, "maxLength": 200 },
+    "keywords": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true, "maxItems": 40 },
+    "intents": {
+      "description": "Example user requests this capability serves. Indexed for discovery (document-side expansion). Keep them distinct from evaluation prompts.",
+      "type": "array", "items": { "type": "string", "minLength": 5 }, "maxItems": 30
+    },
+    "not_for": { "type": "array", "items": { "type": "string", "minLength": 3 }, "maxItems": 20 },
+    "requires": { "type": "array", "items": { "$ref": "#/$defs/dependency" } },
+    "suggests": { "type": "array", "items": { "$ref": "#/$defs/dependency" } },
+    "conflicts": { "type": "array", "items": { "type": "string" } },
+    "tools": { "type": "array", "items": { "$ref": "#/$defs/tool" } },
+    "permissions": { "type": "array", "items": { "$ref": "#/$defs/permission" }, "uniqueItems": true },
+    "prerequisites": { "type": "array", "items": { "type": "string" } },
+    "risk": { "enum": ["low", "medium", "high"] },
+    "maturity": { "enum": ["draft", "beta", "stable"] },
+    "phase": { "enum": ["discover", "plan", "build", "verify", "deliver"] },
+    "provenance": { "type": "string" },
+    "verify": { "type": "array", "items": { "$ref": "#/$defs/check" } },
+    "workflow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["steps"],
+      "properties": {
+        "inputs": { "type": "object" },
+        "steps": {
+          "type": "array", "minItems": 2,
+          "items": {
+            "type": "object", "additionalProperties": false, "required": ["id", "goal"],
+            "properties": {
+              "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+              "capability": { "type": "string" },
+              "goal": { "type": "string", "minLength": 5 },
+              "tools": { "type": "array", "items": { "type": "string" } },
+              "after": { "type": "array", "items": { "type": "string" } },
+              "optional": { "type": "boolean" },
+              "verify": { "type": "array", "items": { "$ref": "#/$defs/check" } }
+            }
+          }
+        },
+        "done_when": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  },
+  "$defs": {
+    "permission": { "enum": ["read", "write", "network", "exec"] },
+    "dependency": {
+      "oneOf": [
+        { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*(@[^\\s]+)?$" },
+        {
+          "type": "object", "additionalProperties": false, "required": ["name"],
+          "properties": { "name": { "type": "string" }, "version": { "type": "string" }, "reason": { "type": "string" } }
+        }
+      ]
+    },
+    "tool": {
+      "oneOf": [
+        { "type": "string", "description": "Built-in tool id, e.g. data.profile", "pattern": "^[a-z0-9_]+\\.[a-z0-9_]+$" },
+        {
+          "type": "object",
+          "description": "Package script tool executed without a shell.",
+          "additionalProperties": false,
+          "required": ["name", "description", "command"],
+          "properties": {
+            "name": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+            "description": { "type": "string", "maxLength": 300 },
+            "command": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+            "input_schema": { "type": "object" },
+            "permissions": { "type": "array", "items": { "$ref": "#/$defs/permission" } },
+            "timeout_ms": { "type": "integer", "minimum": 100, "maximum": 600000 },
+            "input": { "enum": ["stdin-json", "args"], "default": "stdin-json" }
+          }
+        }
+      ]
+    },
+    "check": {
+      "oneOf": [
+        { "type": "string", "minLength": 5, "description": "A manual verification statement the host must confirm." },
+        {
+          "type": "object", "additionalProperties": false, "required": ["tool"],
+          "properties": {
+            "tool": { "type": "string" },
+            "args": { "type": "object" },
+            "expect": { "type": "object" },
+            "description": { "type": "string" }
+          }
+        }
+      ]
+    }
+  }
+}

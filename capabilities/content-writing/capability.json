@@ -1,0 +1,34 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "creative-communication",
+  "version": "0.1.0",
+  "summary": "Create clear original content that meets the audience, purpose, tone, and factual requirements.",
+  "keywords": [
+    "copywriting",
+    "editing",
+    "editorial",
+    "blog posts",
+    "articles",
+    "content briefs",
+    "tone of voice",
+    "style guide",
+    "rewrite drafts"
+  ],
+  "intents": [],
+  "not_for": [],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "audience and purpose",
+    "key facts, source material, length, and tone constraints"
+  ],
+  "risk": "low",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

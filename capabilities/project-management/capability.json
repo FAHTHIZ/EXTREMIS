@@ -1,0 +1,34 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "productivity",
+  "version": "0.1.0",
+  "summary": "Turn project goals into an executable plan with ownership, dependencies, and control points.",
+  "keywords": [
+    "project plan",
+    "milestones",
+    "dependencies",
+    "task tracking",
+    "delivery tracking",
+    "schedule management",
+    "project status",
+    "owners and deadlines",
+    "risk register"
+  ],
+  "intents": [],
+  "not_for": [],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "project outcome and stakeholders",
+    "known constraints, resources, and delivery expectations"
+  ],
+  "risk": "medium",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

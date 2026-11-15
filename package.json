@@ -1,0 +1,16 @@
+{
+  "name": "extremis",
+  "version": "0.2.0",
+  "description": "Portable capability layer for AI agents: discover, activate, compose, run and verify Agent Skills and tools over MCP, CLI or SDK.",
+  "type": "module",
+  "license": "Apache-2.0",
+  "author": "FAHTHIZ",
+  "repository": { "type": "git", "url": "git+https://github.com/FAHTHIZ/EXTREMIS.git" },
+  "engines": { "node": ">=18.17" },
+  "main": "./src/index.mjs",
+  "exports": { ".": "./src/index.mjs", "./package.json": "./package.json" },
+  "bin": { "extremis": "bin/extremis.mjs" },
+  "files": ["bin", "src", "schemas", "capabilities", "registry", "skills", ".claude-plugin", ".mcp.json", "LICENSE", "README.md"],
+  "scripts": { "test": "node --test test/" },
+  "keywords": ["agent-skills", "mcp", "ai-agents", "claude-code", "skills", "tools", "capabilities", "oasis"]
+}

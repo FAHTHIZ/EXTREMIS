@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "security",
+  "version": "0.1.0",
+  "summary": "Map assets, trust boundaries, threats, mitigations, and residual risk for an authorized system.",
+  "keywords": [
+    "attack surface",
+    "trust boundaries",
+    "security threats",
+    "mitigation",
+    "threat scenarios",
+    "STRIDE"
+  ],
+  "intents": [],
+  "not_for": [],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "system description or architecture diagram",
+    "authorized scope and relevant security requirements"
+  ],
+  "risk": "medium",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

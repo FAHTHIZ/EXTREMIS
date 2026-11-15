@@ -1,0 +1,37 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "creative-communication",
+  "version": "0.1.0",
+  "summary": "Adapt product content and interfaces for languages, regions, and cultural contexts.",
+  "keywords": [
+    "translation",
+    "internationalization",
+    "i18n",
+    "l10n",
+    "right-to-left",
+    "locale formatting",
+    "language adaptation",
+    "regional formatting"
+  ],
+  "intents": [],
+  "not_for": [
+    "one-word translation without a target locale, product context, or localization requirement",
+    "database query refactoring without language or locale requirements"
+  ],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "source content and intended languages or regions",
+    "audience, product context, tone, and terminology guidance",
+    "qualified native-language review for consequential or culturally sensitive material"
+  ],
+  "risk": "medium",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

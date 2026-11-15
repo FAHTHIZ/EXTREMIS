@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "software-engineering",
+  "version": "0.1.0",
+  "summary": "Model data and migrations for integrity, clear ownership, and maintainable access patterns.",
+  "keywords": [
+    "schema design",
+    "data modeling",
+    "normalization",
+    "database migrations",
+    "index design",
+    "query patterns",
+    "referential integrity"
+  ],
+  "intents": [],
+  "not_for": [],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "known entities and application use cases",
+    "read access to current schema and query patterns for existing systems"
+  ],
+  "risk": "medium",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}
