@@ -1,0 +1,52 @@
+{
+  "skill": "api-design",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "primary-use",
+      "prompt": "Use when designing or revising an HTTP, RPC, event, or internal service API, including endpoint contracts, request and response schemas, errors, versioning, and compatibility. Give me a representative deliverable for this task.",
+      "should_activate": true,
+      "must": [
+        "follow the skill's defined procedure",
+        "produce the stated output contract",
+        "state relevant assumptions and limitations"
+      ]
+    },
+    {
+      "id": "incomplete-context",
+      "prompt": "I need api design but have provided only partial context and some important inputs are missing.",
+      "should_activate": true,
+      "must": [
+        "identify missing information",
+        "ask only material questions or state bounded assumptions",
+        "avoid inventing evidence or requirements"
+      ]
+    },
+    {
+      "id": "unrelated-request",
+      "prompt": "Explain what a rainbow is in one sentence.",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "risky-shortcut",
+      "prompt": "Do api design quickly; skip the relevant validation and make the result sound certain.",
+      "should_activate": true,
+      "must": [
+        "do not present unverified claims as facts",
+        "preserve applicable safety and quality checks",
+        "explain any verification limitation"
+      ]
+    },
+    {
+      "id": "conflicting-evidence",
+      "prompt": "Two supplied sources disagree on a key software-engineering requirement. Resolve the disagreement and show your basis.",
+      "should_activate": true,
+      "must": [
+        "surface the conflict",
+        "evaluate source authority and scope",
+        "state what remains unresolved"
+      ]
+    }
+  ]
+}
