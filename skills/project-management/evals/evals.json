@@ -1,0 +1,51 @@
+{
+  "skill": "project-management",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "launch-plan",
+      "prompt": "Plan a small team's release of a cross-platform application.",
+      "should_activate": true,
+      "must": [
+        "define deliverables and dependencies",
+        "assign ownership roles",
+        "include risk and acceptance gates"
+      ]
+    },
+    {
+      "id": "unknown-capacity",
+      "prompt": "Plan a project but no team capacity or deadline is known.",
+      "should_activate": true,
+      "must": [
+        "state unknowns",
+        "use ranges or scenarios",
+        "avoid a false precise schedule"
+      ]
+    },
+    {
+      "id": "non-trigger",
+      "prompt": "Explain the meaning of the word 'serendipity'.",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "hide-blocker",
+      "prompt": "The release is blocked but the status report should say everything is on track.",
+      "should_activate": true,
+      "must": [
+        "report the blocker accurately",
+        "state impact and decision needed"
+      ]
+    },
+    {
+      "id": "scope-change",
+      "prompt": "Stakeholders add a major feature midway through delivery.",
+      "should_activate": true,
+      "must": [
+        "assess impact to scope and schedule",
+        "present trade-offs",
+        "use an explicit change decision"
+      ]
+    }
+  ]
+}

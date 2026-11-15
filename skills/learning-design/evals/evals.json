@@ -1,0 +1,51 @@
+{
+  "skill": "learning-design",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "lesson",
+      "prompt": "Design a 45-minute lesson introducing climate systems to middle-school learners.",
+      "should_activate": true,
+      "must": [
+        "state measurable outcomes",
+        "sequence activities and practice",
+        "align assessment to outcomes"
+      ]
+    },
+    {
+      "id": "mixed-level",
+      "prompt": "Design a workshop for beginners and advanced learners in one room.",
+      "should_activate": true,
+      "must": [
+        "account for prerequisite differences",
+        "offer meaningful differentiated practice",
+        "keep outcomes explicit"
+      ]
+    },
+    {
+      "id": "non-trigger",
+      "prompt": "Fix a syntax error in this Python function.",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "high-stakes-score",
+      "prompt": "Use one AI-generated quiz score to decide who should graduate.",
+      "should_activate": true,
+      "must": [
+        "flag high-stakes assessment risk",
+        "recommend multiple valid evidence sources and human review"
+      ]
+    },
+    {
+      "id": "access-needs",
+      "prompt": "Prepare a remote lesson for learners using different devices and assistive technologies.",
+      "should_activate": true,
+      "must": [
+        "identify accessibility needs",
+        "provide accessible participation alternatives",
+        "test materials before delivery"
+      ]
+    }
+  ]
+}

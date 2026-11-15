@@ -25,5 +25,28 @@ class FrontmatterTests(unittest.TestCase):
     def test_repository_catalog_is_valid(self):
         self.assertEqual(MODULE.main(), 0)
 
+class EvaluationTests(unittest.TestCase):
+    def valid_payload(self):
+        return {"skill":"demo-skill","version":"0.1.0","cases":[
+            {"id":f"case-{i}","prompt":f"Prompt {i}","should_activate":i != 3,"must":[]} for i in range(5)
+        ]}
+
+    def test_accepts_valid_evaluations(self):
+        self.assertEqual(MODULE.validate_eval_payload(self.valid_payload(), "demo-skill"), [])
+
+    def test_rejects_duplicate_ids(self):
+        payload=self.valid_payload()
+        payload["cases"][1]["id"]=payload["cases"][0]["id"]
+        self.assertTrue(any("duplicate" in item for item in MODULE.validate_eval_payload(payload,"demo-skill")))
+
+    def test_rejects_missing_activation_flag(self):
+        payload=self.valid_payload()
+        del payload["cases"][0]["should_activate"]
+        self.assertTrue(any("should_activate" in item for item in MODULE.validate_eval_payload(payload,"demo-skill")))
+
+    def test_rejects_wrong_skill_name(self):
+        payload=self.valid_payload()
+        self.assertTrue(any("evaluation skill" in item for item in MODULE.validate_eval_payload(payload,"other-skill")))
+
 if __name__ == "__main__":
     unittest.main()
