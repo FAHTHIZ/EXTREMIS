@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "project": "EXTREMIS",
   "updated": "2026-11-15",
   "skills": [
@@ -14,7 +14,9 @@
       "hosts": [
         "agent-skills-compatible"
       ],
-      "summary": "Create, revise, and evaluate portable skills."
+      "summary": "Create, revise, and evaluate portable skills.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
     },
     {
       "name": "technical-planning",
@@ -27,7 +29,9 @@
       "hosts": [
         "agent-skills-compatible"
       ],
-      "summary": "Turn complex requests into scoped, verifiable plans."
+      "summary": "Turn complex requests into scoped, verifiable plans.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
     },
     {
       "name": "repository-audit",
@@ -43,7 +47,9 @@
       "hosts": [
         "agent-skills-compatible"
       ],
-      "summary": "Inspect a repository and report evidence-backed findings."
+      "summary": "Inspect a repository and report evidence-backed findings.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
     },
     {
       "name": "debugging",
@@ -59,7 +65,9 @@
       "hosts": [
         "agent-skills-compatible"
       ],
-      "summary": "Diagnose, fix, and verify software defects."
+      "summary": "Diagnose, fix, and verify software defects.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
     },
     {
       "name": "research-synthesis",
@@ -74,7 +82,135 @@
       "hosts": [
         "agent-skills-compatible"
       ],
-      "summary": "Produce source-grounded research with explicit uncertainty."
+      "summary": "Produce source-grounded research with explicit uncertainty.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "test-driven-development",
+      "path": "skills/test-driven-development",
+      "category": "software-engineering",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "repository access",
+        "project test tooling or an explicitly documented verification alternative"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Develop behavior through a verified failing test, a minimal implementation, and regression checks.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "code-review",
+      "path": "skills/code-review",
+      "category": "software-engineering",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "the proposed diff or changed files",
+        "repository context; tests or runtime access recommended"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Review diffs for consequential defects and return prioritized, evidence-backed findings.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "api-design",
+      "path": "skills/api-design",
+      "category": "software-engineering",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "the API's consumers and use cases",
+        "service constraints and existing conventions; protocol documentation where relevant"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Design APIs around stable contracts, explicit semantics, and safe evolution.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "database-design",
+      "path": "skills/database-design",
+      "category": "software-engineering",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "known entities and application use cases",
+        "read access to current schema and query patterns for existing systems"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Model data and migrations for integrity, clear ownership, and maintainable access patterns.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "technical-documentation",
+      "path": "skills/technical-documentation",
+      "category": "software-engineering",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "low",
+      "requires": [
+        "the actual implementation or authoritative source material",
+        "intended audience and documentation location"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Produce accurate documentation aligned with the implemented product and its users.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "literature-review",
+      "path": "skills/literature-review",
+      "category": "research",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "a research question or topic",
+        "access to bibliographic records and full text where available"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Build a transparent evidence map and synthesis from traceable research sources.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "source-verification",
+      "path": "skills/source-verification",
+      "category": "research",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "the exact claim or material to verify",
+        "access to relevant public or user-provided sources"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Verify claims through provenance, primary evidence, cross-checks, and explicit uncertainty.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
     }
   ]
 }
