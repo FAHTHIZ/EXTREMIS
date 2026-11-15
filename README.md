@@ -3,146 +3,190 @@
 <p align="center"><strong>One intelligence. Endless capabilities.</strong></p>
 <p align="center">A portable, quality-controlled capability library for AI agents.</p>
 
-EXTREMIS is an evolving open capability library for agent hosts. It combines focused skills, workflows, references, evaluation fixtures, and—where a procedure genuinely needs them—deterministic helpers. The core library is designed to remain portable across compatible agent environments rather than depending on one model vendor.
+EXTREMIS is an evolving open capability library for agent hosts. It combines focused skills, workflows, references, and evaluation fixtures. Its core follows the open Agent Skills directory convention so compatible hosts can discover and load capabilities without depending on one model vendor.
 
-The goal is not to collect the largest possible pile of prompts. The goal is to help an agent discover the right capability, load only what it needs, and carry out work with clear methods, evidence, boundaries, and checks.
+## Install
 
-## What EXTREMIS is
+Use the open Skills CLI to install the repository into supported agent hosts:
 
-- **A portable skill library.** Skills follow the open [Agent Skills specification](https://agentskills.io/specification) wherever possible.
-- **A curated capability catalog.** Each skill has a scope, prerequisites, risk label, version, and evaluation fixtures.
-- **A composable foundation.** Narrow skills can be combined into task-specific workflows without loading the entire library.
-- **A quality system.** Skills define expected outputs, failure conditions, and examples of when they should or should not activate.
-- **A host-neutral core.** Instructions do not assume that every agent has the same tools, permissions, memory, or subagent features.
+```bash
+npx skills add FAHTHIZ/EXTREMIS --all
+```
 
-## What EXTREMIS is not
+Install one capability for a chosen host:
 
-- A model, an agent runtime, or a source of model weights.
-- A replacement for browsers, shells, APIs, databases, credentials, or other real tools.
-- A guarantee that an agent becomes an expert simply by loading instructions.
+```bash
+npx skills add FAHTHIZ/EXTREMIS --skill mobile-engineering --agent claude-code
+```
+
+The CLI provides cross-host installation and management. EXTREMIS itself is the portable catalog, not a custom installer or marketplace service. Host support and runtime behavior must be verified for each agent.
+
+## What it is
+
+- Portable skills using the open Agent Skills structure.
+- A curated catalog with scope, prerequisites, risk, version, provenance, and evaluation fixtures.
+- Composable capabilities that load on demand.
+- A host-neutral core that does not assume all agents have the same tools or permissions.
+
+## What it is not
+
+- A model, agent runtime, or source of model weights.
+- A replacement for browsers, shells, APIs, databases, credentials, or other tools.
+- A guarantee that loading instructions makes a model an expert.
 - A reason to load every skill into every conversation.
 
-A skill supplies reusable procedures and domain context. The host agent still needs the necessary model capability, tools, permissions, data, and user authorization to carry them out.
+## Library
 
-## Current library
-
-The repository contains **43 skills across 14 catalog domains**. New content in this initial library is authored for EXTREMIS; external projects are referenced as research and compatibility context, not copied as skill text.
+The catalog contains **47 skills across 14 domains**.
 
 ### Meta
+
+Maintain the capability library itself.
+
 - [Skill Authoring](skills/skill-authoring/SKILL.md)
 
-### Software engineering
-- [Frontend Engineering](skills/frontend-engineering/SKILL.md)
-- [Backend Engineering](skills/backend-engineering/SKILL.md)
-- [Performance Optimization](skills/performance-optimization/SKILL.md)
-- [DevOps and Release Engineering](skills/devops-release/SKILL.md)
+### Software Engineering
+
+Build, inspect, test, review, document, and evolve software.
+
 - [Repository Audit](skills/repository-audit/SKILL.md)
 - [Debugging](skills/debugging/SKILL.md)
-- [Test-Driven Development](skills/test-driven-development/SKILL.md)
+- [Test Driven Development](skills/test-driven-development/SKILL.md)
 - [Code Review](skills/code-review/SKILL.md)
 - [API Design](skills/api-design/SKILL.md)
 - [Database Design](skills/database-design/SKILL.md)
 - [Technical Documentation](skills/technical-documentation/SKILL.md)
+- [Mobile Engineering](skills/mobile-engineering/SKILL.md)
+- [Quality Assurance](skills/quality-assurance/SKILL.md)
+- [Backend Engineering](skills/backend-engineering/SKILL.md)
+- [Devops Release](skills/devops-release/SKILL.md)
+- [Frontend Engineering](skills/frontend-engineering/SKILL.md)
+- [Performance Optimization](skills/performance-optimization/SKILL.md)
 
 ### Research
+
+Investigate questions, review literature, and verify source claims.
+
 - [Research Synthesis](skills/research-synthesis/SKILL.md)
 - [Literature Review](skills/literature-review/SKILL.md)
 - [Source Verification](skills/source-verification/SKILL.md)
 
 ### Finance
+
+Analyze statements and model business scenarios with visible assumptions.
+
 - [Financial Modeling](skills/financial-modeling/SKILL.md)
 - [Financial Statement Analysis](skills/financial-statement-analysis/SKILL.md)
 
 ### Business
+
+Discover product opportunities, estimate markets, and improve processes.
+
 - [Product Discovery](skills/product-discovery/SKILL.md)
 - [Market Sizing](skills/market-sizing/SKILL.md)
-- [Business Process Mapping](skills/process-mapping/SKILL.md)
+- [Process Mapping](skills/process-mapping/SKILL.md)
+- [Competitive Analysis](skills/competitive-analysis/SKILL.md)
 
 ### Design
+
+Evaluate UX, accessibility, and reusable design systems.
+
 - [UX Audit](skills/ux-audit/SKILL.md)
 - [Accessibility Review](skills/accessibility-review/SKILL.md)
 - [Design System](skills/design-system/SKILL.md)
 
 ### Education
+
+Support learners and design structured learning experiences.
+
 - [Study Coaching](skills/study-coaching/SKILL.md)
-- [Learning Experience Design](skills/learning-design/SKILL.md)
+- [Learning Design](skills/learning-design/SKILL.md)
 
 ### Science
+
+Design ethical studies and analyze scientific data reproducibly.
+
 - [Experimental Design](skills/experimental-design/SKILL.md)
 - [Scientific Data Analysis](skills/scientific-data-analysis/SKILL.md)
 
 ### Engineering
+
+Translate system needs into requirements and assess resilience and operations.
+
 - [Technical Planning](skills/technical-planning/SKILL.md)
 - [Systems Engineering](skills/systems-engineering/SKILL.md)
 - [Reliability Analysis](skills/reliability-analysis/SKILL.md)
+- [Cloud Architecture](skills/cloud-architecture/SKILL.md)
 
-### Security and privacy
+### Security
+
+Defensively review authorized systems and reduce security/privacy risks.
+
 - [Secure Code Review](skills/secure-code-review/SKILL.md)
 - [Threat Modeling](skills/threat-modeling/SKILL.md)
 - [Privacy Impact Review](skills/privacy-impact-review/SKILL.md)
 
-### Data
-- [Data Analysis](skills/data-analysis/SKILL.md)
-- [Data Visualization](skills/data-visualization/SKILL.md)
-- [Spreadsheet Analysis](skills/spreadsheet-analysis/SKILL.md)
-
-### Creative communication
-- [Content Writing and Editing](skills/content-writing/SKILL.md)
-- [Presentation Design](skills/presentation-design/SKILL.md)
-
-### Customer operations
-- [Customer Support Triage](skills/customer-support/SKILL.md)
-
 ### Productivity
+
+Coordinate projects, synthesize meetings, and preserve decisions.
+
 - [Project Management](skills/project-management/SKILL.md)
 - [Meeting Synthesis](skills/meeting-synthesis/SKILL.md)
 - [Decision Log](skills/decision-log/SKILL.md)
 
-See the full [domain map](docs/domain-map.md), [machine-readable catalog](registry/skills-index.json), [domain registry](registry/domains.json), and [representative landscape review](docs/landscape-review.md).
+### Data
 
-## How it works
+Analyze structured datasets, communicate patterns, and measure product behavior.
 
-1. **Discover** — retrieve a small set of candidate skills using names, descriptions, domain metadata, and later semantic retrieval.
-2. **Select** — check task fit, prerequisites, trust, host compatibility, risk, and conflicts.
-3. **Compose** — load the minimum useful instructions and only the references directly needed.
-4. **Execute** — follow the workflow using only tools actually available to the host and permissions actually granted by the user.
-5. **Verify** — check outputs against acceptance criteria; distinguish verified results from assumptions.
-6. **Improve** — review evaluation failures and user feedback before revising a skill; do not silently broaden its scope.
+- [Data Analysis](skills/data-analysis/SKILL.md)
+- [Data Visualization](skills/data-visualization/SKILL.md)
+- [Spreadsheet Analysis](skills/spreadsheet-analysis/SKILL.md)
+- [Product Analytics](skills/product-analytics/SKILL.md)
 
-This progressive-disclosure approach keeps discovery lightweight and reduces unnecessary context use.
+### Creative Communication
+
+Write original content and design presentations with evidence and audience fit.
+
+- [Content Writing](skills/content-writing/SKILL.md)
+- [Presentation Design](skills/presentation-design/SKILL.md)
+
+### Customer Operations
+
+Triage support requests and guide customers through verified next steps.
+
+- [Customer Support](skills/customer-support/SKILL.md)
+
+See the [domain map](docs/domain-map.md), [skill index](registry/skills-index.json), and [domain registry](registry/domains.json).
+
+## Selection and execution
+
+1. Discover candidates from names, descriptions, and domain metadata.
+2. Check task fit, prerequisites, trust, host compatibility, risk, and overlap.
+3. Load only the selected instructions and references needed.
+4. Execute using tools actually available to the host and permissions granted by the user.
+5. Verify output against acceptance criteria and report what was not tested.
+6. Use evaluation failures and feedback to improve the skill without silently broadening its scope.
 
 ## Quality and evaluation
 
-Every skill package includes at least five evaluation fixtures covering normal use, incomplete context, non-trigger behavior, and failure or boundary cases. These fixtures are **not benchmark results**: they have not automatically proved that a model follows the skill. Real behavioral evaluation must record the model, host, evaluator, date, test set, and scoring method.
+Every skill has at least five evaluation fixtures. The four new skills in this batch each have eight realistic activation and boundary cases. Fixtures are test inputs, **not benchmark results**: they do not prove a model follows the skill. Behavioral evaluation must record model, host, evaluator, date, test set, and scoring method.
 
-Run the repository checks with:
+Run checks:
 
 ```bash
 python scripts/validate_skills.py
 python -m unittest discover -s tests -v
 ```
 
-A passing structural check does not replace human review or agent-level evaluation. See [skill quality and lifecycle](docs/skill-quality.md).
+## Documentation
 
-## Architecture and research
+- [Domain map](docs/domain-map.md)
+- [Landscape review](docs/landscape-review.md)
+- [Host compatibility](docs/host-compatibility.md)
+- [Skill quality and lifecycle](docs/skill-quality.md)
 
-- [Domain map](docs/domain-map.md) — taxonomy and skill coverage.
-- [Landscape review](docs/landscape-review.md) — representative competing ecosystems and design lessons.
-- [Host compatibility](docs/host-compatibility.md) — what the portable format does and does not guarantee.
-- [Skill quality](docs/skill-quality.md) — maturity levels, evaluation principles, and change policy.
+## Status and licensing
 
-## Compatibility
+EXTREMIS is in the library-building stage. All skills remain marked **draft** until reviewed and behaviorally evaluated. Next priorities are stronger activation evaluation, the Librarian selector/composer, host adapters, package integrity/update handling, and marketplace integration.
 
-EXTREMIS targets the open [Agent Skills specification](https://agentskills.io/specification). Host-specific install paths, hooks, tool APIs, permission controls, model routing, memory, and subagent behavior are not standardized by the skill format. See [Host compatibility](docs/host-compatibility.md). Compatibility should be marked only after installation and behavior are tested on the named host.
-
-## Contributing
-
-Read [CONTRIBUTING.md](CONTRIBUTING.md) before proposing changes. Security-sensitive reports should follow [SECURITY.md](SECURITY.md). New skills must be checked for overlap, provenance, license compatibility, prerequisites, and meaningful evaluations.
-
-## Project status
-
-EXTREMIS is in its early library-building stage. The current catalog covers foundational workflows across multiple domains, but it is not exhaustive and skills remain marked as draft until reviewed and behaviorally evaluated. Next priorities include catalog selection, workflow composition, host adapters, automated evaluations, and a safe installer.
-
-## License
-
-A project license has not yet been selected. Until a license is added, do not assume the contents may be reused, redistributed, or incorporated into other projects. Third-party material will only be included with compatible licensing and clear attribution.
+A project license has not yet been selected. Do not assume reuse or redistribution rights until a license is added. This must be resolved before broad third-party distribution or marketplace publication.

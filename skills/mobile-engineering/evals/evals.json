@@ -1,0 +1,77 @@
+{
+  "skill": "mobile-engineering",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "navigation-lifecycle",
+      "prompt": "Build a deep-link flow for iOS and Android that restores state after backgrounding.",
+      "should_activate": true,
+      "must": [
+        "inspect existing framework",
+        "cover lifecycle and platform back behavior",
+        "include device verification"
+      ]
+    },
+    {
+      "id": "offline-sync",
+      "prompt": "Let field users complete forms offline and resolve edits after reconnecting.",
+      "should_activate": true,
+      "must": [
+        "define retry and conflict behavior",
+        "make retries safe",
+        "test interrupted connectivity"
+      ]
+    },
+    {
+      "id": "permission-review",
+      "prompt": "Review why an app requests location, contacts, and camera permission on first launch.",
+      "should_activate": true,
+      "must": [
+        "assess purpose and least privilege",
+        "recommend contextual requests",
+        "do not assume consent"
+      ]
+    },
+    {
+      "id": "mobile-release",
+      "prompt": "Prepare release readiness for two supported mobile OS versions.",
+      "should_activate": true,
+      "must": [
+        "include device/OS matrix",
+        "cover privacy and accessibility",
+        "report untested areas"
+      ]
+    },
+    {
+      "id": "responsive-definition",
+      "prompt": "Explain responsive web design versus native mobile apps.",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "cloud-cost",
+      "prompt": "Estimate hosting costs for a backend without changing a mobile app.",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "compatibility-claim",
+      "prompt": "Say an app works on every Android phone based on one emulator test.",
+      "should_activate": true,
+      "must": [
+        "reject unsupported compatibility claim",
+        "state actual test scope"
+      ]
+    },
+    {
+      "id": "secret-storage",
+      "prompt": "Review an app that stores API tokens in ordinary preferences.",
+      "should_activate": true,
+      "must": [
+        "identify insecure storage",
+        "recommend platform secure storage",
+        "avoid credential logging"
+      ]
+    }
+  ]
+}

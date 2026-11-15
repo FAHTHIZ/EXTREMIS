@@ -1,6 +1,6 @@
 # EXTREMIS domain map
 
-The catalog is organized into eleven domains. The machine-readable taxonomy is in [`registry/domains.json`](../registry/domains.json); individual package metadata lives in [`registry/skills-index.json`](../registry/skills-index.json).
+The catalog is organized into **14 domains** and **47 skills**. Machine-readable taxonomy: [`registry/domains.json`](../registry/domains.json). Package metadata: [`registry/skills-index.json`](../registry/skills-index.json).
 
 ## meta
 
@@ -19,6 +19,12 @@ Build, inspect, test, review, document, and evolve software.
 - [`api-design`](../skills/api-design/SKILL.md)
 - [`database-design`](../skills/database-design/SKILL.md)
 - [`technical-documentation`](../skills/technical-documentation/SKILL.md)
+- [`mobile-engineering`](../skills/mobile-engineering/SKILL.md)
+- [`quality-assurance`](../skills/quality-assurance/SKILL.md)
+- [`backend-engineering`](../skills/backend-engineering/SKILL.md)
+- [`devops-release`](../skills/devops-release/SKILL.md)
+- [`frontend-engineering`](../skills/frontend-engineering/SKILL.md)
+- [`performance-optimization`](../skills/performance-optimization/SKILL.md)
 
 ## research
 
@@ -42,6 +48,7 @@ Discover product opportunities, estimate markets, and improve processes.
 - [`product-discovery`](../skills/product-discovery/SKILL.md)
 - [`market-sizing`](../skills/market-sizing/SKILL.md)
 - [`process-mapping`](../skills/process-mapping/SKILL.md)
+- [`competitive-analysis`](../skills/competitive-analysis/SKILL.md)
 
 ## design
 
@@ -67,11 +74,12 @@ Design ethical studies and analyze scientific data reproducibly.
 
 ## engineering
 
-Translate system needs into requirements and assess reliability.
+Translate system needs into requirements and assess resilience and operations.
 
 - [`technical-planning`](../skills/technical-planning/SKILL.md)
 - [`systems-engineering`](../skills/systems-engineering/SKILL.md)
 - [`reliability-analysis`](../skills/reliability-analysis/SKILL.md)
+- [`cloud-architecture`](../skills/cloud-architecture/SKILL.md)
 
 ## security
 
@@ -89,18 +97,14 @@ Coordinate projects, synthesize meetings, and preserve decisions.
 - [`meeting-synthesis`](../skills/meeting-synthesis/SKILL.md)
 - [`decision-log`](../skills/decision-log/SKILL.md)
 
-## Expansion policy
-
-This is a starting taxonomy, not a claim of complete coverage. Add a domain only when a distinct group of recurring tasks justifies it. Add a skill only when it has a coherent activation boundary, explicit prerequisites, a useful output contract, and evaluation fixtures. If a capability requires external access, state the integration requirement rather than implying that a skill supplies the tool.
-
-
 ## data
 
-Analyze structured datasets, communicate patterns, and audit spreadsheets.
+Analyze structured datasets, communicate patterns, and measure product behavior.
 
 - [`data-analysis`](../skills/data-analysis/SKILL.md)
 - [`data-visualization`](../skills/data-visualization/SKILL.md)
 - [`spreadsheet-analysis`](../skills/spreadsheet-analysis/SKILL.md)
+- [`product-analytics`](../skills/product-analytics/SKILL.md)
 
 ## creative-communication
 
@@ -114,3 +118,7 @@ Write original content and design presentations with evidence and audience fit.
 Triage support requests and guide customers through verified next steps.
 
 - [`customer-support`](../skills/customer-support/SKILL.md)
+
+## Expansion policy
+
+This taxonomy is a starting point, not a claim of complete coverage. Add a domain only for a distinct group of recurring tasks. Add a skill only when it has a coherent activation boundary, explicit prerequisites, a useful output contract, and evaluation fixtures. If a capability requires external access, declare the integration requirement rather than implying the skill supplies the tool.

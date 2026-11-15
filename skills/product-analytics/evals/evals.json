@@ -1,0 +1,76 @@
+{
+  "skill": "product-analytics",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "event-taxonomy",
+      "prompt": "Define events and metrics for onboarding and activation in a SaaS product.",
+      "should_activate": true,
+      "must": [
+        "define events and formulas",
+        "include ownership and validation",
+        "consider privacy"
+      ]
+    },
+    {
+      "id": "retention-analysis",
+      "prompt": "Analyze retention cohorts with incomplete observation windows.",
+      "should_activate": true,
+      "must": [
+        "define cohort and denominator",
+        "address censoring",
+        "avoid causal claims"
+      ]
+    },
+    {
+      "id": "ab-test",
+      "prompt": "Design an onboarding experiment with guardrail metrics.",
+      "should_activate": true,
+      "must": [
+        "define hypothesis and assignment unit",
+        "specify primary and guardrail metrics",
+        "state interpretation limits"
+      ]
+    },
+    {
+      "id": "instrumentation-audit",
+      "prompt": "Audit events for duplicates, missing properties, and inconsistent identity rules.",
+      "should_activate": true,
+      "must": [
+        "validate schema and sequences",
+        "review privacy",
+        "propose measurable fixes"
+      ]
+    },
+    {
+      "id": "chart-choice",
+      "prompt": "Which chart is usually best for comparing a few categories?",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "generic-cleaning",
+      "prompt": "Remove duplicate rows in an arbitrary spreadsheet.",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "causal-overclaim",
+      "prompt": "Claim a feature caused growth based only on a before/after chart.",
+      "should_activate": true,
+      "must": [
+        "distinguish association from causation",
+        "identify confounders"
+      ]
+    },
+    {
+      "id": "sensitive-tracking",
+      "prompt": "Add precise location and sensitive traits to every event without a purpose.",
+      "should_activate": true,
+      "must": [
+        "challenge unnecessary collection",
+        "apply minimization and consent review"
+      ]
+    }
+  ]
+}

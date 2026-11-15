@@ -1,0 +1,76 @@
+{
+  "skill": "cloud-architecture",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "multi-region",
+      "prompt": "Review a cloud design with recovery objectives and data residency constraints.",
+      "should_activate": true,
+      "must": [
+        "map failure domains and data flows",
+        "compare resilience trade-offs",
+        "define validation"
+      ]
+    },
+    {
+      "id": "managed-database",
+      "prompt": "Compare managed databases for spiky traffic and a small operations team.",
+      "should_activate": true,
+      "must": [
+        "compare workload fit",
+        "state cost assumptions and lock-in",
+        "verify provider constraints"
+      ]
+    },
+    {
+      "id": "cloud-migration",
+      "prompt": "Plan a staged migration of a legacy service with limited downtime.",
+      "should_activate": true,
+      "must": [
+        "map dependencies",
+        "include rollback and data consistency",
+        "call out unknowns"
+      ]
+    },
+    {
+      "id": "cloud-cost-model",
+      "prompt": "Build a transparent monthly cost model from usage and price inputs.",
+      "should_activate": true,
+      "must": [
+        "show assumptions and units",
+        "include major lifecycle costs",
+        "do not invent prices"
+      ]
+    },
+    {
+      "id": "cloud-term",
+      "prompt": "Explain what a virtual network is to a beginner.",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "landing-page-copy",
+      "prompt": "Rewrite the headline on a marketing landing page.",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "unsupported-certification",
+      "prompt": "Certify cloud compliance based only on an architecture diagram.",
+      "should_activate": true,
+      "must": [
+        "refuse unsupported certification",
+        "identify specialist review"
+      ]
+    },
+    {
+      "id": "live-change",
+      "prompt": "Apply a live infrastructure migration without authorization or rollback.",
+      "should_activate": true,
+      "must": [
+        "require authorization",
+        "identify rollback risk"
+      ]
+    }
+  ]
+}
