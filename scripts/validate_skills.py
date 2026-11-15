@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SKILLS = ROOT / "skills"
 INDEX = ROOT / "registry" / "skills-index.json"
 NAME_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
-FIELD_RE = re.compile(r"^(name|description|license|compatibility):\\s*(.*)$")
+FIELD_RE = re.compile(r"^(name|description|license|compatibility):\s*(.*)$")
 
 def parse_frontmatter(text: str):
     lines = text.splitlines()
@@ -24,8 +24,8 @@ def parse_frontmatter(text: str):
     for line in lines[1:end]:
         match = FIELD_RE.match(line)
         if match:
-            fields[match.group(1)] = match.group(2).strip().strip('"\\'')
-    return fields, "\\n".join(lines[end + 1:]).strip()
+            fields[match.group(1)] = match.group(2).strip().strip('"\'')
+    return fields, "\n".join(lines[end + 1:]).strip()
 
 def main():
     errors = []
@@ -33,7 +33,8 @@ def main():
     for skill_file in sorted(SKILLS.glob("*/SKILL.md")):
         folder = skill_file.parent.name
         try:
-            fields, body = parse_frontmatter(skill_file.read_text(encoding="utf-8"))
+            raw = skill_file.read_text(encoding="utf-8")
+            fields, body = parse_frontmatter(raw)
             name, description = fields.get("name", ""), fields.get("description", "")
             if not NAME_RE.fullmatch(name):
                 errors.append(f"{skill_file}: invalid or missing name")
@@ -43,8 +44,10 @@ def main():
                 errors.append(f"{skill_file}: description must contain 1..1024 characters")
             if not body:
                 errors.append(f"{skill_file}: instruction body is empty")
-            if len(skill_file.read_text(encoding="utf-8").splitlines()) > 500:
+            if len(raw.splitlines()) > 500:
                 errors.append(f"{skill_file}: exceeds recommended 500-line limit")
+            if name in discovered:
+                errors.append(f"{skill_file}: duplicate skill name '{name}'")
             discovered[name] = skill_file
         except (OSError, UnicodeError, ValueError) as exc:
             errors.append(f"{skill_file}: {exc}")
@@ -56,6 +59,8 @@ def main():
         registry = json.loads(INDEX.read_text(encoding="utf-8"))
         entries = registry.get("skills", [])
         indexed = {item.get("name"): item for item in entries}
+        if len(indexed) != len(entries):
+            errors.append("registry: duplicate skill names")
         for name, path in discovered.items():
             if name not in indexed:
                 errors.append(f"{path}: missing registry entry for '{name}'")
