@@ -70,3 +70,20 @@ test('built-in catalog loads cleanly and search ranks sensibly', async () => {
   assert.equal(search(index, 'design REST endpoints with pagination')[0].cap.name, 'api-design');
   assert.deepEqual(search(index, ''), []);
 });
+
+test('sdk entry point exposes the service and schema export', async () => {
+  const sdk = await import('../src/index.mjs');
+  const x = sdk.createExtremis({ allow: ['read'] });
+  assert.ok((await x.stats()).capabilities > 0);
+  const openai = sdk.exportSchemas(await x.tools(), 'openai');
+  assert.ok(openai.every((t) => /^[a-zA-Z0-9_-]{1,64}$/.test(t.function.name)));
+  assert.ok(openai.every((t) => !JSON.stringify(t.function.parameters).includes('"$ref"')));
+  assert.equal(sdk.toolIdFromName('data__profile'), 'data.profile');
+  const gemini = sdk.exportSchemas([], 'gemini', { gateway: true });
+  assert.equal(gemini[0].functionDeclarations.length, 6);
+});
+
+test('cli parses arguments and runs commands', async () => {
+  const { parseArgs } = await import('../bin/extremis.mjs');
+  assert.deepEqual(parseArgs(['run', 'x.y', 'a=1', '--json', '--allow', 'read,network', '--param', 'p=1', '--param', 'q=2']), { positional: ['run', 'x.y', 'a=1'], flags: { json: true, allow: 'read,network', param: ['p=1', 'q=2'] } });
+});
