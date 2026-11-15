@@ -47,12 +47,13 @@
     },
     {
       "name": "business",
-      "summary": "Discover product opportunities, estimate markets, and improve processes.",
+      "summary": "Discover product opportunities, estimate markets, improve processes, and evaluate suppliers.",
       "skills": [
         "product-discovery",
         "market-sizing",
         "process-mapping",
-        "competitive-analysis"
+        "competitive-analysis",
+        "procurement-analysis"
       ]
     },
     {
@@ -87,7 +88,9 @@
         "technical-planning",
         "systems-engineering",
         "reliability-analysis",
-        "cloud-architecture"
+        "cloud-architecture",
+        "incident-management",
+        "requirements-engineering"
       ]
     },
     {
