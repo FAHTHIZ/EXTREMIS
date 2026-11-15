@@ -92,3 +92,25 @@ Coordinate projects, synthesize meetings, and preserve decisions.
 ## Expansion policy
 
 This is a starting taxonomy, not a claim of complete coverage. Add a domain only when a distinct group of recurring tasks justifies it. Add a skill only when it has a coherent activation boundary, explicit prerequisites, a useful output contract, and evaluation fixtures. If a capability requires external access, state the integration requirement rather than implying that a skill supplies the tool.
+
+
+## data
+
+Analyze structured datasets, communicate patterns, and audit spreadsheets.
+
+- [`data-analysis`](../skills/data-analysis/SKILL.md)
+- [`data-visualization`](../skills/data-visualization/SKILL.md)
+- [`spreadsheet-analysis`](../skills/spreadsheet-analysis/SKILL.md)
+
+## creative-communication
+
+Write original content and design presentations with evidence and audience fit.
+
+- [`content-writing`](../skills/content-writing/SKILL.md)
+- [`presentation-design`](../skills/presentation-design/SKILL.md)
+
+## customer-operations
+
+Triage support requests and guide customers through verified next steps.
+
+- [`customer-support`](../skills/customer-support/SKILL.md)

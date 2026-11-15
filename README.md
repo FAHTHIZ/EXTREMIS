@@ -26,12 +26,16 @@ A skill supplies reusable procedures and domain context. The host agent still ne
 
 ## Current library
 
-The repository contains **32 skills across 11 catalog domains**. New content in this initial library is authored for EXTREMIS; external projects are referenced as research and compatibility context, not copied as skill text.
+The repository contains **43 skills across 14 catalog domains**. New content in this initial library is authored for EXTREMIS; external projects are referenced as research and compatibility context, not copied as skill text.
 
 ### Meta
 - [Skill Authoring](skills/skill-authoring/SKILL.md)
 
 ### Software engineering
+- [Frontend Engineering](skills/frontend-engineering/SKILL.md)
+- [Backend Engineering](skills/backend-engineering/SKILL.md)
+- [Performance Optimization](skills/performance-optimization/SKILL.md)
+- [DevOps and Release Engineering](skills/devops-release/SKILL.md)
 - [Repository Audit](skills/repository-audit/SKILL.md)
 - [Debugging](skills/debugging/SKILL.md)
 - [Test-Driven Development](skills/test-driven-development/SKILL.md)
@@ -76,6 +80,18 @@ The repository contains **32 skills across 11 catalog domains**. New content in 
 - [Secure Code Review](skills/secure-code-review/SKILL.md)
 - [Threat Modeling](skills/threat-modeling/SKILL.md)
 - [Privacy Impact Review](skills/privacy-impact-review/SKILL.md)
+
+### Data
+- [Data Analysis](skills/data-analysis/SKILL.md)
+- [Data Visualization](skills/data-visualization/SKILL.md)
+- [Spreadsheet Analysis](skills/spreadsheet-analysis/SKILL.md)
+
+### Creative communication
+- [Content Writing and Editing](skills/content-writing/SKILL.md)
+- [Presentation Design](skills/presentation-design/SKILL.md)
+
+### Customer operations
+- [Customer Support Triage](skills/customer-support/SKILL.md)
 
 ### Productivity
 - [Project Management](skills/project-management/SKILL.md)

@@ -1,0 +1,52 @@
+{
+  "skill": "data-analysis",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "product-metrics",
+      "prompt": "Analyze weekly active users and retention from a supplied event dataset.",
+      "should_activate": true,
+      "must": [
+        "inspect event grain and definitions",
+        "state retention cohort logic",
+        "check duplicates and date coverage"
+      ]
+    },
+    {
+      "id": "bad-join",
+      "prompt": "A join unexpectedly doubles revenue totals.",
+      "should_activate": true,
+      "must": [
+        "check key cardinality and join grain",
+        "reconcile before reporting",
+        "do not accept inflated totals"
+      ]
+    },
+    {
+      "id": "non-trigger",
+      "prompt": "Write a short poem about rain.",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "causal-claim",
+      "prompt": "Users who see a banner spend more; say the banner caused the increase.",
+      "should_activate": true,
+      "must": [
+        "separate association from causation",
+        "identify selection/confounding risks",
+        "propose an appropriate experiment"
+      ]
+    },
+    {
+      "id": "stale-source",
+      "prompt": "The dataset is several months old but the question asks for current performance.",
+      "should_activate": true,
+      "must": [
+        "flag data freshness",
+        "avoid presenting stale figures as current",
+        "identify an updated source"
+      ]
+    }
+  ]
+}

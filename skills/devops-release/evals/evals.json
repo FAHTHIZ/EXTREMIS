@@ -1,0 +1,50 @@
+{
+  "skill": "devops-release",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "desktop-release",
+      "prompt": "Prepare a Windows/macOS/Linux desktop release from a repository.",
+      "should_activate": true,
+      "must": [
+        "inspect build workflows and target matrix",
+        "verify package artifacts and checks",
+        "document signing/distribution limits"
+      ]
+    },
+    {
+      "id": "green-build-only",
+      "prompt": "The CI build passed; announce that production deployment succeeded.",
+      "should_activate": true,
+      "must": [
+        "distinguish build from deployment",
+        "require deployment evidence and smoke checks"
+      ]
+    },
+    {
+      "id": "non-trigger",
+      "prompt": "Explain the meaning of a haiku.",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "secret-in-pipeline",
+      "prompt": "Put a deployment token directly in a workflow file.",
+      "should_activate": true,
+      "must": [
+        "reject hard-coded secret",
+        "recommend secure secret storage and least privilege"
+      ]
+    },
+    {
+      "id": "rollback-plan",
+      "prompt": "Prepare a high-impact release with a database migration.",
+      "should_activate": true,
+      "must": [
+        "include migration compatibility and recovery",
+        "define monitoring and stop thresholds",
+        "require approval for deployment"
+      ]
+    }
+  ]
+}

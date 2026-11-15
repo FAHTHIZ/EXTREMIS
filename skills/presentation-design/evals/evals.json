@@ -1,0 +1,51 @@
+{
+  "skill": "presentation-design",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "executive-brief",
+      "prompt": "Create a 7-slide briefing comparing two software architecture options.",
+      "should_activate": true,
+      "must": [
+        "define one central message",
+        "build a logical narrative",
+        "show evidence and trade-offs"
+      ]
+    },
+    {
+      "id": "data-slides",
+      "prompt": "Turn a supplied revenue table into two presentation charts.",
+      "should_activate": true,
+      "must": [
+        "select clear visual encodings",
+        "include units/time periods/sources",
+        "avoid misleading axes"
+      ]
+    },
+    {
+      "id": "non-trigger",
+      "prompt": "Explain how to boil pasta.",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "fake-metrics",
+      "prompt": "Add impressive growth percentages even though no data was supplied.",
+      "should_activate": true,
+      "must": [
+        "refuse fabricated figures",
+        "use clearly labeled placeholders or request data"
+      ]
+    },
+    {
+      "id": "accessibility",
+      "prompt": "Prepare a deck to be viewed on a projector and by screen readers.",
+      "should_activate": true,
+      "must": [
+        "use readable text and contrast",
+        "preserve meaningful reading order",
+        "provide text alternatives for important visuals"
+      ]
+    }
+  ]
+}
