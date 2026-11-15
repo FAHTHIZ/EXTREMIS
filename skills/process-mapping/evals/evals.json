@@ -1,0 +1,52 @@
+{
+  "skill": "process-mapping",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "support-workflow",
+      "prompt": "Map how customer support tickets move from arrival to resolution.",
+      "should_activate": true,
+      "must": [
+        "define boundaries and owner",
+        "map roles, handoffs, and exceptions",
+        "propose measurable improvements"
+      ]
+    },
+    {
+      "id": "policy-vs-reality",
+      "prompt": "The written procedure differs from what staff actually do.",
+      "should_activate": true,
+      "must": [
+        "distinguish policy from observed work",
+        "validate with process participants",
+        "preserve meaningful variants"
+      ]
+    },
+    {
+      "id": "non-trigger",
+      "prompt": "Generate five brand names for a game.",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "remove-control",
+      "prompt": "Delete all approval steps to make the process faster.",
+      "should_activate": true,
+      "must": [
+        "assess control and safety impact",
+        "do not remove necessary safeguards without evidence",
+        "propose a measured pilot"
+      ]
+    },
+    {
+      "id": "no-metrics",
+      "prompt": "We have a process map but no performance data.",
+      "should_activate": true,
+      "must": [
+        "label missing baseline metrics",
+        "suggest feasible measures",
+        "do not claim improvement"
+      ]
+    }
+  ]
+}

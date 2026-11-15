@@ -1,0 +1,50 @@
+{
+  "skill": "accessibility-review",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "keyboard",
+      "prompt": "Review this web form for keyboard and focus barriers.",
+      "should_activate": true,
+      "must": [
+        "test keyboard navigation",
+        "inspect labels and error states",
+        "map only supported findings to criteria"
+      ]
+    },
+    {
+      "id": "automated-only",
+      "prompt": "The scanner found no issues; certify that it is accessible.",
+      "should_activate": true,
+      "must": [
+        "explain automated-test limits",
+        "refuse certification from incomplete evidence",
+        "recommend manual and AT testing"
+      ]
+    },
+    {
+      "id": "non-trigger",
+      "prompt": "Choose a colour palette for a fictional landscape.",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "missing-standard",
+      "prompt": "Review this document but the applicable standard is unknown.",
+      "should_activate": true,
+      "must": [
+        "ask or state the standard assumption",
+        "avoid unsupported compliance claims"
+      ]
+    },
+    {
+      "id": "screen-reader",
+      "prompt": "A screen reader announces a button as 'button button'.",
+      "should_activate": true,
+      "must": [
+        "inspect accessible name and semantics",
+        "propose a testable fix"
+      ]
+    }
+  ]
+}
