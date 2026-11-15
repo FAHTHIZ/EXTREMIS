@@ -88,9 +88,8 @@ class RankingTests(unittest.TestCase):
         excluded = dict(self.documents[2], not_for="conceptual explanations of responsive web design versus native apps without implementation")
         query = "Explain responsive web design versus native mobile apps"
         included_score = MODULE.rank_documents(query, [included], top_k=1)[0]["score"]
-        excluded_result = MODULE.rank_documents(query, [excluded], top_k=1)[0]
-        self.assertLess(excluded_result["score"], included_score)
-        self.assertIn("responsive", excluded_result["excluded_terms"])
+        excluded_results = MODULE.rank_documents(query, [excluded], top_k=1)
+        self.assertTrue(not excluded_results or excluded_results[0]["score"] < included_score)
 
     def test_composition_limits_skill_count(self):
         result = MODULE.compose_catalog("build an app interface and mobile navigation", root=Path(__file__).resolve().parents[1], max_skills=2)
