@@ -348,6 +348,25 @@
       "evaluation_cases": 5
     },
     {
+      "name": "incident-management",
+      "path": "skills/incident-management",
+      "category": "engineering",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "high",
+      "requires": [
+        "incident report or observable service symptoms",
+        "service ownership, impact context, and available monitoring/log access",
+        "incident roles, escalation path, and authority boundaries where known"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Coordinate operational incident response, communication, recovery, and learning.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 8
+    },
+    {
       "name": "knowledge-management",
       "path": "skills/knowledge-management",
       "category": "productivity",
@@ -568,6 +587,25 @@
       "evaluation_cases": 5
     },
     {
+      "name": "procurement-analysis",
+      "path": "skills/procurement-analysis",
+      "category": "business",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "business need, required outcomes, and non-negotiable constraints",
+        "vendor proposals or comparable supplier evidence",
+        "budget, time horizon, and procurement policy where available"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Compare vendors and purchasing options using transparent lifecycle-cost and risk criteria.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 8
+    },
+    {
       "name": "product-analytics",
       "path": "skills/product-analytics",
       "category": "data",
@@ -676,6 +714,25 @@
       "summary": "Inspect a repository and report evidence-backed findings.",
       "provenance": "original-extremis-content",
       "evaluation_cases": 5
+    },
+    {
+      "name": "requirements-engineering",
+      "path": "skills/requirements-engineering",
+      "category": "engineering",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "problem context, stakeholders, or source request",
+        "system boundary, intended users, and relevant constraints",
+        "existing requirements, standards, or architecture where available"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Transform stakeholder needs into testable, traceable requirements.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 8
     },
     {
       "name": "research-synthesis",

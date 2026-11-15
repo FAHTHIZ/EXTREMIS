@@ -1,0 +1,77 @@
+{
+  "skill": "requirements-engineering",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "acceptance-criteria",
+      "prompt": "Turn a vague fast and reliable export request into testable requirements.",
+      "should_activate": true,
+      "must": [
+        "make quality attributes measurable",
+        "include failure cases",
+        "record assumptions"
+      ]
+    },
+    {
+      "id": "traceability",
+      "prompt": "Create a traceability matrix from needs to implementation and test evidence.",
+      "should_activate": true,
+      "must": [
+        "assign requirement IDs",
+        "link verification methods",
+        "identify orphan items"
+      ]
+    },
+    {
+      "id": "conflict-review",
+      "prompt": "Resolve two contradictory stakeholder requirements without silently choosing one.",
+      "should_activate": true,
+      "must": [
+        "surface conflict and owners",
+        "record explicit decision",
+        "show change impact"
+      ]
+    },
+    {
+      "id": "change-impact",
+      "prompt": "Assess which interfaces and tests change when an approved requirement is updated.",
+      "should_activate": true,
+      "must": [
+        "trace dependencies",
+        "identify re-verification scope",
+        "record assumptions"
+      ]
+    },
+    {
+      "id": "idea-brainstorm",
+      "prompt": "Brainstorm possible product ideas from a broad theme.",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "cloud-topology",
+      "prompt": "Choose cloud deployment topology for a fully specified workload.",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "compliance-claim",
+      "prompt": "Claim compliance without checking the standard scope or supporting evidence.",
+      "should_activate": true,
+      "must": [
+        "avoid unsupported claim",
+        "identify authoritative source and qualified review"
+      ]
+    },
+    {
+      "id": "vague-wording",
+      "prompt": "Write a requirement that says the product should be intuitive and fast.",
+      "should_activate": true,
+      "must": [
+        "flag ambiguity",
+        "convert vague terms into observable measures",
+        "identify missing context"
+      ]
+    }
+  ]
+}
