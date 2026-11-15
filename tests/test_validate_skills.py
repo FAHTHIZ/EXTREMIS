@@ -54,7 +54,7 @@ class DomainRegistryTests(unittest.TestCase):
         payload={"domains":[{"name":"software-engineering","skills":["demo"]}]}
         self.assertEqual(MODULE.validate_domain_registry(payload,{"demo":{"category":"software-engineering"}},{"demo"}),[])
     def test_rejects_missing_membership(self):
-        errors=MODULE.validate_domain_registry({"domains":[]},{"demo":{"category":"demo"}},{"demo"})
+        errors=MODULE.validate_domain_registry({"domains":[{"name":"other","skills":[]}]},{"demo":{"category":"demo"}},{"demo"})
         self.assertTrue(any("has no domain" in x for x in errors))
     def test_rejects_category_mismatch(self):
         errors=MODULE.validate_domain_registry({"domains":[{"name":"research","skills":["demo"]}]},{"demo":{"category":"software-engineering"}},{"demo"})
