@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "design",
+  "version": "0.1.0",
+  "summary": "Create a coherent, accessible, implementation-ready system of reusable design decisions.",
+  "keywords": [
+    "design tokens",
+    "component library",
+    "UI kit",
+    "visual system",
+    "design language",
+    "reusable components",
+    "design primitives"
+  ],
+  "intents": [],
+  "not_for": [],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "product goals and brand constraints",
+    "existing UI, design files, or framework conventions; component implementation access optional"
+  ],
+  "risk": "low",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

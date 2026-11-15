@@ -1,0 +1,39 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "software-engineering",
+  "version": "0.1.0",
+  "summary": "Create risk-based test strategies and verify release acceptance.",
+  "keywords": [
+    "QA",
+    "test strategy",
+    "test plan",
+    "regression tests",
+    "acceptance testing",
+    "test automation",
+    "flaky tests",
+    "release gates",
+    "test coverage",
+    "test matrix"
+  ],
+  "intents": [],
+  "not_for": [
+    "standalone definitions of unit, integration, or testing concepts without a quality plan or test decision",
+    "implementation of one isolated function using TDD without broader QA strategy"
+  ],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "product requirements, user journeys, or an observable behavior contract",
+    "repository, test environment, or a clear description of the system under test",
+    "known risk areas and release constraints where available"
+  ],
+  "risk": "medium",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

@@ -1,0 +1,37 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "engineering",
+  "version": "0.1.0",
+  "summary": "Coordinate operational incident response, communication, recovery, and learning.",
+  "keywords": [
+    "outage response",
+    "incident command",
+    "postmortem",
+    "on-call",
+    "service degradation",
+    "service recovery",
+    "escalation",
+    "incident timeline"
+  ],
+  "intents": [],
+  "not_for": [
+    "routine planned feature release or deployment checklists when there is no active incident, outage, or operational degradation",
+    "generic definitions of uptime or availability without an incident response need"
+  ],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "incident report or observable service symptoms",
+    "service ownership, impact context, and available monitoring/log access",
+    "incident roles, escalation path, and authority boundaries where known"
+  ],
+  "risk": "high",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

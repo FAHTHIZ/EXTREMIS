@@ -1,0 +1,24 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "software-engineering",
+  "version": "0.1.0",
+  "summary": "Make releases reproducible, observable, and recoverable with explicit gates.",
+  "keywords": [],
+  "intents": [],
+  "not_for": [],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "repository and deployment context",
+    "release target, environment, and authorization for any deployment"
+  ],
+  "risk": "high",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

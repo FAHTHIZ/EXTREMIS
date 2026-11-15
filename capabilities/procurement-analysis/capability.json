@@ -1,0 +1,34 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "business",
+  "version": "0.1.0",
+  "summary": "Compare vendors and purchasing options using transparent lifecycle-cost and risk criteria.",
+  "keywords": [
+    "vendor selection",
+    "supplier evaluation",
+    "total cost of ownership",
+    "RFP",
+    "weighted scorecard",
+    "contract review",
+    "sourcing",
+    "vendor due diligence"
+  ],
+  "intents": [],
+  "not_for": [],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "business need, required outcomes, and non-negotiable constraints",
+    "vendor proposals or comparable supplier evidence",
+    "budget, time horizon, and procurement policy where available"
+  ],
+  "risk": "medium",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

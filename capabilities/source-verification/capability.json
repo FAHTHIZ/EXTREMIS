@@ -1,0 +1,24 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "research",
+  "version": "0.1.0",
+  "summary": "Verify claims through provenance, primary evidence, cross-checks, and explicit uncertainty.",
+  "keywords": [],
+  "intents": [],
+  "not_for": [],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "the exact claim or material to verify",
+    "access to relevant public or user-provided sources"
+  ],
+  "risk": "medium",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "marketing",
+  "version": "0.1.0",
+  "summary": "Improve discoverability through useful content and technically sound websites.",
+  "keywords": [
+    "SEO",
+    "search engine optimization",
+    "organic search",
+    "indexing",
+    "crawlability",
+    "metadata",
+    "sitemap",
+    "canonical tags",
+    "structured data",
+    "search visibility"
+  ],
+  "intents": [],
+  "not_for": [
+    "simple definitions of search keywords without a website discovery task",
+    "standalone brand tagline writing without organic search or website optimization"
+  ],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "website or representative pages and the intended audience",
+    "access to crawl/indexing information or analytics where available",
+    "current search-engine documentation for changing technical requirements"
+  ],
+  "risk": "low",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "software-engineering",
+  "version": "0.1.0",
+  "summary": "Build usable, maintainable frontend behavior that matches the product contract.",
+  "keywords": [
+    "client-side",
+    "UI development",
+    "CSS",
+    "components",
+    "frontend",
+    "browser application",
+    "web app",
+    "responsive layouts"
+  ],
+  "intents": [],
+  "not_for": [
+    "server-side API handlers, database persistence, or service business logic without a browser interface task"
+  ],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "repository access and the relevant application entry points",
+    "the target browsers/platforms and design or behavior requirements"
+  ],
+  "risk": "medium",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

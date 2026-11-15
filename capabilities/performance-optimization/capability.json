@@ -1,0 +1,35 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "software-engineering",
+  "version": "0.1.0",
+  "summary": "Measure bottlenecks first and optimize the dominant cause with regression checks.",
+  "keywords": [
+    "profiling",
+    "performance tuning",
+    "latency",
+    "throughput",
+    "CPU usage",
+    "memory usage",
+    "bottleneck analysis",
+    "benchmarking",
+    "caching",
+    "load time"
+  ],
+  "intents": [],
+  "not_for": [],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "reproducible workload or user-visible performance symptom",
+    "profiling, tracing, metrics, or benchmark capability recommended"
+  ],
+  "risk": "medium",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

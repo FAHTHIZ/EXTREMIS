@@ -1,0 +1,24 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "customer-operations",
+  "version": "0.1.0",
+  "summary": "Resolve or route customer issues with empathy, accuracy, and clear ownership.",
+  "keywords": [],
+  "intents": [],
+  "not_for": [],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "the customer's message and available product knowledge",
+    "support policies, account tools, and escalation paths if provided"
+  ],
+  "risk": "medium",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

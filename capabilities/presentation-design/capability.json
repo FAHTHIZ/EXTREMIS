@@ -1,0 +1,24 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "creative-communication",
+  "version": "0.1.0",
+  "summary": "Build a focused slide narrative with clear hierarchy and evidence-matched visuals.",
+  "keywords": [],
+  "intents": [],
+  "not_for": [],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "audience, purpose, and time available",
+    "source facts, data, or approved claims"
+  ],
+  "risk": "low",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

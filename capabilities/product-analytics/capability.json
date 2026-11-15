@@ -1,0 +1,34 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "data",
+  "version": "0.1.0",
+  "summary": "Define product metrics, event instrumentation, funnels, cohorts, and experiments.",
+  "keywords": [
+    "event tracking",
+    "funnel analysis",
+    "user retention",
+    "cohort analysis",
+    "activation metrics",
+    "feature adoption",
+    "A/B testing",
+    "product instrumentation"
+  ],
+  "intents": [],
+  "not_for": [],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "product goals, user journeys, and the decision the analysis should inform",
+    "available event data, analytics schema, or an instrumentation environment",
+    "privacy, consent, retention, and data access requirements where applicable"
+  ],
+  "risk": "medium",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

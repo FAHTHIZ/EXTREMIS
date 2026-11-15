@@ -1,0 +1,37 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "marketing",
+  "version": "0.1.0",
+  "summary": "Create evidence-led positioning, audience, channel, and campaign strategies.",
+  "keywords": [
+    "go-to-market",
+    "audience segmentation",
+    "channel strategy",
+    "campaign planning",
+    "marketing messaging",
+    "positioning",
+    "launch strategy",
+    "customer acquisition"
+  ],
+  "intents": [],
+  "not_for": [
+    "grammar, punctuation, or spelling correction without a marketing strategy decision",
+    "standalone spreadsheet formula explanations"
+  ],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "product or service, value proposition, and current business stage",
+    "target audience, geography, budget, and time horizon where known",
+    "customer research, performance data, and brand or legal constraints where available"
+  ],
+  "risk": "medium",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

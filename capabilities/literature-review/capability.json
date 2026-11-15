@@ -1,0 +1,24 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "research",
+  "version": "0.1.0",
+  "summary": "Build a transparent evidence map and synthesis from traceable research sources.",
+  "keywords": [],
+  "intents": [],
+  "not_for": [],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "a research question or topic",
+    "access to bibliographic records and full text where available"
+  ],
+  "risk": "medium",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

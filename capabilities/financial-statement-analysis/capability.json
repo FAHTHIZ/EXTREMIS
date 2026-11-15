@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "finance",
+  "version": "0.1.0",
+  "summary": "Analyze company financial statements with ratio definitions, period comparisons, and caveats.",
+  "keywords": [
+    "income statement",
+    "balance sheet",
+    "cash flow statement",
+    "financial ratios",
+    "earnings analysis",
+    "working capital"
+  ],
+  "intents": [],
+  "not_for": [],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "the financial statements or an authoritative public filing",
+    "reporting periods, currency, accounting basis, and company context"
+  ],
+  "risk": "high",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

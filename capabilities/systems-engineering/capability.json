@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "engineering",
+  "version": "0.1.0",
+  "summary": "Connect stakeholder needs to verifiable system requirements and lifecycle decisions.",
+  "keywords": [
+    "systems architecture",
+    "system requirements",
+    "interface management",
+    "trade studies",
+    "subsystem allocation",
+    "verification and validation",
+    "lifecycle engineering",
+    "requirements traceability"
+  ],
+  "intents": [],
+  "not_for": [],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "system purpose and stakeholder context",
+    "available architecture, constraints, standards, and interface information"
+  ],
+  "risk": "high",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

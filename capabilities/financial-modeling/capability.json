@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "finance",
+  "version": "0.1.0",
+  "summary": "Build transparent financial scenarios with traceable assumptions and sensitivity analysis.",
+  "keywords": [
+    "financial forecast",
+    "scenario model",
+    "cash flow model",
+    "sensitivity analysis",
+    "assumption model",
+    "unit economics"
+  ],
+  "intents": [],
+  "not_for": [],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "the decision context and model horizon",
+    "provided inputs or clearly labeled assumptions",
+    "spreadsheet or calculation capability recommended"
+  ],
+  "risk": "high",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

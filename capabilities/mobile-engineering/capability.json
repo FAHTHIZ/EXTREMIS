@@ -1,0 +1,38 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "software-engineering",
+  "version": "0.1.0",
+  "summary": "Build and review reliable native and cross-platform mobile applications.",
+  "keywords": [
+    "native app",
+    "Android app",
+    "iOS app",
+    "mobile app",
+    "offline sync",
+    "background lifecycle",
+    "device permissions",
+    "app store release",
+    "mobile navigation"
+  ],
+  "intents": [],
+  "not_for": [
+    "conceptual explanations or comparisons of responsive web design and native apps without mobile implementation or review",
+    "backend-only cloud hosting cost estimates unrelated to a mobile client"
+  ],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "repository access and the current mobile framework or platform",
+    "target operating systems, supported versions, and device constraints",
+    "test devices, emulators, or documented verification alternatives recommended"
+  ],
+  "risk": "medium",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

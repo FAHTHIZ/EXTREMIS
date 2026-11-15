@@ -1,0 +1,37 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "productivity",
+  "version": "0.1.0",
+  "summary": "Structure trusted knowledge bases with ownership, provenance, and review cycles.",
+  "keywords": [
+    "enterprise wiki",
+    "knowledge base",
+    "document repository",
+    "source of truth",
+    "taxonomy",
+    "metadata governance",
+    "document lifecycle",
+    "content ownership"
+  ],
+  "intents": [],
+  "not_for": [
+    "standalone public blog writing without knowledge-base design or governance",
+    "isolated meeting-note summaries without knowledge architecture or retrieval needs"
+  ],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "knowledge sources and intended users or workflows",
+    "available repository, wiki, or document-management capabilities",
+    "content ownership, access rules, and retention requirements where known"
+  ],
+  "risk": "medium",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

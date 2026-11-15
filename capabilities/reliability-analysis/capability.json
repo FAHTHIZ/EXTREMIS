@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "engineering",
+  "version": "0.1.0",
+  "summary": "Structure reliability evidence, failure modes, mitigations, and measurable operational goals.",
+  "keywords": [
+    "MTBF",
+    "MTTR",
+    "availability analysis",
+    "failure modes",
+    "reliability metrics",
+    "failure rate",
+    "maintenance intervals",
+    "recovery time"
+  ],
+  "intents": [],
+  "not_for": [],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "system boundary and operating context",
+    "failure, maintenance, incident, or usage data when available"
+  ],
+  "risk": "high",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

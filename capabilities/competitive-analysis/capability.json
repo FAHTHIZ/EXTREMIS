@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "business",
+  "version": "0.1.0",
+  "summary": "Compare competitors using current sources, consistent criteria, and evidence-backed trade-offs.",
+  "keywords": [
+    "competitors",
+    "competitor matrix",
+    "feature comparison",
+    "market alternatives",
+    "competitive landscape",
+    "positioning comparison",
+    "differentiation",
+    "competitor benchmarking"
+  ],
+  "intents": [],
+  "not_for": [],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "the decision and comparison set",
+    "comparison dimensions, geography, and time horizon"
+  ],
+  "risk": "medium",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}

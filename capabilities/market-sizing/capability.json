@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "business",
+  "version": "0.1.0",
+  "summary": "Estimate opportunity size with explicit definitions, sourced inputs, and sensitivity ranges.",
+  "keywords": [
+    "TAM",
+    "SAM",
+    "SOM",
+    "market size",
+    "addressable market",
+    "bottom-up market estimate",
+    "market demand"
+  ],
+  "intents": [],
+  "not_for": [],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "the product or service definition",
+    "target geography, customer segment, time horizon, and available market evidence"
+  ],
+  "risk": "medium",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": []
+}
