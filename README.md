@@ -170,14 +170,39 @@ Coordinate projects, preserve decisions, and maintain organizational knowledge.
 
 See the [domain map](docs/domain-map.md), [skill index](registry/skills-index.json), and [domain registry](registry/domains.json).
 
+## Librarian
+
+The dependency-free Librarian searches skill names, summaries, descriptions, categories, prerequisites, and full instruction bodies. It uses weighted BM25 ranking, then proposes a small, non-duplicative skill set. The selector returns suggestions; it does not execute instructions or grant tools or permissions.
+
+Find relevant skills:
+
+```bash
+python scripts/librarian.py find "build a native app with offline forms"
+```
+
+Compose a small set for a task:
+
+```bash
+python scripts/librarian.py compose "review onboarding events and retention metrics" --max-skills 4
+```
+
+Inspect a package or browse a domain:
+
+```bash
+python scripts/librarian.py inspect mobile-engineering
+python scripts/librarian.py list --domain software-engineering
+```
+
+The ranking score is a retrieval score, **not a probability or confidence rating**. See [Librarian architecture](docs/librarian.md) for selection logic, limitations, and host-integration guidance.
+
 ## Selection and execution
 
-1. Discover candidates from names, descriptions, and domain metadata.
-2. Check task fit, prerequisites, trust, host compatibility, risk, and overlap.
-3. Load only selected instructions and relevant references.
+1. Ask the Librarian for candidates or call its Python API from a host adapter.
+2. Check task fit, prerequisites, trust, host compatibility, risk, and overlaps.
+3. Load only selected instructions and directly relevant references.
 4. Execute using tools actually available to the host and permissions granted by the user.
 5. Verify output against acceptance criteria and report what was not tested.
-6. Improve skills using evaluation failures and feedback without silently broadening scope.
+6. Improve skills using evaluation failures and user feedback without silently broadening scope.
 
 ## Quality and evaluation
 
@@ -188,11 +213,13 @@ Run checks:
 ```bash
 python scripts/validate_skills.py
 python -m unittest discover -s tests -v
+python scripts/evaluate_librarian.py
 ```
 
 ## Documentation
 
 - [Domain map](docs/domain-map.md)
+- [Librarian architecture](docs/librarian.md)
 - [Landscape review](docs/landscape-review.md)
 - [Marketplace integration plan](docs/marketplace-integration.md)
 - [Host compatibility](docs/host-compatibility.md)
@@ -200,6 +227,6 @@ python -m unittest discover -s tests -v
 
 ## Status and licensing
 
-EXTREMIS is in the library-building stage. All skills remain **draft** until reviewed and behaviorally evaluated. Next priorities are stronger activation evaluation, the Librarian selector/composer, host adapters, package integrity/update handling, and marketplace integration.
+EXTREMIS is in the library-building stage. All skills remain **draft** until reviewed and behaviorally evaluated. The Librarian now provides a deterministic full-text baseline and an offline routing evaluation report. Next priorities are model-assisted/semantic reranking behind optional adapters, real agent behavior evaluation, host adapters, package integrity/update handling, and marketplace integration.
 
 A project license has not yet been selected. Do not assume reuse or redistribution rights until a license is added. This must be resolved before broad third-party distribution or marketplace publication.

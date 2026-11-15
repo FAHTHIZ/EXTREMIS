@@ -20,7 +20,7 @@ A skill is a maintained capability package, not a prompt-shaped placeholder.
 - **Validated:** structural checks and evaluation cases pass.
 - **Maintained:** has an owner, version history, and scheduled or event-driven review.
 
-Passing a parser is not evidence that the procedure is correct. Do not label a skill validated until behavioral evaluations have actually run.
+Passing a parser or deterministic retrieval fixture is not evidence that the procedure is correct. Do not label a skill validated until behavioral evaluations have actually run.
 
 ## Evaluation design
 
@@ -36,3 +36,17 @@ Prefer observable criteria over subjective "good answer" ratings. Record evaluat
 ## Change policy
 
 Changes that broaden triggers, alter safety boundaries, add dependencies, or change expected outputs require updated evaluations and a changelog note. Preserve backwards compatibility where practical; otherwise document breaking changes.
+
+
+## Routing evaluation versus behavior evaluation
+
+EXTREMIS includes a deterministic Librarian baseline. Its routing evaluator measures whether a skill is retrieved for its own positive fixtures (Hit@1, Hit@K, and MRR) and how often it appears for negative fixtures. This assesses the selector against author-written prompts only.
+
+It does **not** run an agent, grade a generated answer, compare skill-on/skill-off task outcomes, or establish causal improvement. A behavior benchmark must:
+- execute the same task with and without the candidate skill;
+- use isolated, reproducible workspaces and identical task inputs;
+- apply observable assertions and, where needed, blinded grading;
+- record model, model version, host, skill commit, task fixture, environment, run count, and variance;
+- preserve raw outputs and clearly separate deterministic checks from model-graded judgments.
+
+A skill should not become `validated` or `maintained` based on a high retrieval score alone.

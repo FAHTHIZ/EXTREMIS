@@ -26,6 +26,24 @@
 6. **Treat provenance and license as first-class.** Write original Extremis content by default. External contributions require source, license compatibility, and required notices. A repository without a selected license must not imply general reuse rights.
 7. **Keep automation separate.** Hooks, installers, scripts, memory services, agent dispatch, and permission enforcement need executable code, explicit security boundaries, and host-specific tests.
 
+## Routing and evaluation systems reviewed
+
+| Project/research | Useful pattern | EXTREMIS implication |
+| --- | --- | --- |
+| [Anthropic Skill Creator](https://claude.com/plugins/skill-creator) | Create, Eval, Improve, and Benchmark workflow; separate Executor, Grader, Comparator, and Analyzer roles; variance-aware reporting | Separate fixture design, routing tests, live execution, grading, and version comparison. Do not pretend one static test does all of these. |
+| [NVIDIA SkillEvaluator](https://github.com/NVIDIA/SkillEvaluator) | Tiered deterministic validation, security/quality checks, semantic overlap analysis, eval generation, and sandboxed live agent evaluation | Keep keyless checks fast in CI; make embedding/model/sandbox evaluation optional and explicit. |
+| [Vercel Skills CLI](https://github.com/vercel-labs/skills) | Per-skill source hashes, lockfile-based restore, update checks, install modes, and safe handling of missing/modified installations | Marketplace integration needs immutable source identity, content integrity, drift detection, and recoverable updates. |
+| [SkillRouter paper](https://arxiv.org/abs/2603.22455) | Two-stage retrieval/reranking for large skill pools; its study finds full skill text carries important routing signal in an overlapping catalogue | EXTREMIS indexes the full skill body, not just names and descriptions. The current lightweight BM25 router is a baseline, not an implementation of the paper's trained model. |
+
+## Current EXTREMIS implementation
+
+- `scripts/librarian.py` performs weighted BM25 retrieval over skill name, summary, description, category, prerequisites, and complete skill body.
+- `compose` proposes a bounded skill set and filters only near-identical candidates; it does not launch agents or execute procedures.
+- `scripts/evaluate_librarian.py` reports Hit@1, Hit@K, mean reciprocal rank, and negative-case false activation against author-written fixtures.
+- CI runs the deterministic structural tests and routing evaluation without model credentials or third-party runtime dependencies.
+
+The routing report is a local retrieval diagnostic. It is not a model-behavior benchmark, a quality certification, or proof that a selected skill improves task success.
+
 ## What was not done
 
 This review did not exhaustively enumerate every public skill repository, install or run competitors, perform a security audit of their code, or benchmark them head-to-head. The conclusions are an architecture synthesis from public project documentation and repository structures, not claims of measured superiority.
@@ -41,3 +59,8 @@ This review did not exhaustively enumerate every public skill repository, instal
 ## Catalog consistency correction
 
 The domain registry omitted four software-engineering skills already present in the 43-skill index. This update brings the taxonomy into parity and adds automated checks so omissions, duplicate assignments, and category mismatches fail validation.
+
+
+## Scope note
+
+The public research and tools above inform design choices; EXTREMIS does not copy their implementations or claim equivalent performance. For now, full-text BM25 is intentionally selected because it is reproducible, inexpensive, and adequate as a baseline for a 54-skill catalogue. A semantic encoder or learned reranker should be introduced only behind an optional interface and measured against a held-out routing set.
