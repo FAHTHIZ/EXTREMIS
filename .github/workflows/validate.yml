@@ -21,4 +21,4 @@ jobs:
       - name: Run repository tests
         run: python -m unittest discover -s tests -v
       - name: Evaluate Librarian routing baseline
-        run: python scripts/evaluate_librarian.py
+        run: python scripts/evaluate_librarian.py --details
