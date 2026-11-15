@@ -1,6 +1,6 @@
 ---
 name: mobile-engineering
-description: Use when building, reviewing, debugging, or preparing native or cross-platform mobile applications, including app lifecycle, offline behavior, navigation, device permissions, platform integration, and release readiness.
+description: Use when building, reviewing, debugging, or preparing native or cross-platform mobile applications, including app lifecycle, offline behavior, navigation, device permissions, platform integration, and release readiness. Do not use for conceptual comparisons of responsive web and native apps or backend-only cloud cost estimates.
 metadata:
   extremis.category: software-engineering
   extremis.version: "0.1.0"

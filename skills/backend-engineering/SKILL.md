@@ -1,6 +1,6 @@
 ---
 name: backend-engineering
-description: Use when designing, implementing, or debugging server-side services, business logic, background jobs, authentication boundaries, persistence, or integration APIs.
+description: Use when implementing or debugging server-side services, protected endpoints, business logic, background jobs, authentication boundaries, tenant-scoped data access, persistence, external API clients, and service integrations. Do not use for frontend-only UI work or API contract design without backend implementation.
 metadata:
   extremis.category: software-engineering
   extremis.version: "0.1.0"

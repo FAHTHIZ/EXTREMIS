@@ -1,6 +1,6 @@
 ---
 name: search-optimization
-description: Use when auditing or improving organic search discoverability, technical SEO, site structure, metadata, structured data, content relevance, or search performance for a legitimate website.
+description: Use when auditing or improving organic search discoverability, technical SEO, site structure, metadata, structured data, content relevance, or search performance for a legitimate website. Do not use for simple keyword definitions or standalone tagline writing without a website optimization task.
 metadata:
   extremis.category: marketing
   extremis.version: "0.1.0"

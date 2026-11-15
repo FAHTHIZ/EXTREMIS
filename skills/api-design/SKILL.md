@@ -1,6 +1,6 @@
 ---
 name: api-design
-description: Use when designing or revising an HTTP, RPC, event, or internal service API, including endpoint contracts, request and response schemas, errors, versioning, and compatibility.
+description: Use when specifying or revising an HTTP, RPC, event, or internal service API contract, including endpoint semantics, request and response schemas, errors, versioning, and consumer compatibility. Do not use for implementing server handlers or frontend clients without contract-design work.
 metadata:
   extremis.category: software-engineering
   extremis.version: "0.1.0"

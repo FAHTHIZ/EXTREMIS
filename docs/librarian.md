@@ -15,7 +15,7 @@ It does not launch agents, call APIs, grant permissions, browse the web, or perf
 5. **Explain:** return matched terms, fields, retrieval score, package path, prerequisites, and category.
 6. **Compose:** take a bounded candidate set and suppress only near-duplicate content above a conservative Jaccard threshold. Return alternatives separately.
 
-The ranking score is an internal retrieval signal, not a calibrated probability. The current implementation is deterministic: identical catalogue contents and input query produce the same ordering.
+The ranking score is an internal retrieval signal, not a calibrated probability. The registry can carry explicit `not_for` boundaries; matching those terms applies a negative field weight so common near-miss requests are less likely to select a skill. These boundaries are curated scope guidance, not an authorization or safety mechanism. The current implementation is deterministic: identical catalogue contents and input query produce the same ordering.
 
 ## Commands
 
@@ -63,6 +63,7 @@ The dataset consists of the author-written `evals/evals.json` files in the catal
 ## Known limitations
 
 - Lexical retrieval can miss synonyms, paraphrases, multilingual queries, and concepts expressed with different vocabulary.
+- `not_for` boundaries are manual hints and can over-penalize a task that legitimately needs the skill; inspect `excluded_terms` in JSON output.
 - BM25 does not understand task intent, prerequisites, causal dependencies, or the actual quality of a skill.
 - The current overlap filter detects near-identical token sets; it is not semantic duplicate detection.
 - The composition step does not yet build dependency graphs or ordered multi-skill workflows.

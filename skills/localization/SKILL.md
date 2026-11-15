@@ -1,6 +1,6 @@
 ---
 name: localization
-description: Use when localizing software interfaces, product content, help material, or communications for a target language or region, including right-to-left layouts, locale formats, terminology, and cultural review.
+description: Use when localizing software interfaces, product content, help material, or communications for a target language or region, including right-to-left layouts, locale formats, terminology, and cultural review. Do not use for one-word translation without a target locale or product context.
 metadata:
   extremis.category: creative-communication
   extremis.version: "0.1.0"

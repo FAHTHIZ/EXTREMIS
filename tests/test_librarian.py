@@ -83,6 +83,15 @@ class RankingTests(unittest.TestCase):
             results = MODULE.search_catalog("mobile app", root=root, top_k=5, domain="software-engineering")
             self.assertEqual([item["name"] for item in results], ["mobile-engineering"])
 
+    def test_not_for_boundary_reduces_score(self):
+        included = dict(self.documents[2])
+        excluded = dict(self.documents[2], not_for="conceptual explanations of responsive web design versus native apps without implementation")
+        query = "Explain responsive web design versus native mobile apps"
+        included_score = MODULE.rank_documents(query, [included], top_k=1)[0]["score"]
+        excluded_result = MODULE.rank_documents(query, [excluded], top_k=1)[0]
+        self.assertLess(excluded_result["score"], included_score)
+        self.assertIn("responsive", excluded_result["excluded_terms"])
+
     def test_composition_limits_skill_count(self):
         result = MODULE.compose_catalog("build an app interface and mobile navigation", root=Path(__file__).resolve().parents[1], max_skills=2)
         self.assertLessEqual(len(result["selected"]), 2)

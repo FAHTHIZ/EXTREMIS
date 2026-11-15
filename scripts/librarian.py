@@ -28,6 +28,7 @@ FIELD_WEIGHTS = {
     "category": 1.3,
     "body": 1.0,
     "prerequisites": 0.6,
+    "not_for": -4.5,
 }
 BM25_K1 = 1.5
 BM25_B = 0.72
@@ -108,6 +109,7 @@ def load_catalog(root: Path = ROOT) -> list[dict[str, Any]]:
             "version": str(entry.get("version", "unspecified")),
             "hosts": entry.get("hosts", []),
             "requires": prerequisites,
+            "not_for": " ".join(str(item) for item in entry.get("not_for", []) if isinstance(item, str)),
         })
     return documents
 
@@ -151,6 +153,7 @@ def rank_documents(
         score = 0.0
         field_matches: dict[str, list[str]] = {}
         all_present: set[str] = set()
+        excluded_terms: set[str] = set()
 
         for field, weight in FIELD_WEIGHTS.items():
             terms = field_map[field]
@@ -160,7 +163,10 @@ def rank_documents(
             matched = [term for term in query_terms if counts[term] > 0]
             if matched:
                 field_matches[field] = matched
-                all_present.update(matched)
+                if weight < 0:
+                    excluded_terms.update(matched)
+                else:
+                    all_present.update(matched)
 
             for term in query_terms:
                 frequency = counts[term]
@@ -195,6 +201,7 @@ def rank_documents(
         result.update({
             "score": round(score, 4),
             "matched_terms": [term for term in query_terms if term in all_present],
+            "excluded_terms": [term for term in query_terms if term in excluded_terms],
             "field_matches": field_matches,
         })
         ranked.append(result)
