@@ -37,7 +37,7 @@ The CLI provides cross-host installation and management. EXTREMIS itself is the 
 
 ## Library
 
-The catalog contains **47 skills across 14 domains**.
+The catalog contains **54 skills across 15 domains**.
 
 ### Meta
 
@@ -80,12 +80,13 @@ Analyze statements and model business scenarios with visible assumptions.
 
 ### Business
 
-Discover product opportunities, estimate markets, and improve processes.
+Discover product opportunities, estimate markets, improve processes, and evaluate suppliers.
 
 - [Product Discovery](skills/product-discovery/SKILL.md)
 - [Market Sizing](skills/market-sizing/SKILL.md)
 - [Process Mapping](skills/process-mapping/SKILL.md)
 - [Competitive Analysis](skills/competitive-analysis/SKILL.md)
+- [Procurement Analysis](skills/procurement-analysis/SKILL.md)
 
 ### Design
 
@@ -117,6 +118,8 @@ Translate system needs into requirements and assess resilience and operations.
 - [Systems Engineering](skills/systems-engineering/SKILL.md)
 - [Reliability Analysis](skills/reliability-analysis/SKILL.md)
 - [Cloud Architecture](skills/cloud-architecture/SKILL.md)
+- [Incident Management](skills/incident-management/SKILL.md)
+- [Requirements Engineering](skills/requirements-engineering/SKILL.md)
 
 ### Security
 
@@ -125,14 +128,6 @@ Defensively review authorized systems and reduce security/privacy risks.
 - [Secure Code Review](skills/secure-code-review/SKILL.md)
 - [Threat Modeling](skills/threat-modeling/SKILL.md)
 - [Privacy Impact Review](skills/privacy-impact-review/SKILL.md)
-
-### Productivity
-
-Coordinate projects, synthesize meetings, and preserve decisions.
-
-- [Project Management](skills/project-management/SKILL.md)
-- [Meeting Synthesis](skills/meeting-synthesis/SKILL.md)
-- [Decision Log](skills/decision-log/SKILL.md)
 
 ### Data
 
@@ -143,12 +138,20 @@ Analyze structured datasets, communicate patterns, and measure product behavior.
 - [Spreadsheet Analysis](skills/spreadsheet-analysis/SKILL.md)
 - [Product Analytics](skills/product-analytics/SKILL.md)
 
+### Marketing
+
+Improve audience understanding and ethical product discoverability.
+
+- [Marketing Strategy](skills/marketing-strategy/SKILL.md)
+- [Search Optimization](skills/search-optimization/SKILL.md)
+
 ### Creative Communication
 
-Write original content and design presentations with evidence and audience fit.
+Write, localize, and design communications with audience and context fit.
 
 - [Content Writing](skills/content-writing/SKILL.md)
 - [Presentation Design](skills/presentation-design/SKILL.md)
+- [Localization](skills/localization/SKILL.md)
 
 ### Customer Operations
 
@@ -156,20 +159,29 @@ Triage support requests and guide customers through verified next steps.
 
 - [Customer Support](skills/customer-support/SKILL.md)
 
+### Productivity
+
+Coordinate projects, preserve decisions, and maintain organizational knowledge.
+
+- [Project Management](skills/project-management/SKILL.md)
+- [Meeting Synthesis](skills/meeting-synthesis/SKILL.md)
+- [Decision Log](skills/decision-log/SKILL.md)
+- [Knowledge Management](skills/knowledge-management/SKILL.md)
+
 See the [domain map](docs/domain-map.md), [skill index](registry/skills-index.json), and [domain registry](registry/domains.json).
 
 ## Selection and execution
 
 1. Discover candidates from names, descriptions, and domain metadata.
 2. Check task fit, prerequisites, trust, host compatibility, risk, and overlap.
-3. Load only the selected instructions and references needed.
+3. Load only selected instructions and relevant references.
 4. Execute using tools actually available to the host and permissions granted by the user.
 5. Verify output against acceptance criteria and report what was not tested.
-6. Use evaluation failures and feedback to improve the skill without silently broadening its scope.
+6. Improve skills using evaluation failures and feedback without silently broadening scope.
 
 ## Quality and evaluation
 
-Every skill has at least five evaluation fixtures. The four new skills in this batch each have eight realistic activation and boundary cases. Fixtures are test inputs, **not benchmark results**: they do not prove a model follows the skill. Behavioral evaluation must record model, host, evaluator, date, test set, and scoring method.
+Every skill has at least five evaluation fixtures. The 11 newest packages have eight realistic activation and boundary cases each (88 in total). Fixtures are test inputs, **not benchmark results**: they do not prove a model follows the skill. Behavioral evaluation must record model, host, evaluator, date, test set, and scoring method.
 
 Run checks:
 
@@ -182,11 +194,12 @@ python -m unittest discover -s tests -v
 
 - [Domain map](docs/domain-map.md)
 - [Landscape review](docs/landscape-review.md)
+- [Marketplace integration plan](docs/marketplace-integration.md)
 - [Host compatibility](docs/host-compatibility.md)
 - [Skill quality and lifecycle](docs/skill-quality.md)
 
 ## Status and licensing
 
-EXTREMIS is in the library-building stage. All skills remain marked **draft** until reviewed and behaviorally evaluated. Next priorities are stronger activation evaluation, the Librarian selector/composer, host adapters, package integrity/update handling, and marketplace integration.
+EXTREMIS is in the library-building stage. All skills remain **draft** until reviewed and behaviorally evaluated. Next priorities are stronger activation evaluation, the Librarian selector/composer, host adapters, package integrity/update handling, and marketplace integration.
 
 A project license has not yet been selected. Do not assume reuse or redistribution rights until a license is added. This must be resolved before broad third-party distribution or marketplace publication.
