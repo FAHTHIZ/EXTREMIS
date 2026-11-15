@@ -41,6 +41,16 @@
       "not_for": [
         "implementation of server-side endpoint handlers or backend persistence rather than API contract design",
         "frontend client implementation without API contract decisions"
+      ],
+      "keywords": [
+        "OpenAPI",
+        "endpoint contracts",
+        "request schema",
+        "response schema",
+        "API versioning",
+        "REST API",
+        "RPC",
+        "error semantics"
       ]
     },
     {
@@ -62,6 +72,16 @@
       "evaluation_cases": 5,
       "not_for": [
         "frontend-only user interface implementation without server-side behavior"
+      ],
+      "keywords": [
+        "backend services",
+        "server-side code",
+        "endpoint handler",
+        "route handler",
+        "background worker",
+        "tenant isolation",
+        "external API integration",
+        "database-backed service"
       ]
     },
     {
@@ -81,7 +101,17 @@
       ],
       "summary": "Design cloud workloads for resilience, security, cost, and operability.",
       "provenance": "original-extremis-content",
-      "evaluation_cases": 8
+      "evaluation_cases": 8,
+      "keywords": [
+        "cloud infrastructure",
+        "multi-region",
+        "availability zones",
+        "cloud migration",
+        "infrastructure as code",
+        "platform architecture",
+        "disaster recovery",
+        "cloud networking"
+      ]
     },
     {
       "name": "code-review",
@@ -99,7 +129,15 @@
       ],
       "summary": "Review diffs for consequential defects and return prioritized, evidence-backed findings.",
       "provenance": "original-extremis-content",
-      "evaluation_cases": 5
+      "evaluation_cases": 5,
+      "keywords": [
+        "pull request review",
+        "diff review",
+        "code quality",
+        "defect detection",
+        "review findings",
+        "maintainability"
+      ]
     },
     {
       "name": "competitive-analysis",
@@ -117,7 +155,17 @@
       ],
       "summary": "Compare competitors using current sources, consistent criteria, and evidence-backed trade-offs.",
       "provenance": "original-extremis-content",
-      "evaluation_cases": 5
+      "evaluation_cases": 5,
+      "keywords": [
+        "competitors",
+        "competitor matrix",
+        "feature comparison",
+        "market alternatives",
+        "competitive landscape",
+        "positioning comparison",
+        "differentiation",
+        "competitor benchmarking"
+      ]
     },
     {
       "name": "content-writing",
@@ -135,7 +183,18 @@
       ],
       "summary": "Create clear original content that meets the audience, purpose, tone, and factual requirements.",
       "provenance": "original-extremis-content",
-      "evaluation_cases": 5
+      "evaluation_cases": 5,
+      "keywords": [
+        "copywriting",
+        "editing",
+        "editorial",
+        "blog posts",
+        "articles",
+        "content briefs",
+        "tone of voice",
+        "style guide",
+        "rewrite drafts"
+      ]
     },
     {
       "name": "customer-support",
@@ -189,7 +248,19 @@
       ],
       "summary": "Match visual encodings to the analytical question and make charts readable and honest.",
       "provenance": "original-extremis-content",
-      "evaluation_cases": 5
+      "evaluation_cases": 5,
+      "keywords": [
+        "charts",
+        "graphs",
+        "plots",
+        "dashboards",
+        "visual encoding",
+        "chart selection",
+        "chart labels",
+        "axes",
+        "plotting data",
+        "data storytelling"
+      ]
     },
     {
       "name": "database-design",
@@ -207,7 +278,16 @@
       ],
       "summary": "Model data and migrations for integrity, clear ownership, and maintainable access patterns.",
       "provenance": "original-extremis-content",
-      "evaluation_cases": 5
+      "evaluation_cases": 5,
+      "keywords": [
+        "schema design",
+        "data modeling",
+        "normalization",
+        "database migrations",
+        "index design",
+        "query patterns",
+        "referential integrity"
+      ]
     },
     {
       "name": "debugging",
@@ -225,7 +305,16 @@
       ],
       "summary": "Diagnose, fix, and verify software defects.",
       "provenance": "original-extremis-content",
-      "evaluation_cases": 5
+      "evaluation_cases": 5,
+      "keywords": [
+        "bug diagnosis",
+        "defect reproduction",
+        "stack trace",
+        "root cause analysis",
+        "error logs",
+        "regression fix",
+        "fault isolation"
+      ]
     },
     {
       "name": "decision-log",
@@ -261,7 +350,16 @@
       ],
       "summary": "Create a coherent, accessible, implementation-ready system of reusable design decisions.",
       "provenance": "original-extremis-content",
-      "evaluation_cases": 5
+      "evaluation_cases": 5,
+      "keywords": [
+        "design tokens",
+        "component library",
+        "UI kit",
+        "visual system",
+        "design language",
+        "reusable components",
+        "design primitives"
+      ]
     },
     {
       "name": "devops-release",
@@ -316,7 +414,15 @@
       ],
       "summary": "Build transparent financial scenarios with traceable assumptions and sensitivity analysis.",
       "provenance": "original-extremis-content",
-      "evaluation_cases": 5
+      "evaluation_cases": 5,
+      "keywords": [
+        "financial forecast",
+        "scenario model",
+        "cash flow model",
+        "sensitivity analysis",
+        "assumption model",
+        "unit economics"
+      ]
     },
     {
       "name": "financial-statement-analysis",
@@ -334,7 +440,15 @@
       ],
       "summary": "Analyze company financial statements with ratio definitions, period comparisons, and caveats.",
       "provenance": "original-extremis-content",
-      "evaluation_cases": 5
+      "evaluation_cases": 5,
+      "keywords": [
+        "income statement",
+        "balance sheet",
+        "cash flow statement",
+        "financial ratios",
+        "earnings analysis",
+        "working capital"
+      ]
     },
     {
       "name": "frontend-engineering",
@@ -355,6 +469,16 @@
       "evaluation_cases": 5,
       "not_for": [
         "server-side API handlers, database persistence, or service business logic without a browser interface task"
+      ],
+      "keywords": [
+        "client-side",
+        "UI development",
+        "CSS",
+        "components",
+        "frontend",
+        "browser application",
+        "web app",
+        "responsive layouts"
       ]
     },
     {
@@ -378,6 +502,16 @@
       "not_for": [
         "routine planned feature release or deployment checklists when there is no active incident, outage, or operational degradation",
         "generic definitions of uptime or availability without an incident response need"
+      ],
+      "keywords": [
+        "outage response",
+        "incident command",
+        "postmortem",
+        "on-call",
+        "service degradation",
+        "service recovery",
+        "escalation",
+        "incident timeline"
       ]
     },
     {
@@ -401,6 +535,16 @@
       "not_for": [
         "standalone public blog writing without knowledge-base design or governance",
         "isolated meeting-note summaries without knowledge architecture or retrieval needs"
+      ],
+      "keywords": [
+        "enterprise wiki",
+        "knowledge base",
+        "document repository",
+        "source of truth",
+        "taxonomy",
+        "metadata governance",
+        "document lifecycle",
+        "content ownership"
       ]
     },
     {
@@ -460,6 +604,16 @@
       "not_for": [
         "one-word translation without a target locale, product context, or localization requirement",
         "database query refactoring without language or locale requirements"
+      ],
+      "keywords": [
+        "translation",
+        "internationalization",
+        "i18n",
+        "l10n",
+        "right-to-left",
+        "locale formatting",
+        "language adaptation",
+        "regional formatting"
       ]
     },
     {
@@ -478,7 +632,16 @@
       ],
       "summary": "Estimate opportunity size with explicit definitions, sourced inputs, and sensitivity ranges.",
       "provenance": "original-extremis-content",
-      "evaluation_cases": 5
+      "evaluation_cases": 5,
+      "keywords": [
+        "TAM",
+        "SAM",
+        "SOM",
+        "market size",
+        "addressable market",
+        "bottom-up market estimate",
+        "market demand"
+      ]
     },
     {
       "name": "marketing-strategy",
@@ -501,6 +664,16 @@
       "not_for": [
         "grammar, punctuation, or spelling correction without a marketing strategy decision",
         "standalone spreadsheet formula explanations"
+      ],
+      "keywords": [
+        "go-to-market",
+        "audience segmentation",
+        "channel strategy",
+        "campaign planning",
+        "marketing messaging",
+        "positioning",
+        "launch strategy",
+        "customer acquisition"
       ]
     },
     {
@@ -542,6 +715,17 @@
       "not_for": [
         "conceptual explanations or comparisons of responsive web design and native apps without mobile implementation or review",
         "backend-only cloud hosting cost estimates unrelated to a mobile client"
+      ],
+      "keywords": [
+        "native app",
+        "Android app",
+        "iOS app",
+        "mobile app",
+        "offline sync",
+        "background lifecycle",
+        "device permissions",
+        "app store release",
+        "mobile navigation"
       ]
     },
     {
@@ -560,7 +744,19 @@
       ],
       "summary": "Measure bottlenecks first and optimize the dominant cause with regression checks.",
       "provenance": "original-extremis-content",
-      "evaluation_cases": 5
+      "evaluation_cases": 5,
+      "keywords": [
+        "profiling",
+        "performance tuning",
+        "latency",
+        "throughput",
+        "CPU usage",
+        "memory usage",
+        "bottleneck analysis",
+        "benchmarking",
+        "caching",
+        "load time"
+      ]
     },
     {
       "name": "presentation-design",
@@ -596,7 +792,15 @@
       ],
       "summary": "Map personal-data flows and assess purpose, minimization, safeguards, retention, and user impact.",
       "provenance": "original-extremis-content",
-      "evaluation_cases": 5
+      "evaluation_cases": 5,
+      "keywords": [
+        "privacy assessment",
+        "data minimization",
+        "personal data flows",
+        "retention policy",
+        "privacy risks",
+        "consent review"
+      ]
     },
     {
       "name": "process-mapping",
@@ -614,7 +818,15 @@
       ],
       "summary": "Map a real process, expose bottlenecks, and recommend measurable improvements.",
       "provenance": "original-extremis-content",
-      "evaluation_cases": 5
+      "evaluation_cases": 5,
+      "keywords": [
+        "business process",
+        "workflow mapping",
+        "process bottlenecks",
+        "swimlane diagram",
+        "process improvement",
+        "handoff analysis"
+      ]
     },
     {
       "name": "procurement-analysis",
@@ -633,7 +845,17 @@
       ],
       "summary": "Compare vendors and purchasing options using transparent lifecycle-cost and risk criteria.",
       "provenance": "original-extremis-content",
-      "evaluation_cases": 8
+      "evaluation_cases": 8,
+      "keywords": [
+        "vendor selection",
+        "supplier evaluation",
+        "total cost of ownership",
+        "RFP",
+        "weighted scorecard",
+        "contract review",
+        "sourcing",
+        "vendor due diligence"
+      ]
     },
     {
       "name": "product-analytics",
@@ -652,7 +874,17 @@
       ],
       "summary": "Define product metrics, event instrumentation, funnels, cohorts, and experiments.",
       "provenance": "original-extremis-content",
-      "evaluation_cases": 8
+      "evaluation_cases": 8,
+      "keywords": [
+        "event tracking",
+        "funnel analysis",
+        "user retention",
+        "cohort analysis",
+        "activation metrics",
+        "feature adoption",
+        "A/B testing",
+        "product instrumentation"
+      ]
     },
     {
       "name": "product-discovery",
@@ -670,7 +902,15 @@
       ],
       "summary": "Turn uncertain product ideas into testable user-problem and solution hypotheses.",
       "provenance": "original-extremis-content",
-      "evaluation_cases": 5
+      "evaluation_cases": 5,
+      "keywords": [
+        "user problem",
+        "customer discovery",
+        "product hypothesis",
+        "problem interviews",
+        "solution validation",
+        "product opportunity"
+      ]
     },
     {
       "name": "project-management",
@@ -688,7 +928,18 @@
       ],
       "summary": "Turn project goals into an executable plan with ownership, dependencies, and control points.",
       "provenance": "original-extremis-content",
-      "evaluation_cases": 5
+      "evaluation_cases": 5,
+      "keywords": [
+        "project plan",
+        "milestones",
+        "dependencies",
+        "task tracking",
+        "delivery tracking",
+        "schedule management",
+        "project status",
+        "owners and deadlines",
+        "risk register"
+      ]
     },
     {
       "name": "quality-assurance",
@@ -711,6 +962,18 @@
       "not_for": [
         "standalone definitions of unit, integration, or testing concepts without a quality plan or test decision",
         "implementation of one isolated function using TDD without broader QA strategy"
+      ],
+      "keywords": [
+        "QA",
+        "test strategy",
+        "test plan",
+        "regression tests",
+        "acceptance testing",
+        "test automation",
+        "flaky tests",
+        "release gates",
+        "test coverage",
+        "test matrix"
       ]
     },
     {
@@ -729,7 +992,17 @@
       ],
       "summary": "Structure reliability evidence, failure modes, mitigations, and measurable operational goals.",
       "provenance": "original-extremis-content",
-      "evaluation_cases": 5
+      "evaluation_cases": 5,
+      "keywords": [
+        "MTBF",
+        "MTTR",
+        "availability analysis",
+        "failure modes",
+        "reliability metrics",
+        "failure rate",
+        "maintenance intervals",
+        "recovery time"
+      ]
     },
     {
       "name": "repository-audit",
@@ -747,7 +1020,15 @@
       ],
       "summary": "Inspect a repository and report evidence-backed findings.",
       "provenance": "original-extremis-content",
-      "evaluation_cases": 5
+      "evaluation_cases": 5,
+      "keywords": [
+        "codebase audit",
+        "codebase inventory",
+        "architecture review",
+        "dependency audit",
+        "dead code",
+        "repository health"
+      ]
     },
     {
       "name": "requirements-engineering",
@@ -766,7 +1047,17 @@
       ],
       "summary": "Transform stakeholder needs into testable, traceable requirements.",
       "provenance": "original-extremis-content",
-      "evaluation_cases": 8
+      "evaluation_cases": 8,
+      "keywords": [
+        "product requirements",
+        "system requirements",
+        "acceptance criteria",
+        "traceability matrix",
+        "stakeholder needs",
+        "user stories",
+        "functional requirements",
+        "non-functional requirements"
+      ]
     },
     {
       "name": "research-synthesis",
@@ -783,7 +1074,16 @@
       ],
       "summary": "Produce source-grounded research with explicit uncertainty.",
       "provenance": "original-extremis-content",
-      "evaluation_cases": 5
+      "evaluation_cases": 5,
+      "keywords": [
+        "evidence synthesis",
+        "research summary",
+        "source comparison",
+        "research findings",
+        "literature synthesis",
+        "cross-source analysis",
+        "evidence review"
+      ]
     },
     {
       "name": "scientific-data-analysis",
@@ -801,7 +1101,17 @@
       ],
       "summary": "Produce reproducible data analysis with suitable methods, diagnostics, and limitations.",
       "provenance": "original-extremis-content",
-      "evaluation_cases": 5
+      "evaluation_cases": 5,
+      "keywords": [
+        "statistical analysis",
+        "scientific computing",
+        "experimental data",
+        "measurement uncertainty",
+        "reproducible analysis",
+        "hypothesis testing",
+        "data cleaning",
+        "statistical methods"
+      ]
     },
     {
       "name": "search-optimization",
@@ -824,6 +1134,18 @@
       "not_for": [
         "simple definitions of search keywords without a website discovery task",
         "standalone brand tagline writing without organic search or website optimization"
+      ],
+      "keywords": [
+        "SEO",
+        "search engine optimization",
+        "organic search",
+        "indexing",
+        "crawlability",
+        "metadata",
+        "sitemap",
+        "canonical tags",
+        "structured data",
+        "search visibility"
       ]
     },
     {
@@ -842,7 +1164,14 @@
       ],
       "summary": "Identify and prioritize defensive code risks with evidence and practical remediation.",
       "provenance": "original-extremis-content",
-      "evaluation_cases": 5
+      "evaluation_cases": 5,
+      "keywords": [
+        "security code review",
+        "vulnerability review",
+        "input validation",
+        "authorization flaws",
+        "secure implementation"
+      ]
     },
     {
       "name": "skill-authoring",
@@ -932,7 +1261,17 @@
       ],
       "summary": "Connect stakeholder needs to verifiable system requirements and lifecycle decisions.",
       "provenance": "original-extremis-content",
-      "evaluation_cases": 5
+      "evaluation_cases": 5,
+      "keywords": [
+        "systems architecture",
+        "system requirements",
+        "interface management",
+        "trade studies",
+        "subsystem allocation",
+        "verification and validation",
+        "lifecycle engineering",
+        "requirements traceability"
+      ]
     },
     {
       "name": "technical-documentation",
@@ -965,7 +1304,18 @@
       ],
       "summary": "Turn complex requests into scoped, verifiable plans.",
       "provenance": "original-extremis-content",
-      "evaluation_cases": 5
+      "evaluation_cases": 5,
+      "keywords": [
+        "implementation plan",
+        "task decomposition",
+        "project sequencing",
+        "rollout plan",
+        "milestones",
+        "dependency planning",
+        "acceptance criteria",
+        "delivery planning",
+        "technical roadmap"
+      ]
     },
     {
       "name": "test-driven-development",
@@ -983,7 +1333,15 @@
       ],
       "summary": "Develop behavior through a verified failing test, a minimal implementation, and regression checks.",
       "provenance": "original-extremis-content",
-      "evaluation_cases": 5
+      "evaluation_cases": 5,
+      "keywords": [
+        "TDD",
+        "red green refactor",
+        "test first",
+        "unit test first",
+        "regression tests",
+        "test-driven implementation"
+      ]
     },
     {
       "name": "threat-modeling",
@@ -1001,7 +1359,15 @@
       ],
       "summary": "Map assets, trust boundaries, threats, mitigations, and residual risk for an authorized system.",
       "provenance": "original-extremis-content",
-      "evaluation_cases": 5
+      "evaluation_cases": 5,
+      "keywords": [
+        "attack surface",
+        "trust boundaries",
+        "security threats",
+        "mitigation",
+        "threat scenarios",
+        "STRIDE"
+      ]
     },
     {
       "name": "ux-audit",
@@ -1019,7 +1385,15 @@
       ],
       "summary": "Review real user journeys and turn observed usability issues into prioritized fixes.",
       "provenance": "original-extremis-content",
-      "evaluation_cases": 5
+      "evaluation_cases": 5,
+      "keywords": [
+        "usability review",
+        "user flows",
+        "heuristic evaluation",
+        "information architecture",
+        "user journey",
+        "interaction design"
+      ]
     }
   ]
 }

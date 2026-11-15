@@ -9,13 +9,13 @@ It does not launch agents, call APIs, grant permissions, browse the web, or perf
 ## Current retrieval pipeline
 
 1. **Load catalogue:** read `registry/skills-index.json` and each indexed `SKILL.md`. Reject paths that resolve outside the repository root.
-2. **Build searchable fields:** keep skill name, summary, description, category, prerequisites, and the complete instruction body separate.
+2. **Build searchable fields:** keep skill name, summary, curated alternate keywords, description, category, prerequisites, negative scope boundaries, and the complete instruction body separate.
 3. **Tokenize:** lowercase terms, discard a small stop-word list, and use the Python standard library only.
 4. **Rank:** calculate field-weighted BM25. Skill name and summary receive the strongest weights; full skill text remains searchable so procedural requirements can distinguish skills with similar descriptions.
 5. **Explain:** return matched terms, fields, retrieval score, package path, prerequisites, and category.
 6. **Compose:** take a bounded candidate set and suppress only near-duplicate content above a conservative Jaccard threshold. Return alternatives separately.
 
-The ranking score is an internal retrieval signal, not a calibrated probability. The registry can carry explicit `not_for` boundaries; matching those terms applies a negative field weight so common near-miss requests are less likely to select a skill. These boundaries are curated scope guidance, not an authorization or safety mechanism. The current implementation is deterministic: identical catalogue contents and input query produce the same ordering.
+Curated `keywords` provide alternate task vocabulary, while `not_for` describes common near-misses and applies a negative BM25 field weight. The ranking score is an internal retrieval signal, not a calibrated probability. The registry can carry explicit `not_for` boundaries; matching those terms applies a negative field weight so common near-miss requests are less likely to select a skill. These boundaries are curated scope guidance, not an authorization or safety mechanism. The current implementation is deterministic: identical catalogue contents and input query produce the same ordering.
 
 ## Commands
 

@@ -24,11 +24,12 @@ STOPWORDS = {
 FIELD_WEIGHTS = {
     "name": 5.0,
     "summary": 3.2,
+    "keywords": 3.5,
     "description": 2.4,
     "category": 1.3,
     "body": 1.0,
     "prerequisites": 0.6,
-    "not_for": -4.5,
+    "not_for": -10.0,
 }
 BM25_K1 = 1.5
 BM25_B = 0.72
@@ -101,6 +102,7 @@ def load_catalog(root: Path = ROOT) -> list[dict[str, Any]]:
             "skill_file": skill_path.relative_to(root.resolve()).as_posix(),
             "category": str(entry.get("category", "")),
             "summary": str(entry.get("summary", "")),
+            "keywords": " ".join(str(item) for item in entry.get("keywords", []) if isinstance(item, str)),
             "description": fields.get("description", ""),
             "body": body,
             "prerequisites": " ".join(str(item) for item in prerequisites),
