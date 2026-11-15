@@ -148,14 +148,20 @@ export function createContext({ cwd = process.cwd(), root, allow = DEFAULT_ALLOW
       need('network', 'network access');
       const maxBytes = options.maxBytes || 5 * 1024 * 1024;
       let current = url;
+      let method = (options.method || 'GET').toUpperCase();
+      let body = options.body;
+      let headers = { 'user-agent': 'extremis/1 (+https://github.com/FAHTHIZ/EXTREMIS)', ...(options.headers || {}) };
+      const redirects = [];
       for (let hop = 0; hop <= 5; hop += 1) {
         await assertPublicUrl(current, env);
-        const response = await fetch(current, {
-          method: options.method || 'GET', headers: { 'user-agent': 'extremis/1 (+https://github.com/FAHTHIZ/EXTREMIS)', ...(options.headers || {}) },
-          body: options.body, redirect: 'manual', signal: options.signal || AbortSignal.timeout(options.timeoutMs || 15000),
-        });
-        if ([301, 302, 303, 307, 308].includes(response.status) && response.headers.get('location')) {
-          current = new URL(response.headers.get('location'), current).toString();
+        const response = await fetch(current, { method, headers, body, redirect: 'manual', signal: options.signal || AbortSignal.timeout(options.timeoutMs || 15000) });
+        if ([301, 302, 303, 307, 308].includes(response.status) && response.headers.get('location') && options.followRedirects !== false) {
+          const next = new URL(response.headers.get('location'), current);
+          redirects.push({ status: response.status, from: current, to: next.toString() });
+          if (response.status === 303 || ((response.status === 301 || response.status === 302) && method === 'POST')) { method = 'GET'; body = undefined; }
+          if (next.origin !== new URL(current).origin) headers = Object.fromEntries(Object.entries(headers).filter(([k]) => !/^(authorization|cookie|proxy-authorization)$/i.test(k)));
+          current = next.toString();
+          await response.body?.cancel().catch(() => {});
           continue;
         }
         const reader = response.body?.getReader();
@@ -169,7 +175,7 @@ export function createContext({ cwd = process.cwd(), root, allow = DEFAULT_ALLOW
             chunks.push(value);
           }
         }
-        return { url: current, status: response.status, headers: Object.fromEntries(response.headers), body: Buffer.concat(chunks.map((c) => Buffer.from(c))), truncated };
+        return { url: current, status: response.status, headers: Object.fromEntries(response.headers), body: Buffer.concat(chunks.map((c) => Buffer.from(c))), truncated, redirects };
       }
       throw new ToolError('too_many_redirects', 'more than 5 redirects');
     },

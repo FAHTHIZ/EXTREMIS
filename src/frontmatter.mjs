@@ -6,7 +6,9 @@
 // without a dependency. Plain scalars stay strings: the Agent Skills metadata field is
 // defined as string -> string, and hosts interpret booleans themselves.
 
-const KEY_RE = /^([A-Za-z0-9_.\-/]+|"[^"]*"|'[^']*')\s*:(?:\s+|$)(.*)$/;
+// Keys: quoted, or a plain scalar that does not start with a YAML indicator and
+// contains no ": " (so "/pets/{id}", "application/json" and "x-rate-limit" work).
+const KEY_RE = /^("[^"]*"|'[^']*'|[^\s"'#[\]{},&*!|>%@`:-][^:]*?|-[^\s:][^:]*?)\s*:(?:\s+|$)(.*)$/;
 
 export class FrontmatterError extends Error {}
 
@@ -35,9 +37,11 @@ export function parseSkillDocument(text) {
 }
 
 /** Parse the YAML subset described above. */
-export function parseYamlSubset(text) {
-  const lines = String(text).split('\n').map((line, index) => ({ line, index }));
-  const state = { lines, pos: 0 };
+export function parseYamlSubset(text, { typed = false } = {}) {
+  const lines = String(text).replace(/\r\n?/g, '\n').split('\n')
+    .filter((line) => !/^(---|\.\.\.)\s*$/.test(line) && !/^%/.test(line))
+    .map((line, index) => ({ line: line.replace(/\t/g, '  '), index }));
+  const state = { lines, pos: 0, typed };
   skipBlank(state);
   if (state.pos >= lines.length) return {};
   const indent = indentOf(lines[state.pos].line);
@@ -133,8 +137,8 @@ function parseValue(state, rest, parentIndent) {
     return '';
   }
   if (/^[|>][+-]?\d*$/.test(value)) return parseBlockScalar(state, value, parentIndent);
-  if (value.startsWith('[')) return parseFlow(collectFlow(state, value, '[', ']'));
-  if (value.startsWith('{')) return parseFlow(collectFlow(state, value, '{', '}'));
+  if (value.startsWith('[')) return parseFlow(collectFlow(state, value, '[', ']'), state.typed);
+  if (value.startsWith('{')) return parseFlow(collectFlow(state, value, '{', '}'), state.typed);
   if (value.startsWith('"')) return parseDoubleQuoted(collectQuoted(state, value, '"'));
   if (value.startsWith("'")) return collectQuoted(state, value, "'").slice(1, -1).replace(/''/g, "'");
   // Plain multi-line scalars: continuation lines indented deeper than the key.
@@ -145,7 +149,22 @@ function parseValue(state, rest, parentIndent) {
     text += ' ' + stripComment(next).trim();
     state.pos += 1;
   }
-  return text;
+  return state.typed ? coerceScalar(text) : text;
+}
+
+/** YAML 1.2 core-schema resolution for plain scalars (used with { typed: true }). */
+export function coerceScalar(text) {
+  const t = text.trim();
+  if (t === '' || t === '~' || /^(null|Null|NULL)$/.test(t)) return t === '' ? '' : null;
+  if (/^(true|True|TRUE)$/.test(t)) return true;
+  if (/^(false|False|FALSE)$/.test(t)) return false;
+  if (/^[-+]?(0|[1-9][0-9]*)$/.test(t)) { const n = Number(t); return Number.isSafeInteger(n) ? n : t; }
+  if (/^0x[0-9a-fA-F]+$/.test(t)) return parseInt(t, 16);
+  if (/^0o[0-7]+$/.test(t)) return parseInt(t.slice(2), 8);
+  if (/^[-+]?(\.[0-9]+|[0-9]+(\.[0-9]*)?)([eE][-+]?[0-9]+)?$/.test(t)) return Number(t);
+  if (/^[-+]?\.(inf|Inf|INF)$/.test(t)) return t.startsWith('-') ? -Infinity : Infinity;
+  if (/^\.(nan|NaN|NAN)$/.test(t)) return NaN;
+  return t;
 }
 
 function stripComment(text) {
@@ -243,7 +262,7 @@ function collectFlow(state, value, open, close) {
   return text;
 }
 
-function parseFlow(text) {
+function parseFlow(text, typed = false) {
   let i = 0;
   const ws = () => { while (i < text.length && /\s/.test(text[i])) i += 1; };
   const scalar = (stops) => {
@@ -260,7 +279,7 @@ function parseFlow(text) {
     while (j < text.length && !stops.includes(text[j])) j += 1;
     const raw = text.slice(i, j).trim();
     i = j;
-    return raw;
+    return typed && !stops.includes(':') ? coerceScalar(raw) : raw;
   };
   const value = () => {
     ws();

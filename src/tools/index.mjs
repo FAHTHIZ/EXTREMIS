@@ -4,8 +4,12 @@
 import data from './data.mjs';
 import code from './code.mjs';
 import security from './security.mjs';
+import analysis from './analysis.mjs';
+import docs from './docs.mjs';
+import web from './web.mjs';
+import api from './api.mjs';
 
-const MODULES = [data, code, security];
+const MODULES = [data, code, security, analysis, docs, web, api];
 const TOOLS = new Map();
 for (const list of MODULES) for (const tool of list) {
   if (TOOLS.has(tool.id)) throw new Error(`duplicate built-in tool id ${tool.id}`);
