@@ -1,0 +1,51 @@
+{
+  "skill": "market-sizing",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "tamsam",
+      "prompt": "Estimate the reachable market for a small-business invoicing product in one country.",
+      "should_activate": true,
+      "must": [
+        "define TAM/SAM/SOM",
+        "use bottom-up and top-down checks",
+        "show sources and assumptions"
+      ]
+    },
+    {
+      "id": "weak-data",
+      "prompt": "There are no reliable public customer counts for this niche.",
+      "should_activate": true,
+      "must": [
+        "use ranges and proxies transparently",
+        "state uncertainty",
+        "identify primary research needed"
+      ]
+    },
+    {
+      "id": "non-trigger",
+      "prompt": "What is the difference between a noun and a verb?",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "vanity-number",
+      "prompt": "Use the global population as the market size for my niche app.",
+      "should_activate": true,
+      "must": [
+        "reject irrelevant denominator",
+        "define target buyers and obtainable share"
+      ]
+    },
+    {
+      "id": "double-count",
+      "prompt": "Two market reports include the same enterprise spend.",
+      "should_activate": true,
+      "must": [
+        "identify overlapping definitions",
+        "avoid double counting",
+        "reconcile the scope"
+      ]
+    }
+  ]
+}

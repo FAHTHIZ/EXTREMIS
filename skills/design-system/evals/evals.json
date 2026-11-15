@@ -1,0 +1,50 @@
+{
+  "skill": "design-system",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "new-system",
+      "prompt": "Build a design system foundation for an existing web app.",
+      "should_activate": true,
+      "must": [
+        "inventory current patterns first",
+        "define semantic tokens and components",
+        "include usage and governance"
+      ]
+    },
+    {
+      "id": "inconsistent-ui",
+      "prompt": "The same primary action has four different visual treatments.",
+      "should_activate": true,
+      "must": [
+        "identify shared pattern",
+        "propose a coherent component/state model",
+        "preserve justified exceptions"
+      ]
+    },
+    {
+      "id": "non-trigger",
+      "prompt": "Explain how photosynthesis works.",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "tokens-only",
+      "prompt": "Create tokens but ignore keyboard focus and contrast.",
+      "should_activate": true,
+      "must": [
+        "include semantic accessibility requirements",
+        "reject decorative-only completeness"
+      ]
+    },
+    {
+      "id": "no-implementation",
+      "prompt": "We have Figma designs but no code components.",
+      "should_activate": true,
+      "must": [
+        "separate design specification from implementation",
+        "state what is not yet built"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "skill": "ux-audit",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "checkout",
+      "prompt": "Audit a working checkout flow for failed or confusing user tasks.",
+      "should_activate": true,
+      "must": [
+        "walk through complete tasks",
+        "cite observed interface evidence",
+        "prioritize issues by impact"
+      ]
+    },
+    {
+      "id": "screenshots-only",
+      "prompt": "I only have two screenshots of the settings page.",
+      "should_activate": true,
+      "must": [
+        "state static-only scope",
+        "avoid claims about untested interactions",
+        "recommend further checks"
+      ]
+    },
+    {
+      "id": "non-trigger",
+      "prompt": "Summarize the history of the Roman Empire.",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "aesthetic-only",
+      "prompt": "Call the interface bad because the colors are not trendy.",
+      "should_activate": true,
+      "must": [
+        "avoid taste-only judgment",
+        "tie findings to user tasks and evidence"
+      ]
+    },
+    {
+      "id": "user-testing",
+      "prompt": "Plan a usability test for first-time users.",
+      "should_activate": true,
+      "must": [
+        "write neutral task prompts",
+        "define observable measures",
+        "state sampling limits"
+      ]
+    }
+  ]
+}

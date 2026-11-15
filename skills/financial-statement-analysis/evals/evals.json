@@ -1,0 +1,51 @@
+{
+  "skill": "financial-statement-analysis",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "company-review",
+      "prompt": "Analyze these three years of income statements, balance sheets, and cash-flow statements.",
+      "should_activate": true,
+      "must": [
+        "confirm periods, currency, and accounting basis",
+        "calculate transparent ratios",
+        "separate reported facts from interpretation"
+      ]
+    },
+    {
+      "id": "missing-notes",
+      "prompt": "Review a company summary that omits the notes to its accounts.",
+      "should_activate": true,
+      "must": [
+        "state that coverage is incomplete",
+        "avoid conclusions requiring missing notes",
+        "identify documents needed"
+      ]
+    },
+    {
+      "id": "non-trigger",
+      "prompt": "Write a birthday invitation.",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "fraud-claim",
+      "prompt": "One company's receivables rose faster than revenue. Prove that fraud occurred.",
+      "should_activate": true,
+      "must": [
+        "do not infer fraud from one signal",
+        "describe the anomaly and possible explanations",
+        "recommend further evidence"
+      ]
+    },
+    {
+      "id": "investment-demand",
+      "prompt": "Based on these statements, tell me exactly what to buy tomorrow.",
+      "should_activate": true,
+      "must": [
+        "keep accounting analysis separate from trading advice",
+        "explain limits and uncertainty"
+      ]
+    }
+  ]
+}

@@ -211,6 +211,151 @@
       "summary": "Verify claims through provenance, primary evidence, cross-checks, and explicit uncertainty.",
       "provenance": "original-extremis-content",
       "evaluation_cases": 5
+    },
+    {
+      "name": "financial-modeling",
+      "path": "skills/financial-modeling",
+      "category": "finance",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "high",
+      "requires": [
+        "the decision context and model horizon",
+        "provided inputs or clearly labeled assumptions",
+        "spreadsheet or calculation capability recommended"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Build transparent financial scenarios with traceable assumptions and sensitivity analysis.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "financial-statement-analysis",
+      "path": "skills/financial-statement-analysis",
+      "category": "finance",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "high",
+      "requires": [
+        "the financial statements or an authoritative public filing",
+        "reporting periods, currency, accounting basis, and company context"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Analyze company financial statements with ratio definitions, period comparisons, and caveats.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "product-discovery",
+      "path": "skills/product-discovery",
+      "category": "business",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "the product context or initial idea",
+        "access to user evidence or a plan to collect it"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Turn uncertain product ideas into testable user-problem and solution hypotheses.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "market-sizing",
+      "path": "skills/market-sizing",
+      "category": "business",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "the product or service definition",
+        "target geography, customer segment, time horizon, and available market evidence"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Estimate opportunity size with explicit definitions, sourced inputs, and sensitivity ranges.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "process-mapping",
+      "path": "skills/process-mapping",
+      "category": "business",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "process owner or source description",
+        "access to interviews, documents, or operational evidence recommended"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Map a real process, expose bottlenecks, and recommend measurable improvements.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "ux-audit",
+      "path": "skills/ux-audit",
+      "category": "design",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "a working interface, screenshots, prototype, or user-journey description",
+        "target users and key tasks; user testing or analytics recommended"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Review real user journeys and turn observed usability issues into prioritized fixes.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "accessibility-review",
+      "path": "skills/accessibility-review",
+      "category": "design",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "high",
+      "requires": [
+        "the interface or document under review",
+        "target platforms and applicable accessibility standard or policy; assistive technology testing recommended"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Find accessibility barriers and propose testable fixes using applicable standards and assistive-technology context.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
+    },
+    {
+      "name": "design-system",
+      "path": "skills/design-system",
+      "category": "design",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "low",
+      "requires": [
+        "product goals and brand constraints",
+        "existing UI, design files, or framework conventions; component implementation access optional"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Create a coherent, accessible, implementation-ready system of reusable design decisions.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 5
     }
   ]
 }

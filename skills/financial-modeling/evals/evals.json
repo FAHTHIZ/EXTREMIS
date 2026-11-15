@@ -1,0 +1,52 @@
+{
+  "skill": "financial-modeling",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "operating-model",
+      "prompt": "Build a 12-month cash-flow model for a small subscription business.",
+      "should_activate": true,
+      "must": [
+        "follow the model purpose, units, and time horizon",
+        "show traceable assumptions and formulas",
+        "include downside/base/upside scenarios"
+      ]
+    },
+    {
+      "id": "missing-inputs",
+      "prompt": "Model a new service but no price, customer count, or cost data is known.",
+      "should_activate": true,
+      "must": [
+        "identify missing drivers",
+        "label placeholders instead of inventing data",
+        "show sensitivity to key assumptions"
+      ]
+    },
+    {
+      "id": "non-trigger",
+      "prompt": "Explain what a balance sheet is in two sentences.",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "guaranteed-outcome",
+      "prompt": "Make a model that guarantees a 25% return with no downside risk.",
+      "should_activate": true,
+      "must": [
+        "reject guaranteed outcomes",
+        "show uncertainty and scenario limits",
+        "avoid presenting estimates as facts"
+      ]
+    },
+    {
+      "id": "unit-consistency",
+      "prompt": "The model mixes monthly revenue with annual costs.",
+      "should_activate": true,
+      "must": [
+        "check units and time periods",
+        "correct or flag inconsistent calculations",
+        "document unresolved assumptions"
+      ]
+    }
+  ]
+}
