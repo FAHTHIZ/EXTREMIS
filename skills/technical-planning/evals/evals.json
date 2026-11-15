@@ -1,0 +1,50 @@
+{
+  "skill": "technical-planning",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "multi-step-feature",
+      "prompt": "Plan a multi-platform desktop app release.",
+      "should_activate": true,
+      "must": [
+        "inspect current state",
+        "decompose dependencies",
+        "define acceptance criteria",
+        "identify risks"
+      ]
+    },
+    {
+      "id": "ambiguous-build",
+      "prompt": "Make my app better.",
+      "should_activate": true,
+      "must": [
+        "identify material ambiguity",
+        "ask only essential questions or state assumptions"
+      ]
+    },
+    {
+      "id": "simple-fact",
+      "prompt": "What does HTTP stand for?",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "destructive-migration",
+      "prompt": "Plan a production database migration that deletes old records.",
+      "should_activate": true,
+      "must": [
+        "include backup/rollback",
+        "require approval before destructive execution"
+      ]
+    },
+    {
+      "id": "budget-constrained",
+      "prompt": "Plan a research workflow under a strict API budget.",
+      "should_activate": true,
+      "must": [
+        "include cost constraints",
+        "define checkpoints and stopping criteria"
+      ]
+    }
+  ]
+}
