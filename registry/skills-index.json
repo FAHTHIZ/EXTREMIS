@@ -348,6 +348,25 @@
       "evaluation_cases": 5
     },
     {
+      "name": "knowledge-management",
+      "path": "skills/knowledge-management",
+      "category": "productivity",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "knowledge sources and intended users or workflows",
+        "available repository, wiki, or document-management capabilities",
+        "content ownership, access rules, and retention requirements where known"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Structure trusted knowledge bases with ownership, provenance, and review cycles.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 8
+    },
+    {
       "name": "learning-design",
       "path": "skills/learning-design",
       "category": "education",
@@ -384,6 +403,25 @@
       "evaluation_cases": 5
     },
     {
+      "name": "localization",
+      "path": "skills/localization",
+      "category": "creative-communication",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "source content and intended languages or regions",
+        "audience, product context, tone, and terminology guidance",
+        "qualified native-language review for consequential or culturally sensitive material"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Adapt product content and interfaces for languages, regions, and cultural contexts.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 8
+    },
+    {
       "name": "market-sizing",
       "path": "skills/market-sizing",
       "category": "business",
@@ -400,6 +438,25 @@
       "summary": "Estimate opportunity size with explicit definitions, sourced inputs, and sensitivity ranges.",
       "provenance": "original-extremis-content",
       "evaluation_cases": 5
+    },
+    {
+      "name": "marketing-strategy",
+      "path": "skills/marketing-strategy",
+      "category": "marketing",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "medium",
+      "requires": [
+        "product or service, value proposition, and current business stage",
+        "target audience, geography, budget, and time horizon where known",
+        "customer research, performance data, and brand or legal constraints where available"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Create evidence-led positioning, audience, channel, and campaign strategies.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 8
     },
     {
       "name": "meeting-synthesis",
@@ -654,6 +711,25 @@
       "summary": "Produce reproducible data analysis with suitable methods, diagnostics, and limitations.",
       "provenance": "original-extremis-content",
       "evaluation_cases": 5
+    },
+    {
+      "name": "search-optimization",
+      "path": "skills/search-optimization",
+      "category": "marketing",
+      "version": "0.1.0",
+      "maturity": "draft",
+      "risk": "low",
+      "requires": [
+        "website or representative pages and the intended audience",
+        "access to crawl/indexing information or analytics where available",
+        "current search-engine documentation for changing technical requirements"
+      ],
+      "hosts": [
+        "agent-skills-compatible"
+      ],
+      "summary": "Improve discoverability through useful content and technically sound websites.",
+      "provenance": "original-extremis-content",
+      "evaluation_cases": 8
     },
     {
       "name": "secure-code-review",

@@ -100,15 +100,6 @@
       ]
     },
     {
-      "name": "productivity",
-      "summary": "Coordinate projects, synthesize meetings, and preserve decisions.",
-      "skills": [
-        "project-management",
-        "meeting-synthesis",
-        "decision-log"
-      ]
-    },
-    {
       "name": "data",
       "summary": "Analyze structured datasets, communicate patterns, and measure product behavior.",
       "skills": [
@@ -119,11 +110,20 @@
       ]
     },
     {
+      "name": "marketing",
+      "summary": "Improve audience understanding and ethical product discoverability.",
+      "skills": [
+        "marketing-strategy",
+        "search-optimization"
+      ]
+    },
+    {
       "name": "creative-communication",
-      "summary": "Write original content and design presentations with evidence and audience fit.",
+      "summary": "Write, localize, and design communications with audience and context fit.",
       "skills": [
         "content-writing",
-        "presentation-design"
+        "presentation-design",
+        "localization"
       ]
     },
     {
@@ -131,6 +131,16 @@
       "summary": "Triage support requests and guide customers through verified next steps.",
       "skills": [
         "customer-support"
+      ]
+    },
+    {
+      "name": "productivity",
+      "summary": "Coordinate projects, preserve decisions, and maintain organizational knowledge.",
+      "skills": [
+        "project-management",
+        "meeting-synthesis",
+        "decision-log",
+        "knowledge-management"
       ]
     }
   ]
