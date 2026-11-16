@@ -98,7 +98,7 @@ async function download(url, { env = process.env, fetchImpl = fetch, accept } = 
     await assertPublicUrl(current.href, env).catch((error) => {
       throw new InstallError('blocked_source', error.message);
     });
-    const host = current.hostname.replace(/^\\[|\\]$/g, '').toLowerCase();
+    const host = current.hostname.replace(/^\[|\]$/g, '').toLowerCase();
     const loopback = ['127.0.0.1', 'localhost', '::1'].includes(host);
     if (current.protocol !== 'https:' && env.EXTREMIS_ALLOW_INSECURE_INSTALL !== '1' && !loopback) {
       throw new InstallError('insecure_source', `refusing to install over plain HTTP: ${current.href} (set EXTREMIS_ALLOW_INSECURE_INSTALL=1 to override)`);
@@ -162,7 +162,7 @@ function verifyDigest(data, digest, what) {
 async function gitFetch(source, env) {
   const isScp = /^git@/i.test(source.url);
   let protocol;
-  if (isScp || /^ssh:\/\//i.test(source.url)) {
+  if (isScp || source.url.toLowerCase().startsWith('ssh://')) {
     if (env.EXTREMIS_ALLOW_SSH_GIT !== '1') {
       throw new InstallError('unsupported_transport', 'SSH Git sources are disabled by default; use HTTPS or explicitly set EXTREMIS_ALLOW_SSH_GIT=1 for a trusted source');
     }
@@ -217,7 +217,7 @@ async function gitFetch(source, env) {
     return { dir, commit: stdout.trim() };
   } catch (error) {
     await rm(dir, { recursive: true, force: true });
-    const detail = String(error.stderr || error.message).trim().split('\\n').slice(-2).join(' ');
+    const detail = String(error.stderr || error.message).trim().split('\n').slice(-2).join(' ');
     throw new InstallError('fetch_failed', `git fetch failed for ${source.url}${source.ref ? '#' + source.ref : ''}: ${detail}`);
   }
 }
