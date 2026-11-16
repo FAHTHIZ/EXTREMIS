@@ -1,55 +1,79 @@
-# Marketplace integration plan
+# Distribution and marketplace integration
 
-**Status:** design guidance only. EXTREMIS does not currently ship a custom installer, marketplace service, or runtime plugin.
+**Current status:** EXTREMIS now ships a capability installer, lockfile, update/removal commands, archive handling, and a static security scanner. It also ships a shared Node.js service, MCP server, CLI, and JavaScript SDK. It does **not** yet operate a hosted marketplace or provide a completed native adapter for every agent host.
 
 ## Product direction
 
-Keep the skill library portable, then let a host agent project install it through one command and expose its capabilities in that project's native marketplace. The marketplace should distribute a versioned package, not paste every instruction into every session.
+Keep capability packages portable and host-neutral. Let EXTREMIS manage source resolution, integrity, installation scope, and lifecycle state; let an agent host or marketplace own its native discovery paths, UI, permissions prompts, and runtime-specific features.
 
-## Package layers
+A marketplace should distribute versioned, inspectable packages—not paste every capability instruction into every model session.
 
-1. **Portable skill content:** `skills/<skill-name>/SKILL.md`, with optional `references/`, `scripts/`, and `assets/` loaded only when needed.
-2. **Catalog metadata:** stable skill IDs, descriptions, domains, versions, prerequisites, risk, maturity, provenance, and evaluation references.
-3. **Host adapter:** translates portable package metadata into the host's supported discovery path and plugin format. Host-specific hooks, commands, sub-agents, and connectors remain separate artifacts.
-4. **Optional integrations:** executable tools or connectors with explicit permissions, declared network/data access, and independent versioning. A skill must never pretend to grant these capabilities.
+## Package structure
 
-## Installer and lifecycle requirements
+A capability package is a directory containing:
 
-- Support install, list, update, remove, and inspect operations.
-- Support project-local and user-global installation where the host permits it.
-- Pin installs to an immutable tag or commit and record installed package versions in a lockfile.
-- Store content hashes for package files and verify integrity before installation and after updates.
-- Preserve user changes; use atomic updates with rollback rather than partially replacing a working installation.
-- Do not execute bundled scripts during installation. Show their purpose and require the host's normal approval path before use.
-- Resolve only declared dependencies. Detect incompatible versions, missing prerequisites, and conflicting skills.
-- Make install/update output auditable: package source, version, commit, files changed, and host target.
+- `SKILL.md`: portable instructions and required frontmatter.
+- `capability.json`: optional EXTREMIS metadata for domain, tools, permissions, dependencies, risk, workflow steps, and verification checks.
+- Optional references, assets, and scripts, loaded or executed only when a host explicitly chooses to do so.
+
+The built-in catalog lives under `capabilities/`. User-installed packages are stored under `~/.extremis/capabilities`; project installs use `.extremis/capabilities`.
+
+## Shipped distribution lifecycle
+
+The current CLI provides:
+
+| Operation | Command | Behavior |
+| --- | --- | --- |
+| Install | `extremis install <source>` | Collect, validate, scan, stage, and install selected capabilities |
+| Project install | `extremis install <source> --project` | Store packages and lockfile in the current project |
+| Inspect installed | `extremis lock` | List EXTREMIS-managed packages and recorded provenance |
+| Verify integrity | `extremis lock --verify` | Detect modified, missing, and untracked packages |
+| Update | `extremis update` | Re-fetch locked sources, rescan, and update changed content |
+| Remove | `extremis remove <name...>` | Remove managed packages and update the lockfile |
+| Scan | `extremis scan <directory>` | Run the static scanner without installing |
+
+Supported source types include local folders, GitHub repository/subdirectory references, Git remotes, individual `SKILL.md` URLs, supported archives, and Agent Skills well-known indexes. Remote HTTPS is preferred. Plain HTTP and SSH Git require explicit opt-ins; local `file://` Git sources are intended for local repositories.
+
+Installation does not execute bundled scripts. Every candidate is collected in memory, validated, scanned, staged, and then installed. Dangerous scan verdicts are blocked; caution findings require explicit acceptance after review. The lockfile records source identity, commit/digest where available, content hash, scan summary, and timestamps.
+
+See [the security model](security.md) for transport policy, trust boundaries, and limitations.
+
+## Integration layers
+
+1. **Portable package format:** the Agent Skills directory convention plus optional EXTREMIS manifest fields.
+2. **Shared service:** catalog discovery, search, plan composition, activation, resource reads, tool execution, and verification.
+3. **Generic integrations:** MCP server, CLI, and JavaScript SDK.
+4. **Host-specific adapters:** translate the shared API into each host's native installation, discovery, approval, and tool conventions. These require independent compatibility tests.
+5. **Marketplace service:** a future registry/discovery/distribution layer with maintainer identity, releases, metadata review, and reporting.
+
+The MCP gateway is a generic integration path, not proof that every MCP host supports every optional extension or that a host-specific marketplace adapter is complete.
 
 ## Marketplace listing and trust
 
 Every listing should expose:
-- package maintainer and source repository;
-- package version, release date, and last review date;
+
+- maintainer identity and canonical source repository;
+- immutable version/tag or resolved commit;
+- release date, last review date, and change history;
 - license and required attribution;
-- supported host/adapter versions, each backed by an install and behavior test;
-- included skills and optional integrations;
-- declared permissions, dependencies, risk, and network access;
-- provenance and change history;
-- evaluation coverage and actual benchmark results, clearly separated.
+- included capabilities, workflows, references, scripts, and optional integrations;
+- supported hosts and adapter versions, each backed by installation and behavior tests;
+- declared permissions, dependencies, risk, and network/data access;
+- scanner findings and provenance/integrity metadata;
+- evaluation coverage and actual behavioral results, clearly separated from authored fixtures.
 
-Downloads, stars, or popularity can help discovery, but must not be presented as quality certification. Distinguish author-provided fixtures from independently run behavioral results.
+Downloads, stars, and popularity may help discovery, but must never be presented as quality certification. A clean static scan is not proof of safety, and a passing routing fixture is not proof that a model follows a capability correctly.
 
-## Security model
+## Remaining roadmap
 
-Treat third-party skill content as untrusted instructions. Validate metadata and file paths, block path traversal, cap archive sizes, and verify hashes. Keep installation separate from execution. Require explicit user approval for external integrations, sensitive data access, or actions with meaningful side effects. Do not allow a package to override host/system policies or silently widen permissions.
+1. Publish a versioned, discoverable registry with maintainer and release metadata.
+2. Define signing and verification for releases and registry metadata; content hashes alone do not authenticate publishers.
+3. Build and test host-specific adapters against real host versions and permission UX.
+4. Establish a maintained compatibility matrix for MCP clients, SDK consumers, and native host integrations.
+5. Add independent behavioral evaluations and a clear review lifecycle.
+6. Add marketplace workflows for reporting, delisting, revocation, and security advisories.
 
-## Suggested integration sequence
-
-1. Select the target host's documented marketplace/package format and decide the project license.
-2. Define and publish a versioned EXTREMIS package manifest and JSON schema.
-3. Build a thin installer/adapter that maps the portable skill catalog into the host.
-4. Add immutable releases, lockfile support, hashes, rollback, and package audit output.
-5. Publish a marketplace listing with host compatibility and evaluation evidence.
-6. Add discovery/ranking only after selection quality and behavioral evaluation are measurable.
+Avoid a second package format unless a target host demonstrably requires one. Keep portable instructions separate from hooks, tools, connectors, and agent-runtime features.
 
 ## Ecosystem references
 
@@ -59,4 +83,4 @@ Treat third-party skill content as untrusted instructions. Validate metadata and
 - [Anthropic skill authoring guidance](https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md)
 - [Superpowers](https://github.com/obra/superpowers)
 
-The exact marketplace format should be chosen only after inspecting the target OSS project's current plugin architecture. Do not create a second incompatible package format prematurely.
+Treat external projects as architectural references, not implementation dependencies or evidence of equivalent performance.
