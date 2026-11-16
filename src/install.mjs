@@ -82,24 +82,75 @@ export function parseSource(spec, { cwd = process.cwd(), env = process.env } = {
 
 // ------------------------------------------------------------------ fetching
 
-async function download(url, { env, fetchImpl = fetch, accept } = {}) {
-  await assertPublicUrl(url, env).catch((error) => { throw new InstallError('blocked_source', error.message); });
-  const parsed = new URL(url);
-  if (parsed.protocol !== 'https:' && env.EXTREMIS_ALLOW_INSECURE_INSTALL !== '1' && !['127.0.0.1', 'localhost', '::1', '[::1]'].includes(parsed.hostname)) {
-    throw new InstallError('insecure_source', `refusing to install over plain HTTP: ${url} (set EXTREMIS_ALLOW_INSECURE_INSTALL=1 to override)`);
+const REDIRECT_STATUSES = new Set([301, 302, 303, 307, 308]);
+
+async function download(url, { env = process.env, fetchImpl = fetch, accept } = {}) {
+  let current;
+  try { current = new URL(url); } catch { throw new InstallError('invalid_source', `invalid download URL: ${url}`); }
+  const headers = accept ? { accept } : {};
+  for (let hop = 0; hop <= 5; hop += 1) {
+    if (!['https:', 'http:'].includes(current.protocol)) {
+      throw new InstallError('blocked_source', `refusing download protocol ${current.protocol}`);
+    }
+    if (current.username || current.password) {
+      throw new InstallError('blocked_source', 'download URLs must not contain embedded credentials');
+    }
+    await assertPublicUrl(current.href, env).catch((error) => {
+      throw new InstallError('blocked_source', error.message);
+    });
+    const host = current.hostname.replace(/^\\[|\\]$/g, '').toLowerCase();
+    const loopback = ['127.0.0.1', 'localhost', '::1'].includes(host);
+    if (current.protocol !== 'https:' && env.EXTREMIS_ALLOW_INSECURE_INSTALL !== '1' && !loopback) {
+      throw new InstallError('insecure_source', `refusing to install over plain HTTP: ${current.href} (set EXTREMIS_ALLOW_INSECURE_INSTALL=1 to override)`);
+    }
+
+    const response = await fetchImpl(current.href, {
+      redirect: 'manual',
+      headers,
+      signal: AbortSignal.timeout(15000),
+    }).catch((error) => {
+      throw new InstallError('fetch_failed', `cannot fetch ${current.href}: ${error.message}`);
+    });
+
+    if (REDIRECT_STATUSES.has(response.status)) {
+      const location = response.headers.get('location');
+      await response.body?.cancel?.().catch(() => {});
+      if (!location) throw new InstallError('invalid_redirect', `redirect from ${current.href} has no Location header`);
+      let next;
+      try { next = new URL(location, current); } catch { throw new InstallError('invalid_redirect', `invalid redirect destination from ${current.href}`); }
+      if (!['https:', 'http:'].includes(next.protocol)) {
+        throw new InstallError('blocked_source', `refusing redirect to unsupported protocol ${next.protocol}`);
+      }
+      if (next.username || next.password) throw new InstallError('blocked_source', 'redirect destination contains embedded credentials');
+      current = next;
+      continue;
+    }
+
+    if (!response.ok) throw new InstallError('fetch_failed', `cannot fetch ${current.href}: HTTP ${response.status}`);
+    const declared = Number(response.headers.get('content-length'));
+    if (Number.isFinite(declared) && declared > MAX_DOWNLOAD) {
+      await response.body?.cancel?.().catch(() => {});
+      throw new InstallError('too_large', `${current.href} is larger than ${MAX_DOWNLOAD} bytes`);
+    }
+    const chunks = [];
+    let total = 0;
+    if (response.body) {
+      for await (const chunk of response.body) {
+        total += chunk.length;
+        if (total > MAX_DOWNLOAD) {
+          await response.body.cancel?.().catch(() => {});
+          throw new InstallError('too_large', `${current.href} is larger than ${MAX_DOWNLOAD} bytes`);
+        }
+        chunks.push(Buffer.from(chunk));
+      }
+    }
+    return { data: Buffer.concat(chunks), contentType: response.headers.get('content-type') || '', url: current.href };
   }
-  const response = await fetchImpl(url, { redirect: 'follow', headers: accept ? { accept } : {} }).catch((error) => { throw new InstallError('fetch_failed', `cannot fetch ${url}: ${error.message}`); });
-  if (!response.ok) throw new InstallError('fetch_failed', `cannot fetch ${url}: HTTP ${response.status}`);
-  const declared = Number(response.headers.get('content-length'));
-  if (declared > MAX_DOWNLOAD) throw new InstallError('too_large', `${url} is larger than ${MAX_DOWNLOAD} bytes`);
-  const chunks = [];
-  let total = 0;
-  for await (const chunk of response.body) {
-    total += chunk.length;
-    if (total > MAX_DOWNLOAD) throw new InstallError('too_large', `${url} is larger than ${MAX_DOWNLOAD} bytes`);
-    chunks.push(chunk);
-  }
-  return { data: Buffer.concat(chunks.map((c) => Buffer.from(c))), contentType: response.headers.get('content-type') || '', url: response.url || url };
+  throw new InstallError('too_many_redirects', 'download exceeded the five-redirect limit');
+}
+}
+
+function sha256
 }
 
 function sha256(data) { return createHash('sha256').update(data).digest('hex'); }
@@ -113,21 +164,70 @@ function verifyDigest(data, digest, what) {
 }
 
 async function gitFetch(source, env) {
+  const isScp = /^git@/i.test(source.url);
+  let protocol;
+  if (isScp || /^ssh:\/\//i.test(source.url)) {
+    if (env.EXTREMIS_ALLOW_SSH_GIT !== '1') {
+      throw new InstallError('unsupported_transport', 'SSH Git sources are disabled by default; use HTTPS or explicitly set EXTREMIS_ALLOW_SSH_GIT=1 for a trusted source');
+    }
+    protocol = 'ssh';
+  } else {
+    let remote;
+    try { remote = new URL(source.url); } catch { throw new InstallError('invalid_source', `invalid Git remote: ${source.url}`); }
+    protocol = remote.protocol.replace(':', '');
+    if (remote.username || remote.password) throw new InstallError('invalid_source', 'Git remote URLs must not contain embedded credentials');
+    if (protocol === 'file') {
+      if (remote.hostname && remote.hostname !== 'localhost') {
+        throw new InstallError('invalid_source', 'file Git sources must refer to the local machine');
+      }
+    } else if (protocol === 'https' || protocol === 'http') {
+      if (protocol === 'http' && env.EXTREMIS_ALLOW_INSECURE_INSTALL !== '1') {
+        throw new InstallError('insecure_source', 'plain HTTP Git remotes require EXTREMIS_ALLOW_INSECURE_INSTALL=1');
+      }
+      await assertPublicUrl(remote.href, env).catch((error) => {
+        throw new InstallError('blocked_source', error.message);
+      });
+    } else {
+      throw new InstallError('unsupported_transport', `Git transport ${protocol} is not supported`);
+    }
+  }
+
   const dir = await mkdtemp(path.join(os.tmpdir(), 'extremis-git-'));
-  const gitEnv = { ...env, GIT_TERMINAL_PROMPT: '0', GIT_ASKPASS: 'echo', GIT_CONFIG_NOSYSTEM: '1' };
-  const git = (args) => run('git', args, { cwd: dir, env: gitEnv, maxBuffer: 16 * 1024 * 1024, timeout: 120000 });
+  const nullDevice = os.platform() === 'win32' ? 'NUL' : '/dev/null';
+  const gitEnv = {
+    ...env,
+    GIT_TERMINAL_PROMPT: '0',
+    GIT_ASKPASS: 'echo',
+    GIT_CONFIG_NOSYSTEM: '1',
+    GIT_CONFIG_GLOBAL: nullDevice,
+    GCM_INTERACTIVE: 'Never',
+  };
+  const config = [
+    '-c', 'protocol.allow=never',
+    '-c', 'protocol.ext.allow=never',
+    '-c', `protocol.${protocol}.allow=always`,
+    '-c', 'http.followRedirects=false',
+    '-c', 'credential.helper=',
+    '-c', `core.hooksPath=${nullDevice}`,
+  ];
+  const git = (args) => run('git', [...config, ...args], {
+    cwd: dir, env: gitEnv, maxBuffer: 16 * 1024 * 1024, timeout: 120000,
+  });
   try {
     await git(['init', '-q']);
-    // Protocol hardening: no ext:: transports, no submodule recursion, no hooks.
-    await git(['-c', 'protocol.ext.allow=never', '-c', 'core.hooksPath=/dev/null', 'fetch', '-q', '--depth', '1', '--no-tags', source.url, source.ref || 'HEAD']);
-    await git(['-c', 'core.hooksPath=/dev/null', '-c', 'core.symlinks=true', 'checkout', '-q', 'FETCH_HEAD']);
+    await git(['fetch', '-q', '--depth', '1', '--no-tags', '--no-recurse-submodules', source.url, source.ref || 'HEAD']);
+    await git(['-c', 'core.symlinks=true', 'checkout', '-q', 'FETCH_HEAD']);
     const { stdout } = await git(['rev-parse', 'HEAD']);
     return { dir, commit: stdout.trim() };
   } catch (error) {
     await rm(dir, { recursive: true, force: true });
-    const detail = String(error.stderr || error.message).trim().split('\n').slice(-2).join(' ');
+    const detail = String(error.stderr || error.message).trim().split('\\n').slice(-2).join(' ');
     throw new InstallError('fetch_failed', `git fetch failed for ${source.url}${source.ref ? '#' + source.ref : ''}: ${detail}`);
   }
+}
+}
+
+/** Find skill directories
 }
 
 /** Find skill directories under root (depth-limited, skipping vendored trees). */
