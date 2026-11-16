@@ -93,8 +93,37 @@ export function createContext({ cwd = process.cwd(), root, allow = DEFAULT_ALLOW
     if (typeof p !== 'string' || !p) throw new ToolError('invalid_path', 'path must be a non-empty string');
     const abs = path.resolve(cwd, p);
     if (!isInside(workspace, abs)) throw new ToolError('path_outside_workspace', `path is outside the workspace root (${workspace}): ${p}`);
-    const real = mustExist ? await realpath(abs).catch(() => { throw new ToolError('not_found', `no such file or directory: ${p}`); }) : abs;
     const realRoot = await realpath(workspace).catch(() => workspace);
+    let real;
+    if (mustExist) {
+      real = await realpath(abs).catch(() => { throw new ToolError('not_found', `no such file or directory: ${p}`); });
+    } else {
+      // Resolve the nearest existing ancestor before creating anything. Checking
+      // only the lexical path lets a symlinked parent escape the workspace.
+      let cursor = abs;
+      const missing = [];
+      while (true) {
+        try {
+          const info = await lstat(cursor);
+          if (info.isSymbolicLink()) throw new ToolError('path_symlink', `refusing to write through a symbolic link: ${p}`);
+          break;
+        } catch (error) {
+          if (error instanceof ToolError) throw error;
+          if (error.code !== 'ENOENT') throw error;
+          const parent = path.dirname(cursor);
+          if (parent === cursor) throw new ToolError('invalid_path', `cannot resolve a safe parent for: ${p}`);
+          missing.unshift(path.basename(cursor));
+          cursor = parent;
+        }
+      }
+      const realAncestor = await realpath(cursor).catch(() => {
+        throw new ToolError('not_found', `no existing parent directory for: ${p}`);
+      });
+      if (!isInside(realRoot, realAncestor)) {
+        throw new ToolError('path_outside_workspace', `path is outside the workspace root (${workspace}): ${p}`);
+      }
+      real = path.join(realAncestor, ...missing);
+    }
     if (!isInside(realRoot, real)) throw new ToolError('path_outside_workspace', `path is outside the workspace root (${workspace}): ${p}`);
     const segments = path.relative(realRoot, real).split(path.sep);
     if (segments.some((s) => DENIED_SEGMENTS.includes(s))) throw new ToolError('path_denied', `access to credential stores is not allowed: ${p}`);
