@@ -149,9 +149,6 @@ async function download(url, { env = process.env, fetchImpl = fetch, accept } = 
   throw new InstallError('too_many_redirects', 'download exceeded the five-redirect limit');
 }
 
-function sha256
-}
-
 function sha256(data) { return createHash('sha256').update(data).digest('hex'); }
 
 function verifyDigest(data, digest, what) {
@@ -223,9 +220,6 @@ async function gitFetch(source, env) {
     const detail = String(error.stderr || error.message).trim().split('\\n').slice(-2).join(' ');
     throw new InstallError('fetch_failed', `git fetch failed for ${source.url}${source.ref ? '#' + source.ref : ''}: ${detail}`);
   }
-}
-
-/** Find skill directories
 }
 
 /** Find skill directories under root (depth-limited, skipping vendored trees). */
