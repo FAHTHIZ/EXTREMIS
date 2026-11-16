@@ -1,232 +1,211 @@
 # EXTREMIS
 
 <p align="center"><strong>One intelligence. Endless capabilities.</strong></p>
-<p align="center">A portable, quality-controlled capability library for AI agents.</p>
+<p align="center">A portable capability runtime and supply-chain toolkit for AI agents.</p>
 
-EXTREMIS is an evolving open capability library for agent hosts. It combines focused skills, workflows, references, and evaluation fixtures. Its core follows the open Agent Skills directory convention so compatible hosts can discover and load capabilities without depending on one model vendor.
+EXTREMIS gives compatible agent hosts a shared way to discover, activate, compose, run, and verify reusable capabilities. It combines the open Agent Skills directory convention with a Node.js service layer, permission-gated tools, an MCP server, CLI, JavaScript SDK, installer, lockfile, and static security scanner.
+
+It is designed to work independently and integrate with different agent runtimes. EXTREMIS is not a model or an agent host: the host remains responsible for reasoning, user approval, and the final conversation.
+
+## What is included
+
+- **Capability catalog:** built-in and user-installed skills, workflows, manifests, references, and dependencies.
+- **Progressive activation:** compact discovery cards first, full instructions and tool schemas when activated, and individual resources on demand.
+- **Task composition:** capability planning, dependency closure, phase ordering, and verification checklists.
+- **Tool runtime:** schema validation, explicit permission checks, workspace-aware built-in file operations, timeouts, and output limits.
+- **Integrations:** a shared JavaScript service, MCP server, CLI, and SDK.
+- **Distribution controls:** Git/URL/local installation, project or user scope, content hashes, lockfile drift detection, updates, removal, archive validation, and security scanning.
+- **Quality checks:** offline routing fixtures, capability linting, and diagnostics.
+
+## Requirements
+
+- Node.js 18.17 or newer.
+- Git for installing Git-backed sources.
+- No runtime third-party dependencies are required by the core package.
 
 ## Install
 
-Use the open Skills CLI to install the repository into supported agent hosts:
+Add EXTREMIS to an existing Node.js project:
 
 ```bash
-npx skills add FAHTHIZ/EXTREMIS --all
+npm install github:FAHTHIZ/EXTREMIS
 ```
 
-Install one capability for a chosen host:
+Or clone the repository for development:
 
 ```bash
-npx skills add FAHTHIZ/EXTREMIS --skill mobile-engineering --agent claude-code
+git clone https://github.com/FAHTHIZ/EXTREMIS.git
+cd EXTREMIS
+npm test
+npm run validate
+npm run eval
 ```
 
-The CLI provides cross-host installation and management. EXTREMIS itself is the portable catalog, not a custom installer or marketplace service. Host support and runtime behavior must be verified for each agent.
-
-## What it is
-
-- Portable skills using the open Agent Skills structure.
-- A curated catalog with scope, prerequisites, risk, version, provenance, and evaluation fixtures.
-- Composable capabilities that load on demand.
-- A host-neutral core that does not assume all agents have the same tools or permissions.
-
-## What it is not
-
-- A model, agent runtime, or source of model weights.
-- A replacement for browsers, shells, APIs, databases, credentials, or other tools.
-- A guarantee that loading instructions makes a model an expert.
-- A reason to load every skill into every conversation.
-
-## Library
-
-The catalog contains **54 skills across 15 domains**.
-
-### Meta
-
-Maintain the capability library itself.
-
-- [Skill Authoring](skills/skill-authoring/SKILL.md)
-
-### Software Engineering
-
-Build, inspect, test, review, document, and evolve software.
-
-- [Repository Audit](skills/repository-audit/SKILL.md)
-- [Debugging](skills/debugging/SKILL.md)
-- [Test Driven Development](skills/test-driven-development/SKILL.md)
-- [Code Review](skills/code-review/SKILL.md)
-- [API Design](skills/api-design/SKILL.md)
-- [Database Design](skills/database-design/SKILL.md)
-- [Technical Documentation](skills/technical-documentation/SKILL.md)
-- [Mobile Engineering](skills/mobile-engineering/SKILL.md)
-- [Quality Assurance](skills/quality-assurance/SKILL.md)
-- [Backend Engineering](skills/backend-engineering/SKILL.md)
-- [Devops Release](skills/devops-release/SKILL.md)
-- [Frontend Engineering](skills/frontend-engineering/SKILL.md)
-- [Performance Optimization](skills/performance-optimization/SKILL.md)
-
-### Research
-
-Investigate questions, review literature, and verify source claims.
-
-- [Research Synthesis](skills/research-synthesis/SKILL.md)
-- [Literature Review](skills/literature-review/SKILL.md)
-- [Source Verification](skills/source-verification/SKILL.md)
-
-### Finance
-
-Analyze statements and model business scenarios with visible assumptions.
-
-- [Financial Modeling](skills/financial-modeling/SKILL.md)
-- [Financial Statement Analysis](skills/financial-statement-analysis/SKILL.md)
-
-### Business
-
-Discover product opportunities, estimate markets, improve processes, and evaluate suppliers.
-
-- [Product Discovery](skills/product-discovery/SKILL.md)
-- [Market Sizing](skills/market-sizing/SKILL.md)
-- [Process Mapping](skills/process-mapping/SKILL.md)
-- [Competitive Analysis](skills/competitive-analysis/SKILL.md)
-- [Procurement Analysis](skills/procurement-analysis/SKILL.md)
-
-### Design
-
-Evaluate UX, accessibility, and reusable design systems.
-
-- [UX Audit](skills/ux-audit/SKILL.md)
-- [Accessibility Review](skills/accessibility-review/SKILL.md)
-- [Design System](skills/design-system/SKILL.md)
-
-### Education
-
-Support learners and design structured learning experiences.
-
-- [Study Coaching](skills/study-coaching/SKILL.md)
-- [Learning Design](skills/learning-design/SKILL.md)
-
-### Science
-
-Design ethical studies and analyze scientific data reproducibly.
-
-- [Experimental Design](skills/experimental-design/SKILL.md)
-- [Scientific Data Analysis](skills/scientific-data-analysis/SKILL.md)
-
-### Engineering
-
-Translate system needs into requirements and assess resilience and operations.
-
-- [Technical Planning](skills/technical-planning/SKILL.md)
-- [Systems Engineering](skills/systems-engineering/SKILL.md)
-- [Reliability Analysis](skills/reliability-analysis/SKILL.md)
-- [Cloud Architecture](skills/cloud-architecture/SKILL.md)
-- [Incident Management](skills/incident-management/SKILL.md)
-- [Requirements Engineering](skills/requirements-engineering/SKILL.md)
-
-### Security
-
-Defensively review authorized systems and reduce security/privacy risks.
-
-- [Secure Code Review](skills/secure-code-review/SKILL.md)
-- [Threat Modeling](skills/threat-modeling/SKILL.md)
-- [Privacy Impact Review](skills/privacy-impact-review/SKILL.md)
-
-### Data
-
-Analyze structured datasets, communicate patterns, and measure product behavior.
-
-- [Data Analysis](skills/data-analysis/SKILL.md)
-- [Data Visualization](skills/data-visualization/SKILL.md)
-- [Spreadsheet Analysis](skills/spreadsheet-analysis/SKILL.md)
-- [Product Analytics](skills/product-analytics/SKILL.md)
-
-### Marketing
-
-Improve audience understanding and ethical product discoverability.
-
-- [Marketing Strategy](skills/marketing-strategy/SKILL.md)
-- [Search Optimization](skills/search-optimization/SKILL.md)
-
-### Creative Communication
-
-Write, localize, and design communications with audience and context fit.
-
-- [Content Writing](skills/content-writing/SKILL.md)
-- [Presentation Design](skills/presentation-design/SKILL.md)
-- [Localization](skills/localization/SKILL.md)
-
-### Customer Operations
-
-Triage support requests and guide customers through verified next steps.
-
-- [Customer Support](skills/customer-support/SKILL.md)
-
-### Productivity
-
-Coordinate projects, preserve decisions, and maintain organizational knowledge.
-
-- [Project Management](skills/project-management/SKILL.md)
-- [Meeting Synthesis](skills/meeting-synthesis/SKILL.md)
-- [Decision Log](skills/decision-log/SKILL.md)
-- [Knowledge Management](skills/knowledge-management/SKILL.md)
-
-See the [domain map](docs/domain-map.md), [skill index](registry/skills-index.json), and [domain registry](registry/domains.json).
-
-## Librarian
-
-The dependency-free Librarian searches skill names, summaries, descriptions, categories, prerequisites, and full instruction bodies. It uses weighted BM25 ranking, then proposes a small, non-duplicative skill set. The selector returns suggestions; it does not execute instructions or grant tools or permissions.
-
-Find relevant skills:
+Check the environment and catalog:
 
 ```bash
-python scripts/librarian.py find "build a native app with offline forms"
+npx extremis doctor
+npx extremis list
+npx extremis tools
 ```
 
-Compose a small set for a task:
+## CLI quick start
+
+Discover capabilities and compose a task plan:
 
 ```bash
-python scripts/librarian.py compose "review onboarding events and retention metrics" --max-skills 4
+npx extremis search "review a TypeScript repository"
+npx extremis plan "audit a Node.js API for reliability and security"
+npx extremis activate repository-audit debugging
 ```
 
-Inspect a package or browse a domain:
+Inspect and run a built-in tool (the caller must have the required permission):
 
 ```bash
-python scripts/librarian.py inspect mobile-engineering
-python scripts/librarian.py list --domain software-engineering
+npx extremis tools
+npx extremis tool data.profile
+npx extremis run data.profile path=./data/sales.csv
 ```
 
-The ranking score is a retrieval score, **not a probability or confidence rating**. See [Librarian architecture](docs/librarian.md) for selection logic, limitations, and host-integration guidance.
-
-## Selection and execution
-
-1. Ask the Librarian for candidates or call its Python API from a host adapter.
-2. Check task fit, prerequisites, trust, host compatibility, risk, and overlaps.
-3. Load only selected instructions and directly relevant references.
-4. Execute using tools actually available to the host and permissions granted by the user.
-5. Verify output against acceptance criteria and report what was not tested.
-6. Improve skills using evaluation failures and user feedback without silently broadening scope.
-
-## Quality and evaluation
-
-Every skill has at least five evaluation fixtures. The 11 newest packages have eight realistic activation and boundary cases each (88 in total). Fixtures are test inputs, **not benchmark results**: they do not prove a model follows the skill. Behavioral evaluation must record model, host, evaluator, date, test set, and scoring method.
-
-Run checks:
+Validate the catalog, inspect routing quality, and diagnose the runtime:
 
 ```bash
-python scripts/validate_skills.py
-python -m unittest discover -s tests -v
-python scripts/evaluate_librarian.py
+npx extremis validate
+npx extremis eval
+npx extremis doctor
 ```
 
-## Documentation
+### Install external capabilities
 
-- [Domain map](docs/domain-map.md)
-- [Librarian architecture](docs/librarian.md)
-- [Landscape review](docs/landscape-review.md)
-- [Marketplace integration plan](docs/marketplace-integration.md)
-- [Host compatibility](docs/host-compatibility.md)
-- [Skill quality and lifecycle](docs/skill-quality.md)
+Install from a GitHub repository or subdirectory:
 
-## Status and licensing
+```bash
+npx extremis install anthropics/skills/skills/pdf
+```
 
-EXTREMIS is in the library-building stage. All skills remain **draft** until reviewed and behaviorally evaluated. The Librarian now provides a deterministic full-text baseline and an offline routing evaluation report. Next priorities are model-assisted/semantic reranking behind optional adapters, real agent behavior evaluation, host adapters, package integrity/update handling, and marketplace integration.
+Install into the current project instead of the user profile:
 
-A project license has not yet been selected. Do not assume reuse or redistribution rights until a license is added. This must be resolved before broad third-party distribution or marketplace publication.
+```bash
+npx extremis install anthropics/skills/skills/pdf --project
+```
+
+Inspect installed capabilities and verify their lockfile hashes:
+
+```bash
+npx extremis lock
+npx extremis lock --verify
+npx extremis update
+npx extremis remove pdf
+```
+
+Scan a capability directory before trusting it:
+
+```bash
+npx extremis scan ./path/to/capability
+```
+
+A dangerous finding blocks installation. A caution result requires explicit `--accept-risk` after reviewing the findings. Do not use that flag as a routine workaround.
+
+Supported sources include local capability folders, GitHub repository/subdirectory references, HTTPS Git remotes, HTTPS `SKILL.md` URLs, archives, and Agent Skills well-known indexes. Local `file://` Git sources are intended for local repositories. SSH Git transport is disabled by default and requires the explicit `EXTREMIS_ALLOW_SSH_GIT=1` opt-in. Plain HTTP downloads and Git remotes require `EXTREMIS_ALLOW_INSECURE_INSTALL=1`; prefer HTTPS.
+
+## MCP integration
+
+Start the stdio server:
+
+```bash
+npx extremis mcp
+```
+
+The gateway exposes six stable tools:
+
+- `extremis_search`
+- `extremis_plan`
+- `extremis_activate`
+- `extremis_read`
+- `extremis_run`
+- `extremis_verify`
+
+The server also exposes capability instructions and resources through the Agent Skills-over-MCP extension. Optional direct tool exposure is available with `--expose-tools=dynamic` or `--expose-tools=all`. The default gateway is the safer starting point.
+
+Example host configuration when the package is installed in the current project:
+
+```json
+{
+  "mcpServers": {
+    "extremis": {
+      "command": "node",
+      "args": ["./node_modules/extremis/bin/extremis.mjs", "mcp"]
+    }
+  }
+}
+```
+
+MCP compatibility depends on the target host and client version. Verify connection, tool discovery, resource reads, and permission behavior in the actual host.
+
+## JavaScript SDK
+
+Use the same shared service without starting an MCP process:
+
+```js
+import { createExtremis } from "extremis";
+
+const extremis = createExtremis({
+  cwd: process.cwd(),
+  allow: ["read"]
+});
+
+const plan = await extremis.plan("profile a CSV and summarize missing values");
+const context = await extremis.activate(plan.capabilities.map((item) => item.name));
+console.log(context);
+```
+
+Grant only the permissions required by the task. The default allowlist is read-only. Write, network, and subprocess execution require explicit permission.
+
+## Architecture
+
+```text
+Agent host
+  ├─ MCP server
+  ├─ CLI
+  └─ JavaScript SDK
+        │
+        ▼
+  Shared EXTREMIS service
+        ├─ Catalog and discovery
+        ├─ Planning and dependency resolution
+        ├─ Progressive activation and resource reads
+        ├─ Permission-gated tool runner
+        └─ Verification
+              │
+              ▼
+  Capability packages + built-in tools
+        └─ Installer, scanner, hashes, and lockfile
+```
+
+The host remains responsible for deciding whether a tool should be called and what the user has approved. EXTREMIS validates tool inputs and declared permissions; it does not replace host-side consent or operating-system isolation.
+
+## Security model and limitations
+
+Capabilities are untrusted input until reviewed. The scanner is a static heuristic, not a security certification. The tool runner is permission-gated, but arbitrary third-party scripts are ordinary subprocesses and are **not** an OS sandbox. Do not grant `exec` to untrusted capabilities.
+
+Built-in file operations enforce workspace boundaries and reject symlinked write paths. Network operations reject private-address destinations by default and validate redirect destinations. DNS checks are preflight controls, not guaranteed IP pinning or a replacement for network-level egress restrictions. Use an egress firewall or isolated environment for higher-risk workloads.
+
+Read the [security model](docs/security.md) before installing or executing third-party capabilities.
+
+## Development and quality checks
+
+```bash
+npm test
+npm run validate
+npm run eval
+```
+
+The test suite uses Node's built-in test runner. CI exercises supported Node versions across Linux, macOS, and Windows. Routing fixtures measure deterministic retrieval behavior; they do not prove that a model follows a capability correctly. Behavioral evaluations should record the model, host, evaluator, date, dataset, and scoring procedure.
+
+## Project status and license
+
+EXTREMIS is an actively evolving open-source capability layer. Capability maturity and risk metadata are advisory and should be reviewed before production use. The project is licensed under [Apache-2.0](LICENSE).
+
+## Contributing
+
+Keep changes focused and testable. Add regression tests for security-sensitive behavior, document permission and compatibility changes, and report what was tested—including anything that could not be reproduced locally.
