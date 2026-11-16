@@ -1,84 +1,115 @@
-# Librarian architecture
+# Capability discovery and planning
 
 ## Purpose
 
-The Librarian is a small, host-neutral selector that finds relevant EXTREMIS skills and proposes a compact set for a task. It is deliberately separate from the agent that executes the work.
+EXTREMIS discovery selects relevant capabilities and proposes a compact task plan. It is retrieval and composition infrastructure—not an autonomous agent, a substitute for model reasoning, or permission to execute the selected instructions.
 
-It does not launch agents, call APIs, grant permissions, browse the web, or perform task actions. The host remains responsible for execution, approvals, tool access, and verification.
+The host remains responsible for reasoning, user approval, tool access, execution decisions, and the final verification report.
 
-## Current retrieval pipeline
+## Current architecture
 
-1. **Load catalogue:** read `registry/skills-index.json` and each indexed `SKILL.md`. Reject paths that resolve outside the repository root.
-2. **Build searchable fields:** keep skill name, summary, curated alternate keywords, description, category, prerequisites, negative scope boundaries, and the complete instruction body separate.
-3. **Tokenize:** lowercase terms, discard a small stop-word list, and use the Python standard library only.
-4. **Rank:** calculate field-weighted BM25. Skill name and summary receive the strongest weights; full skill text remains searchable so procedural requirements can distinguish skills with similar descriptions.
-5. **Explain:** return matched terms, fields, retrieval score, package path, prerequisites, and category.
-6. **Compose:** take a bounded candidate set and suppress only near-duplicate content above a conservative Jaccard threshold. Return alternatives separately.
+The Node.js implementation is built around one shared service:
 
-Curated `keywords` provide alternate task vocabulary, while `not_for` describes common near-misses and applies a negative BM25 field weight. The ranking score is an internal retrieval signal, not a calibrated probability. The registry can carry explicit `not_for` boundaries; matching those terms applies a negative field weight so common near-miss requests are less likely to select a skill. These boundaries are curated scope guidance, not an authorization or safety mechanism. The current implementation is deterministic: identical catalogue contents and input query produce the same ordering.
+1. **Load the catalog.** The catalog loader discovers capability directories containing `SKILL.md` and optional `capability.json` manifests. The default precedence is project-installed, user-installed, `EXTREMIS_PATH`, then built-in capabilities.
+2. **Normalize metadata.** Frontmatter and optional manifests become a consistent capability record: name, summary, domain, keywords, intents, `not_for` boundaries, prerequisites, dependencies, tools, permissions, risk, maturity, workflows, and verification checks.
+3. **Build an in-memory index.** `src/search.mjs` indexes separate fields for name, keywords, summary, intents, description, tools, domain, and the complete instruction body.
+4. **Expand and rank queries.** The search engine uses field-weighted BM25F, conservative synonym expansion, a coordination factor, and a penalty for terms that overlap authored `not_for` boundaries. Deterministic lexical retrieval is the default; a host may provide an optional reranker.
+5. **Compose a plan.** `src/plan.mjs` prefers a clearly matching workflow where appropriate. Otherwise it uses coverage-greedy selection, resolves required dependencies, orders capabilities by phase, and merges verification checks.
+6. **Activate progressively.** Hosts can load compact discovery cards first, full instructions and tool schemas at activation, and individual resources only when needed.
 
-## Commands
+## Retrieval behavior
+
+The field weights are explicit in `src/search.mjs`. Capability names and keywords receive the strongest weights; summary, intent, and description fields provide additional task context; full instructions remain searchable at a lower per-field weight.
+
+The `not_for` field is negative retrieval evidence. It helps suppress common near-miss activations, but it is authored guidance—not an authorization rule or a safety boundary. Hosts should inspect the matched terms and selected capability scope before execution.
+
+Scores and confidence labels are retrieval signals. They are not calibrated probabilities, model confidence, quality scores, or evidence that an agent can complete the task.
+
+## CLI
+
+Search the catalog:
 
 ```bash
-# Search by a natural-language task
-python scripts/librarian.py find "build a native app with offline forms"
-
-# Suggest a compact skill set for a cross-domain task
-python scripts/librarian.py compose "review onboarding events and retention metrics" --max-skills 4
-
-# Filter by domain
-python scripts/librarian.py find "review a release test plan" --domain software-engineering
-
-# Inspect a skill's metadata and prerequisites
-python scripts/librarian.py inspect quality-assurance
-
-# List all skills in a domain
-python scripts/librarian.py list --domain research
-
-# Machine-readable output for host adapters
-python scripts/librarian.py compose "design a resilient cloud migration" --json
+npx extremis search "review a TypeScript repository"
+npx extremis search "prepare a data migration" --domain software-engineering
+npx extremis search "analyze a customer survey" --json
 ```
 
-## Python interface
+Compose a task plan:
 
-A host adapter can import `load_catalog`, `rank_documents`, `search_catalog`, and `compose_catalog` from `scripts/librarian.py`. The public CLI's JSON output is intended as a practical integration point while a versioned adapter contract is developed.
+```bash
+npx extremis plan "audit a Node.js API for reliability and security"
+npx extremis plan "analyze sales data and verify the results" --json
+```
+
+Inspect and activate selected capabilities:
+
+```bash
+npx extremis list
+npx extremis show repository-audit
+npx extremis activate repository-audit debugging
+```
+
+Run the deterministic routing evaluation:
+
+```bash
+npm run eval
+npx extremis eval --json
+npx extremis eval --misses
+```
+
+## JavaScript interface
+
+The SDK and MCP server call the same service layer used by the CLI:
+
+```js
+import { createExtremis } from "extremis";
+
+const extremis = createExtremis({
+  cwd: process.cwd(),
+  allow: ["read"]
+});
+
+const matches = await extremis.search("review a TypeScript repository");
+const plan = await extremis.plan("audit a Node.js API");
+const activated = await extremis.activate(
+  plan.capabilities.map((item) => item.name)
+);
+```
+
+The service exposes search, planning, activation, resource reads, tool discovery/execution, verification, diagnostics, and statistics. The host still decides whether to accept a plan and execute any tool.
 
 ## Evaluation
 
-Run:
+The CLI evaluation reports authored fixture performance and a separate routing holdout set. It measures:
 
-```bash
-python scripts/evaluate_librarian.py
-python scripts/evaluate_librarian.py --top-k 10 --json
-```
+- **Hit@1:** expected capability appears first for positive cases.
+- **Hit@K:** expected capability appears within the top K.
+- **MRR:** mean reciprocal rank of the expected capability.
+- **False activation:** unrelated capabilities appear for negative cases.
+- **Catalog context size:** an estimate of the tokens represented by capability cards.
 
-The report measures:
-- **Hit@1:** target skill appears first for a positive activation fixture.
-- **Hit@K:** target skill appears somewhere in the top K for a positive fixture.
-- **MRR:** mean reciprocal rank of the target skill over positive fixtures.
-- **Negative false activation:** target skill appears in the top result or top K for a negative fixture.
-
-The dataset consists of the author-written `evals/evals.json` files in the catalogue. It is not held out, and the fixture author also wrote the skill descriptions and instructions. Treat it as a smoke test and baseline, not an independent benchmark.
+Fixtures are test inputs, not model-behavior results. They do not prove that a model follows instructions, that a capability improves task outcomes, or that a host integration works. Behavioral evaluation must record the model, host, evaluator, dataset, date, and scoring procedure.
 
 ## Known limitations
 
-- Lexical retrieval can miss synonyms, paraphrases, multilingual queries, and concepts expressed with different vocabulary.
-- `not_for` boundaries are manual hints and can over-penalize a task that legitimately needs the skill; inspect `excluded_terms` in JSON output.
-- BM25 does not understand task intent, prerequisites, causal dependencies, or the actual quality of a skill.
-- The current overlap filter detects near-identical token sets; it is not semantic duplicate detection.
-- The composition step does not yet build dependency graphs or ordered multi-skill workflows.
-- The evaluator does not run agent hosts or measure whether a skill improves task outcomes.
-- Scores should not be compared across different catalogue sizes or weight configurations without a controlled benchmark.
+- Lexical matching can miss paraphrases, multilingual queries, and concepts expressed with unfamiliar vocabulary.
+- Synonym expansion and `not_for` penalties are hand-maintained heuristics; they can help or hurt depending on task context.
+- BM25F does not understand task intent in the way a reasoning model does.
+- Coverage-greedy composition is a deterministic heuristic, not an optimal plan solver.
+- Dependency closure and phase ordering use declared metadata. Incorrect manifests can produce poor plans.
+- A workflow match is only a candidate plan. The host must inspect its steps, required capabilities, tools, permissions, and verification checks.
+- The evaluator does not run agent hosts or measure end-to-end task success.
+- Scores should not be compared across catalogue snapshots or weight configurations without a controlled evaluation.
 
 ## Next architecture steps
 
-1. Add a stable JSON schema for Librarian request/response objects.
-2. Add a host adapter interface so an OSS runtime can request `find` or `compose` without shelling out.
-3. Build a held-out, human-reviewed routing dataset and measure retrieval precision/recall across task families.
-4. Add optional semantic retrieval/reranking behind a pluggable backend. Keep BM25 available as a no-model fallback.
-5. Add live skill-on/skill-off evaluation only when a host CLI and isolated execution environment are explicitly configured.
-6. Use evaluation failures to tune descriptions, body content, aliases, and composition rules—not just increase catalogue size.
+1. Maintain a human-reviewed holdout set that covers more languages, task families, and difficult near-misses.
+2. Add semantic retrieval or reranking only behind the existing optional interface and compare it to the lexical baseline.
+3. Evaluate the same tasks across real MCP hosts and SDK consumers.
+4. Add behavioral evaluations in isolated environments, with explicit permissions and reproducible model/host metadata.
+5. Use evaluation failures to improve metadata, scope boundaries, dependencies, and workflows—not merely to increase catalog size.
 
 ## Safety and trust boundary
 
-Skill files are untrusted instruction content. The Librarian treats them as searchable text only. It does not run embedded scripts, load external resources, or convert package instructions into new tool permissions. A host must apply its own policy and approval controls before execution.
+Capability instructions are untrusted content. Discovery treats them as text and metadata; it does not run scripts or grant permissions. Activation returns content and declared tool information. The runner independently validates inputs and checks permissions, while the host remains responsible for user approval and execution policy.
