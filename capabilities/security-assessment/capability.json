@@ -1,0 +1,102 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "workflow",
+  "domain": "security",
+  "version": "0.1.0",
+  "phase": "plan",
+  "summary": "Workflow: audit, threat model, secure code review, privacy review and remediation plan.",
+  "keywords": [
+    "security assessment",
+    "security review workflow",
+    "appsec assessment",
+    "remediation plan",
+    "defensive audit"
+  ],
+  "intents": [
+    "run a full security assessment of this repository",
+    "do an end-to-end appsec review and give me a remediation plan",
+    "assess our service for security and privacy risks before launch",
+    "combine a threat model with a code-level security review",
+    "produce a prioritized security findings report for this codebase"
+  ],
+  "not_for": [],
+  "requires": [],
+  "suggests": [],
+  "tools": [
+    "code.repo_map",
+    "code.dependency_inventory",
+    "security.secret_scan",
+    "security.code_patterns",
+    "privacy.pii_scan"
+  ],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "written authorization for the system in scope",
+    "repository or architecture access"
+  ],
+  "risk": "high",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": [],
+  "workflow": {
+    "steps": [
+      {
+        "id": "audit",
+        "capability": "repository-audit",
+        "goal": "Map the codebase, dependencies, secrets and container configuration",
+        "tools": [
+          "code.repo_map",
+          "code.dependency_inventory",
+          "security.secret_scan"
+        ]
+      },
+      {
+        "id": "threats",
+        "capability": "threat-modeling",
+        "goal": "Identify assets, trust boundaries and the most likely threats",
+        "after": [
+          "audit"
+        ]
+      },
+      {
+        "id": "code",
+        "capability": "secure-code-review",
+        "goal": "Check the code paths behind each high-priority threat for vulnerable patterns",
+        "tools": [
+          "security.code_patterns"
+        ],
+        "after": [
+          "threats"
+        ]
+      },
+      {
+        "id": "privacy",
+        "capability": "privacy-impact-review",
+        "goal": "Check personal-data flows, retention and exposure",
+        "tools": [
+          "privacy.pii_scan"
+        ],
+        "after": [
+          "audit"
+        ],
+        "optional": true
+      },
+      {
+        "id": "report",
+        "capability": "technical-documentation",
+        "goal": "Write a findings report ordered by severity with owners and fixes",
+        "after": [
+          "code",
+          "privacy"
+        ]
+      }
+    ],
+    "done_when": [
+      "Scope and authorization are stated",
+      "Each finding has evidence, severity, CWE where relevant and a fix",
+      "Residual risks have an owner"
+    ]
+  }
+}

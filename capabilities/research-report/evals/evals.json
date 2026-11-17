@@ -1,0 +1,45 @@
+{
+  "skill": "research-report",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "workflow-use-1",
+      "prompt": "What does the evidence say about four-day work weeks? I need a referenced write-up.",
+      "should_activate": true,
+      "must": [
+        "follow the workflow steps in dependency order",
+        "report evidence for each completed step"
+      ]
+    },
+    {
+      "id": "workflow-use-2",
+      "prompt": "Look into the current state of solid-state batteries and give me a report with sources.",
+      "should_activate": true,
+      "must": [
+        "follow the workflow steps in dependency order",
+        "report evidence for each completed step"
+      ]
+    },
+    {
+      "id": "workflow-use-3",
+      "prompt": "Prepare a briefing on microplastics in drinking water, checking the claims you include.",
+      "should_activate": true,
+      "must": [
+        "follow the workflow steps in dependency order",
+        "report evidence for each completed step"
+      ]
+    },
+    {
+      "id": "single-step-request",
+      "prompt": "Explain what a rainbow is in one sentence.",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "unrelated-request",
+      "prompt": "Suggest a name for my new cat.",
+      "should_activate": false,
+      "must": []
+    }
+  ]
+}

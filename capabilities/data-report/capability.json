@@ -1,0 +1,90 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "workflow",
+  "domain": "data",
+  "version": "0.1.0",
+  "phase": "plan",
+  "summary": "Workflow: profile, analyse, visualise and write up a dataset as a report.",
+  "keywords": [
+    "data report",
+    "analysis report",
+    "dataset to report",
+    "insights write-up",
+    "analytics workflow"
+  ],
+  "intents": [
+    "turn this CSV into a finished report with charts and conclusions",
+    "analyse this dataset end to end and write up the findings",
+    "profile, analyse and chart this data, then summarize it for stakeholders",
+    "build a data report from this spreadsheet export",
+    "give me an insights write-up from this data file"
+  ],
+  "not_for": [],
+  "requires": [],
+  "suggests": [],
+  "tools": [
+    "data.profile",
+    "data.query",
+    "stats.describe",
+    "data.chart_svg"
+  ],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "a dataset file (CSV, JSON or spreadsheet export)",
+    "the question the report should answer"
+  ],
+  "risk": "low",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": [],
+  "workflow": {
+    "steps": [
+      {
+        "id": "profile",
+        "capability": "data-analysis",
+        "goal": "Profile columns, types, missing values and duplicates before analysis",
+        "tools": [
+          "data.profile"
+        ]
+      },
+      {
+        "id": "analyse",
+        "capability": "data-analysis",
+        "goal": "Answer the question with queries and summary statistics",
+        "tools": [
+          "data.query",
+          "stats.describe"
+        ],
+        "after": [
+          "profile"
+        ]
+      },
+      {
+        "id": "chart",
+        "capability": "data-visualization",
+        "goal": "Chart the two or three findings that matter most",
+        "tools": [
+          "data.chart_svg"
+        ],
+        "after": [
+          "analyse"
+        ]
+      },
+      {
+        "id": "write",
+        "capability": "content-writing",
+        "goal": "Write the report: question, method, findings, caveats and next steps",
+        "after": [
+          "chart"
+        ]
+      }
+    ],
+    "done_when": [
+      "Data quality issues are reported before conclusions",
+      "Every number in the report traces to a query or statistic",
+      "Limitations and caveats are stated"
+    ]
+  }
+}

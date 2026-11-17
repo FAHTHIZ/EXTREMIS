@@ -1,0 +1,45 @@
+{
+  "skill": "security-assessment",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "workflow-use-1",
+      "prompt": "We are launching next month; review our repo for vulnerabilities, threats and data exposure and tell us what to fix first.",
+      "should_activate": true,
+      "must": [
+        "follow the workflow steps in dependency order",
+        "report evidence for each completed step"
+      ]
+    },
+    {
+      "id": "workflow-use-2",
+      "prompt": "I own this app and want a thorough defensive security review with a prioritized fix list.",
+      "should_activate": true,
+      "must": [
+        "follow the workflow steps in dependency order",
+        "report evidence for each completed step"
+      ]
+    },
+    {
+      "id": "workflow-use-3",
+      "prompt": "Do the whole security pass on our backend: dependencies, secrets, threat model, code patterns.",
+      "should_activate": true,
+      "must": [
+        "follow the workflow steps in dependency order",
+        "report evidence for each completed step"
+      ]
+    },
+    {
+      "id": "single-step-request",
+      "prompt": "Explain what a rainbow is in one sentence.",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "unrelated-request",
+      "prompt": "Suggest a name for my new cat.",
+      "should_activate": false,
+      "must": []
+    }
+  ]
+}

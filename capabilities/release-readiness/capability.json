@@ -1,0 +1,104 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "workflow",
+  "domain": "software-engineering",
+  "version": "0.1.0",
+  "phase": "plan",
+  "summary": "Workflow: go/no-go release check across tests, compatibility, security and reliability.",
+  "keywords": [
+    "release readiness",
+    "go no-go",
+    "ship decision",
+    "pre-release checklist",
+    "release gate"
+  ],
+  "intents": [
+    "is this build ready to release",
+    "run a go or no-go check before we ship",
+    "do a pre-release readiness review",
+    "check everything that should block this release",
+    "release gate review for the new version"
+  ],
+  "not_for": [],
+  "requires": [],
+  "suggests": [],
+  "tools": [
+    "test.parse_report",
+    "api.openapi_diff",
+    "security.secret_scan",
+    "code.dependency_inventory",
+    "container.dockerfile_lint",
+    "reliability.slo_budget",
+    "release.changelog"
+  ],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "the release candidate revision",
+    "test report, API specs and SLO data if available"
+  ],
+  "risk": "medium",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": [],
+  "workflow": {
+    "steps": [
+      {
+        "id": "tests",
+        "capability": "quality-assurance",
+        "goal": "Confirm the test report has no failures or errors",
+        "tools": [
+          "test.parse_report"
+        ]
+      },
+      {
+        "id": "compat",
+        "capability": "api-design",
+        "goal": "Check API changes for breaking changes and the version bump",
+        "tools": [
+          "api.openapi_diff"
+        ],
+        "optional": true
+      },
+      {
+        "id": "security",
+        "capability": "secure-code-review",
+        "goal": "Check for new secrets, flagged dependencies and container issues",
+        "tools": [
+          "security.secret_scan",
+          "code.dependency_inventory",
+          "container.dockerfile_lint"
+        ]
+      },
+      {
+        "id": "reliability",
+        "capability": "reliability-analysis",
+        "goal": "Confirm the error budget allows a release",
+        "tools": [
+          "reliability.slo_budget"
+        ],
+        "optional": true
+      },
+      {
+        "id": "notes",
+        "capability": "devops-release",
+        "goal": "Write release notes, rollout plan and rollback trigger",
+        "tools": [
+          "release.changelog"
+        ],
+        "after": [
+          "tests",
+          "compat",
+          "security",
+          "reliability"
+        ]
+      }
+    ],
+    "done_when": [
+      "A go or no-go decision is stated with the evidence behind it",
+      "Every blocking issue has an owner",
+      "A rollback trigger and procedure are written down"
+    ]
+  }
+}
