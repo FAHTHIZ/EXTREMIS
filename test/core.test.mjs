@@ -108,4 +108,6 @@ test('built-in workflows are well formed and selected for multi-step requests', 
   const audit = plan(catalog, index, 'audit a Node.js API for reliability and security');
   assert.equal(audit.strategy, 'composed');
   assert.equal(plan(catalog, index, 'run a full security assessment of this repository').workflow, 'security-assessment');
+  assert.equal(plan(catalog, index, 'build a data report from this spreadsheet').workflow, 'data-report');
+  assert.equal(plan(catalog, index, 'fix a broken VLOOKUP formula in this spreadsheet').strategy, 'composed');
 });

@@ -69,7 +69,7 @@
       "type": "archive",
       "description": "Use when turning a raw dataset into a finished analytical report: profile and clean the data, analyse it, chart the findings and write up conclusions with caveats.",
       "url": "data-report.tar.gz",
-      "digest": "sha256:da2317048d7786a9a8b85471b90b12f98a21b11ceef32058071d20da9e67e49f"
+      "digest": "sha256:27312621f69cf150b6a1acf22782b9ac2a05b88dcadb486caf5696c8714b4833"
     },
     {
       "name": "data-visualization",
