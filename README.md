@@ -83,6 +83,8 @@ Choose the integration that matches your agent host or application.
 | **Node.js project** — CLI + JavaScript SDK | <code>npm install github:FAHTHIZ/EXTREMIS</code> |
 | **Python project** — stdlib client, optional LangChain tools | <code>pip install "git+https://github.com/FAHTHIZ/EXTREMIS.git#subdirectory=python"</code> |
 
+The Claude Code plugin also registers a SessionStart hook that adds a ~100-token reminder to plan with EXTREMIS; set <code>EXTREMIS_SESSION_HOOK=off</code> to disable it.
+
 The skills CLI route installs the single EXTREMIS gateway skill, which tells the agent to work through the MCP tools; pair it with the MCP server. To copy capabilities directly into a project, use:
 
 ~~~bash
