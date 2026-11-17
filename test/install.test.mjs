@@ -90,7 +90,7 @@ test('scanner reports escaping symlinks and native executables', async () => {
   assert.ok(report.findings.some((f) => f.rule === 'native-executable'));
 });
 
-test('archives: tar.gz and zip unpack safely; traversal and escaping links are rejected', () => {
+test('archives: tar.gz unpacks safely; traversal and escaping links are rejected', () => {
   const files = unpackArchive(tarGz([['SKILL.md', Buffer.from(skill('arch'))], ['references/a.md', Buffer.from('ref')], ['alias.md', Buffer.alloc(0), '2', 'references/a.md']]));
   assert.deepEqual(files.map((f) => f.path).sort(), ['SKILL.md', 'alias.md', 'references/a.md']);
   assert.equal(files.find((f) => f.path === 'alias.md').data.toString(), 'ref');
@@ -101,7 +101,13 @@ test('archives: tar.gz and zip unpack safely; traversal and escaping links are r
   // wrapper directory (GitHub tarball style) is stripped
   const wrapped = unpackArchive(tarGz([['repo-main/SKILL.md', Buffer.from(skill('arch'))]]));
   assert.deepEqual(wrapped.map((f) => f.path), ['SKILL.md']);
-  // zip via system zip
+  // decompression bomb guard
+  assert.throws(() => unpackArchive(tarGz([['SKILL.md', Buffer.alloc(2048)]]), { limits: { maxTotal: 1024 } }), /size limit|too large/);
+});
+
+const hasZip = (() => { try { execFileSync('zip', ['-v'], { stdio: 'ignore' }); return true; } catch { return false; } })();
+
+test('archives: zip unpacks safely and escaping links are rejected', { skip: !hasZip || process.platform === 'win32' ? 'needs a POSIX `zip` binary and symlinks' : false }, () => {
   const root = tmp();
   makeSkill(root, 'zipped');
   writeFileSync(path.join(root, 'zipped', 'notes.txt'), 'n');
@@ -112,8 +118,6 @@ test('archives: tar.gz and zip unpack safely; traversal and escaping links are r
   symlinkSync('/etc/passwd', path.join(root, 'zipped', 'pw'));
   execFileSync('zip', ['-qry', path.join(root, 'z2.zip'), '.'], { cwd: path.join(root, 'zipped') });
   assert.throws(() => unpackArchive(readFileSync(path.join(root, 'z2.zip'))), /escapes/);
-  // decompression bomb guard
-  assert.throws(() => unpackArchive(tarGz([['SKILL.md', Buffer.alloc(2048)]]), { limits: { maxTotal: 1024 } }), /size limit|too large/);
 });
 
 test('parseSource understands local, GitHub, git and well-known specifiers', () => {
@@ -124,7 +128,7 @@ test('parseSource understands local, GitHub, git and well-known specifiers', () 
   assert.equal(parseSource('https://example.com').url, 'https://example.com/.well-known/agent-skills/index.json');
   assert.equal(parseSource('https://example.com/a/SKILL.md').type, 'skill-md');
   assert.equal(parseSource('https://example.com/a.tar.gz').type, 'archive');
-  assert.equal(parseSource('./x', { cwd: '/w' }).path, '/w/x');
+  assert.equal(parseSource('./x', { cwd: '/w' }).path, path.resolve('/w', 'x'));
 });
 
 test('install, lock, verify, update and remove from a git repository', async () => {
