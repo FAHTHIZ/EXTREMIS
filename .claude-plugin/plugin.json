@@ -1,0 +1,16 @@
+{
+  "name": "extremis",
+  "version": "0.2.0",
+  "description": "Capability layer for agents: 59 skills and workflows with permission-gated tools and executable verification, loaded on demand over MCP.",
+  "author": { "name": "FAHTHIZ", "url": "https://github.com/FAHTHIZ" },
+  "homepage": "https://github.com/FAHTHIZ/EXTREMIS",
+  "repository": "https://github.com/FAHTHIZ/EXTREMIS",
+  "license": "Apache-2.0",
+  "keywords": ["agent-skills", "mcp", "capabilities", "workflows", "verification"],
+  "mcpServers": {
+    "extremis": {
+      "command": "node",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/bin/extremis.mjs", "mcp"]
+    }
+  }
+}

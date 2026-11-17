@@ -1,0 +1,12 @@
+{
+  "name": "extremis",
+  "description": "EXTREMIS capability layer for Claude Code",
+  "owner": { "name": "FAHTHIZ", "url": "https://github.com/FAHTHIZ" },
+  "plugins": [
+    {
+      "name": "extremis",
+      "source": "./",
+      "description": "Gateway skill plus the EXTREMIS MCP server: plan, activate, run and verify 59 capabilities on demand."
+    }
+  ]
+}

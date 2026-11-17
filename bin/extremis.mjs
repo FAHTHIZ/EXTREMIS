@@ -69,7 +69,7 @@ export function parseArgs(argv) {
   }
   return { positional, flags };
 }
-const BOOLEAN_FLAGS = new Set(['json', 'help', 'version', 'verify', 'holdout', 'include_suggests', 'force', 'dry_run', 'global', 'project', 'check', 'yes', 'all', 'full', 'gateway', 'misses', 'accept_risk', 'verbose']);
+const BOOLEAN_FLAGS = new Set(['json', 'help', 'version', 'verify', 'holdout', 'include_suggests', 'force', 'dry_run', 'global', 'project', 'check', 'yes', 'all', 'full', 'gateway', 'misses', 'accept_risk', 'verbose', 'local', 'user']);
 const MULTI_FLAGS = new Set(['param', 'skill', 'target']);
 
 function coerce(v) {
