@@ -1,0 +1,45 @@
+{
+  "skill": "feature-delivery",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "workflow-use-1",
+      "prompt": "I have a ticket for CSV export; walk it through spec, tests, code, review and release.",
+      "should_activate": true,
+      "must": [
+        "follow the workflow steps in dependency order",
+        "report evidence for each completed step"
+      ]
+    },
+    {
+      "id": "workflow-use-2",
+      "prompt": "Coordinate the whole lifecycle of adding rate limiting to our API, start to finish.",
+      "should_activate": true,
+      "must": [
+        "follow the workflow steps in dependency order",
+        "report evidence for each completed step"
+      ]
+    },
+    {
+      "id": "workflow-use-3",
+      "prompt": "Help me ship a password reset feature properly, including tests and a release note.",
+      "should_activate": true,
+      "must": [
+        "follow the workflow steps in dependency order",
+        "report evidence for each completed step"
+      ]
+    },
+    {
+      "id": "single-step-request",
+      "prompt": "Explain what a rainbow is in one sentence.",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "unrelated-request",
+      "prompt": "Suggest a name for my new cat.",
+      "should_activate": false,
+      "must": []
+    }
+  ]
+}

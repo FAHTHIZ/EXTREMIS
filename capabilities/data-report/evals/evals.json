@@ -1,0 +1,45 @@
+{
+  "skill": "data-report",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "workflow-use-1",
+      "prompt": "Here is our sales export; I need a short report for the leadership meeting with a couple of charts.",
+      "should_activate": true,
+      "must": [
+        "follow the workflow steps in dependency order",
+        "report evidence for each completed step"
+      ]
+    },
+    {
+      "id": "workflow-use-2",
+      "prompt": "Take survey_results.csv and produce a write-up of what it tells us, including data quality caveats.",
+      "should_activate": true,
+      "must": [
+        "follow the workflow steps in dependency order",
+        "report evidence for each completed step"
+      ]
+    },
+    {
+      "id": "workflow-use-3",
+      "prompt": "Make a report from this usage data: clean it, find the trends, chart them and explain.",
+      "should_activate": true,
+      "must": [
+        "follow the workflow steps in dependency order",
+        "report evidence for each completed step"
+      ]
+    },
+    {
+      "id": "single-step-request",
+      "prompt": "Explain what a rainbow is in one sentence.",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "unrelated-request",
+      "prompt": "Suggest a name for my new cat.",
+      "should_activate": false,
+      "must": []
+    }
+  ]
+}

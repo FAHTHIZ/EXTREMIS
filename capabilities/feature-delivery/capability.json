@@ -1,0 +1,106 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "workflow",
+  "domain": "software-engineering",
+  "version": "0.1.0",
+  "phase": "plan",
+  "summary": "End-to-end workflow: requirements, plan, tests, implementation, review and release.",
+  "keywords": [
+    "feature delivery",
+    "end to end feature",
+    "ship a feature",
+    "implementation workflow",
+    "spec to release"
+  ],
+  "intents": [
+    "take this feature from spec all the way to a merged release",
+    "plan, build, test and ship a new feature end to end",
+    "run the full delivery workflow for this user story",
+    "go from requirements to a reviewed pull request for this feature",
+    "deliver this feature with tests, review and changelog"
+  ],
+  "not_for": [],
+  "requires": [],
+  "suggests": [],
+  "tools": [
+    "code.repo_map",
+    "code.diff_stats",
+    "security.secret_scan",
+    "release.changelog"
+  ],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "a feature request, user story or issue",
+    "repository access and a runnable test command"
+  ],
+  "risk": "medium",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": [],
+  "workflow": {
+    "steps": [
+      {
+        "id": "requirements",
+        "capability": "requirements-engineering",
+        "goal": "Turn the request into testable acceptance criteria and explicit non-goals"
+      },
+      {
+        "id": "plan",
+        "capability": "technical-planning",
+        "goal": "Choose an approach, list affected modules, risks and a rollback path",
+        "tools": [
+          "code.repo_map"
+        ],
+        "after": [
+          "requirements"
+        ]
+      },
+      {
+        "id": "tests",
+        "capability": "test-driven-development",
+        "goal": "Write failing tests that encode each acceptance criterion",
+        "after": [
+          "plan"
+        ]
+      },
+      {
+        "id": "implement",
+        "capability": "backend-engineering",
+        "goal": "Implement the smallest change that makes the tests pass",
+        "after": [
+          "tests"
+        ]
+      },
+      {
+        "id": "review",
+        "capability": "code-review",
+        "goal": "Review the diff for defects, missing tests and credentials",
+        "tools": [
+          "code.diff_stats",
+          "security.secret_scan"
+        ],
+        "after": [
+          "implement"
+        ]
+      },
+      {
+        "id": "release",
+        "capability": "devops-release",
+        "goal": "Write the changelog entry and rollout and rollback notes",
+        "tools": [
+          "release.changelog"
+        ],
+        "after": [
+          "review"
+        ]
+      }
+    ],
+    "done_when": [
+      "Every acceptance criterion maps to at least one passing test",
+      "The diff was reviewed and has no unresolved high-severity findings",
+      "A changelog entry and rollback note exist"
+    ]
+  }
+}

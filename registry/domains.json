@@ -25,7 +25,9 @@
         "backend-engineering",
         "devops-release",
         "frontend-engineering",
-        "performance-optimization"
+        "performance-optimization",
+        "feature-delivery",
+        "release-readiness"
       ]
     },
     {
@@ -34,7 +36,8 @@
       "skills": [
         "research-synthesis",
         "literature-review",
-        "source-verification"
+        "source-verification",
+        "research-report"
       ]
     },
     {
@@ -99,7 +102,8 @@
       "skills": [
         "secure-code-review",
         "threat-modeling",
-        "privacy-impact-review"
+        "privacy-impact-review",
+        "security-assessment"
       ]
     },
     {
@@ -109,7 +113,8 @@
         "data-analysis",
         "data-visualization",
         "spreadsheet-analysis",
-        "product-analytics"
+        "product-analytics",
+        "data-report"
       ]
     },
     {

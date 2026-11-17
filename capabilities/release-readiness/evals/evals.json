@@ -1,0 +1,45 @@
+{
+  "skill": "release-readiness",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "workflow-use-1",
+      "prompt": "We plan to tag v2.0 tomorrow. Tell me if anything should stop us.",
+      "should_activate": true,
+      "must": [
+        "follow the workflow steps in dependency order",
+        "report evidence for each completed step"
+      ]
+    },
+    {
+      "id": "workflow-use-2",
+      "prompt": "Before shipping, verify tests, breaking API changes, security and our error budget.",
+      "should_activate": true,
+      "must": [
+        "follow the workflow steps in dependency order",
+        "report evidence for each completed step"
+      ]
+    },
+    {
+      "id": "workflow-use-3",
+      "prompt": "Give me a ship or hold recommendation for the current release candidate.",
+      "should_activate": true,
+      "must": [
+        "follow the workflow steps in dependency order",
+        "report evidence for each completed step"
+      ]
+    },
+    {
+      "id": "single-step-request",
+      "prompt": "Explain what a rainbow is in one sentence.",
+      "should_activate": false,
+      "must": []
+    },
+    {
+      "id": "unrelated-request",
+      "prompt": "Suggest a name for my new cat.",
+      "should_activate": false,
+      "must": []
+    }
+  ]
+}

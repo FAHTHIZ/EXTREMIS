@@ -1,0 +1,85 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "workflow",
+  "domain": "research",
+  "version": "0.1.0",
+  "phase": "plan",
+  "summary": "Workflow: gather sources, verify claims, synthesize and write a cited report.",
+  "keywords": [
+    "research report",
+    "cited report",
+    "research workflow",
+    "evidence review",
+    "sourced brief"
+  ],
+  "intents": [
+    "research this question and write a cited report",
+    "produce a sourced brief on this topic",
+    "gather evidence, check it and summarize what is known",
+    "write an evidence-backed report with references",
+    "investigate this topic thoroughly and report back with citations"
+  ],
+  "not_for": [],
+  "requires": [],
+  "suggests": [],
+  "tools": [
+    "web.fetch_text",
+    "doc.extract_text"
+  ],
+  "permissions": [
+    "read",
+    "network"
+  ],
+  "prerequisites": [
+    "a clearly stated research question",
+    "network access for web sources, or supplied documents"
+  ],
+  "risk": "low",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": [],
+  "workflow": {
+    "steps": [
+      {
+        "id": "gather",
+        "capability": "research-synthesis",
+        "goal": "Collect primary and secondary sources relevant to the question",
+        "tools": [
+          "web.fetch_text",
+          "doc.extract_text"
+        ]
+      },
+      {
+        "id": "verify",
+        "capability": "source-verification",
+        "goal": "Check key claims against independent or primary sources",
+        "after": [
+          "gather"
+        ]
+      },
+      {
+        "id": "literature",
+        "capability": "literature-review",
+        "goal": "Add peer-reviewed or formal literature where it exists",
+        "after": [
+          "gather"
+        ],
+        "optional": true
+      },
+      {
+        "id": "write",
+        "capability": "content-writing",
+        "goal": "Write the report with inline citations and confidence levels",
+        "after": [
+          "verify",
+          "literature"
+        ]
+      }
+    ],
+    "done_when": [
+      "Every factual claim has a citation",
+      "Conflicting evidence is reported rather than hidden",
+      "Confidence and open questions are stated"
+    ]
+  }
+}

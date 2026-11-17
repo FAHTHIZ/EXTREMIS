@@ -87,3 +87,21 @@ test('cli parses arguments and runs commands', async () => {
   const { parseArgs } = await import('../bin/extremis.mjs');
   assert.deepEqual(parseArgs(['run', 'x.y', 'a=1', '--json', '--allow', 'read,network', '--param', 'p=1', '--param', 'q=2']), { positional: ['run', 'x.y', 'a=1'], flags: { json: true, allow: 'read,network', param: ['p=1', 'q=2'] } });
 });
+
+test('built-in workflows are well formed and selected for multi-step requests', async () => {
+  const { plan } = await import('../src/plan.mjs');
+  const catalog = await loadCatalog({ project: false, user: false });
+  const index = buildIndex(catalog);
+  const workflows = catalog.list().filter((c) => c.kind === 'workflow');
+  assert.ok(workflows.length >= 5);
+  const names = new Set(catalog.list().map((c) => c.name));
+  for (const wf of workflows) {
+    assert.ok(wf.workflow.steps.length >= 2, wf.name);
+    assert.ok(wf.workflow.done_when.length, wf.name);
+    for (const s of wf.workflow.steps) assert.ok(names.has(s.capability), `${wf.name}/${s.id}`);
+  }
+  const p = plan(catalog, index, 'is this build ready to release? run a go or no-go check');
+  assert.equal(p.strategy, 'workflow');
+  assert.equal(p.workflow, 'release-readiness');
+  assert.equal(plan(catalog, index, 'the app crashes with a stack trace').strategy, 'composed');
+});
