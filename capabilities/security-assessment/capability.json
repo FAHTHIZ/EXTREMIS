@@ -22,13 +22,7 @@
   "not_for": [],
   "requires": [],
   "suggests": [],
-  "tools": [
-    "code.repo_map",
-    "code.dependency_inventory",
-    "security.secret_scan",
-    "security.code_patterns",
-    "privacy.pii_scan"
-  ],
+  "tools": [],
   "permissions": [
     "read"
   ],

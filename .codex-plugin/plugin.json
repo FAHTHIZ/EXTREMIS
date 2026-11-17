@@ -1,0 +1,22 @@
+{
+  "name": "extremis",
+  "version": "0.2.0",
+  "description": "Capability layer for agents: 59 skills and workflows with permission-gated tools and executable verification, loaded on demand over MCP.",
+  "author": { "name": "FAHTHIZ", "url": "https://github.com/FAHTHIZ" },
+  "homepage": "https://github.com/FAHTHIZ/EXTREMIS",
+  "repository": "https://github.com/FAHTHIZ/EXTREMIS",
+  "license": "Apache-2.0",
+  "keywords": ["agent-skills", "mcp", "capabilities", "workflows", "verification"],
+  "skills": "./skills/",
+  "mcpServers": "./.codex-plugin/mcp.json",
+  "interface": {
+    "displayName": "EXTREMIS",
+    "shortDescription": "Plan, activate, run and verify reusable agent capabilities.",
+    "longDescription": "A gateway skill plus the EXTREMIS MCP server. Plans a task across 59 capabilities and workflows, loads only the selected instructions, runs permission-gated tools and checks results before reporting done.",
+    "developerName": "FAHTHIZ",
+    "category": "Productivity",
+    "capabilities": ["Read"],
+    "websiteURL": "https://github.com/FAHTHIZ/EXTREMIS",
+    "defaultPrompt": ["Plan this task with EXTREMIS and verify the result", "Find the right EXTREMIS capability for this change"]
+  }
+}

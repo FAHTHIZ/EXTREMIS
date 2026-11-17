@@ -22,15 +22,7 @@
   "not_for": [],
   "requires": [],
   "suggests": [],
-  "tools": [
-    "test.parse_report",
-    "api.openapi_diff",
-    "security.secret_scan",
-    "code.dependency_inventory",
-    "container.dockerfile_lint",
-    "reliability.slo_budget",
-    "release.changelog"
-  ],
+  "tools": [],
   "permissions": [
     "read"
   ],

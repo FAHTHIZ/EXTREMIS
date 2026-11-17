@@ -251,12 +251,7 @@
       "permissions": [
         "read"
       ],
-      "tools": [
-        "data.profile",
-        "data.query",
-        "stats.describe",
-        "data.chart_svg"
-      ],
+      "tools": [],
       "requires": [],
       "suggests": [],
       "steps": [
@@ -266,7 +261,7 @@
         "content-writing"
       ],
       "path": "capabilities/data-report",
-      "hash": "8e83377ffca860b6d76856d1b821fdd619dda91ae52923af8ae0b555168fe9a0"
+      "hash": "a55a5d9aba42883ad9f631549c052a8d51322a0f881070060c970bc2f4056349"
     },
     {
       "name": "data-visualization",
@@ -460,12 +455,7 @@
       "permissions": [
         "read"
       ],
-      "tools": [
-        "code.repo_map",
-        "code.diff_stats",
-        "security.secret_scan",
-        "release.changelog"
-      ],
+      "tools": [],
       "requires": [],
       "suggests": [],
       "steps": [
@@ -477,7 +467,7 @@
         "devops-release"
       ],
       "path": "capabilities/feature-delivery",
-      "hash": "f70ac2d7ee9da4ab0b7f5b19711a6204465566187d06ba5ecf618c62e7d47b69"
+      "hash": "6736611a309a90255adb91cdab0e4be8f4aa7180399871f111d135703a953732"
     },
     {
       "name": "financial-modeling",
@@ -1024,15 +1014,7 @@
       "permissions": [
         "read"
       ],
-      "tools": [
-        "test.parse_report",
-        "api.openapi_diff",
-        "security.secret_scan",
-        "code.dependency_inventory",
-        "container.dockerfile_lint",
-        "reliability.slo_budget",
-        "release.changelog"
-      ],
+      "tools": [],
       "requires": [],
       "suggests": [],
       "steps": [
@@ -1043,7 +1025,7 @@
         "devops-release"
       ],
       "path": "capabilities/release-readiness",
-      "hash": "a3a8f58f2462dbf773fda8f1d4d0ad7e3831af1efac7370b8ece6484f27f65cd"
+      "hash": "b9656ecf9de75e07a11902073dcfe5f133e409bb784212352405f5c601a09719"
     },
     {
       "name": "reliability-analysis",
@@ -1138,10 +1120,7 @@
         "read",
         "network"
       ],
-      "tools": [
-        "web.fetch_text",
-        "doc.extract_text"
-      ],
+      "tools": [],
       "requires": [],
       "suggests": [],
       "steps": [
@@ -1151,7 +1130,7 @@
         "content-writing"
       ],
       "path": "capabilities/research-report",
-      "hash": "0bc66c27083bdd2c7e47f44ea125c7b401a60c1788373c492712dad5b61e5118"
+      "hash": "f404ca555124ee521e5828f7fc2d45fb44045c06f9976957ca106e3a146ceb47"
     },
     {
       "name": "research-synthesis",
@@ -1273,13 +1252,7 @@
       "permissions": [
         "read"
       ],
-      "tools": [
-        "code.repo_map",
-        "code.dependency_inventory",
-        "security.secret_scan",
-        "security.code_patterns",
-        "privacy.pii_scan"
-      ],
+      "tools": [],
       "requires": [],
       "suggests": [],
       "steps": [
@@ -1290,7 +1263,7 @@
         "technical-documentation"
       ],
       "path": "capabilities/security-assessment",
-      "hash": "6df81c3d8a4a2531e2cbd2d6b3f5d10f0dfd1503e3c98f601d37a9deaeedca49"
+      "hash": "d2f3030179ffe76d78b8cd908b95ed0dd2001a9cde78113b77b63f22716c13e1"
     },
     {
       "name": "skill-authoring",

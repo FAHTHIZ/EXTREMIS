@@ -104,4 +104,8 @@ test('built-in workflows are well formed and selected for multi-step requests', 
   assert.equal(p.strategy, 'workflow');
   assert.equal(p.workflow, 'release-readiness');
   assert.equal(plan(catalog, index, 'the app crashes with a stack trace').strategy, 'composed');
+  // Broad requests that merely mention a workflow's step domains must not trigger it.
+  const audit = plan(catalog, index, 'audit a Node.js API for reliability and security');
+  assert.equal(audit.strategy, 'composed');
+  assert.equal(plan(catalog, index, 'run a full security assessment of this repository').workflow, 'security-assessment');
 });

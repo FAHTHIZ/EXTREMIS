@@ -69,7 +69,7 @@
       "type": "archive",
       "description": "Use when turning a raw dataset into a finished analytical report: profile and clean the data, analyse it, chart the findings and write up conclusions with caveats.",
       "url": "data-report.tar.gz",
-      "digest": "sha256:ccfc81fa90f7845de3071627adc18939055754db79e84cdd27a3c3f63b00a014"
+      "digest": "sha256:da2317048d7786a9a8b85471b90b12f98a21b11ceef32058071d20da9e67e49f"
     },
     {
       "name": "data-visualization",
@@ -125,7 +125,7 @@
       "type": "archive",
       "description": "Use when taking a software feature end to end: from requirements through plan, test-first implementation, review and release notes, as one coordinated workflow.",
       "url": "feature-delivery.tar.gz",
-      "digest": "sha256:af29f3bc644557e26550fc926fd114fb86fab361c5b3b4f457c7dfdd3ad10ab9"
+      "digest": "sha256:7406d00b557c25b21be68b203685dc3240e3d4bb3f6f9c15d65c944ff5b135e6"
     },
     {
       "name": "financial-modeling",
@@ -279,7 +279,7 @@
       "type": "archive",
       "description": "Use when deciding whether a build is ready to ship: check tests, API compatibility, dependencies, containers, SLO budget and release notes, then give a go or no-go with evidence.",
       "url": "release-readiness.tar.gz",
-      "digest": "sha256:ece6b3106b37c314adb780effcf08c32ed63c1d880e749f730d05a2b49db4800"
+      "digest": "sha256:30e2794e5d2e7a49890f6f0bde90b59be44778597ddb24091d64216b31e2a96c"
     },
     {
       "name": "reliability-analysis",
@@ -307,7 +307,7 @@
       "type": "archive",
       "description": "Use when producing a sourced research report on a question: gather sources, verify claims, synthesize findings and write a cited report with confidence levels.",
       "url": "research-report.tar.gz",
-      "digest": "sha256:5984df2a193e135bb7846bf58c7edc5fed3f8d5a1214ec47a51c75e1badb98ff"
+      "digest": "sha256:30b5dc346c38f3e766cdbba7c159dca690532bbc4dd6387280ccd702d2fcc2dd"
     },
     {
       "name": "research-synthesis",
@@ -342,7 +342,7 @@
       "type": "archive",
       "description": "Use when running a complete defensive security assessment of a system you are authorized to review: repository audit, threat model, code review, privacy check and a prioritized remediation report.",
       "url": "security-assessment.tar.gz",
-      "digest": "sha256:4853e046961fe40092377292ca9ffa7b3e1fc217495901ab796e1b771bc31bc3"
+      "digest": "sha256:df4fa3687f95df65d5762ba423c6e68e977dfe4a501261c20e3e5e7d55920c8b"
     },
     {
       "name": "skill-authoring",

@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "extremis": {
+      "command": "npx",
+      "args": ["-y", "github:FAHTHIZ/EXTREMIS", "mcp"]
+    }
+  }
+}

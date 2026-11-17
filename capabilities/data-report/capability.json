@@ -22,12 +22,7 @@
   "not_for": [],
   "requires": [],
   "suggests": [],
-  "tools": [
-    "data.profile",
-    "data.query",
-    "stats.describe",
-    "data.chart_svg"
-  ],
+  "tools": [],
   "permissions": [
     "read"
   ],
