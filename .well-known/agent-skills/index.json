@@ -1,0 +1,418 @@
+{
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+  "skills": [
+    {
+      "name": "accessibility-review",
+      "type": "archive",
+      "description": "Use when reviewing a digital interface, document, or interaction for accessibility barriers involving keyboard use, screen readers, contrast, semantics, captions, forms, motion, or inclusive content.",
+      "url": "accessibility-review.tar.gz",
+      "digest": "sha256:56da481d44b211ceaf5df9e059aa876efa2b9610f12df2305a9dfac7f4702ab9"
+    },
+    {
+      "name": "api-design",
+      "type": "archive",
+      "description": "Use when specifying or revising an HTTP, RPC, event, or internal service API contract, including endpoint semantics, request and response schemas, errors, versioning, and consumer compatibility. Do not use for implementing server handlers or frontend clients without contract-design work.",
+      "url": "api-design.tar.gz",
+      "digest": "sha256:8628a662d1aa2a55a3d8f80523042cb628c087f8b7db3cea8bc8efe88dcabfe2"
+    },
+    {
+      "name": "backend-engineering",
+      "type": "archive",
+      "description": "Use when implementing or debugging server-side services, protected endpoints, business logic, background jobs, authentication boundaries, tenant-scoped data access, persistence, external API clients, and service integrations. Do not use for frontend-only UI work or API contract design without backend implementation.",
+      "url": "backend-engineering.tar.gz",
+      "digest": "sha256:f56dbf1057dc6623493d6f211803e0012b632296928d097477573dc5b2fa5b48"
+    },
+    {
+      "name": "cloud-architecture",
+      "type": "archive",
+      "description": "Use when designing or reviewing cloud infrastructure, deployment topology, platform architecture, cloud migration, service boundaries, or resilience and cost trade-offs across cloud environments.",
+      "url": "cloud-architecture.tar.gz",
+      "digest": "sha256:8613561ab6846471cc5e6a3ad95654fe05f5ddfe6b2f50a4e44a008206623d51"
+    },
+    {
+      "name": "code-review",
+      "type": "archive",
+      "description": "Use when reviewing a pull request, patch, commit, or proposed code change for correctness, regressions, maintainability, performance, and operational risks before it is accepted or shipped.",
+      "url": "code-review.tar.gz",
+      "digest": "sha256:fd9751ca49e4e52c8d3c3cb32a69ce4e21df5d06419ef497b534a2549df78c4c"
+    },
+    {
+      "name": "competitive-analysis",
+      "type": "archive",
+      "description": "Use when comparing products, services, companies, open-source projects, or market alternatives to support positioning, product strategy, procurement, or technical decisions.",
+      "url": "competitive-analysis.tar.gz",
+      "digest": "sha256:94a93c88dbe253c84de1e122698f9b2d1a99c61607fa29d254f93dd62e708c18"
+    },
+    {
+      "name": "content-writing",
+      "type": "archive",
+      "description": "Use when drafting, editing, structuring, or adapting original articles, guides, announcements, newsletters, product copy, or other written content for a defined audience.",
+      "url": "content-writing.tar.gz",
+      "digest": "sha256:522bbc60491e1cb9b412d280732afd8871a7101e5c2e01e3d5fa43a45beb1707"
+    },
+    {
+      "name": "customer-support",
+      "type": "archive",
+      "description": "Use when classifying customer support requests, drafting helpful responses, identifying missing information, routing issues, or summarizing recurring support trends.",
+      "url": "customer-support.tar.gz",
+      "digest": "sha256:dd0653fd220f8b02baedbdc1914dc2f75935cd5d3e207461a6b76c46e91616e2"
+    },
+    {
+      "name": "data-analysis",
+      "type": "archive",
+      "description": "Use when answering a business, product, operational, or research question from structured data using cleaning, aggregation, statistical summaries, comparisons, or exploratory analysis.",
+      "url": "data-analysis.tar.gz",
+      "digest": "sha256:9e8543897dcb009547656ae8d196833bcb3acd4a9dbd875d923d86034b277511"
+    },
+    {
+      "name": "data-report",
+      "type": "archive",
+      "description": "Use when turning a raw dataset into a finished analytical report: profile and clean the data, analyse it, chart the findings and write up conclusions with caveats.",
+      "url": "data-report.tar.gz",
+      "digest": "sha256:ccfc81fa90f7845de3071627adc18939055754db79e84cdd27a3c3f63b00a014"
+    },
+    {
+      "name": "data-visualization",
+      "type": "archive",
+      "description": "Use when choosing, designing, or reviewing charts and visual explanations for quantitative data, dashboards, reports, or presentations.",
+      "url": "data-visualization.tar.gz",
+      "digest": "sha256:829c1c9c0756b34f7cfe2a99ea21c0ec91c7f986e340c73f297735d1cbf82a2e"
+    },
+    {
+      "name": "database-design",
+      "type": "archive",
+      "description": "Use when designing relational or document data models, schemas, indexes, constraints, migrations, retention rules, or data-access boundaries for an application.",
+      "url": "database-design.tar.gz",
+      "digest": "sha256:dbf9b2192f002caf174fccf742f6cf66e0c425dab7d69f29435596c43646d793"
+    },
+    {
+      "name": "debugging",
+      "type": "archive",
+      "description": "Diagnose and fix a reproducible software defect, failing test, crash, regression, or unexpected behavior. Use when the user reports a bug or an existing check fails.",
+      "url": "debugging.tar.gz",
+      "digest": "sha256:8132599c41e8e20184cb98ce4b8a66212834234600699fbda6897d80cdf89202"
+    },
+    {
+      "name": "decision-log",
+      "type": "archive",
+      "description": "Use when recording, comparing, or revisiting a significant project, architecture, product, or operational decision and its rationale.",
+      "url": "decision-log.tar.gz",
+      "digest": "sha256:d4fd461aee08d6223edc1a85cb9eda10f1a8e303f3634b0ab9f8b58dd985706e"
+    },
+    {
+      "name": "design-system",
+      "type": "archive",
+      "description": "Use when creating, documenting, auditing, or extending a product design system including design tokens, typography, spacing, color, components, interaction states, and usage guidance.",
+      "url": "design-system.tar.gz",
+      "digest": "sha256:0cc67cd844c7d51f1d63d442f36de398c8766f56d60d0badb413e76c13aa3fb6"
+    },
+    {
+      "name": "devops-release",
+      "type": "archive",
+      "description": "Use when preparing a software build, CI/CD pipeline, deployment, release, rollback, environment configuration, artifact signing, or operational handover.",
+      "url": "devops-release.tar.gz",
+      "digest": "sha256:eca241a43bd23b57d66ba6ace6fd1faceb247639e45232867fa980c2b8012a27"
+    },
+    {
+      "name": "experimental-design",
+      "type": "archive",
+      "description": "Use when turning a scientific or technical question into a testable study, experiment, observational protocol, simulation plan, or preregistered analysis approach.",
+      "url": "experimental-design.tar.gz",
+      "digest": "sha256:bfce1514b8b0c505c0a7bb734aacf6f4a0450d491680b018a1c3a6a102ea4490"
+    },
+    {
+      "name": "feature-delivery",
+      "type": "archive",
+      "description": "Use when taking a software feature end to end: from requirements through plan, test-first implementation, review and release notes, as one coordinated workflow.",
+      "url": "feature-delivery.tar.gz",
+      "digest": "sha256:af29f3bc644557e26550fc926fd114fb86fab361c5b3b4f457c7dfdd3ad10ab9"
+    },
+    {
+      "name": "financial-modeling",
+      "type": "archive",
+      "description": "Use when building or reviewing an educational or business financial model, budget, forecast, cash-flow projection, unit-economics model, or scenario analysis from explicit assumptions.",
+      "url": "financial-modeling.tar.gz",
+      "digest": "sha256:7b3cd78e27bce84dff92be0f44210f50fa40b09a65e99edfdfdf8aae6ca06083"
+    },
+    {
+      "name": "financial-statement-analysis",
+      "type": "archive",
+      "description": "Use when interpreting supplied or publicly available company financial statements, annual reports, cash-flow statements, notes, and operating metrics for educational or business analysis.",
+      "url": "financial-statement-analysis.tar.gz",
+      "digest": "sha256:2e08df8a56094dcd3568652c4a3e29f61e9e7732cbf3197a56fda2b1af49881f"
+    },
+    {
+      "name": "frontend-engineering",
+      "type": "archive",
+      "description": "Use when implementing, debugging, or improving browser-based user interfaces, components, responsive layouts, client-side state, routing, or frontend architecture. Do not use for server-side endpoint handlers, persistence, or backend business logic without a browser-interface task.",
+      "url": "frontend-engineering.tar.gz",
+      "digest": "sha256:84d4a518bdf17f32a934e12f3390838758cd48294beb0b053968058c62a25177"
+    },
+    {
+      "name": "incident-management",
+      "type": "archive",
+      "description": "Use when coordinating response to a software or service outage, operational degradation, reliability event, or incident review, including triage, stakeholder updates, recovery tracking, and post-incident learning. Do not use for routine planned feature releases or generic uptime definitions without an active incident.",
+      "url": "incident-management.tar.gz",
+      "digest": "sha256:76d643e139620c59583709df87bd4becff0aac821b2065f7d356604dfe4fd34a"
+    },
+    {
+      "name": "knowledge-management",
+      "type": "archive",
+      "description": "Use when designing, reorganizing, or governing an internal knowledge base, wiki, document library, or retrieval collection, including taxonomy, metadata, content ownership, freshness, and access boundaries. Do not use for standalone public blog writing or isolated meeting-note summaries.",
+      "url": "knowledge-management.tar.gz",
+      "digest": "sha256:1949878fd424e59d5f4c43f67b22a73841e77aacd0dd1ddcd951b478c976190c"
+    },
+    {
+      "name": "learning-design",
+      "type": "archive",
+      "description": "Use when designing a lesson, course module, workshop, tutorial, learning activity, rubric, or assessment aligned to specific learner outcomes.",
+      "url": "learning-design.tar.gz",
+      "digest": "sha256:58b0a9a6378d5b50dbb39284d66f1143dd4cf205ec9d645fd2cc3b2626cfc0bd"
+    },
+    {
+      "name": "literature-review",
+      "type": "archive",
+      "description": "Use when reviewing academic or technical literature, comparing research findings, mapping evidence, identifying gaps, or preparing a narrative or structured review of published studies.",
+      "url": "literature-review.tar.gz",
+      "digest": "sha256:c4d45a1d11d35ea814d2b3f41e9ca7c0d142618a0fa426f87ac63ac6c9ee3cbd"
+    },
+    {
+      "name": "localization",
+      "type": "archive",
+      "description": "Use when localizing software interfaces, product content, help material, or communications for a target language or region, including right-to-left layouts, locale formats, terminology, and cultural review. Do not use for one-word translation without a target locale or product context.",
+      "url": "localization.tar.gz",
+      "digest": "sha256:99e0da7f02836986d633119a9acdd5dac62ed2667a2845a4146bb086c3dc14b1"
+    },
+    {
+      "name": "market-sizing",
+      "type": "archive",
+      "description": "Use when estimating the size of a market, segment, or business opportunity using TAM, SAM, and SOM, bottom-up demand models, top-down data, or scenario analysis.",
+      "url": "market-sizing.tar.gz",
+      "digest": "sha256:abb08c70f85e9cf89677da3cb688f769cdb6fcf6d055ce7df34077452ea56b42"
+    },
+    {
+      "name": "marketing-strategy",
+      "type": "archive",
+      "description": "Use when developing marketing positioning, audience segmentation, go-to-market plans, channel strategy, campaign priorities, or a measurable marketing plan for a product or service. Do not use for standalone grammar or punctuation correction, or spreadsheet formula explanations.",
+      "url": "marketing-strategy.tar.gz",
+      "digest": "sha256:27d2a6191b33b6eb6b370f6fa4e16ef1c34734ba092a751870bf6072878f22fa"
+    },
+    {
+      "name": "meeting-synthesis",
+      "type": "archive",
+      "description": "Use when turning supplied meeting notes, transcripts, or recordings into a concise summary, decisions, action items, open questions, and follow-up communication.",
+      "url": "meeting-synthesis.tar.gz",
+      "digest": "sha256:3afd2a686b6d917edcabe2f2e334a15d6fbb74117dbb8122260611b54a64cb30"
+    },
+    {
+      "name": "mobile-engineering",
+      "type": "archive",
+      "description": "Use when building, reviewing, debugging, or preparing native or cross-platform mobile applications, including app lifecycle, offline behavior, navigation, device permissions, platform integration, and release readiness. Do not use for conceptual comparisons of responsive web and native apps or backend-only cloud cost estimates.",
+      "url": "mobile-engineering.tar.gz",
+      "digest": "sha256:bedc2fd741173492693d8d6ba8c977bbe344afa35427e1bb61171d05ce9837bc"
+    },
+    {
+      "name": "performance-optimization",
+      "type": "archive",
+      "description": "Use when investigating slow code, high latency, excessive memory or CPU use, large bundles, inefficient queries, or resource bottlenecks in an authorized application.",
+      "url": "performance-optimization.tar.gz",
+      "digest": "sha256:a6d25b604e9e06bf67fe98fe5ce5d2880ae412fc7499254433964d8a245f59a0"
+    },
+    {
+      "name": "presentation-design",
+      "type": "archive",
+      "description": "Use when planning or creating a slide deck, pitch presentation, lesson slides, executive briefing, or visual narrative from supplied goals and evidence.",
+      "url": "presentation-design.tar.gz",
+      "digest": "sha256:209a28bc22ecb0045e34111a8e3de3e8ea42370fdbf757fa5f9cd6523d081413"
+    },
+    {
+      "name": "privacy-impact-review",
+      "type": "archive",
+      "description": "Use when reviewing a product feature, dataset, workflow, or vendor integration that collects, uses, stores, shares, infers, or deletes personal or sensitive information.",
+      "url": "privacy-impact-review.tar.gz",
+      "digest": "sha256:b975e907e73eb52bb70dd7b0bb2b75f08805fad18bb6a12eb823f94cf4d6fe6d"
+    },
+    {
+      "name": "process-mapping",
+      "type": "archive",
+      "description": "Use when documenting or improving an operational workflow, handoff, service process, approval path, customer journey, or recurring business procedure.",
+      "url": "process-mapping.tar.gz",
+      "digest": "sha256:54e586288ea9c2f8abf11c61b21e1d9aee852867902d3f96fe9617c907497296"
+    },
+    {
+      "name": "procurement-analysis",
+      "type": "archive",
+      "description": "Use when evaluating suppliers, vendor proposals, purchasing options, or procurement decisions through requirements, weighted criteria, total cost of ownership, service terms, and delivery risks.",
+      "url": "procurement-analysis.tar.gz",
+      "digest": "sha256:44676dc7f3555dc12d4d0d8a6cc347ee29788f9db278f17d9628971bbbb8c413"
+    },
+    {
+      "name": "product-analytics",
+      "type": "archive",
+      "description": "Use when defining product metrics or event taxonomies, planning analytics instrumentation, analyzing funnels or cohorts, measuring retention, or designing product experiments and guardrails.",
+      "url": "product-analytics.tar.gz",
+      "digest": "sha256:70f483bf074a1e5e4a0c6513982c38bcea040538091840a0cbe2ac32534fc9e3"
+    },
+    {
+      "name": "product-discovery",
+      "type": "archive",
+      "description": "Use when exploring a product opportunity, understanding user problems, planning customer discovery, prioritizing needs, or deciding what a first useful product version should prove.",
+      "url": "product-discovery.tar.gz",
+      "digest": "sha256:c35d7ccab021403a083a5a6b2e6a81f7dd1327303cc4b8ce1e7597292791e6a5"
+    },
+    {
+      "name": "project-management",
+      "type": "archive",
+      "description": "Use when organizing a project with deliverables, dependencies, owners, milestones, risks, capacity constraints, status reporting, or cross-team coordination.",
+      "url": "project-management.tar.gz",
+      "digest": "sha256:01abdfc14ba4a3bdfccaef9b68f5931de4df393e211135a6af11cec89d2dbd22"
+    },
+    {
+      "name": "quality-assurance",
+      "type": "archive",
+      "description": "Use when planning quality assurance, creating test strategies or test plans, designing acceptance and regression coverage, investigating flaky tests, or deciding whether a release meets its quality criteria. Do not use for standalone definitions of testing concepts or isolated TDD implementation tasks without a broader quality decision.",
+      "url": "quality-assurance.tar.gz",
+      "digest": "sha256:02d83278e8b9c2bd61555ab71f82b65ed695e21d4ba4c18112ae077bcd9cc17e"
+    },
+    {
+      "name": "release-readiness",
+      "type": "archive",
+      "description": "Use when deciding whether a build is ready to ship: check tests, API compatibility, dependencies, containers, SLO budget and release notes, then give a go or no-go with evidence.",
+      "url": "release-readiness.tar.gz",
+      "digest": "sha256:ece6b3106b37c314adb780effcf08c32ed63c1d880e749f730d05a2b49db4800"
+    },
+    {
+      "name": "reliability-analysis",
+      "type": "archive",
+      "description": "Use when assessing reliability, availability, maintainability, failure patterns, service resilience, maintenance intervals, or operational risks in a technical system.",
+      "url": "reliability-analysis.tar.gz",
+      "digest": "sha256:b8480b9a548582122cd307e3321eca88edfc30cdec73fea1f22f6a6b1854c057"
+    },
+    {
+      "name": "repository-audit",
+      "type": "archive",
+      "description": "Audit an existing software repository before making changes. Use when asked to inspect code quality, architecture, bugs, security posture, dependencies, duplication, test coverage, or readiness for a feature or release.",
+      "url": "repository-audit.tar.gz",
+      "digest": "sha256:919f138c1a06f14c8d79bd0f04a8c5649d2270769c9593f0ca828dbfabdd891d"
+    },
+    {
+      "name": "requirements-engineering",
+      "type": "archive",
+      "description": "Use when eliciting, structuring, prioritizing, reviewing, or tracing product and system requirements, including functional behavior, quality attributes, constraints, acceptance criteria, and change control.",
+      "url": "requirements-engineering.tar.gz",
+      "digest": "sha256:d618c469fee84c2e9c1d26e23bb35e51aa16a85807c32a5fe55741fa6005174c"
+    },
+    {
+      "name": "research-report",
+      "type": "archive",
+      "description": "Use when producing a sourced research report on a question: gather sources, verify claims, synthesize findings and write a cited report with confidence levels.",
+      "url": "research-report.tar.gz",
+      "digest": "sha256:5984df2a193e135bb7846bf58c7edc5fed3f8d5a1214ec47a51c75e1badb98ff"
+    },
+    {
+      "name": "research-synthesis",
+      "type": "archive",
+      "description": "Research a question using external or supplied sources and produce a concise, evidence-grounded synthesis. Use for comparisons, technical investigations, market or policy research, and questions where accuracy or current information matters.",
+      "url": "research-synthesis.tar.gz",
+      "digest": "sha256:2e0582cccbf63e2bdeb72539d1f7fd214e66c974dc08b00957d2aee519921e6d"
+    },
+    {
+      "name": "scientific-data-analysis",
+      "type": "archive",
+      "description": "Use when cleaning, exploring, visualizing, statistically analyzing, or reporting scientific or technical datasets with reproducible methods and explicit uncertainty.",
+      "url": "scientific-data-analysis.tar.gz",
+      "digest": "sha256:ad4303402f064ccbfa853328f0d28588fa6904985dcab90479108d085ff06b40"
+    },
+    {
+      "name": "search-optimization",
+      "type": "archive",
+      "description": "Use when auditing or improving organic search discoverability, technical SEO, site structure, metadata, structured data, content relevance, or search performance for a legitimate website. Do not use for simple keyword definitions or standalone tagline writing without a website optimization task.",
+      "url": "search-optimization.tar.gz",
+      "digest": "sha256:909ac4560626c4c7b27c0a88dbdfaf71ebdc25cf8d110c7f1e320dd527ded381"
+    },
+    {
+      "name": "secure-code-review",
+      "type": "archive",
+      "description": "Use when defensively reviewing authorized source code or configuration for security weaknesses involving input handling, authentication, authorization, secrets, data exposure, dependencies, or unsafe defaults.",
+      "url": "secure-code-review.tar.gz",
+      "digest": "sha256:e8eeee73f269047092f2d0ef1be5706e937573a87799bab1ea61b447f33e69c3"
+    },
+    {
+      "name": "security-assessment",
+      "type": "archive",
+      "description": "Use when running a complete defensive security assessment of a system you are authorized to review: repository audit, threat model, code review, privacy check and a prioritized remediation report.",
+      "url": "security-assessment.tar.gz",
+      "digest": "sha256:4853e046961fe40092377292ca9ffa7b3e1fc217495901ab796e1b771bc31bc3"
+    },
+    {
+      "name": "skill-authoring",
+      "type": "archive",
+      "description": "Design, write, revise, or evaluate portable Agent Skills. Use when creating a new skill, improving an existing SKILL.md, reviewing skill quality, or deciding whether a capability belongs in a skill, workflow, tool, or runtime. Do not use for general definitions of AI concepts unrelated to authoring or evaluating agent skills.",
+      "url": "skill-authoring.tar.gz",
+      "digest": "sha256:0a775838fdfb917e0c83dac7edaec865ef9143e2ff51d05b1402638b1ee673c1"
+    },
+    {
+      "name": "source-verification",
+      "type": "archive",
+      "description": "Use when checking whether a factual claim, quotation, image caption, public statement, dataset, or online source is authentic, current, correctly attributed, and supported by independent evidence.",
+      "url": "source-verification.tar.gz",
+      "digest": "sha256:3b6bdf42bcbb2bcb56c8fd47354325338a7704d350145126b28d646c2c2245c5"
+    },
+    {
+      "name": "spreadsheet-analysis",
+      "type": "archive",
+      "description": "Use when auditing, cleaning, analyzing, reconciling, or building spreadsheets in Excel, Google Sheets, or compatible formats, including formulas, pivots, imports, and workbook controls.",
+      "url": "spreadsheet-analysis.tar.gz",
+      "digest": "sha256:10ba7bab77018811251cff3bfe38dfd9af8a34a8a77bbc46543248e1ccaadc30"
+    },
+    {
+      "name": "study-coaching",
+      "type": "archive",
+      "description": "Use when helping a learner understand a concept, plan study sessions, practise a skill, diagnose a misconception, or receive feedback on their own attempt.",
+      "url": "study-coaching.tar.gz",
+      "digest": "sha256:e2f5f1e6a371ebdd080def75489f99c3089c96292b72a5f048febabe7c878d6f"
+    },
+    {
+      "name": "systems-engineering",
+      "type": "archive",
+      "description": "Use when defining system requirements, architecture, interfaces, trade studies, lifecycle constraints, verification, or validation across hardware, software, people, and operational environments.",
+      "url": "systems-engineering.tar.gz",
+      "digest": "sha256:f86b809ee8ec5bcf683dfdfaf090cdda1db3edacf697e0539c5b4a45fb2d197b"
+    },
+    {
+      "name": "technical-documentation",
+      "type": "archive",
+      "description": "Use when creating or overhauling developer documentation, architecture guides, API references, setup instructions, runbooks, migration notes, or user-facing technical guides.",
+      "url": "technical-documentation.tar.gz",
+      "digest": "sha256:d9e1a0e569fe7d6f39d3c6856a2270b5ba19fe4ed89f1c0d1009d51fdb5a9245"
+    },
+    {
+      "name": "technical-planning",
+      "type": "archive",
+      "description": "Convert an ambiguous software, product, research, or technical request into a scoped implementation plan with dependencies, risks, acceptance criteria, and checkpoints. Use before substantial or multi-step work.",
+      "url": "technical-planning.tar.gz",
+      "digest": "sha256:f124693cb09c68153aed742d7f99556aab26170874005f3ea9b7495a95e28f9a"
+    },
+    {
+      "name": "test-driven-development",
+      "type": "archive",
+      "description": "Use when implementing or changing software behavior, adding a feature, fixing a defect, or refactoring code where a regression test can express the intended contract.",
+      "url": "test-driven-development.tar.gz",
+      "digest": "sha256:1b1053a367def9746430090f9dcff686874bea55cf7911abae5cb820981cf5ee"
+    },
+    {
+      "name": "threat-modeling",
+      "type": "archive",
+      "description": "Use when defensively identifying security and privacy threats in an application, service, architecture, data flow, or feature before release or after a material change.",
+      "url": "threat-modeling.tar.gz",
+      "digest": "sha256:084763f0d749e8c0ede5818326793c77e79b5dc7ee8a3a54bae2cc885ba892dc"
+    },
+    {
+      "name": "ux-audit",
+      "type": "archive",
+      "description": "Use when evaluating an existing website, application, workflow, or prototype for usability, information architecture, interaction clarity, consistency, and task completion barriers.",
+      "url": "ux-audit.tar.gz",
+      "digest": "sha256:132b0382f52285af5851635595f5008b546a5d0f8148aff0e16062982fb0cef6"
+    }
+  ]
+}

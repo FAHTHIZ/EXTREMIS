@@ -239,3 +239,32 @@ test('cli install/scan exit codes', () => {
   assert.equal(run('install', path.join(BUILTIN_DIR, 'code-review')), 0);
   assert.equal(run('lock', '--verify'), 0);
 });
+
+test('extremis build output is reproducible and installable through the well-known index', async () => {
+  const { buildArtifacts, createTarGz } = await import('../src/build.mjs');
+  const a = await buildArtifacts();
+  const b = await buildArtifacts();
+  for (const [rel, data] of a.files) assert.ok(data.equals(b.files.get(rel)), `${rel} is not reproducible`);
+  assert.equal(a.index.skills.length, a.catalog.count);
+  const tar = unpackArchive(createTarGz([{ path: 'SKILL.md', data: 'x' }, { path: 'references/deep/' + 'n'.repeat(90) + '.md', data: 'y' }]));
+  assert.deepEqual(tar.map((f) => f.path).sort(), ['SKILL.md', `references/deep/${'n'.repeat(90)}.md`]);
+  const server = createServer((req, res) => {
+    const rel = decodeURIComponent(req.url.slice(1));
+    const data = a.files.get(rel);
+    if (!data) { res.statusCode = 404; res.end(); return; }
+    res.setHeader('content-type', rel.endsWith('.json') ? 'application/json' : 'application/gzip');
+    res.end(data);
+  });
+  await new Promise((r) => server.listen(0, '127.0.0.1', r));
+  const base = `http://127.0.0.1:${server.address().port}`;
+  const env = { ...process.env, EXTREMIS_HOME: tmp(), EXTREMIS_ALLOW_PRIVATE_NETWORK: '1' };
+  try {
+    const result = await install(base, { env, skills: ['code-review', 'release-readiness'] });
+    assert.deepEqual(result.installed.map((i) => i.name).sort(), ['code-review', 'release-readiness']);
+    const installed = path.join(env.EXTREMIS_HOME, 'capabilities', 'release-readiness');
+    assert.ok(existsSync(path.join(installed, 'capability.json')));
+    assert.ok(!existsSync(path.join(installed, 'evals')));
+  } finally {
+    server.close();
+  }
+});

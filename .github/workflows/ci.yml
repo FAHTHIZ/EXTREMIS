@@ -33,5 +33,7 @@ jobs:
         run: npm run validate
       - name: Evaluate capability routing
         run: npm run eval
+      - name: Check generated catalog and discovery index are current
+        run: node bin/extremis.mjs build --check
       - name: Check package contents
         run: npm pack --dry-run

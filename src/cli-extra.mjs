@@ -5,6 +5,7 @@ import path from 'node:path';
 import { exportSchemas, SCHEMA_FORMATS } from './schemas.mjs';
 import { install, update, remove, verifyLock, listInstalled, installScope } from './install.mjs';
 import { scanDirectory } from './scan.mjs';
+import { build } from './build.mjs';
 
 const scopeOf = (flags, cwd) => ({ scope: flags.project ? 'project' : 'user', cwd });
 
@@ -14,6 +15,21 @@ function printFindings(print, findings, limit = 20) {
 }
 
 export const commands = {
+  async build({ flags, cwd, asJson, print, json }) {
+    const out = flags.out ? path.resolve(cwd, String(flags.out)) : undefined;
+    const result = await build({ out, check: Boolean(flags.check), baseUrl: flags.base_url ? String(flags.base_url) : '' });
+    if (asJson) json(result);
+    else if (flags.check) {
+      if (!result.stale.length && !result.removed.length) print(`build artifacts are up to date (${result.total} files)`);
+      else {
+        for (const f of result.stale) print(`stale   ${f}`);
+        for (const f of result.removed) print(`extra   ${f}`);
+        print('run `extremis build` and commit the result');
+      }
+    } else print(`wrote ${result.written.length} of ${result.total} files${result.removed.length ? `, removed ${result.removed.length}` : ''}`);
+    return flags.check && (result.stale.length || result.removed.length) ? 1 : 0;
+  },
+
   async schema({ args, flags, service, json }) {
     const format = args[0] || 'json';
     if (!SCHEMA_FORMATS.includes(format)) throw new Error(`format must be one of ${SCHEMA_FORMATS.join(', ')}`);
