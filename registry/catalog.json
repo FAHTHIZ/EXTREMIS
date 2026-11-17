@@ -1,0 +1,1552 @@
+{
+  "schema_version": "1.0.0",
+  "generator": "extremis build",
+  "count": 59,
+  "workflows": 5,
+  "capabilities": [
+    {
+      "name": "accessibility-review",
+      "kind": "skill",
+      "domain": "design",
+      "version": "0.1.0",
+      "phase": "verify",
+      "summary": "Find accessibility barriers and propose testable fixes using applicable standards and assistive-technology context.",
+      "description": "Use when reviewing a digital interface, document, or interaction for accessibility barriers involving keyboard use, screen readers, contrast, semantics, captions, forms, motion, or inclusive content.",
+      "risk": "high",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "a11y.html_audit",
+        "a11y.contrast"
+      ],
+      "requires": [],
+      "suggests": [
+        "ux-audit",
+        "frontend-engineering"
+      ],
+      "path": "capabilities/accessibility-review",
+      "hash": "9c8ef77f622b6c51eee5c7bd095e462bb227409d92a6e96a79c470c823450e25"
+    },
+    {
+      "name": "api-design",
+      "kind": "skill",
+      "domain": "software-engineering",
+      "version": "0.1.0",
+      "phase": "plan",
+      "summary": "Design APIs around stable contracts, explicit semantics, and safe evolution.",
+      "description": "Use when specifying or revising an HTTP, RPC, event, or internal service API contract, including endpoint semantics, request and response schemas, errors, versioning, and consumer compatibility. Do not use for implementing server handlers or frontend clients without contract-design work.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "api.openapi_lint",
+        "api.openapi_diff",
+        "schema.json_diff"
+      ],
+      "requires": [],
+      "suggests": [
+        "backend-engineering",
+        "technical-documentation"
+      ],
+      "path": "capabilities/api-design",
+      "hash": "7e73fd8ffb7d7e7260aceeba102057f76d6a6ece386692b040402a5fe40effd3"
+    },
+    {
+      "name": "backend-engineering",
+      "kind": "skill",
+      "domain": "software-engineering",
+      "version": "0.1.0",
+      "phase": "build",
+      "summary": "Build reliable backend behavior around explicit contracts, data integrity, and failure handling.",
+      "description": "Use when implementing or debugging server-side services, protected endpoints, business logic, background jobs, authentication boundaries, tenant-scoped data access, persistence, external API clients, and service integrations. Do not use for frontend-only UI work or API contract design without backend implementation.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read",
+        "network"
+      ],
+      "tools": [
+        "code.repo_map",
+        "sql.schema_lint",
+        "http.request",
+        "test.parse_report"
+      ],
+      "requires": [],
+      "suggests": [
+        "api-design",
+        "database-design",
+        "test-driven-development"
+      ],
+      "path": "capabilities/backend-engineering",
+      "hash": "61535024ffa4226d369b5c8a800018522ac874d12937a81c33fc8e24d477ae7f"
+    },
+    {
+      "name": "cloud-architecture",
+      "kind": "skill",
+      "domain": "engineering",
+      "version": "0.1.0",
+      "phase": "plan",
+      "summary": "Design cloud workloads for resilience, security, cost, and operability.",
+      "description": "Use when designing or reviewing cloud infrastructure, deployment topology, platform architecture, cloud migration, service boundaries, or resilience and cost trade-offs across cloud environments.",
+      "risk": "high",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "container.dockerfile_lint",
+        "reliability.slo_budget"
+      ],
+      "requires": [],
+      "suggests": [
+        "reliability-analysis",
+        "threat-modeling",
+        "devops-release"
+      ],
+      "path": "capabilities/cloud-architecture",
+      "hash": "743d4a38ffc628c9c53d2f02c6af8bae2694c16f60c31e6e4d34e26e4eca0fd8"
+    },
+    {
+      "name": "code-review",
+      "kind": "skill",
+      "domain": "software-engineering",
+      "version": "0.1.0",
+      "phase": "verify",
+      "summary": "Review diffs for consequential defects and return prioritized, evidence-backed findings.",
+      "description": "Use when reviewing a pull request, patch, commit, or proposed code change for correctness, regressions, maintainability, performance, and operational risks before it is accepted or shipped.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "code.diff_stats",
+        "security.secret_scan",
+        "security.code_patterns"
+      ],
+      "requires": [],
+      "suggests": [
+        "secure-code-review",
+        "test-driven-development"
+      ],
+      "path": "capabilities/code-review",
+      "hash": "c981ebca3340c174d21089c273584ac1b69efcd7cfae8043262207a99cd6e0ec"
+    },
+    {
+      "name": "competitive-analysis",
+      "kind": "skill",
+      "domain": "business",
+      "version": "0.1.0",
+      "phase": "discover",
+      "summary": "Compare competitors using current sources, consistent criteria, and evidence-backed trade-offs.",
+      "description": "Use when comparing products, services, companies, open-source projects, or market alternatives to support positioning, product strategy, procurement, or technical decisions.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read",
+        "network"
+      ],
+      "tools": [
+        "web.fetch_text",
+        "decision.weighted_matrix"
+      ],
+      "requires": [],
+      "suggests": [
+        "market-sizing",
+        "source-verification"
+      ],
+      "path": "capabilities/competitive-analysis",
+      "hash": "6fb19b09c9d2bbd7559b9675fffd6424aad404ff31f09e04eb57691afde2a262"
+    },
+    {
+      "name": "content-writing",
+      "kind": "skill",
+      "domain": "creative-communication",
+      "version": "0.1.0",
+      "phase": "build",
+      "summary": "Create clear original content that meets the audience, purpose, tone, and factual requirements.",
+      "description": "Use when drafting, editing, structuring, or adapting original articles, guides, announcements, newsletters, product copy, or other written content for a defined audience.",
+      "risk": "low",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "text.readability",
+        "docs.markdown_check"
+      ],
+      "requires": [],
+      "suggests": [
+        "source-verification",
+        "search-optimization"
+      ],
+      "path": "capabilities/content-writing",
+      "hash": "56e35f19794f6187966d61f6a69a83bdecc665259b65b1bb1b887a40eba79727"
+    },
+    {
+      "name": "customer-support",
+      "kind": "skill",
+      "domain": "customer-operations",
+      "version": "0.1.0",
+      "phase": "deliver",
+      "summary": "Resolve or route customer issues with empathy, accuracy, and clear ownership.",
+      "description": "Use when classifying customer support requests, drafting helpful responses, identifying missing information, routing issues, or summarizing recurring support trends.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "text.readability",
+        "privacy.pii_scan"
+      ],
+      "requires": [],
+      "suggests": [
+        "knowledge-management"
+      ],
+      "path": "capabilities/customer-support",
+      "hash": "477c3d5e372d752be76956b7f555bfc05f8f7ed24bd09a0d3ab2acebcd1040e1"
+    },
+    {
+      "name": "data-analysis",
+      "kind": "skill",
+      "domain": "data",
+      "version": "0.1.0",
+      "phase": "build",
+      "summary": "Translate a data question into reproducible analysis with explicit grain and limitations.",
+      "description": "Use when answering a business, product, operational, or research question from structured data using cleaning, aggregation, statistical summaries, comparisons, or exploratory analysis.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "data.profile",
+        "data.query",
+        "stats.describe",
+        "data.chart_svg"
+      ],
+      "requires": [],
+      "suggests": [
+        "data-visualization",
+        "scientific-data-analysis"
+      ],
+      "path": "capabilities/data-analysis",
+      "hash": "5a598751c03ce7ce7701d74d3f552e2941e3942ebdbaa7da9f33a09e6ebd23e1"
+    },
+    {
+      "name": "data-report",
+      "kind": "workflow",
+      "domain": "data",
+      "version": "0.1.0",
+      "phase": "plan",
+      "summary": "Workflow: profile, analyse, visualise and write up a dataset as a report.",
+      "description": "Use when turning a raw dataset into a finished analytical report: profile and clean the data, analyse it, chart the findings and write up conclusions with caveats.",
+      "risk": "low",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "data.profile",
+        "data.query",
+        "stats.describe",
+        "data.chart_svg"
+      ],
+      "requires": [],
+      "suggests": [],
+      "steps": [
+        "data-analysis",
+        "data-analysis",
+        "data-visualization",
+        "content-writing"
+      ],
+      "path": "capabilities/data-report",
+      "hash": "8e83377ffca860b6d76856d1b821fdd619dda91ae52923af8ae0b555168fe9a0"
+    },
+    {
+      "name": "data-visualization",
+      "kind": "skill",
+      "domain": "data",
+      "version": "0.1.0",
+      "phase": "build",
+      "summary": "Match visual encodings to the analytical question and make charts readable and honest.",
+      "description": "Use when choosing, designing, or reviewing charts and visual explanations for quantitative data, dashboards, reports, or presentations.",
+      "risk": "low",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "data.chart_svg",
+        "a11y.contrast",
+        "data.query"
+      ],
+      "requires": [],
+      "suggests": [
+        "data-analysis",
+        "presentation-design"
+      ],
+      "path": "capabilities/data-visualization",
+      "hash": "615d151ff075ff74607a92e673b2918fd33f57c0a96f89addc78fd9dad169dcf"
+    },
+    {
+      "name": "database-design",
+      "kind": "skill",
+      "domain": "software-engineering",
+      "version": "0.1.0",
+      "phase": "plan",
+      "summary": "Model data and migrations for integrity, clear ownership, and maintainable access patterns.",
+      "description": "Use when designing relational or document data models, schemas, indexes, constraints, migrations, retention rules, or data-access boundaries for an application.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "sql.schema_lint"
+      ],
+      "requires": [],
+      "suggests": [
+        "backend-engineering",
+        "api-design"
+      ],
+      "path": "capabilities/database-design",
+      "hash": "889527e38519cac51a515fe270c6a5c0f350ed718bf28609ffff8ff9d4c26935"
+    },
+    {
+      "name": "debugging",
+      "kind": "skill",
+      "domain": "software-engineering",
+      "version": "0.1.0",
+      "phase": "build",
+      "summary": "Diagnose, fix, and verify software defects.",
+      "description": "Diagnose and fix a reproducible software defect, failing test, crash, regression, or unexpected behavior. Use when the user reports a bug or an existing check fails.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "code.parse_stacktrace",
+        "logs.summarize",
+        "test.parse_report",
+        "code.repo_map"
+      ],
+      "requires": [],
+      "suggests": [
+        "test-driven-development",
+        "performance-optimization"
+      ],
+      "path": "capabilities/debugging",
+      "hash": "4c25917f7824689b44220e4991ba958eb3bb3dfa521363448d0c04fdc2744ef7"
+    },
+    {
+      "name": "decision-log",
+      "kind": "skill",
+      "domain": "productivity",
+      "version": "0.1.0",
+      "phase": "deliver",
+      "summary": "Create durable decision records with context, alternatives, consequences, owners, and revisit triggers.",
+      "description": "Use when recording, comparing, or revisiting a significant project, architecture, product, or operational decision and its rationale.",
+      "risk": "low",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "decision.weighted_matrix",
+        "docs.markdown_check"
+      ],
+      "requires": [],
+      "suggests": [
+        "meeting-synthesis",
+        "technical-planning"
+      ],
+      "path": "capabilities/decision-log",
+      "hash": "992f7a7958bfaf369882e49781e0872876a222871e891072f8486d80b25a3bb8"
+    },
+    {
+      "name": "design-system",
+      "kind": "skill",
+      "domain": "design",
+      "version": "0.1.0",
+      "phase": "build",
+      "summary": "Create a coherent, accessible, implementation-ready system of reusable design decisions.",
+      "description": "Use when creating, documenting, auditing, or extending a product design system including design tokens, typography, spacing, color, components, interaction states, and usage guidance.",
+      "risk": "low",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "a11y.contrast",
+        "a11y.html_audit"
+      ],
+      "requires": [],
+      "suggests": [
+        "accessibility-review",
+        "frontend-engineering"
+      ],
+      "path": "capabilities/design-system",
+      "hash": "b2be91f7d5e0cd901fba2cc74c00b7ac8043d32432e5cd9575dfb99e28f39f21"
+    },
+    {
+      "name": "devops-release",
+      "kind": "skill",
+      "domain": "software-engineering",
+      "version": "0.1.0",
+      "phase": "deliver",
+      "summary": "Make releases reproducible, observable, and recoverable with explicit gates.",
+      "description": "Use when preparing a software build, CI/CD pipeline, deployment, release, rollback, environment configuration, artifact signing, or operational handover.",
+      "risk": "high",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "release.changelog",
+        "container.dockerfile_lint",
+        "code.dependency_inventory"
+      ],
+      "requires": [],
+      "suggests": [
+        "quality-assurance",
+        "incident-management"
+      ],
+      "path": "capabilities/devops-release",
+      "hash": "d973712ce64faf1fc8de91135eadab956088cea01617aa92e33a54c37ab98f45"
+    },
+    {
+      "name": "experimental-design",
+      "kind": "skill",
+      "domain": "science",
+      "version": "0.1.0",
+      "phase": "plan",
+      "summary": "Design a transparent, ethical study with testable hypotheses and defensible methods.",
+      "description": "Use when turning a scientific or technical question into a testable study, experiment, observational protocol, simulation plan, or preregistered analysis approach.",
+      "risk": "high",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "stats.sample_size",
+        "stats.ab_test",
+        "stats.compare_samples"
+      ],
+      "requires": [],
+      "suggests": [
+        "product-analytics",
+        "scientific-data-analysis"
+      ],
+      "path": "capabilities/experimental-design",
+      "hash": "917fb5698d24c29025d4535d5ad8c6753963c5e6637ecf30707f7b66af845207"
+    },
+    {
+      "name": "feature-delivery",
+      "kind": "workflow",
+      "domain": "software-engineering",
+      "version": "0.1.0",
+      "phase": "plan",
+      "summary": "End-to-end workflow: requirements, plan, tests, implementation, review and release.",
+      "description": "Use when taking a software feature end to end: from requirements through plan, test-first implementation, review and release notes, as one coordinated workflow.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "code.repo_map",
+        "code.diff_stats",
+        "security.secret_scan",
+        "release.changelog"
+      ],
+      "requires": [],
+      "suggests": [],
+      "steps": [
+        "requirements-engineering",
+        "technical-planning",
+        "test-driven-development",
+        "backend-engineering",
+        "code-review",
+        "devops-release"
+      ],
+      "path": "capabilities/feature-delivery",
+      "hash": "f70ac2d7ee9da4ab0b7f5b19711a6204465566187d06ba5ecf618c62e7d47b69"
+    },
+    {
+      "name": "financial-modeling",
+      "kind": "skill",
+      "domain": "finance",
+      "version": "0.1.0",
+      "phase": "build",
+      "summary": "Build transparent financial scenarios with traceable assumptions and sensitivity analysis.",
+      "description": "Use when building or reviewing an educational or business financial model, budget, forecast, cash-flow projection, unit-economics model, or scenario analysis from explicit assumptions.",
+      "risk": "high",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "finance.cashflow",
+        "finance.loan_schedule",
+        "decision.weighted_matrix"
+      ],
+      "requires": [],
+      "suggests": [
+        "spreadsheet-analysis",
+        "market-sizing"
+      ],
+      "path": "capabilities/financial-modeling",
+      "hash": "730be9a6d7c967d4b3389ecf2ecd1018fc64d684dc3de8207a4c5520c6dc9aca"
+    },
+    {
+      "name": "financial-statement-analysis",
+      "kind": "skill",
+      "domain": "finance",
+      "version": "0.1.0",
+      "phase": "build",
+      "summary": "Analyze company financial statements with ratio definitions, period comparisons, and caveats.",
+      "description": "Use when interpreting supplied or publicly available company financial statements, annual reports, cash-flow statements, notes, and operating metrics for educational or business analysis.",
+      "risk": "high",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "finance.ratios",
+        "doc.extract_text",
+        "stats.describe"
+      ],
+      "requires": [],
+      "suggests": [
+        "financial-modeling",
+        "source-verification"
+      ],
+      "path": "capabilities/financial-statement-analysis",
+      "hash": "484e5e3e210b90be2e33082d58526b532f84e8c4b11768a9c4934e4fd4e7a73b"
+    },
+    {
+      "name": "frontend-engineering",
+      "kind": "skill",
+      "domain": "software-engineering",
+      "version": "0.1.0",
+      "phase": "build",
+      "summary": "Build usable, maintainable frontend behavior that matches the product contract.",
+      "description": "Use when implementing, debugging, or improving browser-based user interfaces, components, responsive layouts, client-side state, routing, or frontend architecture. Do not use for server-side endpoint handlers, persistence, or backend business logic without a browser-interface task.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "a11y.html_audit",
+        "code.repo_map",
+        "test.parse_report"
+      ],
+      "requires": [],
+      "suggests": [
+        "design-system",
+        "accessibility-review"
+      ],
+      "path": "capabilities/frontend-engineering",
+      "hash": "9c02baab0198d503d7b0126264711c89f8cf97300936f9a1e63f8ab5cca8923e"
+    },
+    {
+      "name": "incident-management",
+      "kind": "skill",
+      "domain": "engineering",
+      "version": "0.1.0",
+      "phase": "deliver",
+      "summary": "Coordinate operational incident response, communication, recovery, and learning.",
+      "description": "Use when coordinating response to a software or service outage, operational degradation, reliability event, or incident review, including triage, stakeholder updates, recovery tracking, and post-incident learning. Do not use for routine planned feature releases or generic uptime definitions without an active incident.",
+      "risk": "high",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "logs.summarize",
+        "reliability.slo_budget"
+      ],
+      "requires": [],
+      "suggests": [
+        "reliability-analysis",
+        "devops-release"
+      ],
+      "path": "capabilities/incident-management",
+      "hash": "91fafcb68d2633ebf5ae052c1af24d03d20eda2b9e35840b800189215c1098d5"
+    },
+    {
+      "name": "knowledge-management",
+      "kind": "skill",
+      "domain": "productivity",
+      "version": "0.1.0",
+      "phase": "deliver",
+      "summary": "Structure trusted knowledge bases with ownership, provenance, and review cycles.",
+      "description": "Use when designing, reorganizing, or governing an internal knowledge base, wiki, document library, or retrieval collection, including taxonomy, metadata, content ownership, freshness, and access boundaries. Do not use for standalone public blog writing or isolated meeting-note summaries.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read",
+        "network"
+      ],
+      "tools": [
+        "docs.markdown_check",
+        "web.check_links"
+      ],
+      "requires": [],
+      "suggests": [
+        "technical-documentation"
+      ],
+      "path": "capabilities/knowledge-management",
+      "hash": "69f0dd79ba6c3c1bf4e3c13e62353fb7ee329b97759d100f5567cfcd4afc11f1"
+    },
+    {
+      "name": "learning-design",
+      "kind": "skill",
+      "domain": "education",
+      "version": "0.1.0",
+      "phase": "plan",
+      "summary": "Design accessible learning experiences with aligned outcomes, activities, and evidence of learning.",
+      "description": "Use when designing a lesson, course module, workshop, tutorial, learning activity, rubric, or assessment aligned to specific learner outcomes.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "text.readability"
+      ],
+      "requires": [],
+      "suggests": [
+        "study-coaching",
+        "accessibility-review"
+      ],
+      "path": "capabilities/learning-design",
+      "hash": "d90d0c274cd8604460832907c9f3610aebb8882ff7cb9784928eb215e0a1e0ae"
+    },
+    {
+      "name": "literature-review",
+      "kind": "skill",
+      "domain": "research",
+      "version": "0.1.0",
+      "phase": "discover",
+      "summary": "Build a transparent evidence map and synthesis from traceable research sources.",
+      "description": "Use when reviewing academic or technical literature, comparing research findings, mapping evidence, identifying gaps, or preparing a narrative or structured review of published studies.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read",
+        "network"
+      ],
+      "tools": [
+        "doc.extract_text",
+        "web.fetch_text"
+      ],
+      "requires": [],
+      "suggests": [
+        "research-synthesis",
+        "source-verification"
+      ],
+      "path": "capabilities/literature-review",
+      "hash": "929c889dd30696b28cec961927f7ccac3ad7caa583b89dde144f6a7528bda391"
+    },
+    {
+      "name": "localization",
+      "kind": "skill",
+      "domain": "creative-communication",
+      "version": "0.1.0",
+      "phase": "build",
+      "summary": "Adapt product content and interfaces for languages, regions, and cultural contexts.",
+      "description": "Use when localizing software interfaces, product content, help material, or communications for a target language or region, including right-to-left layouts, locale formats, terminology, and cultural review. Do not use for one-word translation without a target locale or product context.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "i18n.compare_locales"
+      ],
+      "requires": [],
+      "suggests": [
+        "content-writing",
+        "frontend-engineering"
+      ],
+      "path": "capabilities/localization",
+      "hash": "78e55e3c34184cecbee15b434bcf1df2b206f6815c4e0817eef69785494c8592"
+    },
+    {
+      "name": "market-sizing",
+      "kind": "skill",
+      "domain": "business",
+      "version": "0.1.0",
+      "phase": "discover",
+      "summary": "Estimate opportunity size with explicit definitions, sourced inputs, and sensitivity ranges.",
+      "description": "Use when estimating the size of a market, segment, or business opportunity using TAM, SAM, and SOM, bottom-up demand models, top-down data, or scenario analysis.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "finance.cashflow",
+        "stats.describe"
+      ],
+      "requires": [],
+      "suggests": [
+        "competitive-analysis",
+        "financial-modeling"
+      ],
+      "path": "capabilities/market-sizing",
+      "hash": "b1995e78dc037d9fbf4a017a71ed51ffd9d87599d96451bc1f45d5d22e2ff9ea"
+    },
+    {
+      "name": "marketing-strategy",
+      "kind": "skill",
+      "domain": "marketing",
+      "version": "0.1.0",
+      "phase": "plan",
+      "summary": "Create evidence-led positioning, audience, channel, and campaign strategies.",
+      "description": "Use when developing marketing positioning, audience segmentation, go-to-market plans, channel strategy, campaign priorities, or a measurable marketing plan for a product or service. Do not use for standalone grammar or punctuation correction, or spreadsheet formula explanations.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "decision.weighted_matrix",
+        "text.readability"
+      ],
+      "requires": [],
+      "suggests": [
+        "competitive-analysis",
+        "content-writing",
+        "search-optimization"
+      ],
+      "path": "capabilities/marketing-strategy",
+      "hash": "f0012b2f336ec74b5d34b9276fd6b2875a4f569802ab6af23cc56239a68788d0"
+    },
+    {
+      "name": "meeting-synthesis",
+      "kind": "skill",
+      "domain": "productivity",
+      "version": "0.1.0",
+      "phase": "deliver",
+      "summary": "Separate discussion from decisions and capture actions without inventing commitments.",
+      "description": "Use when turning supplied meeting notes, transcripts, or recordings into a concise summary, decisions, action items, open questions, and follow-up communication.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "text.readability",
+        "privacy.pii_scan"
+      ],
+      "requires": [],
+      "suggests": [
+        "decision-log",
+        "project-management"
+      ],
+      "path": "capabilities/meeting-synthesis",
+      "hash": "1ea6221ba9d282ad1b9b5805e6b8b4d09fe94e911c1082552dad501f18279c63"
+    },
+    {
+      "name": "mobile-engineering",
+      "kind": "skill",
+      "domain": "software-engineering",
+      "version": "0.1.0",
+      "phase": "build",
+      "summary": "Build and review reliable native and cross-platform mobile applications.",
+      "description": "Use when building, reviewing, debugging, or preparing native or cross-platform mobile applications, including app lifecycle, offline behavior, navigation, device permissions, platform integration, and release readiness. Do not use for conceptual comparisons of responsive web and native apps or backend-only cloud cost estimates.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "code.repo_map",
+        "test.parse_report",
+        "i18n.compare_locales"
+      ],
+      "requires": [],
+      "suggests": [
+        "frontend-engineering",
+        "quality-assurance"
+      ],
+      "path": "capabilities/mobile-engineering",
+      "hash": "3d096f071e2f1db53f57a8b9bfa3bd768ae29308a187c07ba56061c814cb9f6b"
+    },
+    {
+      "name": "performance-optimization",
+      "kind": "skill",
+      "domain": "software-engineering",
+      "version": "0.1.0",
+      "phase": "build",
+      "summary": "Measure bottlenecks first and optimize the dominant cause with regression checks.",
+      "description": "Use when investigating slow code, high latency, excessive memory or CPU use, large bundles, inefficient queries, or resource bottlenecks in an authorized application.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "stats.compare_samples",
+        "stats.describe",
+        "logs.summarize"
+      ],
+      "requires": [],
+      "suggests": [
+        "debugging",
+        "reliability-analysis"
+      ],
+      "path": "capabilities/performance-optimization",
+      "hash": "e1d6c6b1fa0a3323ebf19eef0222b772916b83dc4d09bb9c430a7c93e70ee3f4"
+    },
+    {
+      "name": "presentation-design",
+      "kind": "skill",
+      "domain": "creative-communication",
+      "version": "0.1.0",
+      "phase": "deliver",
+      "summary": "Build a focused slide narrative with clear hierarchy and evidence-matched visuals.",
+      "description": "Use when planning or creating a slide deck, pitch presentation, lesson slides, executive briefing, or visual narrative from supplied goals and evidence.",
+      "risk": "low",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "doc.extract_text",
+        "data.chart_svg",
+        "text.readability"
+      ],
+      "requires": [],
+      "suggests": [
+        "data-visualization",
+        "content-writing"
+      ],
+      "path": "capabilities/presentation-design",
+      "hash": "a53c4e39658b2bd3cade3411b718631d0d4ff50173fc31349e146ce5b94384f0"
+    },
+    {
+      "name": "privacy-impact-review",
+      "kind": "skill",
+      "domain": "security",
+      "version": "0.1.0",
+      "phase": "verify",
+      "summary": "Map personal-data flows and assess purpose, minimization, safeguards, retention, and user impact.",
+      "description": "Use when reviewing a product feature, dataset, workflow, or vendor integration that collects, uses, stores, shares, infers, or deletes personal or sensitive information.",
+      "risk": "high",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "privacy.pii_scan",
+        "security.secret_scan"
+      ],
+      "requires": [],
+      "suggests": [
+        "threat-modeling",
+        "secure-code-review"
+      ],
+      "path": "capabilities/privacy-impact-review",
+      "hash": "94e09f7c265aec39960bc8f16b21bbca278765120d1b8de61c70b9add161f75d"
+    },
+    {
+      "name": "process-mapping",
+      "kind": "skill",
+      "domain": "business",
+      "version": "0.1.0",
+      "phase": "discover",
+      "summary": "Map a real process, expose bottlenecks, and recommend measurable improvements.",
+      "description": "Use when documenting or improving an operational workflow, handoff, service process, approval path, customer journey, or recurring business procedure.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "pm.critical_path",
+        "stats.describe"
+      ],
+      "requires": [],
+      "suggests": [
+        "project-management",
+        "requirements-engineering"
+      ],
+      "path": "capabilities/process-mapping",
+      "hash": "2b659184524a8a77f117c6790cb3637a409b80cf5d68fe8b72effb226b5d9486"
+    },
+    {
+      "name": "procurement-analysis",
+      "kind": "skill",
+      "domain": "business",
+      "version": "0.1.0",
+      "phase": "plan",
+      "summary": "Compare vendors and purchasing options using transparent lifecycle-cost and risk criteria.",
+      "description": "Use when evaluating suppliers, vendor proposals, purchasing options, or procurement decisions through requirements, weighted criteria, total cost of ownership, service terms, and delivery risks.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "decision.weighted_matrix",
+        "finance.cashflow"
+      ],
+      "requires": [],
+      "suggests": [
+        "competitive-analysis",
+        "financial-modeling"
+      ],
+      "path": "capabilities/procurement-analysis",
+      "hash": "f8703c1933f759ccb09ee4c975a1bb5b6e140c0d20b9678dd16486a6dcb05a9c"
+    },
+    {
+      "name": "product-analytics",
+      "kind": "skill",
+      "domain": "data",
+      "version": "0.1.0",
+      "phase": "plan",
+      "summary": "Define product metrics, event instrumentation, funnels, cohorts, and experiments.",
+      "description": "Use when defining product metrics or event taxonomies, planning analytics instrumentation, analyzing funnels or cohorts, measuring retention, or designing product experiments and guardrails.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "stats.ab_test",
+        "data.query",
+        "data.profile"
+      ],
+      "requires": [],
+      "suggests": [
+        "experimental-design",
+        "data-analysis"
+      ],
+      "path": "capabilities/product-analytics",
+      "hash": "df3d2b594c05ea7a6c9567ac030aa257dcab59a49189e13dc8c5e148e84f037f"
+    },
+    {
+      "name": "product-discovery",
+      "kind": "skill",
+      "domain": "business",
+      "version": "0.1.0",
+      "phase": "discover",
+      "summary": "Turn uncertain product ideas into testable user-problem and solution hypotheses.",
+      "description": "Use when exploring a product opportunity, understanding user problems, planning customer discovery, prioritizing needs, or deciding what a first useful product version should prove.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "decision.weighted_matrix"
+      ],
+      "requires": [],
+      "suggests": [
+        "requirements-engineering",
+        "experimental-design"
+      ],
+      "path": "capabilities/product-discovery",
+      "hash": "bfca0abfad44c232349ab874ed692f3d1e833a8d037e0e65fc8fa98a8ce2c5a2"
+    },
+    {
+      "name": "project-management",
+      "kind": "skill",
+      "domain": "productivity",
+      "version": "0.1.0",
+      "phase": "plan",
+      "summary": "Turn project goals into an executable plan with ownership, dependencies, and control points.",
+      "description": "Use when organizing a project with deliverables, dependencies, owners, milestones, risks, capacity constraints, status reporting, or cross-team coordination.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "pm.critical_path",
+        "decision.weighted_matrix"
+      ],
+      "requires": [],
+      "suggests": [
+        "technical-planning",
+        "meeting-synthesis"
+      ],
+      "path": "capabilities/project-management",
+      "hash": "0490b4fd97ed5b500f6e7cdc03d184b66c4a99a47f81668ef9a4abcf38562456"
+    },
+    {
+      "name": "quality-assurance",
+      "kind": "skill",
+      "domain": "software-engineering",
+      "version": "0.1.0",
+      "phase": "verify",
+      "summary": "Create risk-based test strategies and verify release acceptance.",
+      "description": "Use when planning quality assurance, creating test strategies or test plans, designing acceptance and regression coverage, investigating flaky tests, or deciding whether a release meets its quality criteria. Do not use for standalone definitions of testing concepts or isolated TDD implementation tasks without a broader quality decision.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "test.parse_report",
+        "code.diff_stats",
+        "a11y.html_audit"
+      ],
+      "requires": [],
+      "suggests": [
+        "test-driven-development",
+        "devops-release"
+      ],
+      "path": "capabilities/quality-assurance",
+      "hash": "62e0133527c6b6f9988825c3b31f99dd314dd8634ded0324c887f257402cebbf"
+    },
+    {
+      "name": "release-readiness",
+      "kind": "workflow",
+      "domain": "software-engineering",
+      "version": "0.1.0",
+      "phase": "plan",
+      "summary": "Workflow: go/no-go release check across tests, compatibility, security and reliability.",
+      "description": "Use when deciding whether a build is ready to ship: check tests, API compatibility, dependencies, containers, SLO budget and release notes, then give a go or no-go with evidence.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "test.parse_report",
+        "api.openapi_diff",
+        "security.secret_scan",
+        "code.dependency_inventory",
+        "container.dockerfile_lint",
+        "reliability.slo_budget",
+        "release.changelog"
+      ],
+      "requires": [],
+      "suggests": [],
+      "steps": [
+        "quality-assurance",
+        "api-design",
+        "secure-code-review",
+        "reliability-analysis",
+        "devops-release"
+      ],
+      "path": "capabilities/release-readiness",
+      "hash": "a3a8f58f2462dbf773fda8f1d4d0ad7e3831af1efac7370b8ece6484f27f65cd"
+    },
+    {
+      "name": "reliability-analysis",
+      "kind": "skill",
+      "domain": "engineering",
+      "version": "0.1.0",
+      "phase": "plan",
+      "summary": "Structure reliability evidence, failure modes, mitigations, and measurable operational goals.",
+      "description": "Use when assessing reliability, availability, maintainability, failure patterns, service resilience, maintenance intervals, or operational risks in a technical system.",
+      "risk": "high",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "reliability.slo_budget",
+        "stats.describe",
+        "logs.summarize"
+      ],
+      "requires": [],
+      "suggests": [
+        "incident-management",
+        "cloud-architecture"
+      ],
+      "path": "capabilities/reliability-analysis",
+      "hash": "f22a1a2e23bd0271154d209123ce4641d179f79cb6941eb540349fc69468c6a4"
+    },
+    {
+      "name": "repository-audit",
+      "kind": "skill",
+      "domain": "software-engineering",
+      "version": "0.1.0",
+      "phase": "discover",
+      "summary": "Inspect a repository and report evidence-backed findings.",
+      "description": "Audit an existing software repository before making changes. Use when asked to inspect code quality, architecture, bugs, security posture, dependencies, duplication, test coverage, or readiness for a feature or release.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "code.repo_map",
+        "code.dependency_inventory",
+        "security.secret_scan",
+        "security.code_patterns",
+        "container.dockerfile_lint"
+      ],
+      "requires": [],
+      "suggests": [
+        "code-review",
+        "secure-code-review"
+      ],
+      "path": "capabilities/repository-audit",
+      "hash": "2104ef5641b5cba6fe638977538d7b649016492340ea5623ffeee2c66a1bc713"
+    },
+    {
+      "name": "requirements-engineering",
+      "kind": "skill",
+      "domain": "engineering",
+      "version": "0.1.0",
+      "phase": "plan",
+      "summary": "Transform stakeholder needs into testable, traceable requirements.",
+      "description": "Use when eliciting, structuring, prioritizing, reviewing, or tracing product and system requirements, including functional behavior, quality attributes, constraints, acceptance criteria, and change control.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "docs.markdown_check",
+        "data.validate_json"
+      ],
+      "requires": [],
+      "suggests": [
+        "systems-engineering",
+        "product-discovery"
+      ],
+      "path": "capabilities/requirements-engineering",
+      "hash": "bc1afc61442b227418fc06f335488fbc8197d911b0d7e8308e1359c8a3624e54"
+    },
+    {
+      "name": "research-report",
+      "kind": "workflow",
+      "domain": "research",
+      "version": "0.1.0",
+      "phase": "plan",
+      "summary": "Workflow: gather sources, verify claims, synthesize and write a cited report.",
+      "description": "Use when producing a sourced research report on a question: gather sources, verify claims, synthesize findings and write a cited report with confidence levels.",
+      "risk": "low",
+      "maturity": "draft",
+      "permissions": [
+        "read",
+        "network"
+      ],
+      "tools": [
+        "web.fetch_text",
+        "doc.extract_text"
+      ],
+      "requires": [],
+      "suggests": [],
+      "steps": [
+        "research-synthesis",
+        "source-verification",
+        "literature-review",
+        "content-writing"
+      ],
+      "path": "capabilities/research-report",
+      "hash": "0bc66c27083bdd2c7e47f44ea125c7b401a60c1788373c492712dad5b61e5118"
+    },
+    {
+      "name": "research-synthesis",
+      "kind": "skill",
+      "domain": "research",
+      "version": "0.1.0",
+      "phase": "discover",
+      "summary": "Produce source-grounded research with explicit uncertainty.",
+      "description": "Research a question using external or supplied sources and produce a concise, evidence-grounded synthesis. Use for comparisons, technical investigations, market or policy research, and questions where accuracy or current information matters.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read",
+        "network"
+      ],
+      "tools": [
+        "web.fetch_text",
+        "doc.extract_text"
+      ],
+      "requires": [],
+      "suggests": [
+        "source-verification",
+        "literature-review"
+      ],
+      "path": "capabilities/research-synthesis",
+      "hash": "bd6ff2368c617c70c9eae1749e88e66c42607987d7d696ae0d6cee5c2f639186"
+    },
+    {
+      "name": "scientific-data-analysis",
+      "kind": "skill",
+      "domain": "science",
+      "version": "0.1.0",
+      "phase": "build",
+      "summary": "Produce reproducible data analysis with suitable methods, diagnostics, and limitations.",
+      "description": "Use when cleaning, exploring, visualizing, statistically analyzing, or reporting scientific or technical datasets with reproducible methods and explicit uncertainty.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "stats.describe",
+        "stats.compare_samples",
+        "stats.correlation",
+        "data.profile"
+      ],
+      "requires": [],
+      "suggests": [
+        "experimental-design",
+        "data-visualization"
+      ],
+      "path": "capabilities/scientific-data-analysis",
+      "hash": "56b3ec376a504169008ac507bdce0bfb14ae46b7a7d5a39b52e1dee7eb2b16d3"
+    },
+    {
+      "name": "search-optimization",
+      "kind": "skill",
+      "domain": "marketing",
+      "version": "0.1.0",
+      "phase": "verify",
+      "summary": "Improve discoverability through useful content and technically sound websites.",
+      "description": "Use when auditing or improving organic search discoverability, technical SEO, site structure, metadata, structured data, content relevance, or search performance for a legitimate website. Do not use for simple keyword definitions or standalone tagline writing without a website optimization task.",
+      "risk": "low",
+      "maturity": "draft",
+      "permissions": [
+        "read",
+        "network"
+      ],
+      "tools": [
+        "seo.html_audit",
+        "web.check_links",
+        "text.readability"
+      ],
+      "requires": [],
+      "suggests": [
+        "content-writing",
+        "technical-documentation"
+      ],
+      "path": "capabilities/search-optimization",
+      "hash": "924e3c54c7483965ffee5eb8a9e32a19982a218c827533f8b06f1868e58b54a4"
+    },
+    {
+      "name": "secure-code-review",
+      "kind": "skill",
+      "domain": "security",
+      "version": "0.1.0",
+      "phase": "verify",
+      "summary": "Identify and prioritize defensive code risks with evidence and practical remediation.",
+      "description": "Use when defensively reviewing authorized source code or configuration for security weaknesses involving input handling, authentication, authorization, secrets, data exposure, dependencies, or unsafe defaults.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "security.code_patterns",
+        "security.secret_scan",
+        "code.dependency_inventory",
+        "code.diff_stats"
+      ],
+      "requires": [],
+      "suggests": [
+        "threat-modeling",
+        "code-review"
+      ],
+      "path": "capabilities/secure-code-review",
+      "hash": "8932ced916ee69c4b14d52ddbb845878450edc399b430ec6762a9a6f4270f777"
+    },
+    {
+      "name": "security-assessment",
+      "kind": "workflow",
+      "domain": "security",
+      "version": "0.1.0",
+      "phase": "plan",
+      "summary": "Workflow: audit, threat model, secure code review, privacy review and remediation plan.",
+      "description": "Use when running a complete defensive security assessment of a system you are authorized to review: repository audit, threat model, code review, privacy check and a prioritized remediation report.",
+      "risk": "high",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "code.repo_map",
+        "code.dependency_inventory",
+        "security.secret_scan",
+        "security.code_patterns",
+        "privacy.pii_scan"
+      ],
+      "requires": [],
+      "suggests": [],
+      "steps": [
+        "repository-audit",
+        "threat-modeling",
+        "secure-code-review",
+        "privacy-impact-review",
+        "technical-documentation"
+      ],
+      "path": "capabilities/security-assessment",
+      "hash": "6df81c3d8a4a2531e2cbd2d6b3f5d10f0dfd1503e3c98f601d37a9deaeedca49"
+    },
+    {
+      "name": "skill-authoring",
+      "kind": "skill",
+      "domain": "meta",
+      "version": "0.1.0",
+      "phase": "build",
+      "summary": "Create, revise, and evaluate portable skills.",
+      "description": "Design, write, revise, or evaluate portable Agent Skills. Use when creating a new skill, improving an existing SKILL.md, reviewing skill quality, or deciding whether a capability belongs in a skill, workflow, tool, or runtime. Do not use for general definitions of AI concepts unrelated to authoring or evaluating agent skills.",
+      "risk": "low",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "docs.markdown_check",
+        "data.validate_json",
+        "text.readability"
+      ],
+      "requires": [],
+      "suggests": [
+        "technical-documentation"
+      ],
+      "path": "capabilities/skill-authoring",
+      "hash": "500e97251c070629c8ed28166c896cad2ab73a6d9c50b16983feae6329d02e9c"
+    },
+    {
+      "name": "source-verification",
+      "kind": "skill",
+      "domain": "research",
+      "version": "0.1.0",
+      "phase": "verify",
+      "summary": "Verify claims through provenance, primary evidence, cross-checks, and explicit uncertainty.",
+      "description": "Use when checking whether a factual claim, quotation, image caption, public statement, dataset, or online source is authentic, current, correctly attributed, and supported by independent evidence.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read",
+        "network"
+      ],
+      "tools": [
+        "web.fetch_text",
+        "http.request"
+      ],
+      "requires": [],
+      "suggests": [
+        "research-synthesis"
+      ],
+      "path": "capabilities/source-verification",
+      "hash": "361a0332ca44589617fdd6ba5a36d72dcfa31c8e46ace7b4898ea674b6e7d1a3"
+    },
+    {
+      "name": "spreadsheet-analysis",
+      "kind": "skill",
+      "domain": "data",
+      "version": "0.1.0",
+      "phase": "build",
+      "summary": "Make spreadsheet logic auditable and protect data integrity across sheets and formulas.",
+      "description": "Use when auditing, cleaning, analyzing, reconciling, or building spreadsheets in Excel, Google Sheets, or compatible formats, including formulas, pivots, imports, and workbook controls.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "doc.extract_text",
+        "data.profile",
+        "data.query"
+      ],
+      "requires": [],
+      "suggests": [
+        "financial-modeling",
+        "data-analysis"
+      ],
+      "path": "capabilities/spreadsheet-analysis",
+      "hash": "49683eca89c18f18b9b4416e22e175f68bb52ca27a1f1790a186e2bd231e0093"
+    },
+    {
+      "name": "study-coaching",
+      "kind": "skill",
+      "domain": "education",
+      "version": "0.1.0",
+      "phase": "deliver",
+      "summary": "Coach learning through explanation, retrieval practice, scaffolding, and feedback.",
+      "description": "Use when helping a learner understand a concept, plan study sessions, practise a skill, diagnose a misconception, or receive feedback on their own attempt.",
+      "risk": "low",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "text.readability"
+      ],
+      "requires": [],
+      "suggests": [
+        "learning-design"
+      ],
+      "path": "capabilities/study-coaching",
+      "hash": "d0e0c6666712fc336f00596e4f1eec60a9272fa4ecf0002e6c665df99efeccc3"
+    },
+    {
+      "name": "systems-engineering",
+      "kind": "skill",
+      "domain": "engineering",
+      "version": "0.1.0",
+      "phase": "plan",
+      "summary": "Connect stakeholder needs to verifiable system requirements and lifecycle decisions.",
+      "description": "Use when defining system requirements, architecture, interfaces, trade studies, lifecycle constraints, verification, or validation across hardware, software, people, and operational environments.",
+      "risk": "high",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "pm.critical_path",
+        "decision.weighted_matrix",
+        "reliability.slo_budget"
+      ],
+      "requires": [],
+      "suggests": [
+        "requirements-engineering",
+        "reliability-analysis"
+      ],
+      "path": "capabilities/systems-engineering",
+      "hash": "a5dda96c0581508ebae6bbf3fd64b679d71d77437856e2805a495c773c951cf7"
+    },
+    {
+      "name": "technical-documentation",
+      "kind": "skill",
+      "domain": "software-engineering",
+      "version": "0.1.0",
+      "phase": "deliver",
+      "summary": "Produce accurate documentation aligned with the implemented product and its users.",
+      "description": "Use when creating or overhauling developer documentation, architecture guides, API references, setup instructions, runbooks, migration notes, or user-facing technical guides.",
+      "risk": "low",
+      "maturity": "draft",
+      "permissions": [
+        "read",
+        "network"
+      ],
+      "tools": [
+        "docs.markdown_check",
+        "web.check_links",
+        "text.readability",
+        "api.openapi_lint"
+      ],
+      "requires": [],
+      "suggests": [
+        "api-design",
+        "knowledge-management"
+      ],
+      "path": "capabilities/technical-documentation",
+      "hash": "7e74ea76084e8127a185444514c017d582e5642834fa509c47c80d163a8cb42b"
+    },
+    {
+      "name": "technical-planning",
+      "kind": "skill",
+      "domain": "engineering",
+      "version": "0.1.0",
+      "phase": "plan",
+      "summary": "Turn complex requests into scoped, verifiable plans.",
+      "description": "Convert an ambiguous software, product, research, or technical request into a scoped implementation plan with dependencies, risks, acceptance criteria, and checkpoints. Use before substantial or multi-step work.",
+      "risk": "low",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "pm.critical_path",
+        "code.repo_map",
+        "decision.weighted_matrix"
+      ],
+      "requires": [],
+      "suggests": [
+        "project-management",
+        "decision-log"
+      ],
+      "path": "capabilities/technical-planning",
+      "hash": "a9b748f04cbada55c9c82b7a9c51f492670d378af371e88bf2ceabb016aa2577"
+    },
+    {
+      "name": "test-driven-development",
+      "kind": "skill",
+      "domain": "software-engineering",
+      "version": "0.1.0",
+      "phase": "build",
+      "summary": "Develop behavior through a verified failing test, a minimal implementation, and regression checks.",
+      "description": "Use when implementing or changing software behavior, adding a feature, fixing a defect, or refactoring code where a regression test can express the intended contract.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "test.parse_report",
+        "code.diff_stats"
+      ],
+      "requires": [],
+      "suggests": [
+        "debugging",
+        "quality-assurance"
+      ],
+      "path": "capabilities/test-driven-development",
+      "hash": "480f19427f5e69cfcee35a283b270e5c39825409d1d1327c172fd7351bc05590"
+    },
+    {
+      "name": "threat-modeling",
+      "kind": "skill",
+      "domain": "security",
+      "version": "0.1.0",
+      "phase": "plan",
+      "summary": "Map assets, trust boundaries, threats, mitigations, and residual risk for an authorized system.",
+      "description": "Use when defensively identifying security and privacy threats in an application, service, architecture, data flow, or feature before release or after a material change.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "security.code_patterns",
+        "api.openapi_lint",
+        "container.dockerfile_lint"
+      ],
+      "requires": [],
+      "suggests": [
+        "secure-code-review",
+        "privacy-impact-review"
+      ],
+      "path": "capabilities/threat-modeling",
+      "hash": "6748fb576faf31743166634f7eeb85d168130f008b19bee379da9cdcacd6a45e"
+    },
+    {
+      "name": "ux-audit",
+      "kind": "skill",
+      "domain": "design",
+      "version": "0.1.0",
+      "phase": "verify",
+      "summary": "Review real user journeys and turn observed usability issues into prioritized fixes.",
+      "description": "Use when evaluating an existing website, application, workflow, or prototype for usability, information architecture, interaction clarity, consistency, and task completion barriers.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "a11y.html_audit",
+        "text.readability",
+        "seo.html_audit"
+      ],
+      "requires": [],
+      "suggests": [
+        "accessibility-review",
+        "design-system"
+      ],
+      "path": "capabilities/ux-audit",
+      "hash": "5b3db38eeb7669f631bee83cd724a19bb54d24971b6eafdd2426ed4b20dc5585"
+    }
+  ]
+}

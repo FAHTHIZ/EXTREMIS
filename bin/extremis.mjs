@@ -39,6 +39,7 @@ Manage
   scan <dir>                 security-scan a capability package
   eval                       routing quality on authored evals and the hold-out set
   build                      regenerate registry/catalog.json and .well-known index
+                             [--check] [--base-url https://host] [--out dir]
   doctor                     environment, roots and catalog diagnostics
 
 Options
