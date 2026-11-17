@@ -1,146 +1,159 @@
 # EXTREMIS
 
 <p align="center"><strong>One intelligence. Endless capabilities.</strong></p>
-<p align="center">A portable capability runtime and supply-chain toolkit for AI agents.</p>
+<p align="center">Plan, load, run and verify reusable agent capabilities, on demand.</p>
 
-EXTREMIS gives compatible agent hosts a shared way to discover, activate, compose, run, and verify reusable capabilities. It combines the open Agent Skills directory convention with a Node.js service layer, permission-gated tools, an MCP server, CLI, JavaScript SDK, installer, lockfile, and static security scanner.
+<p align="center">
+<a href="https://github.com/FAHTHIZ/EXTREMIS/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/FAHTHIZ/EXTREMIS/actions/workflows/ci.yml/badge.svg"></a>
+<a href="LICENSE"><img alt="License: Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-blue"></a>
+<img alt="Node >= 18.17" src="https://img.shields.io/badge/node-%3E%3D18.17-339933">
+<img alt="Zero dependencies" src="https://img.shields.io/badge/dependencies-0-brightgreen">
+</p>
 
-It is designed to work independently and integrate with different agent runtimes. EXTREMIS is not a model or an agent host: the host remains responsible for reasoning, user approval, and the final conversation.
+EXTREMIS is a catalog of **59 capabilities** (54 skills and 5 multi-step workflows) plus a small runtime that agents reach through MCP, a CLI or a JavaScript SDK. Instead of loading every skill into context, the agent asks EXTREMIS for a plan, loads only the instructions it needs, runs **41 permission-gated tools** for the deterministic parts, and runs **verification checks** before it reports a task as done.
 
-## What is included
-
-- **Capability catalog:** built-in and user-installed skills, workflows, manifests, references, and dependencies.
-- **Progressive activation:** compact discovery cards first, full instructions and tool schemas when activated, and individual resources on demand.
-- **Task composition:** capability planning, dependency closure, phase ordering, and verification checklists.
-- **Tool runtime:** schema validation, explicit permission checks, workspace-aware built-in file operations, timeouts, and output limits.
-- **Integrations:** a shared JavaScript service, MCP server, CLI, and SDK.
-- **Distribution controls:** Git/URL/local installation, project or user scope, content hashes, lockfile drift detection, updates, removal, archive validation, and security scanning.
-- **Quality checks:** offline routing fixtures, capability linting, and diagnostics.
-
-## Requirements
-
-- Node.js 18.17 or newer.
-- Git for installing Git-backed sources.
-- No runtime third-party dependencies are required by the core package.
+Capabilities are standard [Agent Skills](https://agentskills.io/specification) folders, so they also work without the runtime in any host that reads `SKILL.md`.
 
 ## Install
 
-Add EXTREMIS to an existing Node.js project:
+| Host | Command |
+|---|---|
+| Claude Code (plugin: gateway skill + MCP server) | `/plugin marketplace add FAHTHIZ/EXTREMIS` then `/plugin install extremis@extremis` |
+| Any Agent Skills host via [skills CLI](https://github.com/vercel-labs/skills) (Codex, Cursor, Copilot, Gemini CLI, …) | `npx skills add FAHTHIZ/EXTREMIS` |
+| Individual capabilities via skills CLI | `npx skills add https://github.com/FAHTHIZ/EXTREMIS/tree/main/capabilities --skill code-review` |
+| Any MCP client | `npx -y github:FAHTHIZ/EXTREMIS mcp` (config snippets: `extremis export mcp --host claude\|cursor\|vscode\|codex`) |
+| Codex (repo marketplace) | `codex plugin marketplace add FAHTHIZ/EXTREMIS`, then install from the Plugins Directory |
+| Node.js project (CLI + SDK) | `npm install github:FAHTHIZ/EXTREMIS` |
+
+The `npx skills add FAHTHIZ/EXTREMIS` route installs the single `extremis` gateway skill, which tells the agent to work through the MCP tools; pair it with the MCP server. To copy capabilities into a project directly, run `npx -y github:FAHTHIZ/EXTREMIS export claude` (`.claude/skills`) or `... export skills` (`.agents/skills`).
+
+The examples below use `npx extremis`, which works after `npm install github:FAHTHIZ/EXTREMIS`. Without installing, use `npx -y github:FAHTHIZ/EXTREMIS <command>`.
+
+The repository also publishes an [Agent Skills discovery index](https://github.com/cloudflare/agent-skills-discovery-rfc) (v0.2.0, with sha256 digests) at `.well-known/agent-skills/index.json`:
 
 ```bash
-npm install github:FAHTHIZ/EXTREMIS
+npx extremis install https://raw.githubusercontent.com/FAHTHIZ/EXTREMIS/main/.well-known/agent-skills/index.json --skill release-readiness
 ```
 
-Or clone the repository for development:
+## How it works
 
-```bash
-git clone https://github.com/FAHTHIZ/EXTREMIS.git
-cd EXTREMIS
-npm test
-npm run validate
-npm run eval
+```text
+task ─▶ plan ─▶ activate ─▶ run tools ─▶ verify ─▶ done
+        choose    load only    permission-   tool checks +
+        + order   selected     gated         manual checks
+                  instructions
 ```
 
-Check the environment and catalog:
+```console
+$ npx extremis plan "is this build ready to release?"
+Plan (workflow: release-readiness, confidence high)
+1. [verify] tests (quality-assurance)
+    Confirm the test report has no failures or errors
+    tools: test.parse_report
+2. [plan] compat (api-design) (optional)
+    Check API changes for breaking changes and the version bump
+    tools: api.openapi_diff
+3. [verify] security (secure-code-review)
+    Check for new secrets, flagged dependencies and container issues
+    tools: security.secret_scan, code.dependency_inventory, container.dockerfile_lint
+...
 
-```bash
-npx extremis doctor
-npx extremis list
-npx extremis tools
+$ npx extremis verify --capability quality-assurance --param test_report=junit.xml
+PASSED   No failing or erroring tests in the release candidate
+MANUAL   Test coverage follows a stated risk ranking
+MANUAL   Known issues are listed with severity and an owner
 ```
 
-## CLI quick start
+Over MCP the same steps are six gateway tools: `extremis_search`, `extremis_plan`, `extremis_activate`, `extremis_read`, `extremis_run` and `extremis_verify`. Capability instructions are also exposed as MCP resources (`skill://<name>/SKILL.md`).
 
-Discover capabilities and compose a task plan:
+### Context cost
 
-```bash
-npx extremis search "review a TypeScript repository"
-npx extremis plan "audit a Node.js API for reliability and security"
-npx extremis activate repository-audit debugging
-```
+Measured with the repository's estimator (about 4 characters per token):
 
-Inspect and run a built-in tool (the caller must have the required permission):
+| What is in context | Tokens |
+|---|---|
+| Gateway: 6 MCP tool schemas + gateway skill | ~1,300 |
+| All 59 names and descriptions (native skill install) | ~3,250 |
+| All 59 `SKILL.md` files loaded in full | ~39,000 |
+| One task: plan result | 400–1,300 |
+| One task: activated instructions and tool schemas | 1,200–4,800 |
 
-```bash
-npx extremis tools
-npx extremis tool data.profile
-npx extremis run data.profile path=./data/sales.csv
-```
+A typical task therefore costs roughly 3,000–7,500 tokens on top of the idle ~1,300, against ~39,000 to load every instruction up front.
 
-Validate the catalog, inspect routing quality, and diagnose the runtime:
+## Capabilities
 
-```bash
-npx extremis validate
-npx extremis eval
-npx extremis doctor
-```
+Workflows are in **bold**. `npx extremis list` shows the full catalog, and `registry/catalog.json` is the machine-readable index.
+
+| Domain | Capabilities |
+|---|---|
+| business | competitive-analysis, market-sizing, process-mapping, procurement-analysis, product-discovery |
+| creative-communication | content-writing, localization, presentation-design |
+| customer-operations | customer-support |
+| data | data-analysis, **data-report**, data-visualization, product-analytics, spreadsheet-analysis |
+| design | accessibility-review, design-system, ux-audit |
+| education | learning-design, study-coaching |
+| engineering | cloud-architecture, incident-management, reliability-analysis, requirements-engineering, systems-engineering, technical-planning |
+| finance | financial-modeling, financial-statement-analysis |
+| marketing | marketing-strategy, search-optimization |
+| meta | skill-authoring |
+| productivity | decision-log, knowledge-management, meeting-synthesis, project-management |
+| research | literature-review, **research-report**, research-synthesis, source-verification |
+| science | experimental-design, scientific-data-analysis |
+| security | privacy-impact-review, secure-code-review, **security-assessment**, threat-modeling |
+| software-engineering | api-design, backend-engineering, code-review, database-design, debugging, devops-release, **feature-delivery**, frontend-engineering, mobile-engineering, performance-optimization, quality-assurance, **release-readiness**, repository-audit, technical-documentation, test-driven-development |
+
+Each capability has a `SKILL.md` (instructions), a `capability.json` (intents, tools, permissions, phase, verification checks, suggested follow-ups) and routing evals.
+
+### Routing quality
+
+`npm run eval` scores the deterministic BM25F selector on two sets. The authored set (253 positive and 75 negative prompts) was written alongside the capabilities. The hold-out set (66 prompts) is not used for tuning.
+
+| Set | Hit@1 | Hit@5 | MRR | False activation @1 / @5 |
+|---|---|---|---|---|
+| Hold-out | 92.4% | 100% | 0.952 | — |
+| Authored | 49.8% | 89.3% | 0.660 | 6.7% / 21.3% |
+
+These numbers measure retrieval only. They do not show that a model follows a capability correctly.
+
+## CLI
+
+| Command | Purpose |
+|---|---|
+| `search <query>`, `plan <task>` | rank capabilities; choose and order them with tools and checks |
+| `activate <name...>`, `read <name> [file]` | print instructions, tool schemas and bundled files |
+| `tools`, `run <tool> k=v`, `verify` | list, run and check with built-in tools (`--allow read,write,network,exec`) |
+| `mcp`, `schema <format>` | MCP stdio server; tool schemas for OpenAI, Anthropic, Gemini or MCP |
+| `export skills\|claude\|mcp\|agents-md` | write host skill folders, MCP config or an AGENTS.md block |
+| `install`, `update`, `remove`, `lock [--verify]`, `scan` | install from GitHub, Git, URLs, archives or well-known indexes, with hashes and a security scan |
+| `validate`, `eval`, `build [--check]`, `doctor` | lint, routing quality, regenerate the catalog and discovery index, diagnostics |
 
 ### Install external capabilities
 
-Install from a GitHub repository or subdirectory:
-
 ```bash
-npx extremis install anthropics/skills/skills/pdf
+npx extremis install anthropics/skills/skills/pdf            # user scope
+npx extremis install anthropics/skills/skills/pdf --project  # project scope
+npx extremis lock --verify                                   # detect drift against the lockfile
+npx extremis scan ./path/to/capability                       # scan before trusting
 ```
 
-Install into the current project instead of the user profile:
+A dangerous finding blocks installation. A caution result requires an explicit `--accept-risk` after you review the findings; do not use that flag as a routine workaround. `extremis-lock.json` hashes use the same algorithm as the skills CLI's `skills-lock.json` v2 `computedHash`, so both tools agree on whether a folder changed.
 
-```bash
-npx extremis install anthropics/skills/skills/pdf --project
-```
+Supported sources: local folders, GitHub `owner/repo[/path][#ref]`, HTTPS Git remotes, HTTPS `SKILL.md` URLs, archives and Agent Skills well-known indexes. SSH Git needs `EXTREMIS_ALLOW_SSH_GIT=1`; plain HTTP needs `EXTREMIS_ALLOW_INSECURE_INSTALL=1`.
 
-Inspect installed capabilities and verify their lockfile hashes:
-
-```bash
-npx extremis lock
-npx extremis lock --verify
-npx extremis update
-npx extremis remove pdf
-```
-
-Scan a capability directory before trusting it:
-
-```bash
-npx extremis scan ./path/to/capability
-```
-
-A dangerous finding blocks installation. A caution result requires explicit `--accept-risk` after reviewing the findings. Do not use that flag as a routine workaround.
-
-Supported sources include local capability folders, GitHub repository/subdirectory references, HTTPS Git remotes, HTTPS `SKILL.md` URLs, archives, and Agent Skills well-known indexes. Local `file://` Git sources are intended for local repositories. SSH Git transport is disabled by default and requires the explicit `EXTREMIS_ALLOW_SSH_GIT=1` opt-in. Plain HTTP downloads and Git remotes require `EXTREMIS_ALLOW_INSECURE_INSTALL=1`; prefer HTTPS.
-
-## MCP integration
-
-Start the stdio server:
-
-```bash
-npx extremis mcp
-```
-
-The gateway exposes six stable tools:
-
-- `extremis_search`
-- `extremis_plan`
-- `extremis_activate`
-- `extremis_read`
-- `extremis_run`
-- `extremis_verify`
-
-The server also exposes capability instructions and resources through the Agent Skills-over-MCP extension. Optional direct tool exposure is available with `--expose-tools=dynamic` or `--expose-tools=all`. The default gateway is the safer starting point.
-
-Example host configuration when the package is installed in the current project:
+## MCP configuration
 
 ```json
 {
   "mcpServers": {
     "extremis": {
-      "command": "node",
-      "args": ["./node_modules/extremis/bin/extremis.mjs", "mcp"]
+      "command": "npx",
+      "args": ["-y", "github:FAHTHIZ/EXTREMIS", "mcp"]
     }
   }
 }
 ```
 
-MCP compatibility depends on the target host and client version. Verify connection, tool discovery, resource reads, and permission behavior in the actual host.
+`--expose-tools=dynamic` or `--expose-tools=all` also exposes built-in tools directly; the default six-tool gateway is the safer starting point. MCP support differs between hosts and versions, so check connection, tool discovery, resource reads and permission prompts in the host you use.
 
 ## JavaScript SDK
 
@@ -198,9 +211,14 @@ Read the [security model](docs/security.md) before installing or executing third
 npm test
 npm run validate
 npm run eval
+node bin/extremis.mjs build --check
 ```
 
 The test suite uses Node's built-in test runner. CI exercises supported Node versions across Linux, macOS, and Windows. Routing fixtures measure deterministic retrieval behavior; they do not prove that a model follows a capability correctly. Behavioral evaluations should record the model, host, evaluator, date, dataset, and scoring procedure.
+
+## Comparison
+
+See [docs/COMPARISON.md](docs/COMPARISON.md) for a dated comparison with anthropics/skills, obra/superpowers, vercel-labs/skills and addyosmani/agent-skills.
 
 ## Project status and license
 

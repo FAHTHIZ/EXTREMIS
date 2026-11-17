@@ -98,25 +98,25 @@ Built-in tools live in `src/tools/` (tested once, shared by many capabilities) a
 
 | Surface | Approximate cost |
 | --- | --- |
-| Six MCP meta-tools (schemas + descriptions) | ~900 tokens, constant in catalogue size |
-| Gateway skill | ~250 tokens |
+| Six MCP meta-tools (schemas + descriptions) | ~830 tokens (measured 2026-11-17), constant in catalogue size |
+| Gateway skill (`skills/extremis`) | ~490 tokens |
 | Search result card | ~40 tokens per capability |
-| Activation | the capability body (typically 500–1,200 tokens) + tool schemas |
+| Activation | the capability body (average ~660 tokens over 59 capabilities) + tool schemas; 1,200–4,800 tokens per task measured on four example tasks |
 
-Compare: listing 54 skill descriptions in a system prompt costs ~4,000 tokens and grows linearly.
+Compare: listing all 59 names and descriptions in a system prompt costs ~3,250 tokens (measured) and grows linearly; loading every `SKILL.md` costs ~39,000.
 
 ## 4. Roadmap and status
 
 | Phase | Deliverable | Status |
 | --- | --- | --- |
-| 1 | Remove duplicate registries and Python scripts; one source of truth per capability; Apache-2.0 license | planned |
-| 2 | Core: frontmatter parser, catalog, index, search, resolver, activation, JSON Schema validator | planned |
-| 3 | Tool runner, permission model, built-in tool library, security scanner | planned |
-| 4 | MCP server (tools + SEP-2640 skills), CLI, JS SDK | planned |
-| 5 | Installer, lockfile, integrity, export adapters, plugin/marketplace, well-known index | planned |
-| 6 | Workflows, planner, verification batches | planned |
-| 7 | Python SDK (MCP client, LangChain adapter) | planned |
-| 8 | Evaluation: routing on fixtures and a held-out set; token budget report; CI | planned |
+| 1 | Remove duplicate registries and Python scripts; one source of truth per capability; Apache-2.0 license | done (`8b12653`) |
+| 2 | Core: frontmatter parser, catalog, index, search, resolver, activation, JSON Schema validator | done (`8b12653`, `c4f8511`) |
+| 3 | Tool runner, permission model, built-in tool library, security scanner | done (`8b12653`, `5d457bc`, `2b5ed14`) |
+| 4 | MCP server (tools + SEP-2640 skills), CLI, JS SDK | done (`be5b5d7`) |
+| 5 | Installer, lockfile, integrity, export adapters, plugin/marketplace, well-known index | done: installer and lockfile (`2b5ed14`), well-known index (`25f4d9a`), exports and Claude Code plugin (`acc8990`), Codex plugin (`9e98b70`) |
+| 6 | Workflows, planner, verification batches | done: planner and verification (`c4f8511`), capability wiring (`1455aa1`), five workflows (`b0c979f`) |
+| 7 | Python SDK (MCP client, LangChain adapter) | in progress |
+| 8 | Evaluation: routing on fixtures and a held-out set; token budget report; CI | done (`c4f8511`, `25d6cba`; `build --check` in CI since `25f4d9a`) |
 | Next | Signed releases (Sigstore), optional embedding reranker package, MCP Tasks for long-running tools, community registry | open |
 
 The status column is updated as each phase lands on `main`; see the commit history for evidence.
