@@ -27,6 +27,7 @@
     "capabilities",
     "registry",
     "skills",
+    "hooks",
     ".claude-plugin",
     ".codex-plugin",
     ".mcp.json",
