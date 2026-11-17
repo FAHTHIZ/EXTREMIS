@@ -36,6 +36,8 @@ export function findSecrets(text) {
       const value = rule === 'generic-assigned-secret' ? m[1] : m[0];
       if (rule === 'generic-assigned-secret') {
         if (PLACEHOLDER.test(value) || shannonEntropy(value) < 3.2 || /^(true|false|\d+)$/i.test(value) || /process\.env|os\.environ|getenv/.test(text.slice(Math.max(0, m.index - 5), m.index + m[0].length + 20))) continue;
+        // Unquoted value followed by "(" is code (`tokens = list.trim()`), not a literal secret.
+        if (!/["']/.test(m[0]) && text[m.index + m[0].length] === '(') continue;
       }
       if (findings.some((f) => f.index === m.index)) continue;
       findings.push({ rule, severity, index: m.index, line: lineOf(text, m.index), masked: mask(value) });
