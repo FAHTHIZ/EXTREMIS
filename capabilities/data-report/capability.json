@@ -10,7 +10,8 @@
     "analysis report",
     "dataset to report",
     "insights write-up",
-    "analytics workflow"
+    "analytics workflow",
+    "spreadsheet report"
   ],
   "intents": [
     "turn this CSV into a finished report with charts and conclusions",
