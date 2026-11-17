@@ -6,6 +6,7 @@ import { exportSchemas, SCHEMA_FORMATS } from './schemas.mjs';
 import { install, update, remove, verifyLock, listInstalled, installScope } from './install.mjs';
 import { scanDirectory } from './scan.mjs';
 import { build } from './build.mjs';
+import { EXPORT_TARGETS, MCP_HOSTS, exportSkills, mcpConfig, agentsMdBlock, writeAgentsMd } from './export.mjs';
 
 const scopeOf = (flags, cwd) => ({ scope: flags.project ? 'project' : 'user', cwd });
 
@@ -14,7 +15,49 @@ function printFindings(print, findings, limit = 20) {
   if (findings.length > limit) print(`    ... ${findings.length - limit} more`);
 }
 
+const EXPORT_HELP = `Usage: extremis export <target> [options]
+
+Targets
+  skills      copy capabilities to ./.agents/skills (Codex, Cursor, Gemini CLI and other Agent Skills hosts)
+  claude      copy capabilities to ./.claude/skills (Claude Code)
+  mcp         print an MCP server entry          [--host ${MCP_HOSTS.join('|')}] [--local] [--expose-tools none|dynamic|all]
+  agents-md   print an AGENTS.md block           [--write [file]] inserts or updates it in place
+
+Skill copy options
+  --gateway               export only the small "extremis" gateway skill (pair it with the MCP server)
+  --skill a,b             only these capabilities      --domain d   --kind skill|workflow
+  --user                  write to ~/.agents/skills or ~/.claude/skills instead of the project
+  --dir <path>            explicit destination         --force      replace folders that differ
+  --dry-run               report without writing`;
+
 export const commands = {
+  async export({ args, flags, cwd, asJson, print, json }) {
+    const target = args[0];
+    if (!target || flags.help) { print(EXPORT_HELP); return target ? 0 : 2; }
+    if (!EXPORT_TARGETS.includes(target)) throw new Error(`unknown export target "${target}" (one of ${EXPORT_TARGETS.join(', ')})`);
+    if (target === 'mcp') {
+      const cfg = mcpConfig(String(flags.host || 'claude'), { local: Boolean(flags.local), exposeTools: flags.expose_tools ? String(flags.expose_tools) : undefined });
+      if (asJson) json(cfg);
+      else print(cfg.format === 'json' ? `// ${cfg.file}\n${JSON.stringify(cfg.content, null, 2)}` : `# ${cfg.file}\n${cfg.content.trimEnd()}`);
+      return 0;
+    }
+    if (target === 'agents-md') {
+      if (flags.write === undefined) { print(agentsMdBlock().trimEnd()); return 0; }
+      const file = path.resolve(cwd, typeof flags.write === 'string' ? flags.write : 'AGENTS.md');
+      const status = await writeAgentsMd(file);
+      if (asJson) json({ file, status }); else print(`${status} ${path.relative(cwd, file) || file}`);
+      return 0;
+    }
+    const result = await exportSkills({ target, cwd, dir: flags.dir ? String(flags.dir) : undefined, user: Boolean(flags.user), force: Boolean(flags.force), dryRun: Boolean(flags.dry_run), gateway: Boolean(flags.gateway), skills: flags.skill, domain: flags.domain, kind: flags.kind });
+    if (asJson) json(result);
+    else {
+      const where = path.relative(cwd, result.dir) || result.dir;
+      print(`${result.dry_run ? 'would write' : 'wrote'} ${result.written.length} to ${where}${result.unchanged.length ? `, ${result.unchanged.length} unchanged` : ''}`);
+      if (result.conflicts.length) print(`skipped ${result.conflicts.length} that differ from the catalog (use --force to replace): ${result.conflicts.join(', ')}`);
+    }
+    return result.conflicts.length ? 1 : 0;
+  },
+
   async build({ flags, cwd, asJson, print, json }) {
     const out = flags.out ? path.resolve(cwd, String(flags.out)) : undefined;
     const result = await build({ out, check: Boolean(flags.check), baseUrl: flags.base_url ? String(flags.base_url) : '' });
