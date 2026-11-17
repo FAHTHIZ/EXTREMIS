@@ -51,3 +51,19 @@ test('AGENTS.md block is inserted once and updated in place', async () => {
   assert.equal(text.split('<!-- extremis:start -->').length, 2);
   assert.ok(text.includes(agentsMdBlock().trim()) && text.includes('keep me'));
 });
+
+test('Claude Code SessionStart hook emits a short additionalContext and can be disabled', async () => {
+  const { execFileSync } = await import('node:child_process');
+  const { fileURLToPath } = await import('node:url');
+  const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+  const hooks = JSON.parse(readFileSync(path.join(root, 'hooks', 'hooks.json'), 'utf8'));
+  const entry = hooks.hooks.SessionStart[0].hooks[0];
+  assert.match(entry.command, /\$\{CLAUDE_PLUGIN_ROOT\}\/hooks\/session-start\.mjs/);
+  const script = path.join(root, 'hooks', 'session-start.mjs');
+  const out = JSON.parse(execFileSync(process.execPath, [script], { encoding: 'utf8', env: { ...process.env, EXTREMIS_SESSION_HOOK: '' } }));
+  assert.equal(out.hookSpecificOutput.hookEventName, 'SessionStart');
+  assert.match(out.hookSpecificOutput.additionalContext, /extremis_plan/);
+  assert.ok(out.hookSpecificOutput.additionalContext.length / 4 < 200);
+  const silent = execFileSync(process.execPath, [script], { encoding: 'utf8', env: { ...process.env, EXTREMIS_SESSION_HOOK: 'off' } });
+  assert.equal(silent, '');
+});

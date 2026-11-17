@@ -10,7 +10,7 @@ Checked on 2026-11-17 against each project's README and repository root. Star co
 | Codex plugin | — | yes | — | yes | yes (repo marketplace) |
 | Installs through `npx skills add` | yes | — | is the installer | yes (documented first) | yes (gateway skill, or any capability through the `capabilities/` subpath) |
 | MCP server | — | — | — | — | yes: 6 gateway tools plus skills as MCP resources |
-| Loads instructions on demand through a planner | host does progressive disclosure | host does progressive disclosure, plus a SessionStart hook | — | host does progressive disclosure | `extremis_plan` picks and orders capabilities, then `extremis_activate` loads only those |
+| Loads instructions on demand through a planner | host does progressive disclosure | host does progressive disclosure, plus a SessionStart hook | — | host does progressive disclosure | `extremis_plan` picks and orders capabilities, then `extremis_activate` loads only those; the Claude Code plugin adds a ~100-token SessionStart reminder (`EXTREMIS_SESSION_HOOK=off` disables it) |
 | Multi-step workflows | — | yes (brainstorm, plan, TDD, review, finish) as skill chains | — | lifecycle grouping (define → ship) | 5 declared workflows with step order, optional steps and done criteria |
 | Executable verification | — | "verification-before-completion" skill (instructions) | — | — | `verify` checks that run built-in tools with matchers, plus manual statements |
 | Built-in tools | — | — | — | — | 41 permission-gated tools (data, code, security, docs, web, API, a11y, SEO, …) |
@@ -34,6 +34,5 @@ The other projects ship instructions and rely on the host to choose and follow t
 ## Gaps that remain
 
 - No hosted marketplace listing or official-marketplace entry yet (superpowers and anthropics/skills are in Anthropic's official marketplace).
-- No session hooks; superpowers uses a SessionStart hook to trigger its skills automatically.
 - Not published to npm. The registry reports the name `extremis` as unpublished (2026-05-26), so installs use `github:FAHTHIZ/EXTREMIS`.
 - Codex plugin installation itself happens in the ChatGPT desktop app; only the marketplace registration was tested from the CLI.

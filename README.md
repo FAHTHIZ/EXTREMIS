@@ -26,7 +26,7 @@ Capabilities are standard [Agent Skills](https://agentskills.io/specification) f
 | Node.js project (CLI + SDK) | `npm install github:FAHTHIZ/EXTREMIS` |
 | Python (stdlib MCP client, optional LangChain tools) | `pip install "git+https://github.com/FAHTHIZ/EXTREMIS.git#subdirectory=python"` |
 
-The `npx skills add FAHTHIZ/EXTREMIS` route installs the single `extremis` gateway skill, which tells the agent to work through the MCP tools; pair it with the MCP server. To copy capabilities into a project directly, run `npx -y github:FAHTHIZ/EXTREMIS export claude` (`.claude/skills`) or `... export skills` (`.agents/skills`).
+The Claude Code plugin also registers a SessionStart hook that adds a ~100-token reminder to plan with EXTREMIS; set `EXTREMIS_SESSION_HOOK=off` to disable it. The `npx skills add FAHTHIZ/EXTREMIS` route installs the single `extremis` gateway skill, which tells the agent to work through the MCP tools; pair it with the MCP server. To copy capabilities into a project directly, run `npx -y github:FAHTHIZ/EXTREMIS export claude` (`.claude/skills`) or `... export skills` (`.agents/skills`).
 
 The examples below use `npx extremis`, which works after `npm install github:FAHTHIZ/EXTREMIS`. Without installing, use `npx -y github:FAHTHIZ/EXTREMIS <command>`.
 
