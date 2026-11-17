@@ -4,3 +4,6 @@ __pycache__/
 .extremis/
 coverage/
 *.tgz
+python/build/
+python/dist/
+*.egg-info/

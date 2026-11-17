@@ -24,6 +24,7 @@ Capabilities are standard [Agent Skills](https://agentskills.io/specification) f
 | Any MCP client | `npx -y github:FAHTHIZ/EXTREMIS mcp` (config snippets: `extremis export mcp --host claude\|cursor\|vscode\|codex`) |
 | Codex (repo marketplace) | `codex plugin marketplace add FAHTHIZ/EXTREMIS`, then install from the Plugins Directory |
 | Node.js project (CLI + SDK) | `npm install github:FAHTHIZ/EXTREMIS` |
+| Python (stdlib MCP client, optional LangChain tools) | `pip install "git+https://github.com/FAHTHIZ/EXTREMIS.git#subdirectory=python"` |
 
 The `npx skills add FAHTHIZ/EXTREMIS` route installs the single `extremis` gateway skill, which tells the agent to work through the MCP tools; pair it with the MCP server. To copy capabilities into a project directly, run `npx -y github:FAHTHIZ/EXTREMIS export claude` (`.claude/skills`) or `... export skills` (`.agents/skills`).
 
@@ -170,6 +171,18 @@ const extremis = createExtremis({
 const plan = await extremis.plan("profile a CSV and summarize missing values");
 const context = await extremis.activate(plan.capabilities.map((item) => item.name));
 console.log(context);
+```
+
+## Python SDK
+
+`python/` holds a dependency-free client. It starts `extremis mcp` (Node.js required) and calls the six gateway tools; `extremis.langchain.as_langchain_tools()` wraps them as LangChain tools. See [python/README.md](python/README.md).
+
+```python
+from extremis import ExtremisClient
+
+with ExtremisClient(cwd=".", allow=["read"]) as x:
+    plan = x.plan("profile a CSV and summarize missing values")
+    print(x.run("data.profile", path="sales.csv")["result"]["columns"])
 ```
 
 Grant only the permissions required by the task. The default allowlist is read-only. Write, network, and subprocess execution require explicit permission.

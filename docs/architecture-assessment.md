@@ -115,7 +115,7 @@ Compare: listing all 59 names and descriptions in a system prompt costs ~3,250 t
 | 4 | MCP server (tools + SEP-2640 skills), CLI, JS SDK | done (`be5b5d7`) |
 | 5 | Installer, lockfile, integrity, export adapters, plugin/marketplace, well-known index | done: installer and lockfile (`2b5ed14`), well-known index (`25f4d9a`), exports and Claude Code plugin (`acc8990`), Codex plugin (`9e98b70`) |
 | 6 | Workflows, planner, verification batches | done: planner and verification (`c4f8511`), capability wiring (`1455aa1`), five workflows (`b0c979f`) |
-| 7 | Python SDK (MCP client, LangChain adapter) | in progress |
+| 7 | Python SDK (MCP client, LangChain adapter) | done: `python/` (stdlib client, optional LangChain adapter, CI on 3.9 and 3.13) |
 | 8 | Evaluation: routing on fixtures and a held-out set; token budget report; CI | done (`c4f8511`, `25d6cba`; `build --check` in CI since `25f4d9a`) |
 | Next | Signed releases (Sigstore), optional embedding reranker package, MCP Tasks for long-running tools, community registry | open |
 
