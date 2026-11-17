@@ -32,7 +32,11 @@ export function plan(catalog, index, task, options = {}) {
 
   // Workflow shortcut: a workflow among the top hits that is close to the best score.
   const top = hits[0].score;
-  const workflowHit = hits.slice(0, 5).find((h) => h.cap.kind === 'workflow' && h.score >= top * 0.75 && (h.confidence !== 'low' || (h === hits[0] && h.coverage >= 0.5)));
+  // A workflow's body and description name every step's domain, so broad requests match
+  // it lexically; require the query to hit the workflow's own identity as well.
+  const identity = (cap) => new Set(tokenize([cap.name.replace(/-/g, ' '), ...cap.keywords, ...cap.intents].join(' ')));
+  const ownsQuery = (cap) => { const id = identity(cap); return terms.some((t) => id.has(t)) && hitsIdentity(id, terms); };
+  const workflowHit = hits.slice(0, 5).find((h) => h.cap.kind === 'workflow' && h.score >= top * 0.75 && (h.confidence !== 'low' || (h === hits[0] && h.coverage >= 0.5)) && ownsQuery(h.cap));
   let selected;
   let strategy;
   if (workflowHit) {
@@ -115,3 +119,8 @@ export function plan(catalog, index, task, options = {}) {
     next: `activate: ${capNames.join(', ')}`,
   };
 }
+
+// Distinctive identity match: at least one query term that is in the workflow's identity
+// and is not a generic task verb shared by most requests.
+const GENERIC = new Set(tokenize('check run make do help review build write create this my our the full complete end'));
+function hitsIdentity(id, terms) { return terms.some((t) => id.has(t) && !GENERIC.has(t)); }

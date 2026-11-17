@@ -22,12 +22,7 @@
   "not_for": [],
   "requires": [],
   "suggests": [],
-  "tools": [
-    "code.repo_map",
-    "code.diff_stats",
-    "security.secret_scan",
-    "release.changelog"
-  ],
+  "tools": [],
   "permissions": [
     "read"
   ],

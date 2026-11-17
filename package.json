@@ -28,6 +28,7 @@
     "registry",
     "skills",
     ".claude-plugin",
+    ".codex-plugin",
     ".mcp.json",
     "LICENSE",
     "README.md",
