@@ -3,6 +3,7 @@
   "kind": "skill",
   "domain": "software-engineering",
   "version": "0.1.0",
+  "phase": "build",
   "summary": "Develop behavior through a verified failing test, a minimal implementation, and regression checks.",
   "keywords": [
     "TDD",
@@ -12,11 +13,23 @@
     "regression tests",
     "test-driven implementation"
   ],
-  "intents": [],
+  "intents": [
+    "implement this function test first",
+    "write a failing test for the bug, then fix it",
+    "add unit tests before refactoring",
+    "use red green refactor for this feature",
+    "make sure this change is covered by tests"
+  ],
   "not_for": [],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "debugging",
+    "quality-assurance"
+  ],
+  "tools": [
+    "test.parse_report",
+    "code.diff_stats"
+  ],
   "permissions": [
     "read"
   ],
@@ -27,5 +40,18 @@
   "risk": "medium",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    {
+      "tool": "test.parse_report",
+      "args": {
+        "path": "${test_report}"
+      },
+      "expect": {
+        "success": true
+      },
+      "description": "The suite passes after the change"
+    },
+    "A failing test was observed before the implementation",
+    "The diff includes test changes alongside code changes"
+  ]
 }

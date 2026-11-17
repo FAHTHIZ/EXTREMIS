@@ -3,6 +3,7 @@
   "kind": "skill",
   "domain": "software-engineering",
   "version": "0.1.0",
+  "phase": "verify",
   "summary": "Create risk-based test strategies and verify release acceptance.",
   "keywords": [
     "QA",
@@ -16,14 +17,27 @@
     "test coverage",
     "test matrix"
   ],
-  "intents": [],
+  "intents": [
+    "write a test plan for the new checkout",
+    "is this release ready to ship",
+    "which areas need regression testing after this change",
+    "summarize the test results from CI",
+    "define acceptance criteria for the feature"
+  ],
   "not_for": [
     "standalone definitions of unit, integration, or testing concepts without a quality plan or test decision",
     "implementation of one isolated function using TDD without broader QA strategy"
   ],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "test-driven-development",
+    "devops-release"
+  ],
+  "tools": [
+    "test.parse_report",
+    "code.diff_stats",
+    "a11y.html_audit"
+  ],
   "permissions": [
     "read"
   ],
@@ -35,5 +49,19 @@
   "risk": "medium",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    {
+      "tool": "test.parse_report",
+      "args": {
+        "path": "${test_report}"
+      },
+      "expect": {
+        "failed": 0,
+        "errors": 0
+      },
+      "description": "No failing or erroring tests in the release candidate"
+    },
+    "Test coverage follows a stated risk ranking",
+    "Known issues are listed with severity and an owner"
+  ]
 }

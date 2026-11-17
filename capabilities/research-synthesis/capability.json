@@ -3,6 +3,7 @@
   "kind": "skill",
   "domain": "research",
   "version": "0.1.0",
+  "phase": "discover",
   "summary": "Produce source-grounded research with explicit uncertainty.",
   "keywords": [
     "evidence synthesis",
@@ -13,13 +14,26 @@
     "cross-source analysis",
     "evidence review"
   ],
-  "intents": [],
+  "intents": [
+    "research the pros and cons of server-side rendering",
+    "write a briefing on carbon capture technology",
+    "summarize what is known about this topic with sources",
+    "compare expert opinions on remote work",
+    "prepare a research memo for leadership"
+  ],
   "not_for": [],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "source-verification",
+    "literature-review"
+  ],
+  "tools": [
+    "web.fetch_text",
+    "doc.extract_text"
+  ],
   "permissions": [
-    "read"
+    "read",
+    "network"
   ],
   "prerequisites": [
     "source access"
@@ -27,5 +41,9 @@
   "risk": "medium",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    "Every claim cites a source with a date",
+    "Uncertainty and disagreement between sources are explicit",
+    "Primary sources are preferred over summaries"
+  ]
 }

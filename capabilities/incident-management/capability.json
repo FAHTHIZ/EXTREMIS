@@ -3,6 +3,7 @@
   "kind": "skill",
   "domain": "engineering",
   "version": "0.1.0",
+  "phase": "deliver",
   "summary": "Coordinate operational incident response, communication, recovery, and learning.",
   "keywords": [
     "outage response",
@@ -14,14 +15,26 @@
     "escalation",
     "incident timeline"
   ],
-  "intents": [],
+  "intents": [
+    "we have a production outage, help coordinate the response",
+    "write a status page update for customers",
+    "run a blameless postmortem for last night's incident",
+    "summarize these error logs from the incident",
+    "how much error budget did this outage burn"
+  ],
   "not_for": [
     "routine planned feature release or deployment checklists when there is no active incident, outage, or operational degradation",
     "generic definitions of uptime or availability without an incident response need"
   ],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "reliability-analysis",
+    "devops-release"
+  ],
+  "tools": [
+    "logs.summarize",
+    "reliability.slo_budget"
+  ],
   "permissions": [
     "read"
   ],
@@ -33,5 +46,9 @@
   "risk": "high",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    "Timeline, impact, root cause and follow-up owners are recorded",
+    "Customer communication states what is known, what is not and the next update time",
+    "Action items are tracked with owners and dates"
+  ]
 }

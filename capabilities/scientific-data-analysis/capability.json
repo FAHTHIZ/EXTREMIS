@@ -3,6 +3,7 @@
   "kind": "skill",
   "domain": "science",
   "version": "0.1.0",
+  "phase": "build",
   "summary": "Produce reproducible data analysis with suitable methods, diagnostics, and limitations.",
   "keywords": [
     "statistical analysis",
@@ -14,11 +15,25 @@
     "data cleaning",
     "statistical methods"
   ],
-  "intents": [],
+  "intents": [
+    "analyze the results of my lab experiment",
+    "run a t-test on these two groups",
+    "check whether these variables are correlated",
+    "which statistical test should I use for this data",
+    "report effect sizes and confidence intervals"
+  ],
   "not_for": [],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "experimental-design",
+    "data-visualization"
+  ],
+  "tools": [
+    "stats.describe",
+    "stats.compare_samples",
+    "stats.correlation",
+    "data.profile"
+  ],
   "permissions": [
     "read"
   ],
@@ -29,5 +44,9 @@
   "risk": "medium",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    "Assumptions of each test were checked and reported",
+    "Effect sizes and confidence intervals accompany p-values",
+    "Analysis code or steps are reproducible from raw data"
+  ]
 }

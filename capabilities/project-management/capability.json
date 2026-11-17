@@ -3,6 +3,7 @@
   "kind": "skill",
   "domain": "productivity",
   "version": "0.1.0",
+  "phase": "plan",
   "summary": "Turn project goals into an executable plan with ownership, dependencies, and control points.",
   "keywords": [
     "project plan",
@@ -15,11 +16,23 @@
     "owners and deadlines",
     "risk register"
   ],
-  "intents": [],
+  "intents": [
+    "make a project plan with milestones",
+    "what is the critical path for this launch",
+    "assign owners and deadlines to these tasks",
+    "build a risk register for the project",
+    "set up weekly status reporting"
+  ],
   "not_for": [],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "technical-planning",
+    "meeting-synthesis"
+  ],
+  "tools": [
+    "pm.critical_path",
+    "decision.weighted_matrix"
+  ],
   "permissions": [
     "read"
   ],
@@ -30,5 +43,9 @@
   "risk": "medium",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    "Every task has an owner, estimate and dependency",
+    "The critical path and slack are computed, not guessed",
+    "Risks have owners and mitigation triggers"
+  ]
 }

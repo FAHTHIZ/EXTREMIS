@@ -3,15 +3,29 @@
   "kind": "skill",
   "domain": "research",
   "version": "0.1.0",
+  "phase": "discover",
   "summary": "Build a transparent evidence map and synthesis from traceable research sources.",
   "keywords": [],
-  "intents": [],
+  "intents": [
+    "do a literature review on sleep and memory",
+    "summarize recent papers on retrieval-augmented generation",
+    "map the evidence for this treatment",
+    "find gaps in the research on remote work productivity",
+    "build a table of studies with methods and findings"
+  ],
   "not_for": [],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "research-synthesis",
+    "source-verification"
+  ],
+  "tools": [
+    "doc.extract_text",
+    "web.fetch_text"
+  ],
   "permissions": [
-    "read"
+    "read",
+    "network"
   ],
   "prerequisites": [
     "a research question or topic",
@@ -20,5 +34,9 @@
   "risk": "medium",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    "Search strategy, databases and inclusion criteria are recorded",
+    "Every study in the synthesis has a full citation",
+    "Conflicting findings and study quality are discussed"
+  ]
 }

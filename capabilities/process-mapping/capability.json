@@ -3,6 +3,7 @@
   "kind": "skill",
   "domain": "business",
   "version": "0.1.0",
+  "phase": "discover",
   "summary": "Map a real process, expose bottlenecks, and recommend measurable improvements.",
   "keywords": [
     "business process",
@@ -12,11 +13,23 @@
     "process improvement",
     "handoff analysis"
   ],
-  "intents": [],
+  "intents": [
+    "map our customer onboarding process",
+    "where are the bottlenecks in our hiring pipeline",
+    "document the current invoice approval workflow",
+    "reduce handoffs in the support process",
+    "draw a swimlane diagram of order fulfilment"
+  ],
   "not_for": [],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "project-management",
+    "requirements-engineering"
+  ],
+  "tools": [
+    "pm.critical_path",
+    "stats.describe"
+  ],
   "permissions": [
     "read"
   ],
@@ -27,5 +40,9 @@
   "risk": "medium",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    "The map reflects observed practice, with sources noted",
+    "Each bottleneck is backed by a measurement",
+    "Improvements have a measurable target"
+  ]
 }

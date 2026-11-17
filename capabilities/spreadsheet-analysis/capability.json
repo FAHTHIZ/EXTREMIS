@@ -3,13 +3,27 @@
   "kind": "skill",
   "domain": "data",
   "version": "0.1.0",
+  "phase": "build",
   "summary": "Make spreadsheet logic auditable and protect data integrity across sheets and formulas.",
   "keywords": [],
-  "intents": [],
+  "intents": [
+    "audit the formulas in this Excel workbook",
+    "find errors in our budget spreadsheet",
+    "clean up this messy spreadsheet",
+    "explain how this sheet calculates the totals",
+    "reconcile two spreadsheets that should match"
+  ],
   "not_for": [],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "financial-modeling",
+    "data-analysis"
+  ],
+  "tools": [
+    "doc.extract_text",
+    "data.profile",
+    "data.query"
+  ],
   "permissions": [
     "read"
   ],
@@ -20,5 +34,9 @@
   "risk": "medium",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    "Inputs, calculations and outputs are separated or documented",
+    "Hard-coded numbers inside formulas are flagged",
+    "Totals reconcile with source data"
+  ]
 }

@@ -3,15 +3,28 @@
   "kind": "skill",
   "domain": "meta",
   "version": "0.1.0",
+  "phase": "build",
   "summary": "Create, revise, and evaluate portable skills.",
   "keywords": [],
-  "intents": [],
+  "intents": [
+    "write a new agent skill for invoice processing",
+    "improve the description so this skill triggers correctly",
+    "turn this procedure into a SKILL.md",
+    "add routing evals for my skill",
+    "review a skill package before publishing"
+  ],
   "not_for": [
     "general definitions of AI concepts unrelated to designing, authoring, reviewing, or evaluating agent skills"
   ],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "technical-documentation"
+  ],
+  "tools": [
+    "docs.markdown_check",
+    "data.validate_json",
+    "text.readability"
+  ],
   "permissions": [
     "read"
   ],
@@ -19,5 +32,18 @@
   "risk": "low",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    {
+      "tool": "docs.markdown_check",
+      "args": {
+        "path": "${skill_md}"
+      },
+      "expect": {
+        "issues.length": 0
+      },
+      "description": "Markdown structure, anchors and code fences are valid"
+    },
+    "The description says what the skill does and when to use it",
+    "Positive and negative routing cases exist and are distinct from intents"
+  ]
 }

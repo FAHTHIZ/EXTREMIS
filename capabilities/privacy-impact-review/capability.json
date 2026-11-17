@@ -3,6 +3,7 @@
   "kind": "skill",
   "domain": "security",
   "version": "0.1.0",
+  "phase": "verify",
   "summary": "Map personal-data flows and assess purpose, minimization, safeguards, retention, and user impact.",
   "keywords": [
     "privacy assessment",
@@ -12,11 +13,23 @@
     "privacy risks",
     "consent review"
   ],
-  "intents": [],
+  "intents": [
+    "do a privacy impact assessment for the new feature",
+    "what personal data does this system collect and why",
+    "check our logs and exports for personal data",
+    "is this data retention policy GDPR friendly",
+    "map where user data flows between services"
+  ],
   "not_for": [],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "threat-modeling",
+    "secure-code-review"
+  ],
+  "tools": [
+    "privacy.pii_scan",
+    "security.secret_scan"
+  ],
   "permissions": [
     "read"
   ],
@@ -27,5 +40,18 @@
   "risk": "high",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    {
+      "tool": "privacy.pii_scan",
+      "args": {
+        "path": "${path}"
+      },
+      "expect": {
+        "total": 0
+      },
+      "description": "No unexpected personal data in the reviewed files"
+    },
+    "Each data element has a purpose, legal basis, retention period and owner",
+    "Conclusions are flagged for legal review where required"
+  ]
 }

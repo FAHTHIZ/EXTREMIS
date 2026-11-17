@@ -3,6 +3,7 @@
   "kind": "skill",
   "domain": "productivity",
   "version": "0.1.0",
+  "phase": "deliver",
   "summary": "Structure trusted knowledge bases with ownership, provenance, and review cycles.",
   "keywords": [
     "enterprise wiki",
@@ -14,16 +15,28 @@
     "document lifecycle",
     "content ownership"
   ],
-  "intents": [],
+  "intents": [
+    "organize our team wiki",
+    "set up an owner and review cycle for internal docs",
+    "find and fix stale pages in the knowledge base",
+    "design a taxonomy for our help articles",
+    "migrate notes into a structured knowledge base"
+  ],
   "not_for": [
     "standalone public blog writing without knowledge-base design or governance",
     "isolated meeting-note summaries without knowledge architecture or retrieval needs"
   ],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "technical-documentation"
+  ],
+  "tools": [
+    "docs.markdown_check",
+    "web.check_links"
+  ],
   "permissions": [
-    "read"
+    "read",
+    "network"
   ],
   "prerequisites": [
     "knowledge sources and intended users or workflows",
@@ -33,5 +46,18 @@
   "risk": "medium",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    {
+      "tool": "web.check_links",
+      "args": {
+        "path": "${page}"
+      },
+      "expect": {
+        "broken.length": 0
+      },
+      "description": "No broken links in the reviewed pages"
+    },
+    "Every page has an owner and a last-reviewed date",
+    "Duplicates are merged or redirected"
+  ]
 }

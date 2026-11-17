@@ -3,13 +3,26 @@
   "kind": "skill",
   "domain": "productivity",
   "version": "0.1.0",
+  "phase": "deliver",
   "summary": "Separate discussion from decisions and capture actions without inventing commitments.",
   "keywords": [],
-  "intents": [],
+  "intents": [
+    "summarize this meeting transcript",
+    "pull the action items out of these notes",
+    "what was actually decided in the call",
+    "write minutes for the board meeting",
+    "turn this recording summary into follow-ups"
+  ],
   "not_for": [],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "decision-log",
+    "project-management"
+  ],
+  "tools": [
+    "text.readability",
+    "privacy.pii_scan"
+  ],
   "permissions": [
     "read"
   ],
@@ -20,5 +33,9 @@
   "risk": "medium",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    "Decisions, open questions and actions are separated",
+    "Every action has an owner and due date only if stated in the source",
+    "Nothing is attributed to a person who did not say it"
+  ]
 }

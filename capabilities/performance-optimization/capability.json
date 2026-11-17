@@ -3,6 +3,7 @@
   "kind": "skill",
   "domain": "software-engineering",
   "version": "0.1.0",
+  "phase": "build",
   "summary": "Measure bottlenecks first and optimize the dominant cause with regression checks.",
   "keywords": [
     "profiling",
@@ -16,11 +17,24 @@
     "caching",
     "load time"
   ],
-  "intents": [],
+  "intents": [
+    "this endpoint got slow, find out why",
+    "reduce the p95 latency of our API",
+    "profile the build and make it faster",
+    "is the new version actually faster than the old one",
+    "optimize this database query"
+  ],
   "not_for": [],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "debugging",
+    "reliability-analysis"
+  ],
+  "tools": [
+    "stats.compare_samples",
+    "stats.describe",
+    "logs.summarize"
+  ],
   "permissions": [
     "read"
   ],
@@ -31,5 +45,9 @@
   "risk": "medium",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    "A baseline measurement exists from before the change",
+    "The improvement is shown with repeated measurements and a significance test",
+    "A regression check guards the improvement"
+  ]
 }

@@ -3,13 +3,25 @@
   "kind": "skill",
   "domain": "customer-operations",
   "version": "0.1.0",
+  "phase": "deliver",
   "summary": "Resolve or route customer issues with empathy, accuracy, and clear ownership.",
   "keywords": [],
-  "intents": [],
+  "intents": [
+    "reply to an angry customer about a late refund",
+    "triage these support tickets by urgency",
+    "write a help-center answer for password resets",
+    "draft an escalation note for the engineering team",
+    "how should we respond to this bug report from a user"
+  ],
   "not_for": [],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "knowledge-management"
+  ],
+  "tools": [
+    "text.readability",
+    "privacy.pii_scan"
+  ],
   "permissions": [
     "read"
   ],
@@ -20,5 +32,18 @@
   "risk": "medium",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    {
+      "tool": "privacy.pii_scan",
+      "args": {
+        "content": "${reply}"
+      },
+      "expect": {
+        "total": 0
+      },
+      "description": "The reply exposes no personal data"
+    },
+    "The response states the next step, its owner and when the customer will hear back",
+    "No promise is made that policy does not allow"
+  ]
 }

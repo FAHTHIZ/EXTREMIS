@@ -3,6 +3,7 @@
   "kind": "skill",
   "domain": "business",
   "version": "0.1.0",
+  "phase": "discover",
   "summary": "Turn uncertain product ideas into testable user-problem and solution hypotheses.",
   "keywords": [
     "user problem",
@@ -12,11 +13,22 @@
     "solution validation",
     "product opportunity"
   ],
-  "intents": [],
+  "intents": [
+    "validate this product idea before we build it",
+    "plan user interviews for a new feature",
+    "turn customer feedback into problem statements",
+    "what is the riskiest assumption in this concept",
+    "prioritize these opportunities"
+  ],
   "not_for": [],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "requirements-engineering",
+    "experimental-design"
+  ],
+  "tools": [
+    "decision.weighted_matrix"
+  ],
   "permissions": [
     "read"
   ],
@@ -27,5 +39,9 @@
   "risk": "medium",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    "Problem, target user and riskiest assumption are explicit",
+    "Each hypothesis has a test and a pass/fail criterion",
+    "Evidence is separated from opinion"
+  ]
 }

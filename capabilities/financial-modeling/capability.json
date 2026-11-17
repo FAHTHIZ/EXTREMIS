@@ -3,6 +3,7 @@
   "kind": "skill",
   "domain": "finance",
   "version": "0.1.0",
+  "phase": "build",
   "summary": "Build transparent financial scenarios with traceable assumptions and sensitivity analysis.",
   "keywords": [
     "financial forecast",
@@ -12,11 +13,24 @@
     "assumption model",
     "unit economics"
   ],
-  "intents": [],
+  "intents": [
+    "build a three-year revenue forecast",
+    "what is the NPV and IRR of this project",
+    "model the loan repayments for this purchase",
+    "run best and worst case scenarios for the budget",
+    "is this investment worth it given these cash flows"
+  ],
   "not_for": [],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "spreadsheet-analysis",
+    "market-sizing"
+  ],
+  "tools": [
+    "finance.cashflow",
+    "finance.loan_schedule",
+    "decision.weighted_matrix"
+  ],
   "permissions": [
     "read"
   ],
@@ -28,5 +42,9 @@
   "risk": "high",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    "Every assumption is listed with its source and can be changed in one place",
+    "A sensitivity table shows which inputs move the result most",
+    "Units, currency and period are stated for every figure"
+  ]
 }

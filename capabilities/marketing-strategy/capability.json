@@ -3,6 +3,7 @@
   "kind": "skill",
   "domain": "marketing",
   "version": "0.1.0",
+  "phase": "plan",
   "summary": "Create evidence-led positioning, audience, channel, and campaign strategies.",
   "keywords": [
     "go-to-market",
@@ -14,14 +15,27 @@
     "launch strategy",
     "customer acquisition"
   ],
-  "intents": [],
+  "intents": [
+    "create a go-to-market plan for our launch",
+    "define our positioning against competitors",
+    "which channels should we invest in next quarter",
+    "plan a campaign for a new product line",
+    "write messaging for three customer segments"
+  ],
   "not_for": [
     "grammar, punctuation, or spelling correction without a marketing strategy decision",
     "standalone spreadsheet formula explanations"
   ],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "competitive-analysis",
+    "content-writing",
+    "search-optimization"
+  ],
+  "tools": [
+    "decision.weighted_matrix",
+    "text.readability"
+  ],
   "permissions": [
     "read"
   ],
@@ -33,5 +47,9 @@
   "risk": "medium",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    "Audience, problem and proof points are evidence-backed",
+    "Each channel has a goal, budget and success metric",
+    "Claims comply with advertising rules and are substantiated"
+  ]
 }

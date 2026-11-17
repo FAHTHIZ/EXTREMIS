@@ -3,6 +3,7 @@
   "kind": "skill",
   "domain": "software-engineering",
   "version": "0.1.0",
+  "phase": "verify",
   "summary": "Review diffs for consequential defects and return prioritized, evidence-backed findings.",
   "keywords": [
     "pull request review",
@@ -12,11 +13,24 @@
     "review findings",
     "maintainability"
   ],
-  "intents": [],
+  "intents": [
+    "review this pull request before merge",
+    "look over my diff for bugs",
+    "is this change safe to ship",
+    "give feedback on the refactor in this branch",
+    "check whether the new code has tests"
+  ],
   "not_for": [],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "secure-code-review",
+    "test-driven-development"
+  ],
+  "tools": [
+    "code.diff_stats",
+    "security.secret_scan",
+    "security.code_patterns"
+  ],
   "permissions": [
     "read"
   ],
@@ -27,5 +41,18 @@
   "risk": "medium",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    {
+      "tool": "security.secret_scan",
+      "args": {
+        "path": "${diff}"
+      },
+      "expect": {
+        "count": 0
+      },
+      "description": "The diff adds no credentials"
+    },
+    "Each finding cites a file and line and explains the user impact",
+    "Findings are ordered by severity, with nits separated"
+  ]
 }

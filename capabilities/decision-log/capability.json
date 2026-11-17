@@ -3,13 +3,26 @@
   "kind": "skill",
   "domain": "productivity",
   "version": "0.1.0",
+  "phase": "deliver",
   "summary": "Create durable decision records with context, alternatives, consequences, owners, and revisit triggers.",
   "keywords": [],
-  "intents": [],
+  "intents": [
+    "write an ADR for choosing PostgreSQL",
+    "record why we picked vendor A",
+    "document this architecture decision and its alternatives",
+    "create a decision record from this discussion",
+    "when should we revisit this decision"
+  ],
   "not_for": [],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "meeting-synthesis",
+    "technical-planning"
+  ],
+  "tools": [
+    "decision.weighted_matrix",
+    "docs.markdown_check"
+  ],
   "permissions": [
     "read"
   ],
@@ -20,5 +33,18 @@
   "risk": "low",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    {
+      "tool": "docs.markdown_check",
+      "args": {
+        "path": "${record}"
+      },
+      "expect": {
+        "issues.length": 0
+      },
+      "description": "Markdown structure, anchors and code fences are valid"
+    },
+    "The record lists context, options considered, the decision, consequences and an owner",
+    "A revisit trigger or date is stated"
+  ]
 }

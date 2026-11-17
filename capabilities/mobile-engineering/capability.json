@@ -3,6 +3,7 @@
   "kind": "skill",
   "domain": "software-engineering",
   "version": "0.1.0",
+  "phase": "build",
   "summary": "Build and review reliable native and cross-platform mobile applications.",
   "keywords": [
     "native app",
@@ -15,14 +16,27 @@
     "app store release",
     "mobile navigation"
   ],
-  "intents": [],
+  "intents": [
+    "build an offline mode for our iOS app",
+    "fix a crash on older Android devices",
+    "add push notifications to the React Native app",
+    "reduce app startup time on mobile",
+    "prepare the app for store submission"
+  ],
   "not_for": [
     "conceptual explanations or comparisons of responsive web design and native apps without mobile implementation or review",
     "backend-only cloud hosting cost estimates unrelated to a mobile client"
   ],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "frontend-engineering",
+    "quality-assurance"
+  ],
+  "tools": [
+    "code.repo_map",
+    "test.parse_report",
+    "i18n.compare_locales"
+  ],
   "permissions": [
     "read"
   ],
@@ -34,5 +48,18 @@
   "risk": "medium",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    {
+      "tool": "test.parse_report",
+      "args": {
+        "path": "${test_report}"
+      },
+      "expect": {
+        "success": true
+      },
+      "description": "Unit and UI tests pass"
+    },
+    "Behaviour is checked on the minimum supported OS versions",
+    "Permissions requested match the features that use them"
+  ]
 }

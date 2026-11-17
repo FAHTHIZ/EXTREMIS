@@ -3,13 +3,28 @@
   "kind": "skill",
   "domain": "data",
   "version": "0.1.0",
+  "phase": "build",
   "summary": "Translate a data question into reproducible analysis with explicit grain and limitations.",
   "keywords": [],
-  "intents": [],
+  "intents": [
+    "analyze this sales CSV and tell me what changed last quarter",
+    "which customer segments churn the most",
+    "profile this dataset for missing values and outliers",
+    "compute monthly revenue by region from the export",
+    "answer a business question from this table"
+  ],
   "not_for": [],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "data-visualization",
+    "scientific-data-analysis"
+  ],
+  "tools": [
+    "data.profile",
+    "data.query",
+    "stats.describe",
+    "data.chart_svg"
+  ],
   "permissions": [
     "read"
   ],
@@ -20,5 +35,20 @@
   "risk": "medium",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    {
+      "tool": "data.profile",
+      "args": {
+        "path": "${data}"
+      },
+      "expect": {
+        "rows": {
+          "gt": 0
+        }
+      },
+      "description": "The dataset loads and is profiled before analysis"
+    },
+    "The grain (one row = ?) and filters are stated",
+    "Every number in the answer can be reproduced from the stated query"
+  ]
 }

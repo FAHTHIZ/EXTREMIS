@@ -3,6 +3,7 @@
   "kind": "skill",
   "domain": "engineering",
   "version": "0.1.0",
+  "phase": "plan",
   "summary": "Connect stakeholder needs to verifiable system requirements and lifecycle decisions.",
   "keywords": [
     "systems architecture",
@@ -14,11 +15,24 @@
     "lifecycle engineering",
     "requirements traceability"
   ],
-  "intents": [],
+  "intents": [
+    "define system requirements for a drone delivery platform",
+    "build an interface control document between subsystems",
+    "run a trade study for the sensor choice",
+    "plan verification and validation for the system",
+    "trace stakeholder needs to subsystem requirements"
+  ],
   "not_for": [],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "requirements-engineering",
+    "reliability-analysis"
+  ],
+  "tools": [
+    "pm.critical_path",
+    "decision.weighted_matrix",
+    "reliability.slo_budget"
+  ],
   "permissions": [
     "read"
   ],
@@ -29,5 +43,9 @@
   "risk": "high",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    "Every requirement traces to a stakeholder need and a verification method",
+    "Interfaces between subsystems are specified on both sides",
+    "Trade studies record criteria, weights and sensitivity"
+  ]
 }

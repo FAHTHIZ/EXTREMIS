@@ -3,6 +3,7 @@
   "kind": "skill",
   "domain": "design",
   "version": "0.1.0",
+  "phase": "verify",
   "summary": "Review real user journeys and turn observed usability issues into prioritized fixes.",
   "keywords": [
     "usability review",
@@ -12,11 +13,24 @@
     "user journey",
     "interaction design"
   ],
-  "intents": [],
+  "intents": [
+    "review the usability of our onboarding flow",
+    "why are users dropping off at checkout",
+    "do a heuristic evaluation of this app",
+    "find confusing parts of the settings page",
+    "prioritize UX fixes for the next sprint"
+  ],
   "not_for": [],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "accessibility-review",
+    "design-system"
+  ],
+  "tools": [
+    "a11y.html_audit",
+    "text.readability",
+    "seo.html_audit"
+  ],
   "permissions": [
     "read"
   ],
@@ -27,5 +41,9 @@
   "risk": "medium",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    "Each issue cites the journey step, evidence and severity",
+    "Fixes are prioritized by user impact and effort",
+    "Findings from heuristics are separated from observed user behaviour"
+  ]
 }

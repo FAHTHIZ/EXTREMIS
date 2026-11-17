@@ -3,6 +3,7 @@
   "kind": "skill",
   "domain": "creative-communication",
   "version": "0.1.0",
+  "phase": "build",
   "summary": "Create clear original content that meets the audience, purpose, tone, and factual requirements.",
   "keywords": [
     "copywriting",
@@ -15,11 +16,23 @@
     "style guide",
     "rewrite drafts"
   ],
-  "intents": [],
+  "intents": [
+    "write a blog post announcing our new feature",
+    "draft a newsletter for customers",
+    "rewrite this landing page copy to be clearer",
+    "turn these notes into a polished article",
+    "write product descriptions in a friendly tone"
+  ],
   "not_for": [],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "source-verification",
+    "search-optimization"
+  ],
+  "tools": [
+    "text.readability",
+    "docs.markdown_check"
+  ],
   "permissions": [
     "read"
   ],
@@ -30,5 +43,20 @@
   "risk": "low",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    {
+      "tool": "text.readability",
+      "args": {
+        "path": "${draft}"
+      },
+      "expect": {
+        "flesch_reading_ease": {
+          "gte": 50
+        }
+      },
+      "description": "Draft reads at a general-audience level"
+    },
+    "Factual claims are sourced or flagged for checking",
+    "Tone and length match the brief"
+  ]
 }

@@ -3,6 +3,7 @@
   "kind": "skill",
   "domain": "engineering",
   "version": "0.1.0",
+  "phase": "plan",
   "summary": "Turn complex requests into scoped, verifiable plans.",
   "keywords": [
     "implementation plan",
@@ -15,11 +16,24 @@
     "delivery planning",
     "technical roadmap"
   ],
-  "intents": [],
+  "intents": [
+    "plan the migration from monolith to services",
+    "break this feature into implementable tasks",
+    "write a technical design doc",
+    "what is the safest order to make these changes",
+    "estimate the work for this epic"
+  ],
   "not_for": [],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "project-management",
+    "decision-log"
+  ],
+  "tools": [
+    "pm.critical_path",
+    "code.repo_map",
+    "decision.weighted_matrix"
+  ],
   "permissions": [
     "read"
   ],
@@ -27,5 +41,9 @@
   "risk": "low",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    "Scope, non-goals and acceptance criteria are explicit",
+    "Each step is small, ordered and independently verifiable",
+    "Risks and rollback points are identified"
+  ]
 }

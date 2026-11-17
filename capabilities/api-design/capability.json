@@ -3,6 +3,7 @@
   "kind": "skill",
   "domain": "software-engineering",
   "version": "0.1.0",
+  "phase": "plan",
   "summary": "Design APIs around stable contracts, explicit semantics, and safe evolution.",
   "keywords": [
     "OpenAPI",
@@ -14,14 +15,27 @@
     "RPC",
     "error semantics"
   ],
-  "intents": [],
+  "intents": [
+    "design the REST endpoints for an orders service",
+    "review our OpenAPI spec before we publish it",
+    "will this API change break existing clients",
+    "choose error codes and pagination for a public API",
+    "plan versioning for a v2 of our API"
+  ],
   "not_for": [
     "implementation of server-side endpoint handlers or backend persistence rather than API contract design",
     "frontend client implementation without API contract decisions"
   ],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "backend-engineering",
+    "technical-documentation"
+  ],
+  "tools": [
+    "api.openapi_lint",
+    "api.openapi_diff",
+    "schema.json_diff"
+  ],
   "permissions": [
     "read"
   ],
@@ -32,5 +46,28 @@
   "risk": "medium",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    {
+      "tool": "api.openapi_lint",
+      "args": {
+        "path": "${spec}"
+      },
+      "expect": {
+        "valid": true
+      },
+      "description": "The OpenAPI document parses and validates"
+    },
+    {
+      "tool": "api.openapi_diff",
+      "args": {
+        "base_path": "${base_spec}",
+        "head_path": "${spec}"
+      },
+      "expect": {
+        "version_bump_ok": true
+      },
+      "description": "Version bump matches the breaking-change classification"
+    },
+    "Every operation documents success and error responses"
+  ]
 }
