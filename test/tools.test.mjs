@@ -93,3 +93,13 @@ test('code.repo_map and dependency inventory on this repository', async () => {
   const deps = await runTool('code.dependency_inventory', { content: undefined }, opts);
   assert.ok(deps.ok);
 });
+
+test('secret_scan: code expressions are not secrets, quoted literals still are', async () => {
+  const code = await runTool('security.secret_scan', { content: 'const tokens = alternative.trim().split(/\\s+/);' }, opts);
+  assert.equal(code.result.count, 0);
+  const fake = ['q8Zr2v', 'Lx9TmW', '4kPa7NbE'].join(''); // assembled so repo scanners do not flag the fixture
+  const lit = await runTool('security.secret_scan', { content: `const token = "${fake}";` }, opts);
+  assert.equal(lit.result.count, 1);
+  const env = await runTool('security.secret_scan', { content: `API_KEY=${fake}` }, opts);
+  assert.equal(env.result.count, 1);
+});
