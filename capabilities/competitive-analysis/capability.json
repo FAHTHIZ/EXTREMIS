@@ -3,6 +3,7 @@
   "kind": "skill",
   "domain": "business",
   "version": "0.1.0",
+  "phase": "discover",
   "summary": "Compare competitors using current sources, consistent criteria, and evidence-backed trade-offs.",
   "keywords": [
     "competitors",
@@ -14,13 +15,26 @@
     "differentiation",
     "competitor benchmarking"
   ],
-  "intents": [],
+  "intents": [
+    "compare our product with the three main competitors",
+    "how does our pricing stack up against rivals",
+    "build a feature comparison matrix for note-taking apps",
+    "what are competitors doing better than us",
+    "summarize the competitive landscape for this market"
+  ],
   "not_for": [],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "market-sizing",
+    "source-verification"
+  ],
+  "tools": [
+    "web.fetch_text",
+    "decision.weighted_matrix"
+  ],
   "permissions": [
-    "read"
+    "read",
+    "network"
   ],
   "prerequisites": [
     "the decision and comparison set",
@@ -29,5 +43,9 @@
   "risk": "medium",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    "Every competitor claim cites a dated source",
+    "The same criteria and weights are applied to every competitor",
+    "Unknowns are marked rather than guessed"
+  ]
 }

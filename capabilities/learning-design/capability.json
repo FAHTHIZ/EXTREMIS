@@ -3,13 +3,25 @@
   "kind": "skill",
   "domain": "education",
   "version": "0.1.0",
+  "phase": "plan",
   "summary": "Design accessible learning experiences with aligned outcomes, activities, and evidence of learning.",
   "keywords": [],
-  "intents": [],
+  "intents": [
+    "design a two-week course on Python basics",
+    "write learning objectives for this workshop",
+    "create a quiz that checks understanding",
+    "plan an onboarding curriculum for new engineers",
+    "make this training module accessible"
+  ],
   "not_for": [],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "study-coaching",
+    "accessibility-review"
+  ],
+  "tools": [
+    "text.readability"
+  ],
   "permissions": [
     "read"
   ],
@@ -20,5 +32,9 @@
   "risk": "medium",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    "Each outcome maps to an activity and an assessment",
+    "Materials meet the stated accessibility needs",
+    "Prerequisites and time estimates are stated"
+  ]
 }

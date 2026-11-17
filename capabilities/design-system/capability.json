@@ -3,6 +3,7 @@
   "kind": "skill",
   "domain": "design",
   "version": "0.1.0",
+  "phase": "build",
   "summary": "Create a coherent, accessible, implementation-ready system of reusable design decisions.",
   "keywords": [
     "design tokens",
@@ -13,11 +14,23 @@
     "reusable components",
     "design primitives"
   ],
-  "intents": [],
+  "intents": [
+    "create design tokens for colours, spacing and type",
+    "build a button component spec with all states",
+    "make our UI components consistent",
+    "document usage guidelines for the component library",
+    "define an accessible colour palette"
+  ],
   "not_for": [],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "accessibility-review",
+    "frontend-engineering"
+  ],
+  "tools": [
+    "a11y.contrast",
+    "a11y.html_audit"
+  ],
   "permissions": [
     "read"
   ],
@@ -28,5 +41,9 @@
   "risk": "low",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    "Every colour pair used for text passes WCAG AA contrast",
+    "Each component documents states, variants and usage rules",
+    "Tokens have one source of truth that code consumes"
+  ]
 }

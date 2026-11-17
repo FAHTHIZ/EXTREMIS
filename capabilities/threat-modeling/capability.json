@@ -3,6 +3,7 @@
   "kind": "skill",
   "domain": "security",
   "version": "0.1.0",
+  "phase": "plan",
   "summary": "Map assets, trust boundaries, threats, mitigations, and residual risk for an authorized system.",
   "keywords": [
     "attack surface",
@@ -12,11 +13,24 @@
     "threat scenarios",
     "STRIDE"
   ],
-  "intents": [],
+  "intents": [
+    "threat model our new authentication service",
+    "apply STRIDE to this architecture diagram",
+    "what could an attacker do with this API",
+    "identify trust boundaries in our system",
+    "prioritize security mitigations for launch"
+  ],
   "not_for": [],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "secure-code-review",
+    "privacy-impact-review"
+  ],
+  "tools": [
+    "security.code_patterns",
+    "api.openapi_lint",
+    "container.dockerfile_lint"
+  ],
   "permissions": [
     "read"
   ],
@@ -27,5 +41,9 @@
   "risk": "medium",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    "Assets, actors and trust boundaries are listed",
+    "Each threat has a mitigation, owner and residual risk",
+    "Scope is limited to systems the requester is authorized to assess"
+  ]
 }

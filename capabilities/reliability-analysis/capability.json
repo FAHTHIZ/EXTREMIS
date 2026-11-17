@@ -3,6 +3,7 @@
   "kind": "skill",
   "domain": "engineering",
   "version": "0.1.0",
+  "phase": "plan",
   "summary": "Structure reliability evidence, failure modes, mitigations, and measurable operational goals.",
   "keywords": [
     "MTBF",
@@ -14,11 +15,24 @@
     "maintenance intervals",
     "recovery time"
   ],
-  "intents": [],
+  "intents": [
+    "define SLOs for our API",
+    "do a failure mode analysis of the payment system",
+    "how much downtime does 99.9% allow per month",
+    "set burn-rate alerts for our error budget",
+    "what single points of failure do we have"
+  ],
   "not_for": [],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "incident-management",
+    "cloud-architecture"
+  ],
+  "tools": [
+    "reliability.slo_budget",
+    "stats.describe",
+    "logs.summarize"
+  ],
   "permissions": [
     "read"
   ],
@@ -29,5 +43,9 @@
   "risk": "high",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    "Each SLO has an SLI definition, target, window and data source",
+    "Failure modes list detection, mitigation and residual risk",
+    "Alert thresholds come from the error-budget calculation"
+  ]
 }

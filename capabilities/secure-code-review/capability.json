@@ -3,6 +3,7 @@
   "kind": "skill",
   "domain": "security",
   "version": "0.1.0",
+  "phase": "verify",
   "summary": "Identify and prioritize defensive code risks with evidence and practical remediation.",
   "keywords": [
     "security code review",
@@ -11,11 +12,25 @@
     "authorization flaws",
     "secure implementation"
   ],
-  "intents": [],
+  "intents": [
+    "review this code for security vulnerabilities",
+    "check our login flow for injection or auth bugs",
+    "find hard-coded secrets in the repo",
+    "is this file upload handler safe",
+    "do an OWASP-style review of the API"
+  ],
   "not_for": [],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "threat-modeling",
+    "code-review"
+  ],
+  "tools": [
+    "security.code_patterns",
+    "security.secret_scan",
+    "code.dependency_inventory",
+    "code.diff_stats"
+  ],
   "permissions": [
     "read"
   ],
@@ -26,5 +41,29 @@
   "risk": "medium",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    {
+      "tool": "security.secret_scan",
+      "args": {
+        "path": "${path}"
+      },
+      "expect": {
+        "count": 0
+      },
+      "description": "No hard-coded credentials in the reviewed path"
+    },
+    {
+      "tool": "security.code_patterns",
+      "args": {
+        "path": "${path}"
+      },
+      "expect": {
+        "by_severity.high": {
+          "exists": false
+        }
+      },
+      "description": "No unresolved high-severity vulnerability patterns"
+    },
+    "Each finding has a CWE, evidence, exploitability and a fix"
+  ]
 }

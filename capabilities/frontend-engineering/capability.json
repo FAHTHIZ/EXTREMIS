@@ -3,6 +3,7 @@
   "kind": "skill",
   "domain": "software-engineering",
   "version": "0.1.0",
+  "phase": "build",
   "summary": "Build usable, maintainable frontend behavior that matches the product contract.",
   "keywords": [
     "client-side",
@@ -14,13 +15,26 @@
     "web app",
     "responsive layouts"
   ],
-  "intents": [],
+  "intents": [
+    "build a responsive settings page in React",
+    "fix the layout bug on mobile Safari",
+    "add form validation to the checkout page",
+    "make this component handle loading and error states",
+    "improve the page load time of our web app"
+  ],
   "not_for": [
     "server-side API handlers, database persistence, or service business logic without a browser interface task"
   ],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "design-system",
+    "accessibility-review"
+  ],
+  "tools": [
+    "a11y.html_audit",
+    "code.repo_map",
+    "test.parse_report"
+  ],
   "permissions": [
     "read"
   ],
@@ -31,5 +45,18 @@
   "risk": "medium",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    {
+      "tool": "test.parse_report",
+      "args": {
+        "path": "${test_report}"
+      },
+      "expect": {
+        "success": true
+      },
+      "description": "Component and integration tests pass"
+    },
+    "Loading, empty and error states are implemented",
+    "Keyboard and screen-reader basics work on the changed views"
+  ]
 }

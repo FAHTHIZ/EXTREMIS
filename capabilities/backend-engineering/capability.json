@@ -3,6 +3,7 @@
   "kind": "skill",
   "domain": "software-engineering",
   "version": "0.1.0",
+  "phase": "build",
   "summary": "Build reliable backend behavior around explicit contracts, data integrity, and failure handling.",
   "keywords": [
     "backend services",
@@ -14,15 +15,31 @@
     "external API integration",
     "database-backed service"
   ],
-  "intents": [],
+  "intents": [
+    "implement an idempotent payment webhook handler",
+    "add retries and timeouts to our service client",
+    "build a background job that processes uploads safely",
+    "make this endpoint transactional so partial writes cannot happen",
+    "add input validation to the user creation API"
+  ],
   "not_for": [
     "frontend-only user interface implementation without server-side behavior"
   ],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "api-design",
+    "database-design",
+    "test-driven-development"
+  ],
+  "tools": [
+    "code.repo_map",
+    "sql.schema_lint",
+    "http.request",
+    "test.parse_report"
+  ],
   "permissions": [
-    "read"
+    "read",
+    "network"
   ],
   "prerequisites": [
     "repository and service context",
@@ -31,5 +48,18 @@
   "risk": "medium",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    {
+      "tool": "test.parse_report",
+      "args": {
+        "path": "${test_report}"
+      },
+      "expect": {
+        "success": true
+      },
+      "description": "The test suite passes"
+    },
+    "Failure paths (timeouts, retries, duplicate delivery) are covered by tests",
+    "Data changes are atomic or explicitly compensated"
+  ]
 }

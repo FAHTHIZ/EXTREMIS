@@ -3,6 +3,7 @@
   "kind": "skill",
   "domain": "business",
   "version": "0.1.0",
+  "phase": "plan",
   "summary": "Compare vendors and purchasing options using transparent lifecycle-cost and risk criteria.",
   "keywords": [
     "vendor selection",
@@ -14,11 +15,23 @@
     "sourcing",
     "vendor due diligence"
   ],
-  "intents": [],
+  "intents": [
+    "compare three vendors for our CRM",
+    "what is the total cost of ownership over five years",
+    "should we buy or build this tool",
+    "score these supplier bids against our criteria",
+    "assess vendor lock-in and contract risk"
+  ],
   "not_for": [],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "competitive-analysis",
+    "financial-modeling"
+  ],
+  "tools": [
+    "decision.weighted_matrix",
+    "finance.cashflow"
+  ],
   "permissions": [
     "read"
   ],
@@ -30,5 +43,9 @@
   "risk": "medium",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    "The same weighted criteria were applied to every option",
+    "Lifecycle cost includes licences, migration, support and exit",
+    "The recommendation survives reasonable weight changes"
+  ]
 }

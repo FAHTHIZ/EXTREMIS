@@ -3,13 +3,26 @@
   "kind": "skill",
   "domain": "design",
   "version": "0.1.0",
+  "phase": "verify",
   "summary": "Find accessibility barriers and propose testable fixes using applicable standards and assistive-technology context.",
   "keywords": [],
-  "intents": [],
+  "intents": [
+    "check this page for WCAG 2.2 problems",
+    "is our signup form usable with a screen reader",
+    "do these brand colours have enough contrast",
+    "audit keyboard navigation in the settings dialog",
+    "which accessibility issues should we fix first"
+  ],
   "not_for": [],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "ux-audit",
+    "frontend-engineering"
+  ],
+  "tools": [
+    "a11y.html_audit",
+    "a11y.contrast"
+  ],
   "permissions": [
     "read"
   ],
@@ -20,5 +33,20 @@
   "risk": "high",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    {
+      "tool": "a11y.html_audit",
+      "args": {
+        "path": "${html}"
+      },
+      "expect": {
+        "counts.critical": {
+          "exists": false
+        }
+      },
+      "description": "No critical static WCAG failures remain"
+    },
+    "Every finding names the success criterion, the affected element and a testable fix",
+    "Manual screen-reader and keyboard checks are reported separately from static results"
+  ]
 }

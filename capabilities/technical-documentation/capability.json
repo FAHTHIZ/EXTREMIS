@@ -3,15 +3,31 @@
   "kind": "skill",
   "domain": "software-engineering",
   "version": "0.1.0",
+  "phase": "deliver",
   "summary": "Produce accurate documentation aligned with the implemented product and its users.",
   "keywords": [],
-  "intents": [],
+  "intents": [
+    "write a README for this project",
+    "document the API for external developers",
+    "create a getting-started guide",
+    "update the docs after this change",
+    "write a runbook for the on-call team"
+  ],
   "not_for": [],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "api-design",
+    "knowledge-management"
+  ],
+  "tools": [
+    "docs.markdown_check",
+    "web.check_links",
+    "text.readability",
+    "api.openapi_lint"
+  ],
   "permissions": [
-    "read"
+    "read",
+    "network"
   ],
   "prerequisites": [
     "the actual implementation or authoritative source material",
@@ -20,5 +36,18 @@
   "risk": "low",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    {
+      "tool": "docs.markdown_check",
+      "args": {
+        "path": "${doc}"
+      },
+      "expect": {
+        "issues.length": 0
+      },
+      "description": "Markdown structure, anchors and code fences are valid"
+    },
+    "Commands and examples were run against the current version",
+    "The doc states its audience and prerequisites"
+  ]
 }

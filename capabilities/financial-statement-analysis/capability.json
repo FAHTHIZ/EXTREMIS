@@ -3,6 +3,7 @@
   "kind": "skill",
   "domain": "finance",
   "version": "0.1.0",
+  "phase": "build",
   "summary": "Analyze company financial statements with ratio definitions, period comparisons, and caveats.",
   "keywords": [
     "income statement",
@@ -12,11 +13,24 @@
     "earnings analysis",
     "working capital"
   ],
-  "intents": [],
+  "intents": [
+    "analyze this company's income statement and balance sheet",
+    "calculate margins and leverage from the annual report",
+    "compare this year's results with last year",
+    "is this company's liquidity healthy",
+    "extract key figures from the 10-K PDF"
+  ],
   "not_for": [],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "financial-modeling",
+    "source-verification"
+  ],
+  "tools": [
+    "finance.ratios",
+    "doc.extract_text",
+    "stats.describe"
+  ],
   "permissions": [
     "read"
   ],
@@ -27,5 +41,9 @@
   "risk": "high",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    "Each ratio shows its formula and the source line items",
+    "Periods compared use the same accounting basis, or differences are noted",
+    "Conclusions are framed as analysis, not investment advice"
+  ]
 }

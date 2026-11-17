@@ -3,6 +3,7 @@
   "kind": "skill",
   "domain": "creative-communication",
   "version": "0.1.0",
+  "phase": "build",
   "summary": "Adapt product content and interfaces for languages, regions, and cultural contexts.",
   "keywords": [
     "translation",
@@ -14,14 +15,25 @@
     "language adaptation",
     "regional formatting"
   ],
-  "intents": [],
+  "intents": [
+    "translate our app strings into Spanish and German",
+    "find missing keys in the French locale file",
+    "adapt this marketing copy for the Japanese market",
+    "check placeholder mismatches in translations",
+    "prepare the UI for right-to-left languages"
+  ],
   "not_for": [
     "one-word translation without a target locale, product context, or localization requirement",
     "database query refactoring without language or locale requirements"
   ],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "content-writing",
+    "frontend-engineering"
+  ],
+  "tools": [
+    "i18n.compare_locales"
+  ],
   "permissions": [
     "read"
   ],
@@ -33,5 +45,19 @@
   "risk": "medium",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    {
+      "tool": "i18n.compare_locales",
+      "args": {
+        "source_path": "${source_locale}",
+        "target_paths": "${target_locales}"
+      },
+      "expect": {
+        "ok": true
+      },
+      "description": "No missing keys or placeholder mismatches in target locales"
+    },
+    "Dates, numbers and currency use locale formats",
+    "Native-speaker review is recorded or flagged as pending"
+  ]
 }

@@ -3,15 +3,28 @@
   "kind": "skill",
   "domain": "research",
   "version": "0.1.0",
+  "phase": "verify",
   "summary": "Verify claims through provenance, primary evidence, cross-checks, and explicit uncertainty.",
   "keywords": [],
-  "intents": [],
+  "intents": [
+    "is this quote real",
+    "fact check the claims in this article",
+    "find the original source of this statistic",
+    "verify this screenshot of a tweet",
+    "check whether this study says what the headline claims"
+  ],
   "not_for": [],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "research-synthesis"
+  ],
+  "tools": [
+    "web.fetch_text",
+    "http.request"
+  ],
   "permissions": [
-    "read"
+    "read",
+    "network"
   ],
   "prerequisites": [
     "the exact claim or material to verify",
@@ -20,5 +33,9 @@
   "risk": "medium",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    "Each claim is rated with its evidence and the primary source",
+    "Dates, authorship and context of sources are recorded",
+    "Unverifiable claims are labelled as such"
+  ]
 }

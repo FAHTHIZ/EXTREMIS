@@ -3,13 +3,27 @@
   "kind": "skill",
   "domain": "creative-communication",
   "version": "0.1.0",
+  "phase": "deliver",
   "summary": "Build a focused slide narrative with clear hierarchy and evidence-matched visuals.",
   "keywords": [],
-  "intents": [],
+  "intents": [
+    "build a slide deck for the quarterly review",
+    "turn this report into a 10-slide presentation",
+    "make my pitch deck clearer",
+    "design slides that explain our architecture",
+    "review this deck for flow and clarity"
+  ],
   "not_for": [],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "data-visualization",
+    "content-writing"
+  ],
+  "tools": [
+    "doc.extract_text",
+    "data.chart_svg",
+    "text.readability"
+  ],
   "permissions": [
     "read"
   ],
@@ -20,5 +34,9 @@
   "risk": "low",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    "Each slide has one message stated in its title",
+    "Charts and numbers cite their source",
+    "The deck fits the stated time slot"
+  ]
 }

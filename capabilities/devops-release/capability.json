@@ -3,13 +3,27 @@
   "kind": "skill",
   "domain": "software-engineering",
   "version": "0.1.0",
+  "phase": "deliver",
   "summary": "Make releases reproducible, observable, and recoverable with explicit gates.",
   "keywords": [],
-  "intents": [],
+  "intents": [
+    "prepare the release notes and version bump",
+    "set up a CI pipeline with a deploy gate",
+    "plan a rollback for tomorrow's deployment",
+    "make our builds reproducible",
+    "cut a new release from main"
+  ],
   "not_for": [],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "quality-assurance",
+    "incident-management"
+  ],
+  "tools": [
+    "release.changelog",
+    "container.dockerfile_lint",
+    "code.dependency_inventory"
+  ],
   "permissions": [
     "read"
   ],
@@ -20,5 +34,18 @@
   "risk": "high",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    {
+      "tool": "code.dependency_inventory",
+      "args": {
+        "path": "${repo}"
+      },
+      "expect": {
+        "flagged.length": 0
+      },
+      "description": "No unpinned or non-registry dependencies in the release"
+    },
+    "Release gates (tests, scans, approvals) are listed with their result",
+    "A rollback procedure exists and was rehearsed or reviewed"
+  ]
 }

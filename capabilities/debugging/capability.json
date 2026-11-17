@@ -3,6 +3,7 @@
   "kind": "skill",
   "domain": "software-engineering",
   "version": "0.1.0",
+  "phase": "build",
   "summary": "Diagnose, fix, and verify software defects.",
   "keywords": [
     "bug diagnosis",
@@ -13,11 +14,25 @@
     "regression fix",
     "fault isolation"
   ],
-  "intents": [],
+  "intents": [
+    "my app crashes with this stack trace",
+    "tests started failing after the upgrade, find out why",
+    "this function returns the wrong value sometimes",
+    "help me find the cause of a memory leak",
+    "reproduce and fix the bug in this issue"
+  ],
   "not_for": [],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "test-driven-development",
+    "performance-optimization"
+  ],
+  "tools": [
+    "code.parse_stacktrace",
+    "logs.summarize",
+    "test.parse_report",
+    "code.repo_map"
+  ],
   "permissions": [
     "read"
   ],
@@ -28,5 +43,18 @@
   "risk": "medium",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    {
+      "tool": "test.parse_report",
+      "args": {
+        "path": "${test_report}"
+      },
+      "expect": {
+        "success": true
+      },
+      "description": "The regression test and the full suite pass after the fix"
+    },
+    "A test reproduced the failure before the fix",
+    "The root cause, not only the symptom, is explained"
+  ]
 }

@@ -3,6 +3,7 @@
   "kind": "skill",
   "domain": "business",
   "version": "0.1.0",
+  "phase": "discover",
   "summary": "Estimate opportunity size with explicit definitions, sourced inputs, and sensitivity ranges.",
   "keywords": [
     "TAM",
@@ -13,11 +14,23 @@
     "bottom-up market estimate",
     "market demand"
   ],
-  "intents": [],
+  "intents": [
+    "estimate the TAM SAM SOM for our product",
+    "how big is the market for pet insurance in Europe",
+    "build a bottom-up market size estimate",
+    "sanity check this market size claim from a pitch deck",
+    "size the opportunity for a new B2B tool"
+  ],
   "not_for": [],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "competitive-analysis",
+    "financial-modeling"
+  ],
+  "tools": [
+    "finance.cashflow",
+    "stats.describe"
+  ],
   "permissions": [
     "read"
   ],
@@ -28,5 +41,9 @@
   "risk": "medium",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    "Market definition, geography and year are explicit",
+    "Every input cites a source or is marked as an assumption",
+    "A range with sensitivity is given, not a single number"
+  ]
 }

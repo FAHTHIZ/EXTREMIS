@@ -3,13 +3,27 @@
   "kind": "skill",
   "domain": "science",
   "version": "0.1.0",
+  "phase": "plan",
   "summary": "Design a transparent, ethical study with testable hypotheses and defensible methods.",
   "keywords": [],
-  "intents": [],
+  "intents": [
+    "how many users do we need for this A/B test",
+    "design an experiment to test the new onboarding",
+    "set up a randomized study with a control group",
+    "what is the minimum detectable effect for our traffic",
+    "pre-register hypotheses for this study"
+  ],
   "not_for": [],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "product-analytics",
+    "scientific-data-analysis"
+  ],
+  "tools": [
+    "stats.sample_size",
+    "stats.ab_test",
+    "stats.compare_samples"
+  ],
   "permissions": [
     "read"
   ],
@@ -20,5 +34,9 @@
   "risk": "high",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    "Primary metric, hypothesis and stopping rule are fixed before data collection",
+    "Sample size comes from a stated power calculation",
+    "Ethics, consent and exclusion criteria are documented"
+  ]
 }

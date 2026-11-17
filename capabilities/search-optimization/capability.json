@@ -3,6 +3,7 @@
   "kind": "skill",
   "domain": "marketing",
   "version": "0.1.0",
+  "phase": "verify",
   "summary": "Improve discoverability through useful content and technically sound websites.",
   "keywords": [
     "SEO",
@@ -16,16 +17,30 @@
     "structured data",
     "search visibility"
   ],
-  "intents": [],
+  "intents": [
+    "why is our site not ranking on Google",
+    "audit this page for SEO issues",
+    "improve title tags and meta descriptions",
+    "find broken links on our website",
+    "plan content around search intent"
+  ],
   "not_for": [
     "simple definitions of search keywords without a website discovery task",
     "standalone brand tagline writing without organic search or website optimization"
   ],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "content-writing",
+    "technical-documentation"
+  ],
+  "tools": [
+    "seo.html_audit",
+    "web.check_links",
+    "text.readability"
+  ],
   "permissions": [
-    "read"
+    "read",
+    "network"
   ],
   "prerequisites": [
     "website or representative pages and the intended audience",
@@ -35,5 +50,20 @@
   "risk": "low",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    {
+      "tool": "seo.html_audit",
+      "args": {
+        "path": "${html}"
+      },
+      "expect": {
+        "score": {
+          "gte": 80
+        }
+      },
+      "description": "On-page SEO audit scores at least 80"
+    },
+    "Recommendations favour useful content over keyword stuffing",
+    "Changes are measured against a baseline from search console data"
+  ]
 }

@@ -3,6 +3,7 @@
   "kind": "skill",
   "domain": "data",
   "version": "0.1.0",
+  "phase": "build",
   "summary": "Match visual encodings to the analytical question and make charts readable and honest.",
   "keywords": [
     "charts",
@@ -16,11 +17,24 @@
     "plotting data",
     "data storytelling"
   ],
-  "intents": [],
+  "intents": [
+    "make a chart of revenue over time",
+    "what chart type should I use to compare these groups",
+    "improve this dashboard so it is easier to read",
+    "plot conversion rate by channel",
+    "create an accessible bar chart from this table"
+  ],
   "not_for": [],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "data-analysis",
+    "presentation-design"
+  ],
+  "tools": [
+    "data.chart_svg",
+    "a11y.contrast",
+    "data.query"
+  ],
   "permissions": [
     "read"
   ],
@@ -31,5 +45,9 @@
   "risk": "low",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    "Axes start at zero for bar charts or the break is labelled",
+    "Title states the takeaway, and units and sources are shown",
+    "Colours pass contrast checks and do not rely on hue alone"
+  ]
 }

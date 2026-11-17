@@ -3,6 +3,7 @@
   "kind": "skill",
   "domain": "engineering",
   "version": "0.1.0",
+  "phase": "plan",
   "summary": "Design cloud workloads for resilience, security, cost, and operability.",
   "keywords": [
     "cloud infrastructure",
@@ -14,11 +15,24 @@
     "disaster recovery",
     "cloud networking"
   ],
-  "intents": [],
+  "intents": [
+    "design a highly available deployment on AWS for our API",
+    "should we use Kubernetes or a managed container service",
+    "estimate and reduce our cloud bill",
+    "plan multi-region failover for the database",
+    "review this Dockerfile and deployment for production readiness"
+  ],
   "not_for": [],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "reliability-analysis",
+    "threat-modeling",
+    "devops-release"
+  ],
+  "tools": [
+    "container.dockerfile_lint",
+    "reliability.slo_budget"
+  ],
   "permissions": [
     "read"
   ],
@@ -30,5 +44,20 @@
   "risk": "high",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    {
+      "tool": "container.dockerfile_lint",
+      "args": {
+        "path": "${dockerfile}"
+      },
+      "expect": {
+        "findings.length": {
+          "lte": 2
+        }
+      },
+      "description": "Container image follows baseline hardening rules"
+    },
+    "Each component has a stated failure mode and recovery path",
+    "Cost estimate lists its pricing source and date"
+  ]
 }

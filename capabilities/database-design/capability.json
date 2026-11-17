@@ -3,6 +3,7 @@
   "kind": "skill",
   "domain": "software-engineering",
   "version": "0.1.0",
+  "phase": "plan",
   "summary": "Model data and migrations for integrity, clear ownership, and maintainable access patterns.",
   "keywords": [
     "schema design",
@@ -13,11 +14,22 @@
     "query patterns",
     "referential integrity"
   ],
-  "intents": [],
+  "intents": [
+    "design the schema for a multi-tenant SaaS app",
+    "review this migration before it runs in production",
+    "should this be a separate table or a JSON column",
+    "add indexes for the slow orders query",
+    "plan a zero-downtime column rename"
+  ],
   "not_for": [],
   "requires": [],
-  "suggests": [],
-  "tools": [],
+  "suggests": [
+    "backend-engineering",
+    "api-design"
+  ],
+  "tools": [
+    "sql.schema_lint"
+  ],
   "permissions": [
     "read"
   ],
@@ -28,5 +40,19 @@
   "risk": "medium",
   "maturity": "draft",
   "provenance": "original-extremis-content",
-  "verify": []
+  "verify": [
+    {
+      "tool": "sql.schema_lint",
+      "args": {
+        "path": "${sql}",
+        "migration": true
+      },
+      "expect": {
+        "safe": true
+      },
+      "description": "DDL and migrations pass safety lint (keys, locking, destructive changes)"
+    },
+    "Every table has an owner, primary key and documented access pattern",
+    "Migration has a tested rollback or forward-fix plan"
+  ]
 }
