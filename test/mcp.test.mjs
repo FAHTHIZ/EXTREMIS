@@ -36,7 +36,7 @@ test('mcp over stdio: legacy handshake, gateway tools and skills extension', asy
   assert.ok(init.result.capabilities.extensions['io.modelcontextprotocol/skills'].directoryRead);
   c.notify('notifications/initialized');
   const tools = await c.request('tools/list');
-  assert.deepEqual(tools.result.tools.map((t) => t.name), ['extremis_search', 'extremis_plan', 'extremis_activate', 'extremis_read', 'extremis_run', 'extremis_verify']);
+  assert.deepEqual(tools.result.tools.map((t) => t.name), ['extremis_search', 'extremis_find', 'extremis_plan', 'extremis_activate', 'extremis_read', 'extremis_run', 'extremis_verify']);
   for (const t of tools.result.tools) assert.doesNotMatch(t.description, /\b(you must|always|never|ignore|important)\b/i);
   const search = await c.request('tools/call', { name: 'extremis_search', arguments: { query: 'review a pull request diff', limit: 3 } });
   assert.equal(search.result.isError, false);
@@ -93,14 +93,14 @@ test('mcp dynamic tool exposure adds activated tools and notifies', async () => 
   const sent = [];
   const server = new McpServer({ exposeTools: 'dynamic', send: (m) => sent.push(m), roots: [path.join(path.dirname(BIN), '..', 'capabilities')] });
   const before = await server.handle({ jsonrpc: '2.0', id: 1, method: 'tools/list' });
-  assert.equal(before.result.tools.length, 6);
+  assert.equal(before.result.tools.length, 7);
   const cat = await server.service.catalog();
   const withTools = cat.list().find((c) => c.tools.length);
   if (!withTools) return; // catalog without tools: nothing to expose
   await server.handle({ jsonrpc: '2.0', id: 2, method: 'tools/call', params: { name: 'extremis_activate', arguments: { names: [withTools.name] } } });
   assert.ok(sent.some((m) => m.method === 'notifications/tools/list_changed'));
   const after = await server.handle({ jsonrpc: '2.0', id: 3, method: 'tools/list' });
-  assert.ok(after.result.tools.length > 6);
+  assert.ok(after.result.tools.length > 7);
   const all = new McpServer({ exposeTools: 'all' });
   const allTools = await all.handle({ jsonrpc: '2.0', id: 1, method: 'tools/list' });
   const direct = allTools.result.tools.find((x) => x.name === 'x_a11y__contrast');

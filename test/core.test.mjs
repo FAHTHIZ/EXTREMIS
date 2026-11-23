@@ -80,7 +80,7 @@ test('sdk entry point exposes the service and schema export', async () => {
   assert.ok(openai.every((t) => !JSON.stringify(t.function.parameters).includes('"$ref"')));
   assert.equal(sdk.toolIdFromName('data__profile'), 'data.profile');
   const gemini = sdk.exportSchemas([], 'gemini', { gateway: true });
-  assert.equal(gemini[0].functionDeclarations.length, 6);
+  assert.equal(gemini[0].functionDeclarations.length, 7);
 });
 
 test('cli parses arguments and runs commands', async () => {

@@ -1,0 +1,22 @@
+name: Skill finder result
+description: extremis find ranked a skill wrongly, missed one, or mis-scanned one
+labels: [skill-finder, needs-triage]
+body:
+  - type: input
+    id: query
+    attributes:
+      label: Query
+    validations:
+      required: true
+  - type: textarea
+    id: got
+    attributes:
+      label: What it returned
+      description: Output of `extremis find "<query>" --json` (the results array is enough).
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+      description: The skill that should rank higher (owner/repo/skill) or the scan verdict you believe is wrong, and why.
+    validations:
+      required: true

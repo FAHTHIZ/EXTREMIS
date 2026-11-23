@@ -38,7 +38,7 @@ class RpcError extends Error {
   constructor(code, message, data) { super(message); this.code = code; this.data = data; }
 }
 
-const INSTRUCTIONS = 'EXTREMIS is a capability catalog. extremis_search and extremis_plan find capabilities for a task; extremis_activate returns their instructions and tool schemas; extremis_run executes a listed tool; extremis_verify checks results. Capabilities are also available as Agent Skills resources (skill://<name>/SKILL.md).';
+const INSTRUCTIONS = 'EXTREMIS is a capability catalog. extremis_search and extremis_plan find capabilities for a task; extremis_find searches public skill directories (skills.sh, GitHub) when nothing installed fits; extremis_activate returns their instructions and tool schemas; extremis_run executes a listed tool; extremis_verify checks results. Capabilities are also available as Agent Skills resources (skill://<name>/SKILL.md).';
 
 export const GATEWAY_TOOLS = [
   {
@@ -47,6 +47,13 @@ export const GATEWAY_TOOLS = [
     description: 'Search the EXTREMIS capability catalog. Returns ranked capability cards (name, summary, tools, permissions, risk, confidence).',
     inputSchema: { type: 'object', required: ['query'], properties: { query: { type: 'string', description: 'Task or need in natural language' }, limit: { type: 'integer', minimum: 1, maximum: 20, default: 5 }, domain: { type: 'string' }, kind: { type: 'string', enum: ['skill', 'workflow'] } }, additionalProperties: false },
     annotations: { readOnlyHint: true, openWorldHint: false },
+  },
+  {
+    name: 'extremis_find',
+    title: 'Find skills anywhere',
+    description: 'Find Agent Skills for a task beyond the installed catalog: searches the local catalog, the skills.sh directory, GitHub and Agent Skills well-known indexes, reads and security-scans the top SKILL.md files and returns ranked results with install commands. Sends the query to those public services; set EXTREMIS_OFFLINE=1 to disable.',
+    inputSchema: { type: 'object', required: ['query'], properties: { query: { type: 'string', description: 'Task or need in natural language' }, limit: { type: 'integer', minimum: 1, maximum: 25, default: 8 }, sources: { type: 'array', items: { type: 'string', enum: ['local', 'skills.sh', 'github', 'index'] } }, indexes: { type: 'array', items: { type: 'string' }, description: 'Extra Agent Skills index URLs or site origins' }, owner: { type: 'string', description: 'Only results from this GitHub owner' }, official_only: { type: 'boolean', default: false }, deep: { type: 'boolean', default: true, description: 'Read and scan SKILL.md of top candidates' } }, additionalProperties: false },
+    annotations: { readOnlyHint: true, openWorldHint: true },
   },
   {
     name: 'extremis_plan',
@@ -238,6 +245,10 @@ export class McpServer {
     try {
       switch (name) {
         case 'extremis_search': return ok(await this.service.search(args.query, { limit: args.limit, domain: args.domain, kind: args.kind }));
+        case 'extremis_find': {
+          const r = await this.service.find(args.query, { limit: args.limit ?? 8, sources: args.sources, indexes: args.indexes, owner: args.owner, officialOnly: args.official_only, deep: args.deep });
+          return ok({ ...r, results: r.results.map(({ findings, ...x }) => ({ ...x, ...(findings?.length ? { findings } : {}) })) });
+        }
         case 'extremis_plan': return ok(await this.service.plan(args.task, { maxCapabilities: args.max_capabilities }));
         case 'extremis_activate': {
           const result = await this.service.activate(args.names || [], { includeSuggests: args.include_suggests, maxBodyTokens: args.max_body_tokens });

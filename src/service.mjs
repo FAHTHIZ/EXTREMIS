@@ -10,8 +10,9 @@ import { runChecks } from './verify.mjs';
 import { runTool, parseAllow, resolveTool, DEFAULT_ALLOW } from './runner.mjs';
 import { getBuiltinTool, listBuiltinTools, describeTool } from './tools/index.mjs';
 import { resolve as resolveDeps } from './resolve.mjs';
+import { find as findRemote } from './find.mjs';
 
-export const VERSION = '0.2.0';
+export const VERSION = '0.3.0';
 
 function toolText(id) {
   const t = getBuiltinTool(id);
@@ -59,9 +60,25 @@ export class Extremis {
     };
   }
 
+  /**
+   * Find skills for a task across the local catalog and public directories
+   * (skills.sh, GitHub, Agent Skills indexes). See src/find.mjs for options.
+   */
+  async find(query, options = {}) {
+    return findRemote(query, {
+      env: this.env,
+      fetchImpl: this.options.fetchImpl,
+      ...options,
+      localSearch: async (q, limit) => (await this.search(q, { limit })).results.filter((r) => r.confidence !== 'low'),
+    });
+  }
+
   async plan(task, { maxCapabilities, domain } = {}) {
     const catalog = await this.catalog();
-    return planTask(catalog, this._index, String(task || ''), { maxCapabilities, allow: this.allow, filters: domain ? { domain } : undefined, rerank: this.options.rerank });
+    const result = planTask(catalog, this._index, String(task || ''), { maxCapabilities, allow: this.allow, filters: domain ? { domain } : undefined, rerank: this.options.rerank });
+    // Nothing installed fits well: point the host at the public skill directories.
+    if (result && result.confidence !== 'high') result.discover = { reason: `local match confidence is ${result.confidence}`, next: `extremis find ${JSON.stringify(String(task || ''))}`, tool: 'extremis_find' };
+    return result;
   }
 
   async activate(names, { includeSuggests = false, maxBodyTokens, includeBody = true } = {}) {

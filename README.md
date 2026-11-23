@@ -10,17 +10,20 @@
   <img src="https://img.shields.io/badge/Node.js-%3E%3D18.17-65b88a?style=flat-square&logo=node.js&logoColor=white" alt="Node.js 18.17 or later" />
   <img src="https://img.shields.io/badge/Python-%3E%3D3.9-3776ab?style=flat-square&logo=python&logoColor=white" alt="Python 3.9 or later client" />
   <img src="https://img.shields.io/badge/runtime-dependency--free-f2a66d?style=flat-square" alt="Zero runtime dependencies" />
+  <a href="#find-any-skill"><img src="https://img.shields.io/badge/skill%20finder-skills.sh%20%C2%B7%20GitHub%20%C2%B7%20indexes-e89b77?style=flat-square" alt="Federated skill finder across skills.sh, GitHub and Agent Skills indexes" /></a>
+  <img src="https://img.shields.io/badge/MCP-7%20gateway%20tools-8d78a7?style=flat-square" alt="Seven MCP gateway tools" />
   <a href="https://github.com/FAHTHIZ/EXTREMIS"><img src="https://img.shields.io/github/stars/FAHTHIZ/EXTREMIS?style=social" alt="GitHub stars" /></a>
 </p>
 
 <p align="center">
   <strong>One intelligence. Endless capabilities.</strong>
   <br />
-  <sub>Plan, load, run and verify reusable agent capabilities — only when they are needed.</sub>
+  <sub>Plan, load, run and verify reusable agent capabilities — and find any public skill when the built-in ones are not enough.</sub>
 </p>
 
 <p align="center">
   <a href="#quickstart">Quickstart</a> ·
+  <a href="#find-any-skill">Find any skill</a> ·
   <a href="#how-it-works">How it works</a> ·
   <a href="#capability-library">Capability library</a> ·
   <a href="#integrations">Integrations</a> ·
@@ -38,7 +41,7 @@ It is not another model, agent host, or giant prompt. The host keeps control of 
 
 The repository contains:
 
-<kbd>54</kbd> Agent Skills · <kbd>5</kbd> multi-step workflows · <kbd>41</kbd> permission-gated tools · <kbd>4</kbd> integration paths
+<kbd>54</kbd> Agent Skills · <kbd>5</kbd> multi-step workflows · <kbd>41</kbd> permission-gated tools · <kbd>4</kbd> integration paths · <kbd>1</kbd> federated finder for public skills
 
 Every capability is a standard Agent Skills folder with a SKILL.md, so the instruction packages can also be used independently in any host that reads the format.
 
@@ -62,7 +65,7 @@ Loading an entire skill library into every conversation wastes context and makes
 
 | Context loaded | Approx. tokens |
 |---|---:|
-| Gateway skill + six MCP gateway tool schemas | ~1,300 |
+| Gateway skill + seven MCP gateway tool schemas | ~1,500 |
 | Names and descriptions for all 59 capabilities | ~3,250 |
 | All 59 SKILL.md files loaded in full | ~39,000 |
 | Typical task: plan, selected instructions and tool schemas | ~3,000–7,500 |
@@ -116,6 +119,37 @@ npx extremis verify --capability quality-assurance --param test_report=junit.xml
 
 The CLI reports passed checks and any manual checks that still need human review. A completed tool run is not automatically proof that every acceptance criterion has been met.
 
+## Find any skill
+
+The built-in catalog covers common work. When it does not fit, <code>extremis find</code> searches public skill directories for you, the way <code>npx skills find</code> does, and then reads what it found before recommending anything.
+
+~~~bash
+npx extremis find "deploy a next.js app to cloudflare"
+~~~
+
+~~~text
+ 1. cloudflare/skills/nextjs-on-cloudflare
+    official · 65,778 installs · scan safe · high match
+    Build, migrate, and deploy Next.js apps on Cloudflare Workers with vinext.
+    extremis install cloudflare/skills --skill nextjs-on-cloudflare
+ 2. cloudflare/skills/cloudflare-app-bootstrap
+    official · 13,655 installs · scan safe · high match
+    ...
+~~~
+
+How a search runs:
+
+| Step | What happens |
+|---|---|
+| **1. Query planning** | The task becomes several short queries (keyword pairs and single keywords), because directory search engines match short queries better than sentences |
+| **2. Federated search** | The local catalog, the [skills.sh](https://skills.sh) directory, GitHub repositories tagged <code>agent-skills</code>, GitHub code search for <code>SKILL.md</code> files (with <code>GITHUB_TOKEN</code>), and any Agent Skills <code>.well-known</code> index you pass with <code>--index</code> are searched in parallel |
+| **3. Merge** | Results are deduplicated by <code>owner/repo/skill</code>; a skill found by several sources ranks higher |
+| **4. Read** | The SKILL.md of the top candidates is downloaded and its frontmatter description and body are indexed |
+| **5. Scan** | Every downloaded skill goes through the same scanner as <code>extremis install</code>; dangerous skills drop down the list and show their findings |
+| **6. Rank** | BM25 relevance on name, description and body, coverage of your terms, install count or stars, and an official-publisher boost. Popularity only counts in proportion to relevance, so a famous but unrelated skill does not win |
+
+Useful options: <code>--official</code> (vendor-maintained skills only), <code>--owner &lt;org&gt;</code>, <code>--min-installs &lt;n&gt;</code>, <code>--source local,skills.sh,github,index</code>, <code>--no-deep</code> (skip reading), <code>--json</code>, and <code>--install [rank]</code> to install a result through the normal scanned, lockfile-recorded install path. Agents get the same search through the <code>extremis_find</code> MCP tool, and <code>extremis_plan</code> suggests it when nothing installed fits. Queries go to the public services listed above; set <code>EXTREMIS_OFFLINE=1</code> to keep everything local. Details: [docs/skill-finder.md](docs/skill-finder.md).
+
 ## How it works
 
 ~~~mermaid
@@ -133,13 +167,14 @@ flowchart LR
   class C focus
 ~~~
 
-### The six MCP gateway tools
+### The seven MCP gateway tools
 
 The MCP server exposes a compact gateway:
 
 | Tool | Purpose |
 |---|---|
 | <code>extremis_search</code> | Discover capabilities relevant to a task |
+| <code>extremis_find</code> | Search skills.sh, GitHub and skill indexes; read, scan and rank public skills |
 | <code>extremis_plan</code> | Select, order and compose capabilities into a plan |
 | <code>extremis_activate</code> | Load the selected capability instructions |
 | <code>extremis_read</code> | Read a capability's SKILL.md or bundled resource |
@@ -233,7 +268,7 @@ Use this configuration in an MCP-compatible host:
 }
 ~~~
 
-<code>--expose-tools=dynamic</code> or <code>--expose-tools=all</code> can expose built-in tools directly. The default six-tool gateway is the safer starting point. MCP support differs between hosts and versions; verify connection, tool discovery, resource reads and permission prompts in the host you use.
+<code>--expose-tools=dynamic</code> or <code>--expose-tools=all</code> can expose built-in tools directly. The default seven-tool gateway is the safer starting point. MCP support differs between hosts and versions; verify connection, tool discovery, resource reads and permission prompts in the host you use.
 
 ### JavaScript SDK
 
@@ -254,7 +289,7 @@ console.log(context);
 
 ### Python client
 
-The <code>python/</code> package is a dependency-free Python client. It starts <code>extremis mcp</code> (Node.js 18.17+ required) and calls the same six gateway tools. Install it from the repository:
+The <code>python/</code> package is a dependency-free Python client. It starts <code>extremis mcp</code> (Node.js 18.17+ required) and calls the same seven gateway tools. Install it from the repository:
 
 ~~~bash
 pip install "git+https://github.com/FAHTHIZ/EXTREMIS.git#subdirectory=python"
@@ -307,6 +342,7 @@ A dangerous scanner finding blocks installation. A caution result requires expli
 | Command | What it does |
 |---|---|
 | <code>search &lt;query&gt;</code>, <code>plan &lt;task&gt;</code> | Rank and compose capabilities |
+| <code>find &lt;task&gt;</code> | Search public skill directories, read and scan the top SKILL.md files, rank and optionally install |
 | <code>activate &lt;name...&gt;</code>, <code>read &lt;name&gt; [file]</code> | Load selected instructions and resources |
 | <code>tools</code>, <code>run &lt;tool&gt; k=v</code>, <code>verify</code> | Inspect, execute and verify built-in tools |
 | <code>mcp</code>, <code>schema &lt;format&gt;</code> | Start MCP stdio server or export tool schemas |
@@ -371,12 +407,13 @@ Routing fixtures measure deterministic retrieval behavior. They do not prove tha
 
 | Topic | Documentation |
 |---|---|
+| **Skill finder** | [How <code>extremis find</code> searches and ranks](docs/skill-finder.md) |
 | **Architecture** | [Architecture assessment and roadmap](docs/architecture-assessment.md) · [Comparison](docs/COMPARISON.md) |
 | **Security and trust** | [Security model](docs/security.md) · [Security policy](SECURITY.md) |
 | **Host support** | [Host compatibility](docs/host-compatibility.md) · [Marketplace integration](docs/marketplace-integration.md) |
 | **Capability quality** | [Skill quality](docs/skill-quality.md) · [Librarian](docs/librarian.md) · [Landscape review](docs/landscape-review.md) |
 | **Python client** | [Python README](python/README.md) |
-| **Contributing** | [Contribution guide](CONTRIBUTING.md) |
+| **Contributing** | [Contribution guide](CONTRIBUTING.md) · [Changelog](CHANGELOG.md) |
 
 ## Project status
 

@@ -1,6 +1,6 @@
 {
   "name": "extremis",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Portable capability layer for AI agents: discover, activate, compose, run and verify Agent Skills and tools over MCP, CLI or SDK.",
   "type": "module",
   "license": "Apache-2.0",
@@ -48,6 +48,16 @@
     "skills",
     "tools",
     "capabilities",
-    "oasis"
+    "oasis",
+    "skill-finder",
+    "skills-sh",
+    "skill-search",
+    "model-context-protocol",
+    "codex",
+    "cursor",
+    "claude-skills",
+    "agent-skills-discovery",
+    "ai-tools",
+    "llm"
   ]
 }

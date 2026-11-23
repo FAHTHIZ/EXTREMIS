@@ -27,7 +27,7 @@ class ClientTest(unittest.TestCase):
     def test_initialize_and_tools(self):
         self.assertEqual(self.x.server_info.get("name"), "extremis")
         names = [t["name"] for t in self.x.list_tools()]
-        self.assertEqual(names, ["extremis_search", "extremis_plan", "extremis_activate", "extremis_read", "extremis_run", "extremis_verify"])
+        self.assertEqual(names, ["extremis_search", "extremis_find", "extremis_plan", "extremis_activate", "extremis_read", "extremis_run", "extremis_verify"])
 
     def test_search_and_plan(self):
         results = self.x.search("profile a csv file", limit=3)["results"]
@@ -91,7 +91,7 @@ class LangChainTest(unittest.TestCase):
 
         with ExtremisClient(cwd=str(REPO), allow=["read"]) as x:
             tools = {t.name: t for t in as_langchain_tools(x)}
-            self.assertEqual(len(tools), 6)
+            self.assertEqual(len(tools), 7)
             plan = json.loads(tools["extremis_plan"].invoke({"task": "is this build ready to release?"}))
             self.assertEqual(plan["strategy"], "workflow")
 

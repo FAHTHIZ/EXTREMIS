@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: If you use EXTREMIS in research or a product write-up, please cite it.
+title: "EXTREMIS: a portable capability layer and skill finder for AI agents"
+type: software
+authors:
+  - name: Fahim Hussain
+    alias: FAHTHIZ
+repository-code: https://github.com/FAHTHIZ/EXTREMIS
+license: Apache-2.0
+version: 0.3.0
+date-released: 2026-11-23
+keywords:
+  - agent-skills
+  - model-context-protocol
+  - ai-agents
+  - skill-search

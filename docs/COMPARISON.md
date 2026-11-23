@@ -9,12 +9,13 @@ Checked on 2026-11-17 against each project's README and repository root. Star co
 | Claude Code plugin marketplace | yes | yes (official and own marketplace) | — | yes | yes (`/plugin marketplace add FAHTHIZ/EXTREMIS`) |
 | Codex plugin | — | yes | — | yes | yes (repo marketplace) |
 | Installs through `npx skills add` | yes | — | is the installer | yes (documented first) | yes (gateway skill, or any capability through the `capabilities/` subpath) |
-| MCP server | — | — | — | — | yes: 6 gateway tools plus skills as MCP resources |
+| MCP server | — | — | — | — | yes: 7 gateway tools (including a federated skill finder) plus skills as MCP resources |
 | Loads instructions on demand through a planner | host does progressive disclosure | host does progressive disclosure, plus a SessionStart hook | — | host does progressive disclosure | `extremis_plan` picks and orders capabilities, then `extremis_activate` loads only those; the Claude Code plugin adds a ~100-token SessionStart reminder (`EXTREMIS_SESSION_HOOK=off` disables it) |
 | Multi-step workflows | — | yes (brainstorm, plan, TDD, review, finish) as skill chains | — | lifecycle grouping (define → ship) | 5 declared workflows with step order, optional steps and done criteria |
 | Executable verification | — | "verification-before-completion" skill (instructions) | — | — | `verify` checks that run built-in tools with matchers, plus manual statements |
 | Built-in tools | — | — | — | — | 41 permission-gated tools (data, code, security, docs, web, API, a11y, SEO, …) |
 | Lockfile and content hash | — | — | `skills-lock.json` v2 `computedHash` | — | `extremis-lock.json`; folder hash matches skills 1.9.0's `computedHash` byte for byte |
+| Search public skill directories | — | — | `npx skills find` (skills.sh search, names and install counts) | — | `extremis find`: skills.sh + GitHub + `.well-known` indexes, reads and scans each top SKILL.md, re-ranks on the task |
 | Install-time security scan | — | — | — | — | static scanner; dangerous findings block install |
 | Agent Skills well-known index | — | — | reads them | — | publishes one (`extremis build`) and installs from them |
 | Routing evaluation | — | — | — | routing evals (25 case files) | authored and hold-out sets with Hit@k, MRR and false activation |

@@ -1,0 +1,29 @@
+name: Bug report
+description: Something in the CLI, MCP server, SDK or a capability does not work as documented
+labels: [bug, needs-triage]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: Command or MCP call, what you expected, and what you got instead.
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      render: shell
+      placeholder: npx -y github:FAHTHIZ/EXTREMIS find "..." --json
+  - type: input
+    id: env
+    attributes:
+      label: Environment
+      description: Output of `extremis doctor` (first lines), host (Claude Code, Codex, Cursor, ...), OS.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I removed tokens, keys and private paths from the output above.
+          required: true

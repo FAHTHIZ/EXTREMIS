@@ -1,0 +1,21 @@
+name: Capability request
+description: Propose a new built-in skill, workflow or tool
+labels: [capability, needs-triage]
+body:
+  - type: textarea
+    id: task
+    attributes:
+      label: Task
+      description: The task in the words a user would type. EXTREMIS routes on this text.
+    validations:
+      required: true
+  - type: textarea
+    id: existing
+    attributes:
+      label: What extremis find returns today
+      description: Paste `extremis find "<task>"` output. If a public skill already fits, say why it is not enough.
+  - type: textarea
+    id: done
+    attributes:
+      label: How to verify the result
+      description: Checks that would show the task was done correctly.

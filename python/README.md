@@ -1,6 +1,6 @@
 # extremis-client (Python)
 
-A dependency-free Python client for the EXTREMIS MCP gateway. It starts `extremis mcp` (Node.js 18.17+) as a subprocess and calls its six tools.
+A dependency-free Python client for the EXTREMIS MCP gateway. It starts `extremis mcp` (Node.js 18.17+) as a subprocess and calls its seven tools.
 
 ```bash
 pip install "git+https://github.com/FAHTHIZ/EXTREMIS.git#subdirectory=python"
@@ -13,6 +13,7 @@ from extremis import ExtremisClient
 
 with ExtremisClient(cwd=".", allow=["read"]) as x:
     plan = x.plan("is this build ready to release?")
+    found = x.find("deploy a next.js app to cloudflare", official_only=True)  # public skills, scanned
     print(plan["strategy"], [step["id"] for step in plan["steps"]])
     chosen = [c["name"] for c in plan["capabilities"] if c.get("selected")]
     context = x.activate(chosen)              # instructions + tool schemas, context_tokens

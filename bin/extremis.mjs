@@ -19,6 +19,10 @@ Usage: extremis <command> [arguments] [options]
 Discover and use
   search <query>             rank capabilities for a task      [--limit n] [--domain d] [--kind skill|workflow]
   plan <task>                choose and order capabilities, tools and checks
+  find <task>                search skills.sh, GitHub and skill indexes; read, scan and rank SKILL.md
+                             [--limit n] [--source local,skills.sh,github,index] [--index url]
+                             [--owner o] [--official] [--min-installs n] [--no-deep] [--offline]
+                             [--install [rank]] [--project] [--accept-risk]
   activate <name...>         print instructions, tools and resources (alias: show)
   read <name> [file]         print a bundled file (default SKILL.md)
   list                       list capabilities                 [--domain d] [--kind k]
@@ -69,8 +73,8 @@ export function parseArgs(argv) {
   }
   return { positional, flags };
 }
-const BOOLEAN_FLAGS = new Set(['json', 'help', 'version', 'verify', 'holdout', 'include_suggests', 'force', 'dry_run', 'global', 'project', 'check', 'yes', 'all', 'full', 'gateway', 'misses', 'accept_risk', 'verbose', 'local', 'user']);
-const MULTI_FLAGS = new Set(['param', 'skill', 'target']);
+const BOOLEAN_FLAGS = new Set(['json', 'help', 'version', 'verify', 'holdout', 'include_suggests', 'force', 'dry_run', 'global', 'project', 'check', 'yes', 'all', 'full', 'gateway', 'misses', 'accept_risk', 'verbose', 'local', 'user', 'official', 'offline', 'no_deep', 'no_cache']);
+const MULTI_FLAGS = new Set(['param', 'skill', 'target', 'index', 'source']);
 
 function coerce(v) {
   if (v === 'true') return true;
@@ -124,6 +128,45 @@ export async function main(argv = process.argv.slice(2)) {
         print(wrap(c.summary));
         if (c.tools?.length) print(`    tools: ${c.tools.join(', ')}`);
       }
+      return 0;
+    }
+    case 'find': {
+      const query = args.join(' ');
+      if (!query) throw new UsageError('find needs a task or keywords, e.g. extremis find "review a terraform module"');
+      const r = await service.find(query, {
+        limit: Number(flags.limit || 8), sources: flags.source, indexes: flags.index, owner: flags.owner,
+        officialOnly: Boolean(flags.official), minInstalls: flags.min_installs ? Number(flags.min_installs) : undefined,
+        deep: !flags.no_deep, offline: flags.offline ? true : undefined, cache: flags.no_cache ? false : undefined,
+      });
+      let installed;
+      if (flags.install !== undefined) {
+        const pick = r.results[(flags.install === true ? 1 : Number(flags.install)) - 1];
+        if (!pick) throw new UsageError(`no result at rank ${flags.install}`);
+        if (pick.verdict === 'dangerous' && !flags.accept_risk) throw new UsageError(`${pick.id} was flagged dangerous by the scanner; review it or pass --accept-risk`);
+        const { install } = await import('../src/install.mjs');
+        const spec = pick.install.replace(/^extremis install /, '').split(' --skill ')[0];
+        const scope = flags.project ? { scope: 'project', cwd } : { scope: 'user', cwd };
+        installed = await install(spec, { ...scope, skills: pick.skill ? [pick.skill] : undefined, acceptRisk: Boolean(flags.accept_risk) });
+      }
+      if (asJson) return json(installed ? { ...r, installed } : r), 0;
+      if (r.local.length) {
+        print('Already available:');
+        for (const c of r.local) print(`  ${c.name}  (${c.confidence})  ->  ${c.next}`);
+        print('');
+      }
+      if (!r.results.length) print(r.offline ? 'Offline: only the local catalog was searched.' : 'No public skill matched.');
+      for (const [i, c] of r.results.entries()) {
+        const meta = [c.official ? 'official' : null, c.installs != null ? `${c.installs.toLocaleString('en-US')} installs` : null, c.stars != null ? `${c.stars.toLocaleString('en-US')} stars` : null, c.type === 'repository' ? 'repository' : null, `scan ${c.verdict}`, `${c.confidence} match`].filter(Boolean).join(' · ');
+        print(`${String(i + 1).padStart(2)}. ${c.id}`);
+        print(`    ${meta}`);
+        if (c.summary) print(wrap(c.summary));
+        for (const f of (c.findings || []).slice(0, 2)) print(`    ! ${f.severity}: ${f.message} (${f.file}:${f.line})`);
+        print(`    ${c.install}`);
+      }
+      const used = Object.entries(r.sources).map(([k, v]) => `${k} ${v.ok ? v.results : 'failed'}`).join(', ');
+      print(`\n${r.considered} candidates from ${used || 'no sources'}; ${r.deep ? 'top results read and scanned' : 'not inspected (--no-deep)'} in ${(r.ms / 1000).toFixed(1)}s`);
+      for (const w of r.warnings) print(`note: ${w}`);
+      if (installed) for (const i of installed.installed) print(`installed ${i.name} -> ${i.dir} [scan: ${i.verdict}]`);
       return 0;
     }
     case 'plan': {

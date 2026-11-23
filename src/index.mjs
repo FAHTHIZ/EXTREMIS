@@ -13,6 +13,7 @@ export { buildIndex, search, FIELD_WEIGHTS } from './search.mjs';
 export { resolve, resolveStrict, ResolutionError } from './resolve.mjs';
 export { activate, readResource, card, capabilityTools, capabilityPermissions, digestOf, ActivationError } from './activate.mjs';
 export { plan, PHASES } from './plan.mjs';
+export { find, buildQueries, FIND_SOURCES, OFFICIAL_PUBLISHERS, FindError } from './find.mjs';
 export { runChecks, match, getPath } from './verify.mjs';
 export { runTool, resolveTool, createContext, parseAllow, assertPublicUrl, ToolError, PERMISSIONS, DEFAULT_ALLOW } from './runner.mjs';
 export { getBuiltinTool, listBuiltinTools, describeTool } from './tools/index.mjs';

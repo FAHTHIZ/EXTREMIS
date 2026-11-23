@@ -88,7 +88,7 @@ class ExtremisClient:
         )
         result = self._request(
             "initialize",
-            {"protocolVersion": PROTOCOL_VERSION, "capabilities": {}, "clientInfo": {"name": "extremis-python", "version": "0.2.0"}},
+            {"protocolVersion": PROTOCOL_VERSION, "capabilities": {}, "clientInfo": {"name": "extremis-python", "version": "0.3.0"}},
         )
         self.server_info = result.get("serverInfo", {})
         self.instructions = result.get("instructions", "")
@@ -192,6 +192,27 @@ class ExtremisClient:
         if kind:
             args["kind"] = kind
         return self.call("extremis_search", args)
+
+    def find(
+        self,
+        query: str,
+        *,
+        limit: int = 8,
+        sources: Optional[Sequence[str]] = None,
+        indexes: Optional[Sequence[str]] = None,
+        owner: Optional[str] = None,
+        official_only: bool = False,
+        deep: bool = True,
+    ) -> Dict[str, Any]:
+        """Search public skill directories (skills.sh, GitHub, Agent Skills indexes) for a task."""
+        args: Dict[str, Any] = {"query": query, "limit": limit, "official_only": official_only, "deep": deep}
+        if sources:
+            args["sources"] = list(sources)
+        if indexes:
+            args["indexes"] = list(indexes)
+        if owner:
+            args["owner"] = owner
+        return self.call("extremis_find", args)
 
     def plan(self, task: str, *, max_capabilities: int = 4) -> Dict[str, Any]:
         return self.call("extremis_plan", {"task": task, "max_capabilities": max_capabilities})
