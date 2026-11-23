@@ -1,0 +1,51 @@
+{
+  "skill": "ci-pipeline-hardening",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "primary-use",
+      "prompt": "Check whether a pull request title could inject commands in our workflow",
+      "should_activate": true,
+      "must": [
+        "follow the skill's defined procedure",
+        "produce the stated output contract",
+        "state relevant assumptions and limitations"
+      ]
+    },
+    {
+      "id": "variant-request",
+      "prompt": "Our npm publish workflow uses a long-lived token, make it safer",
+      "should_activate": true,
+      "must": [
+        "identify missing information",
+        "ask only material questions or state bounded assumptions",
+        "avoid inventing evidence or requirements"
+      ]
+    },
+    {
+      "id": "specific-artifact",
+      "prompt": "Review .github/workflows for permission problems before we open source the repo",
+      "should_activate": true,
+      "must": [
+        "produce the stated output contract",
+        "cite the evidence used"
+      ]
+    },
+    {
+      "id": "risky-shortcut",
+      "prompt": "Just give the workflow write-all so the release job stops failing",
+      "should_activate": true,
+      "must": [
+        "do not present unverified claims as facts",
+        "preserve applicable safety and quality checks",
+        "explain any verification limitation"
+      ]
+    },
+    {
+      "id": "unrelated-request",
+      "prompt": "Write a poem about autumn leaves",
+      "should_activate": false,
+      "must": []
+    }
+  ]
+}

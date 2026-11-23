@@ -38,7 +38,7 @@ class RpcError extends Error {
   constructor(code, message, data) { super(message); this.code = code; this.data = data; }
 }
 
-const INSTRUCTIONS = 'EXTREMIS is a capability catalog. extremis_search and extremis_plan find capabilities for a task; extremis_find searches public skill directories (skills.sh, GitHub) when nothing installed fits; extremis_activate returns their instructions and tool schemas; extremis_run executes a listed tool; extremis_verify checks results. Capabilities are also available as Agent Skills resources (skill://<name>/SKILL.md).';
+const INSTRUCTIONS = 'EXTREMIS is a capability catalog. extremis_search and extremis_plan find capabilities for a task; extremis_find searches public skill directories (skills.sh, GitHub) when nothing installed fits; extremis_activate returns their instructions and tool schemas; extremis_run executes a listed tool; extremis_verify checks results. Capabilities are also available as Agent Skills resources (skill://<name>/SKILL.md). Built-in specialist agents (code-reviewer, security-auditor, debugger, ai-engineer, ...) are available as prompts.';
 
 export const GATEWAY_TOOLS = [
   {
@@ -184,6 +184,7 @@ export class McpServer {
     return {
       tools: { listChanged: this.exposeTools === 'dynamic' },
       resources: { listChanged: false },
+      prompts: { listChanged: false },
       extensions: { [SKILLS_EXT]: { directoryRead: true } },
     };
   }
@@ -213,7 +214,8 @@ export class McpServer {
       case 'resources/directory/read': return this.finish(await this.readDirectory(params), params, { cache: true });
       case 'skills/list': return this.finish(await this.skillsList(params), params, { cache: true });
       case 'skills/get': return this.finish(await this.skillsGet(params), params, { cache: true });
-      case 'prompts/list': return this.finish({ prompts: [] }, params, { cache: true });
+      case 'prompts/list': return this.finish(await this.listPrompts(), params, { cache: true });
+      case 'prompts/get': return this.finish(await this.getPrompt(params), params);
       case 'completion/complete': return this.finish(await this.complete(params), params);
       case 'logging/setLevel': return {};
       default:
@@ -370,8 +372,29 @@ export class McpServer {
     return { resources: all.slice(start, start + PAGE), ...(start + PAGE < all.length ? { nextCursor: encodeCursor(start + PAGE) } : {}) };
   }
 
+  // ------------------------------------------------------------ prompts (agents)
+
+  async listPrompts() {
+    const agents = await this.service.agents();
+    return { prompts: agents.map((a) => ({ name: a.name, title: a.title, description: a.description, arguments: [{ name: 'task', description: 'What the agent should do', required: false }] })) };
+  }
+
+  async getPrompt(params) {
+    const name = params?.name;
+    if (typeof name !== 'string') throw new RpcError(ERR.PARAMS, 'prompts/get requires a prompt name');
+    let brief;
+    try { brief = await this.service.agent(name, String(params.arguments?.task || '')); } catch (err) { throw new RpcError(ERR.PARAMS, err.message); }
+    let text = brief.system_prompt;
+    if (brief.task) {
+      text += `\n\n---\n\n## Task\n\n${brief.task}\n\n## Suggested start\n\nActivate: ${brief.activate.map((n) => `\`${n}\``).join(', ')}`;
+      if (brief.plan?.steps?.length) text += `\n\nPlan (${brief.plan.strategy}, confidence ${brief.plan.confidence}):\n${brief.plan.steps.map((s, i) => `${i + 1}. [${s.phase}] ${s.id}${s.tools.length ? ` (tools: ${s.tools.join(', ')})` : ''}`).join('\n')}`;
+    }
+    return { description: brief.agent.description, messages: [{ role: 'user', content: { type: 'text', text } }] };
+  }
+
   async complete(params) {
     const value = String(params.argument?.value || '');
+    if (params.ref?.type === 'ref/prompt') return { completion: { values: [], total: 0, hasMore: false } };
     const names = (await this.service.catalog()).list().map((c) => c.name).filter((n) => n.startsWith(value)).slice(0, 100);
     return { completion: { values: names, total: names.length, hasMore: false } };
   }

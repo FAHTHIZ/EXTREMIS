@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="176" height="30" viewBox="0 0 176 30" role="img" aria-label="tools: 45 built-in">
+<title>tools: 45 built-in</title>
+<defs>
+<linearGradient id="tools-bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#25212F"/><stop offset="1" stop-color="#17151F"/></linearGradient>
+<linearGradient id="tools-val" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F2A66D"/><stop offset="1" stop-color="#E89B77"/></linearGradient>
+<linearGradient id="tools-edge" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F2A66D" stop-opacity=".6"/><stop offset=".5" stop-color="#F2A66D" stop-opacity=".15"/><stop offset="1" stop-color="#E89B77" stop-opacity=".55"/></linearGradient>
+<linearGradient id="tools-shine" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".22"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<clipPath id="tools-clip"><rect width="176" height="30" rx="15"/></clipPath>
+</defs>
+<style>@media (prefers-reduced-motion: no-preference) {
+.sw{animation:sw 9s 2s cubic-bezier(.4,0,.2,1) infinite}
+@keyframes sw{0%{transform:translateX(-80px)}20%,100%{transform:translateX(256px)}}
+}</style>
+<g clip-path="url(#tools-clip)">
+<rect width="176" height="30" fill="url(#tools-bg)"/>
+<rect x="85.0" y="3" width="88.3" height="24" rx="12" fill="url(#tools-val)"/>
+<rect class="sw" x="-60" y="0" width="46" height="30" fill="url(#tools-shine)" transform="translate(-80 0)"/>
+</g>
+<rect x=".5" y=".5" width="175" height="29" rx="14.5" fill="none" stroke="url(#tools-edge)"/>
+<g transform="translate(12 6) scale(.75)" fill="none" stroke="#F2A66D" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-2.4z"/></g>
+<text x="38" y="18.8" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="10.5" font-weight="700" fill="#B8AECF" letter-spacing=".04em">TOOLS</text>
+<text x="129.2" y="19.4" text-anchor="middle" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#17151F">45 built-in</text>
+</svg>

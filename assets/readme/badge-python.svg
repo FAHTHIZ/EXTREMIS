@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="194" height="30" viewBox="0 0 194 30" role="img" aria-label="python: &gt;= 3.9 client">
+<title>python: &gt;= 3.9 client</title>
+<defs>
+<linearGradient id="python-bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#25212F"/><stop offset="1" stop-color="#17151F"/></linearGradient>
+<linearGradient id="python-val" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7AA7E0"/><stop offset="1" stop-color="#9BC0F0"/></linearGradient>
+<linearGradient id="python-edge" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7AA7E0" stop-opacity=".6"/><stop offset=".5" stop-color="#7AA7E0" stop-opacity=".15"/><stop offset="1" stop-color="#9BC0F0" stop-opacity=".55"/></linearGradient>
+<linearGradient id="python-shine" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".22"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<clipPath id="python-clip"><rect width="194" height="30" rx="15"/></clipPath>
+</defs>
+<style>@media (prefers-reduced-motion: no-preference) {
+.sw{animation:sw 9s 2s cubic-bezier(.4,0,.2,1) infinite}
+@keyframes sw{0%{transform:translateX(-80px)}20%,100%{transform:translateX(274px)}}
+}</style>
+<g clip-path="url(#python-clip)">
+<rect width="194" height="30" fill="url(#python-bg)"/>
+<rect x="92.5" y="3" width="98.6" height="24" rx="12" fill="url(#python-val)"/>
+<rect class="sw" x="-60" y="0" width="46" height="30" fill="url(#python-shine)" transform="translate(-80 0)"/>
+</g>
+<rect x=".5" y=".5" width="193" height="29" rx="14.5" fill="none" stroke="url(#python-edge)"/>
+<g transform="translate(12 6) scale(.75)" fill="none" stroke="#7AA7E0" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v5H8zM8 15h8v5H8zM4 9h8v6H4zM12 9h8v6h-8z"/></g>
+<text x="38" y="18.8" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="10.5" font-weight="700" fill="#B8AECF" letter-spacing=".04em">PYTHON</text>
+<text x="141.8" y="19.4" text-anchor="middle" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#17151F">&gt;= 3.9 client</text>
+</svg>

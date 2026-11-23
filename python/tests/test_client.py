@@ -29,6 +29,16 @@ class ClientTest(unittest.TestCase):
         names = [t["name"] for t in self.x.list_tools()]
         self.assertEqual(names, ["extremis_search", "extremis_find", "extremis_plan", "extremis_activate", "extremis_read", "extremis_run", "extremis_verify"])
 
+    def test_agents_as_prompts(self):
+        names = [p["name"] for p in self.x.list_prompts()]
+        self.assertIn("security-auditor", names)
+        self.assertGreaterEqual(len(names), 10)
+        text = self.x.agent("debugger", "tests fail with a TypeError after the upgrade")
+        self.assertIn("# Debugger", text)
+        self.assertIn("Activate:", text)
+        with self.assertRaises(ExtremisError):
+            self.x.get_prompt("no-such-agent")
+
     def test_search_and_plan(self):
         results = self.x.search("profile a csv file", limit=3)["results"]
         self.assertTrue(any("data.profile" in r.get("tools", []) for r in results))

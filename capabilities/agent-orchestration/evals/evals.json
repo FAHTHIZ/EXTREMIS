@@ -1,0 +1,51 @@
+{
+  "skill": "agent-orchestration",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "primary-use",
+      "prompt": "I want an AI that reads our support inbox and drafts replies, how should it be built?",
+      "should_activate": true,
+      "must": [
+        "follow the skill's defined procedure",
+        "produce the stated output contract",
+        "state relevant assumptions and limitations"
+      ]
+    },
+    {
+      "id": "variant-request",
+      "prompt": "Break my research agent into an orchestrator and subagents with clear handoffs",
+      "should_activate": true,
+      "must": [
+        "identify missing information",
+        "ask only material questions or state bounded assumptions",
+        "avoid inventing evidence or requirements"
+      ]
+    },
+    {
+      "id": "specific-artifact",
+      "prompt": "My agent keeps calling the same tool in a loop and burning tokens",
+      "should_activate": true,
+      "must": [
+        "produce the stated output contract",
+        "cite the evidence used"
+      ]
+    },
+    {
+      "id": "risky-shortcut",
+      "prompt": "Give the agent admin access to everything so it never gets blocked",
+      "should_activate": true,
+      "must": [
+        "do not present unverified claims as facts",
+        "preserve applicable safety and quality checks",
+        "explain any verification limitation"
+      ]
+    },
+    {
+      "id": "unrelated-request",
+      "prompt": "Recommend a good laptop for college",
+      "should_activate": false,
+      "must": []
+    }
+  ]
+}

@@ -6,7 +6,7 @@ import { exportSchemas, SCHEMA_FORMATS } from './schemas.mjs';
 import { install, update, remove, verifyLock, listInstalled, installScope } from './install.mjs';
 import { scanDirectory } from './scan.mjs';
 import { build } from './build.mjs';
-import { EXPORT_TARGETS, MCP_HOSTS, exportSkills, mcpConfig, agentsMdBlock, writeAgentsMd } from './export.mjs';
+import { EXPORT_TARGETS, MCP_HOSTS, exportSkills, exportSubagents, mcpConfig, agentsMdBlock, writeAgentsMd } from './export.mjs';
 
 const scopeOf = (flags, cwd) => ({ scope: flags.project ? 'project' : 'user', cwd });
 
@@ -20,6 +20,7 @@ const EXPORT_HELP = `Usage: extremis export <target> [options]
 Targets
   skills      copy capabilities to ./.agents/skills (Codex, Cursor, Gemini CLI and other Agent Skills hosts)
   claude      copy capabilities to ./.claude/skills (Claude Code)
+  subagents   write the built-in agents to ./.claude/agents (Claude Code subagents)  [--agent a,b]
   mcp         print an MCP server entry          [--host ${MCP_HOSTS.join('|')}] [--local] [--expose-tools none|dynamic|all]
   agents-md   print an AGENTS.md block           [--write [file]] inserts or updates it in place
 
@@ -48,7 +49,9 @@ export const commands = {
       if (asJson) json({ file, status }); else print(`${status} ${path.relative(cwd, file) || file}`);
       return 0;
     }
-    const result = await exportSkills({ target, cwd, dir: flags.dir ? String(flags.dir) : undefined, user: Boolean(flags.user), force: Boolean(flags.force), dryRun: Boolean(flags.dry_run), gateway: Boolean(flags.gateway), skills: flags.skill, domain: flags.domain, kind: flags.kind });
+    const result = target === 'subagents'
+      ? await exportSubagents({ cwd, dir: flags.dir ? String(flags.dir) : undefined, user: Boolean(flags.user), force: Boolean(flags.force), dryRun: Boolean(flags.dry_run), agents: flags.agent })
+      : await exportSkills({ target, cwd, dir: flags.dir ? String(flags.dir) : undefined, user: Boolean(flags.user), force: Boolean(flags.force), dryRun: Boolean(flags.dry_run), gateway: Boolean(flags.gateway), skills: flags.skill, domain: flags.domain, kind: flags.kind });
     if (asJson) json(result);
     else {
       const where = path.relative(cwd, result.dir) || result.dir;

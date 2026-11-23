@@ -4,7 +4,7 @@ Checked on 2026-11-17 against each project's README and repository root. Star co
 
 | | [anthropics/skills](https://github.com/anthropics/skills) | [obra/superpowers](https://github.com/obra/superpowers) | [vercel-labs/skills](https://github.com/vercel-labs/skills) | [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) | EXTREMIS |
 |---|---|---|---|---|---|
-| What it is | Example and document skills | Skills framework and development methodology | Skills installer CLI | 25 engineering skills | Capability runtime and 59 skills/workflows |
+| What it is | Example and document skills | Skills framework and development methodology | Skills installer CLI | 25 engineering skills | Capability runtime, 70 skills/workflows and 10 agents |
 | Stars | 196k | 319k | 39.8k | 118k | — |
 | Claude Code plugin marketplace | yes | yes (official and own marketplace) | — | yes | yes (`/plugin marketplace add FAHTHIZ/EXTREMIS`) |
 | Codex plugin | — | yes | — | yes | yes (repo marketplace) |
@@ -24,7 +24,7 @@ Checked on 2026-11-17 against each project's README and repository root. Star co
 ## What the leaders do well, and what EXTREMIS took from them
 
 - **One-line install for each host, in the first screen of the README** (superpowers, addyosmani). EXTREMIS now leads with a per-host install table.
-- **`npx skills add` as the universal path** (addyosmani lists it first). EXTREMIS is compatible: `npx skills add FAHTHIZ/EXTREMIS` installs the gateway skill, and `npx skills add https://github.com/FAHTHIZ/EXTREMIS/tree/main/capabilities --skill <name>` installs any of the 59 capabilities. Both were checked live with skills 1.9.0.
+- **`npx skills add` as the universal path** (addyosmani lists it first). EXTREMIS is compatible: `npx skills add FAHTHIZ/EXTREMIS` installs the gateway skill, and `npx skills add https://github.com/FAHTHIZ/EXTREMIS/tree/main/capabilities --skill <name>` installs any of the 70 capabilities. Both were checked live with skills 1.9.0.
 - **Plugin manifests for Claude Code and Codex** (superpowers, addyosmani, anthropics). EXTREMIS ships `.claude-plugin/` (validated with `claude plugin validate`, installed in a clean home, MCP server reported connected) and `.codex-plugin/` with a repo marketplace (accepted by `codex plugin marketplace add`).
 - **A skills table grouped by phase or domain** (addyosmani). The README lists the catalog by domain.
 

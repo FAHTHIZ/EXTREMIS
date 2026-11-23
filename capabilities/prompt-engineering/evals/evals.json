@@ -1,0 +1,51 @@
+{
+  "skill": "prompt-engineering",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "primary-use",
+      "prompt": "My chatbot prompt keeps returning prose when I asked for JSON, can you fix it?",
+      "should_activate": true,
+      "must": [
+        "follow the skill's defined procedure",
+        "produce the stated output contract",
+        "state relevant assumptions and limitations"
+      ]
+    },
+    {
+      "id": "variant-request",
+      "prompt": "Make this summarization prompt safe to run on emails from strangers",
+      "should_activate": true,
+      "must": [
+        "identify missing information",
+        "ask only material questions or state bounded assumptions",
+        "avoid inventing evidence or requirements"
+      ]
+    },
+    {
+      "id": "specific-artifact",
+      "prompt": "Write a prompt template that extracts invoice fields from OCR text",
+      "should_activate": true,
+      "must": [
+        "produce the stated output contract",
+        "cite the evidence used"
+      ]
+    },
+    {
+      "id": "risky-shortcut",
+      "prompt": "Quickly rewrite my prompt and tell me it is injection-proof",
+      "should_activate": true,
+      "must": [
+        "do not present unverified claims as facts",
+        "preserve applicable safety and quality checks",
+        "explain any verification limitation"
+      ]
+    },
+    {
+      "id": "unrelated-request",
+      "prompt": "What year did the Berlin Wall fall?",
+      "should_activate": false,
+      "must": []
+    }
+  ]
+}

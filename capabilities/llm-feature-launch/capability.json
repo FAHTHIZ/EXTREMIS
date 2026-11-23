@@ -1,0 +1,116 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "workflow",
+  "domain": "ai-engineering",
+  "version": "0.1.0",
+  "phase": "plan",
+  "summary": "End-to-end workflow: requirements, agent design, prompts, retrieval, evals, security review and launch.",
+  "keywords": [
+    "launch an ai feature",
+    "ship an llm feature",
+    "ai agent launch",
+    "genai product launch",
+    "llm feature workflow"
+  ],
+  "intents": [
+    "take our ai assistant feature from prototype to production",
+    "plan, build, evaluate and launch an llm feature end to end",
+    "run the full launch workflow for our new support agent",
+    "what do we need before shipping this chatgpt-style feature",
+    "get our rag assistant ready for launch with evals and a security review"
+  ],
+  "not_for": [],
+  "requires": [],
+  "suggests": [],
+  "tools": [],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "the user problem and the prototype or design",
+    "sample inputs and access to the model and data"
+  ],
+  "risk": "medium",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": [],
+  "workflow": {
+    "steps": [
+      {
+        "id": "requirements",
+        "capability": "requirements-engineering",
+        "goal": "Define the user problem, success metrics, unacceptable failures and human approval points"
+      },
+      {
+        "id": "design",
+        "capability": "agent-orchestration",
+        "goal": "Choose workflow versus agent, define tools, permissions, handoffs, budgets and stop rules",
+        "tools": [
+          "decision.weighted_matrix"
+        ],
+        "after": [
+          "requirements"
+        ]
+      },
+      {
+        "id": "prompts",
+        "capability": "prompt-engineering",
+        "goal": "Write and lint the system and task prompts with output formats and injection guards",
+        "tools": [
+          "prompt.lint"
+        ],
+        "after": [
+          "design"
+        ]
+      },
+      {
+        "id": "retrieval",
+        "capability": "rag-engineering",
+        "goal": "Build and measure retrieval when the feature answers from documents",
+        "after": [
+          "design"
+        ],
+        "optional": true
+      },
+      {
+        "id": "evaluate",
+        "capability": "llm-evaluation",
+        "goal": "Score the feature on a held-out evaluation set and compare with the baseline",
+        "tools": [
+          "eval.score",
+          "stats.compare_samples"
+        ],
+        "after": [
+          "prompts",
+          "retrieval"
+        ]
+      },
+      {
+        "id": "security",
+        "capability": "threat-modeling",
+        "goal": "Threat-model prompt injection, data leakage through tools and abuse; confirm mitigations",
+        "tools": [
+          "security.secret_scan"
+        ],
+        "after": [
+          "design"
+        ]
+      },
+      {
+        "id": "launch",
+        "capability": "release-readiness",
+        "goal": "Make the go or no-go decision with eval and security evidence, rollout and rollback plan",
+        "after": [
+          "evaluate",
+          "security"
+        ]
+      }
+    ],
+    "done_when": [
+      "Evaluation results on a held-out set meet the success metric with stated uncertainty",
+      "Prompt-injection and data-leakage threats have mitigations or accepted owners",
+      "Irreversible agent actions require human approval",
+      "A rollout, monitoring and rollback plan exists"
+    ]
+  }
+}

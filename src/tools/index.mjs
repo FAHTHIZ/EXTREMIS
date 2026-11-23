@@ -8,8 +8,9 @@ import analysis from './analysis.mjs';
 import docs from './docs.mjs';
 import web from './web.mjs';
 import api from './api.mjs';
+import ai from './ai.mjs';
 
-const MODULES = [data, code, security, analysis, docs, web, api];
+const MODULES = [data, code, security, analysis, docs, web, api, ai];
 const TOOLS = new Map();
 for (const list of MODULES) for (const tool of list) {
   if (TOOLS.has(tool.id)) throw new Error(`duplicate built-in tool id ${tool.id}`);

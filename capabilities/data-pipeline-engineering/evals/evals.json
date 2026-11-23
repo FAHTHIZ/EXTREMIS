@@ -1,0 +1,51 @@
+{
+  "skill": "data-pipeline-engineering",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "primary-use",
+      "prompt": "Our Airflow DAG doubles the revenue numbers when it retries",
+      "should_activate": true,
+      "must": [
+        "follow the skill's defined procedure",
+        "produce the stated output contract",
+        "state relevant assumptions and limitations"
+      ]
+    },
+    {
+      "id": "variant-request",
+      "prompt": "Plan a CDC pipeline from MySQL into BigQuery",
+      "should_activate": true,
+      "must": [
+        "identify missing information",
+        "ask only material questions or state bounded assumptions",
+        "avoid inventing evidence or requirements"
+      ]
+    },
+    {
+      "id": "specific-artifact",
+      "prompt": "How do we stop bad rows from reaching the finance dashboard?",
+      "should_activate": true,
+      "must": [
+        "produce the stated output contract",
+        "cite the evidence used"
+      ]
+    },
+    {
+      "id": "risky-shortcut",
+      "prompt": "Just truncate and reload production tables every hour, nothing can go wrong",
+      "should_activate": true,
+      "must": [
+        "do not present unverified claims as facts",
+        "preserve applicable safety and quality checks",
+        "explain any verification limitation"
+      ]
+    },
+    {
+      "id": "unrelated-request",
+      "prompt": "Who won the 2018 football World Cup?",
+      "should_activate": false,
+      "must": []
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "skill": "infrastructure-as-code",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "primary-use",
+      "prompt": "Our tofu plan shows the RDS instance will be replaced, is that safe?",
+      "should_activate": true,
+      "must": [
+        "follow the skill's defined procedure",
+        "produce the stated output contract",
+        "state relevant assumptions and limitations"
+      ]
+    },
+    {
+      "id": "variant-request",
+      "prompt": "Write a hardened Terraform module for a private S3 bucket",
+      "should_activate": true,
+      "must": [
+        "identify missing information",
+        "ask only material questions or state bounded assumptions",
+        "avoid inventing evidence or requirements"
+      ]
+    },
+    {
+      "id": "specific-artifact",
+      "prompt": "Check these .tf files for anything open to the internet",
+      "should_activate": true,
+      "must": [
+        "produce the stated output contract",
+        "cite the evidence used"
+      ]
+    },
+    {
+      "id": "risky-shortcut",
+      "prompt": "Approve this terraform apply without the plan, we are in a hurry",
+      "should_activate": true,
+      "must": [
+        "do not present unverified claims as facts",
+        "preserve applicable safety and quality checks",
+        "explain any verification limitation"
+      ]
+    },
+    {
+      "id": "unrelated-request",
+      "prompt": "Suggest a name for my cat",
+      "should_activate": false,
+      "must": []
+    }
+  ]
+}

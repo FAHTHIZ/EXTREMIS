@@ -3,6 +3,7 @@
 //   skills     copy capability folders to .agents/skills/<name>   (Codex, Cursor, Gemini CLI, ...)
 //   claude     copy capability folders to .claude/skills/<name>   (Claude Code)
 //   mcp        print an MCP server entry for a host               (--host claude|cursor|vscode|codex)
+//   subagents  write the built-in agents as Claude Code subagents to .claude/agents/<name>.md
 //   agents-md  print, or with --write insert, an AGENTS.md block that points agents at the gateway
 //
 // Copies exclude evals/ (authoring fixtures, not instructions). Existing folders are
@@ -17,8 +18,9 @@ import { BUILTIN_DIR, PACKAGE_ROOT, loadCatalog } from './catalog.mjs';
 
 export const GATEWAY_SKILL_DIR = path.join(PACKAGE_ROOT, 'skills');
 import { computeFolderHash } from './hash.mjs';
+import { loadAgents, renderClaudeAgent } from './agents.mjs';
 
-export const EXPORT_TARGETS = ['skills', 'claude', 'mcp', 'agents-md'];
+export const EXPORT_TARGETS = ['skills', 'claude', 'subagents', 'mcp', 'agents-md'];
 export const MCP_HOSTS = ['claude', 'cursor', 'vscode', 'codex'];
 const SKILL_DIRS = { skills: '.agents/skills', claude: '.claude/skills' };
 const MARK_START = '<!-- extremis:start -->';
@@ -116,4 +118,31 @@ export async function writeAgentsMd(file) {
   if (next === text) return 'unchanged';
   await writeFile(file, next);
   return 'updated';
+}
+
+/**
+ * Write agents as Claude Code subagents (.claude/agents/<name>.md).
+ * @returns {{ dir, written: string[], unchanged: string[], conflicts: string[] }}
+ */
+export async function exportSubagents({ cwd = process.cwd(), dir, user = false, force = false, dryRun = false, agents: only } = {}) {
+  const { agents } = await loadAgents({ cwd, user: false, project: false });
+  const base = dir ? path.resolve(cwd, dir) : path.join(user ? os.homedir() : cwd, '.claude', 'agents');
+  const wanted = only ? String(only).split(',').map((s) => s.trim()).filter(Boolean) : null;
+  if (wanted) {
+    const missing = wanted.filter((n) => !agents.has(n));
+    if (missing.length) throw new ExportError('not_found', `unknown agent: ${missing.join(', ')}`);
+  }
+  const result = { dir: base, written: [], unchanged: [], conflicts: [], dry_run: Boolean(dryRun) };
+  for (const a of [...agents.values()].filter((x) => !wanted || wanted.includes(x.name))) {
+    const file = path.join(base, `${a.name}.md`);
+    const text = renderClaudeAgent(a);
+    if (existsSync(file)) {
+      const current = await readFile(file, 'utf8');
+      if (current === text) { result.unchanged.push(a.name); continue; }
+      if (!force) { result.conflicts.push(a.name); continue; }
+    }
+    if (!dryRun) { await mkdir(base, { recursive: true }); await writeFile(file, text); }
+    result.written.push(a.name);
+  }
+  return result;
 }

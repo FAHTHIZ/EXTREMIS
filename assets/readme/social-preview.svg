@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#221E31"/><stop offset="1" stop-color="#14121D"/></linearGradient>
+<linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#9B83DB"/><stop offset=".55" stop-color="#E89B77"/><stop offset="1" stop-color="#F2A66D"/></linearGradient>
+<radialGradient id="glow" cx=".85" cy=".15" r=".6"><stop offset="0" stop-color="#E89B77" stop-opacity=".28"/><stop offset="1" stop-color="#E89B77" stop-opacity="0"/></radialGradient>
+<radialGradient id="glow2" cx=".1" cy=".95" r=".6"><stop offset="0" stop-color="#9B83DB" stop-opacity=".3"/><stop offset="1" stop-color="#9B83DB" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1280" height="640" fill="url(#bg)"/>
+<rect width="1280" height="640" fill="url(#glow)"/>
+<rect width="1280" height="640" fill="url(#glow2)"/>
+<text x="96" y="210" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="132" font-weight="900" fill="url(#g)" letter-spacing=".02em">EXTREMIS</text>
+<text x="100" y="282" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="38" font-weight="700" fill="#F1EAFF">Every skill your agent needs.</text>
+<text x="100" y="330" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="38" font-weight="700" fill="#F1EAFF">Only the ones it uses.</text>
+<text x="100" y="392" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="22" font-weight="500" fill="#A99FC2">Capability layer for AI agents over MCP, CLI, JavaScript and Python.</text>
+<rect x="100" y="452" width="199" height="48" rx="24" fill="#9B83DB" fill-opacity=".14" stroke="#9B83DB" stroke-opacity=".6"/>
+<text x="199" y="483" text-anchor="middle" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="21" font-weight="700" fill="#9B83DB">70 capabilities</text>
+<rect x="315" y="452" width="150" height="48" rx="24" fill="#E89B77" fill-opacity=".14" stroke="#E89B77" stroke-opacity=".6"/>
+<text x="390" y="483" text-anchor="middle" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="21" font-weight="700" fill="#E89B77">10 agents</text>
+<rect x="481" y="452" width="132" height="48" rx="24" fill="#F2A66D" fill-opacity=".14" stroke="#F2A66D" stroke-opacity=".6"/>
+<text x="547" y="483" text-anchor="middle" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="21" font-weight="700" fill="#F2A66D">45 tools</text>
+<rect x="629" y="452" width="159" height="48" rx="24" fill="#65B88A" fill-opacity=".14" stroke="#65B88A" stroke-opacity=".6"/>
+<text x="708" y="483" text-anchor="middle" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="21" font-weight="700" fill="#65B88A">skill finder</text>
+<rect x="804" y="452" width="146" height="48" rx="24" fill="#8D78A7" fill-opacity=".14" stroke="#8D78A7" stroke-opacity=".6"/>
+<text x="877" y="483" text-anchor="middle" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="21" font-weight="700" fill="#8D78A7">zero deps</text>
+<text x="100" y="574" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" font-size="20" font-weight="600" fill="#6E6688">github.com/FAHTHIZ/EXTREMIS</text>
+</svg>

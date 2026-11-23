@@ -8,7 +8,7 @@ metadata:
 
 # EXTREMIS gateway
 
-EXTREMIS is a catalog of 59 capabilities (skills and multi-step workflows) with permission-gated tools and executable checks. Load capabilities on demand; never paste the whole catalog into context.
+EXTREMIS is a catalog of 70 capabilities (skills and multi-step workflows) with permission-gated tools and executable checks. Load capabilities on demand; never paste the whole catalog into context.
 
 ## Procedure
 
@@ -18,6 +18,10 @@ EXTREMIS is a catalog of 59 capabilities (skills and multi-step workflows) with 
 2. **Activate** only the selected capabilities with `extremis_activate`. Follow their procedure and output contract. Read bundled references with `extremis_read` only when a step needs them.
 3. **Run tools** with `extremis_run` when a step lists one. Tools need permissions: `read` is the default; ask the user before a step needs `write`, `network` or `exec`.
 4. **Verify** with `extremis_verify`, passing the plan's checks and any parameters (for example `path`). Report each check as passed, failed or manual. Do not claim a manual check passed unless you did it.
+
+## Specialist agents
+
+For a whole job in one area, brief a built-in agent instead of planning from scratch: `code-reviewer`, `security-auditor`, `debugger`, `release-captain`, `architect`, `ai-engineer`, `data-analyst`, `research-analyst`, `product-strategist` and `skill-scout`. They are MCP prompts (`prompts/get` with a `task` argument), Claude Code subagents in the plugin, and `npx extremis agent <name> "<task>"` on the CLI. Each returns a system prompt plus the plan and capabilities to activate.
 
 ## Output
 

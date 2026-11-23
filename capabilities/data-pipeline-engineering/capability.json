@@ -1,0 +1,54 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "data",
+  "version": "0.1.0",
+  "phase": "build",
+  "summary": "Build reliable, idempotent data pipelines with contracts, quality checks and safe backfills.",
+  "keywords": [
+    "etl pipeline",
+    "elt",
+    "data quality checks",
+    "incremental load",
+    "backfill",
+    "data contract"
+  ],
+  "intents": [
+    "design an incremental load from postgres to our warehouse",
+    "our nightly etl job creates duplicate rows",
+    "add data quality checks before the dashboard tables refresh",
+    "backfill six months of events without double counting",
+    "write a data contract for the orders feed",
+    "the pipeline breaks whenever the source adds a column"
+  ],
+  "not_for": [
+    "one-off spreadsheet analysis",
+    "training machine learning models"
+  ],
+  "requires": [],
+  "suggests": [
+    "database-design",
+    "data-analysis"
+  ],
+  "tools": [
+    "data.profile",
+    "data.validate_json",
+    "sql.schema_lint",
+    "data.query"
+  ],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "sources, targets and freshness requirements",
+    "sample data or schemas"
+  ],
+  "risk": "medium",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": [
+    "Reruns of the same window produce the same result",
+    "Quality checks run before data is published",
+    "Backfills reconcile with the source"
+  ]
+}

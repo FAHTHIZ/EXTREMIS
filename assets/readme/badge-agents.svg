@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="204" height="30" viewBox="0 0 204 30" role="img" aria-label="agents: 10 specialists">
+<title>agents: 10 specialists</title>
+<defs>
+<linearGradient id="agents-bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#25212F"/><stop offset="1" stop-color="#17151F"/></linearGradient>
+<linearGradient id="agents-val" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E89B77"/><stop offset="1" stop-color="#F2A66D"/></linearGradient>
+<linearGradient id="agents-edge" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E89B77" stop-opacity=".6"/><stop offset=".5" stop-color="#E89B77" stop-opacity=".15"/><stop offset="1" stop-color="#F2A66D" stop-opacity=".55"/></linearGradient>
+<linearGradient id="agents-shine" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".22"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<clipPath id="agents-clip"><rect width="204" height="30" rx="15"/></clipPath>
+</defs>
+<style>@media (prefers-reduced-motion: no-preference) {
+.sw{animation:sw 9s 2s cubic-bezier(.4,0,.2,1) infinite}
+@keyframes sw{0%{transform:translateX(-80px)}20%,100%{transform:translateX(284px)}}
+}</style>
+<g clip-path="url(#agents-clip)">
+<rect width="204" height="30" fill="url(#agents-bg)"/>
+<rect x="92.5" y="3" width="108.9" height="24" rx="12" fill="url(#agents-val)"/>
+<rect class="sw" x="-60" y="0" width="46" height="30" fill="url(#agents-shine)" transform="translate(-80 0)"/>
+</g>
+<rect x=".5" y=".5" width="203" height="29" rx="14.5" fill="none" stroke="url(#agents-edge)"/>
+<g transform="translate(12 6) scale(.75)" fill="none" stroke="#E89B77" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a4 4 0 1 1 0 8 4 4 0 0 1 0-8zM4 21c0-4 3.6-7 8-7s8 3 8 7"/></g>
+<text x="38" y="18.8" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="10.5" font-weight="700" fill="#B8AECF" letter-spacing=".04em">AGENTS</text>
+<text x="146.9" y="19.4" text-anchor="middle" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#17151F">10 specialists</text>
+</svg>

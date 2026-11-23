@@ -11,8 +11,9 @@ import { runTool, parseAllow, resolveTool, DEFAULT_ALLOW } from './runner.mjs';
 import { getBuiltinTool, listBuiltinTools, describeTool } from './tools/index.mjs';
 import { resolve as resolveDeps } from './resolve.mjs';
 import { find as findRemote } from './find.mjs';
+import { loadAgents, agentCard, briefAgent } from './agents.mjs';
 
-export const VERSION = '0.3.0';
+export const VERSION = '0.4.0';
 
 function toolText(id) {
   const t = getBuiltinTool(id);
@@ -32,6 +33,7 @@ export class Extremis {
     this._catalog = null;
     this._index = null;
     this._loading = null;
+    this._agents = null;
   }
 
   async catalog() {
@@ -49,7 +51,7 @@ export class Extremis {
   async index() { await this.catalog(); return this._index; }
 
   /** Drop the cached catalog (after installs or edits). */
-  reload() { this._catalog = null; this._index = null; this._loading = null; }
+  reload() { this._catalog = null; this._index = null; this._loading = null; this._agents = null; }
 
   async search(query, { limit = 5, domain, kind, maxRisk, hasTools, permissions } = {}) {
     const index = await this.index();
@@ -133,6 +135,24 @@ export class Extremis {
     return runChecks(list || [], { catalog, cwd: this.cwd, allow: this.allow, env: this.env, params, includeResults });
   }
 
+  /** Built-in and installed agents (specialist system prompts bound to capabilities). */
+  async agentMap() {
+    if (!this._agents) this._agents = loadAgents({ cwd: this.cwd, env: this.env, builtin: this.options.builtin !== false && this.env.EXTREMIS_NO_BUILTIN !== '1', user: this.options.user !== false, project: this.options.project !== false }).then((r) => r.agents);
+    return this._agents;
+  }
+
+  async agents() { return [...(await this.agentMap()).values()].map(agentCard); }
+
+  /** Brief an agent: system prompt, plus a plan and the capabilities to activate when a task is given. */
+  async agent(name, task = '') {
+    const a = (await this.agentMap()).get(name);
+    if (!a) {
+      const names = [...(await this.agentMap()).keys()];
+      throw Object.assign(new Error(`unknown agent: ${name} (available: ${names.join(', ')})`), { code: 'not_found' });
+    }
+    return briefAgent(this, a, task);
+  }
+
   async diagnostics() { return (await this.catalog()).diagnostics; }
 
   async stats() {
@@ -140,7 +160,7 @@ export class Extremis {
     const caps = catalog.list();
     return {
       version: VERSION, capabilities: caps.length, workflows: caps.filter((c) => c.kind === 'workflow').length,
-      builtin_tools: listBuiltinTools().length, roots: catalog.roots.map((r) => ({ dir: r.dir, type: r.type })),
+      builtin_tools: listBuiltinTools().length, agents: (await this.agentMap()).size, roots: catalog.roots.map((r) => ({ dir: r.dir, type: r.type })),
       domains: [...new Set(caps.map((c) => c.domain).filter(Boolean))].sort(), allow: this.allow,
       permissions_used: [...new Set(caps.flatMap(capabilityPermissions))].sort(),
     };

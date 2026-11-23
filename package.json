@@ -1,7 +1,7 @@
 {
   "name": "extremis",
-  "version": "0.3.0",
-  "description": "Portable capability layer for AI agents: discover, activate, compose, run and verify Agent Skills and tools over MCP, CLI or SDK.",
+  "version": "0.4.0",
+  "description": "Portable capability layer for AI agents: 70 Agent Skills and workflows, 10 specialist agents and 45 tools you can discover, activate, run and verify over MCP, CLI or SDK, plus a finder for public skills.",
   "type": "module",
   "license": "Apache-2.0",
   "author": "FAHTHIZ",
@@ -26,6 +26,7 @@
     "schemas",
     "capabilities",
     "registry",
+    "agents",
     "skills",
     "hooks",
     ".claude-plugin",
@@ -58,6 +59,10 @@
     "claude-skills",
     "agent-skills-discovery",
     "ai-tools",
-    "llm"
+    "llm",
+    "subagents",
+    "prompt-engineering",
+    "llm-evaluation",
+    "claude-code-subagents"
   ]
 }

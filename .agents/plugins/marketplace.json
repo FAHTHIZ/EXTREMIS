@@ -4,8 +4,8 @@
   "plugins": [
     {
       "name": "extremis",
-      "version": "0.3.0",
-      "description": "Gateway skill plus the EXTREMIS MCP server: plan, activate, run and verify 59 capabilities on demand.",
+      "version": "0.4.0",
+      "description": "Gateway skill plus the EXTREMIS MCP server: plan, activate, run and verify 70 capabilities on demand, with 10 specialist agents.",
       "source": { "source": "local", "path": "./" },
       "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
       "category": "Productivity"

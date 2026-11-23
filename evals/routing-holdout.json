@@ -6,7 +6,7 @@
     { "prompt": "can you look over my pull request before I merge it", "expected": ["code-review"] },
     { "prompt": "check this PR diff for anything risky", "expected": ["code-review", "secure-code-review"] },
     { "prompt": "write the failing test first, then implement the parser", "expected": ["test-driven-development"] },
-    { "prompt": "give me an overview of this codebase I just inherited", "expected": ["repository-audit"] },
+    { "prompt": "give me an overview of this codebase I just inherited", "expected": ["repository-audit", "codebase-onboarding"] },
     { "prompt": "design REST endpoints for a todo app with pagination", "expected": ["api-design"] },
     { "prompt": "what tables and indexes do I need for a multi-tenant invoicing system", "expected": ["database-design"] },
     { "prompt": "write docs for our CLI so new contributors can get started", "expected": ["technical-documentation"] },

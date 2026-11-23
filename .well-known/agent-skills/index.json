@@ -9,6 +9,13 @@
       "digest": "sha256:56da481d44b211ceaf5df9e059aa876efa2b9610f12df2305a9dfac7f4702ab9"
     },
     {
+      "name": "agent-orchestration",
+      "type": "archive",
+      "description": "Use when designing or reviewing an AI agent or multi-agent system: choosing between a single agent, workflows and subagents, defining tools and their permissions, memory and context strategy, handoffs, stopping rules, human approval points and evaluation.",
+      "url": "agent-orchestration.tar.gz",
+      "digest": "sha256:1d2b42c70f1ecd9bd35348318aaaab41666dbba0e9c0823236ce51d7e53b2b1b"
+    },
+    {
       "name": "api-design",
       "type": "archive",
       "description": "Use when specifying or revising an HTTP, RPC, event, or internal service API contract, including endpoint semantics, request and response schemas, errors, versioning, and consumer compatibility. Do not use for implementing server handlers or frontend clients without contract-design work.",
@@ -23,6 +30,13 @@
       "digest": "sha256:f56dbf1057dc6623493d6f211803e0012b632296928d097477573dc5b2fa5b48"
     },
     {
+      "name": "ci-pipeline-hardening",
+      "type": "archive",
+      "description": "Use when reviewing or hardening CI/CD pipelines such as GitHub Actions: token permissions, script injection, pull_request_target, third-party action pinning, secrets handling, runner isolation, artifact and cache integrity, and supply-chain provenance.",
+      "url": "ci-pipeline-hardening.tar.gz",
+      "digest": "sha256:52a6c3afd5b01c077aa32dfb25721d657b991617603c2501b75891247a716e5a"
+    },
+    {
       "name": "cloud-architecture",
       "type": "archive",
       "description": "Use when designing or reviewing cloud infrastructure, deployment topology, platform architecture, cloud migration, service boundaries, or resilience and cost trade-offs across cloud environments.",
@@ -35,6 +49,13 @@
       "description": "Use when reviewing a pull request, patch, commit, or proposed code change for correctness, regressions, maintainability, performance, and operational risks before it is accepted or shipped.",
       "url": "code-review.tar.gz",
       "digest": "sha256:fd9751ca49e4e52c8d3c3cb32a69ce4e21df5d06419ef497b534a2549df78c4c"
+    },
+    {
+      "name": "codebase-onboarding",
+      "type": "archive",
+      "description": "Use when getting oriented in an unfamiliar repository or explaining a codebase to someone new: architecture map, entry points, data flow, build and test commands, conventions, risky areas and a first-week guide.",
+      "url": "codebase-onboarding.tar.gz",
+      "digest": "sha256:81da01132c7dccca90de03e1742f439780d0ec186cb64163ffb715a863edd097"
     },
     {
       "name": "competitive-analysis",
@@ -63,6 +84,13 @@
       "description": "Use when answering a business, product, operational, or research question from structured data using cleaning, aggregation, statistical summaries, comparisons, or exploratory analysis.",
       "url": "data-analysis.tar.gz",
       "digest": "sha256:9e8543897dcb009547656ae8d196833bcb3acd4a9dbd875d923d86034b277511"
+    },
+    {
+      "name": "data-pipeline-engineering",
+      "type": "archive",
+      "description": "Use when designing, building or debugging data pipelines and ETL/ELT jobs: ingestion, schema contracts, incremental loads, idempotency and backfills, data quality checks, orchestration, lineage and late or duplicate data.",
+      "url": "data-pipeline-engineering.tar.gz",
+      "digest": "sha256:a9a0343250209eaaf7bee617f16754aab35ffcf738f2a08a1bb3fbd0f0ee908a"
     },
     {
       "name": "data-report",
@@ -98,6 +126,13 @@
       "description": "Use when recording, comparing, or revisiting a significant project, architecture, product, or operational decision and its rationale.",
       "url": "decision-log.tar.gz",
       "digest": "sha256:d4fd461aee08d6223edc1a85cb9eda10f1a8e303f3634b0ab9f8b58dd985706e"
+    },
+    {
+      "name": "dependency-upgrade",
+      "type": "archive",
+      "description": "Use when upgrading dependencies, frameworks, language runtimes or SDKs, or migrating off a deprecated library: inventory, changelog and breaking-change review, staged upgrade plan, codemods, test evidence and rollback.",
+      "url": "dependency-upgrade.tar.gz",
+      "digest": "sha256:28702d4d066ba02722fcbb89fe1751a733ec0993bcfb913029aebf5a54f09c78"
     },
     {
       "name": "design-system",
@@ -156,6 +191,13 @@
       "digest": "sha256:76d643e139620c59583709df87bd4becff0aac821b2065f7d356604dfe4fd34a"
     },
     {
+      "name": "infrastructure-as-code",
+      "type": "archive",
+      "description": "Use when writing, reviewing or refactoring infrastructure as code such as Terraform, OpenTofu, Pulumi or CloudFormation: module structure, state and environments, security defaults, drift, plan review and safe apply.",
+      "url": "infrastructure-as-code.tar.gz",
+      "digest": "sha256:a25e5874e416d94da0d31d8b1633c0aa197ef4c2c60e67d2a8c0b623e1b6d151"
+    },
+    {
       "name": "knowledge-management",
       "type": "archive",
       "description": "Use when designing, reorganizing, or governing an internal knowledge base, wiki, document library, or retrieval collection, including taxonomy, metadata, content ownership, freshness, and access boundaries. Do not use for standalone public blog writing or isolated meeting-note summaries.",
@@ -175,6 +217,20 @@
       "description": "Use when reviewing academic or technical literature, comparing research findings, mapping evidence, identifying gaps, or preparing a narrative or structured review of published studies.",
       "url": "literature-review.tar.gz",
       "digest": "sha256:c4d45a1d11d35ea814d2b3f41e9ca7c0d142618a0fa426f87ac63ac6c9ee3cbd"
+    },
+    {
+      "name": "llm-evaluation",
+      "type": "archive",
+      "description": "Use when measuring the quality of an LLM, prompt, RAG system or agent: building an evaluation set, choosing metrics, scoring outputs offline, comparing prompts or models with confidence intervals and reporting regressions.",
+      "url": "llm-evaluation.tar.gz",
+      "digest": "sha256:171f9948595554daa36f383c8082ad6b8f202f7f6ad13da893970d57bc0a933d"
+    },
+    {
+      "name": "llm-feature-launch",
+      "type": "archive",
+      "description": "Use when taking an LLM-powered feature or AI agent from prototype to launch: requirements, agent and tool design, prompts, retrieval if needed, evaluation, security review for prompt injection and data leakage, and a release decision.",
+      "url": "llm-feature-launch.tar.gz",
+      "digest": "sha256:c86be8a8f4fbcbd2b67a986291efc4bf7a27cb36025ec27db31c675cf060d9f6"
     },
     {
       "name": "localization",
@@ -210,6 +266,13 @@
       "description": "Use when building, reviewing, debugging, or preparing native or cross-platform mobile applications, including app lifecycle, offline behavior, navigation, device permissions, platform integration, and release readiness. Do not use for conceptual comparisons of responsive web and native apps or backend-only cloud cost estimates.",
       "url": "mobile-engineering.tar.gz",
       "digest": "sha256:bedc2fd741173492693d8d6ba8c977bbe344afa35427e1bb61171d05ce9837bc"
+    },
+    {
+      "name": "observability-design",
+      "type": "archive",
+      "description": "Use when designing or improving observability for a service: structured logs, metrics, traces, symptom-based alerting, dashboards, sampling and cost, and on-call runbooks.",
+      "url": "observability-design.tar.gz",
+      "digest": "sha256:40bae1707ca0f4b05fe0ad8800ef65735858b4332dcbb54ca386109e32e25bc1"
     },
     {
       "name": "performance-optimization",
@@ -268,11 +331,25 @@
       "digest": "sha256:01abdfc14ba4a3bdfccaef9b68f5931de4df393e211135a6af11cec89d2dbd22"
     },
     {
+      "name": "prompt-engineering",
+      "type": "archive",
+      "description": "Use when writing, debugging or hardening a system prompt, task prompt or prompt template for an LLM feature or agent, including output formats, examples, uncertainty handling and prompt-injection defenses.",
+      "url": "prompt-engineering.tar.gz",
+      "digest": "sha256:be66f1e337efa10dcd1876a0741b7a6f4a1a7608988d58c4e465ae55a158a9fd"
+    },
+    {
       "name": "quality-assurance",
       "type": "archive",
       "description": "Use when planning quality assurance, creating test strategies or test plans, designing acceptance and regression coverage, investigating flaky tests, or deciding whether a release meets its quality criteria. Do not use for standalone definitions of testing concepts or isolated TDD implementation tasks without a broader quality decision.",
       "url": "quality-assurance.tar.gz",
       "digest": "sha256:02d83278e8b9c2bd61555ab71f82b65ed695e21d4ba4c18112ae077bcd9cc17e"
+    },
+    {
+      "name": "rag-engineering",
+      "type": "archive",
+      "description": "Use when building, debugging or evaluating retrieval-augmented generation: document ingestion and chunking, embeddings and hybrid search, reranking, citation grounding, freshness and access control, and retrieval and answer quality metrics.",
+      "url": "rag-engineering.tar.gz",
+      "digest": "sha256:e8c1a998a20f1e53196cf53f2eb63d6f74d017bdf8ba271b579b4d905b131652"
     },
     {
       "name": "release-readiness",

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="30" viewBox="0 0 280 30" role="img" aria-label="finder: skills.sh · GitHub · indexes">
+<title>finder: skills.sh · GitHub · indexes</title>
+<defs>
+<linearGradient id="finder-bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#25212F"/><stop offset="1" stop-color="#17151F"/></linearGradient>
+<linearGradient id="finder-val" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#65B88A"/><stop offset="1" stop-color="#8FD3AE"/></linearGradient>
+<linearGradient id="finder-edge" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#65B88A" stop-opacity=".6"/><stop offset=".5" stop-color="#65B88A" stop-opacity=".15"/><stop offset="1" stop-color="#8FD3AE" stop-opacity=".55"/></linearGradient>
+<linearGradient id="finder-shine" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".22"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<clipPath id="finder-clip"><rect width="280" height="30" rx="15"/></clipPath>
+</defs>
+<style>@media (prefers-reduced-motion: no-preference) {
+.sw{animation:sw 9s 2s cubic-bezier(.4,0,.2,1) infinite}
+@keyframes sw{0%{transform:translateX(-80px)}20%,100%{transform:translateX(360px)}}
+}</style>
+<g clip-path="url(#finder-clip)">
+<rect width="280" height="30" fill="url(#finder-bg)"/>
+<rect x="92.5" y="3" width="184.7" height="24" rx="12" fill="url(#finder-val)"/>
+<rect class="sw" x="-60" y="0" width="46" height="30" fill="url(#finder-shine)" transform="translate(-80 0)"/>
+</g>
+<rect x=".5" y=".5" width="279" height="29" rx="14.5" fill="none" stroke="url(#finder-edge)"/>
+<g transform="translate(12 6) scale(.75)" fill="none" stroke="#65B88A" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4a7 7 0 1 1 0 14 7 7 0 0 1 0-14zM16.5 16.5L21 21"/></g>
+<text x="38" y="18.8" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="10.5" font-weight="700" fill="#B8AECF" letter-spacing=".04em">FINDER</text>
+<text x="184.8" y="19.4" text-anchor="middle" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#17151F">skills.sh · GitHub · indexes</text>
+</svg>

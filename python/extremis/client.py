@@ -88,7 +88,7 @@ class ExtremisClient:
         )
         result = self._request(
             "initialize",
-            {"protocolVersion": PROTOCOL_VERSION, "capabilities": {}, "clientInfo": {"name": "extremis-python", "version": "0.3.0"}},
+            {"protocolVersion": PROTOCOL_VERSION, "capabilities": {}, "clientInfo": {"name": "extremis-python", "version": "0.4.0"}},
         )
         self.server_info = result.get("serverInfo", {})
         self.instructions = result.get("instructions", "")
@@ -162,6 +162,20 @@ class ExtremisClient:
     def list_resources(self) -> List[Dict[str, Any]]:
         self.start()
         return self._request("resources/list").get("resources", [])
+
+    def list_prompts(self) -> List[Dict[str, Any]]:
+        """Built-in agents, exposed as MCP prompts."""
+        self.start()
+        return self._request("prompts/list").get("prompts", [])
+
+    def get_prompt(self, name: str, arguments: Optional[Dict[str, str]] = None) -> Dict[str, Any]:
+        self.start()
+        return self._request("prompts/get", {"name": name, "arguments": arguments or {}})
+
+    def agent(self, name: str, task: str = "") -> str:
+        """System prompt for a built-in agent; with a task, includes the plan and what to activate."""
+        result = self.get_prompt(name, {"task": task} if task else {})
+        return "".join(m.get("content", {}).get("text", "") for m in result.get("messages", []))
 
     def read_resource(self, uri: str) -> str:
         self.start()

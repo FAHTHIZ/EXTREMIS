@@ -7,7 +7,7 @@
 const off = /^(0|off|false|no)$/i.test(process.env.EXTREMIS_SESSION_HOOK ?? '');
 
 export const SESSION_CONTEXT = [
-  'EXTREMIS is available through the extremis MCP server (59 capabilities, 41 permission-gated tools).',
+  'EXTREMIS is available through the extremis MCP server (70 capabilities, 10 specialist agents, 45 permission-gated tools).',
   'For any multi-step task: call extremis_plan with the task, extremis_activate the selected capabilities,',
   'use extremis_run for deterministic steps (parsing, profiling, scanning), and call extremis_verify before reporting the task done.',
   'Skip EXTREMIS for one-line answers. The extremis skill has the full protocol.'

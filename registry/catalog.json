@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0.0",
   "generator": "extremis build",
-  "count": 59,
-  "workflows": 5,
+  "count": 70,
+  "workflows": 6,
   "capabilities": [
     {
       "name": "accessibility-review",
@@ -28,6 +28,32 @@
       ],
       "path": "capabilities/accessibility-review",
       "hash": "9c8ef77f622b6c51eee5c7bd095e462bb227409d92a6e96a79c470c823450e25"
+    },
+    {
+      "name": "agent-orchestration",
+      "kind": "skill",
+      "domain": "ai-engineering",
+      "version": "0.1.0",
+      "phase": "plan",
+      "summary": "Design agents and multi-agent systems with scoped tools, handoffs, guardrails and evals.",
+      "description": "Use when designing or reviewing an AI agent or multi-agent system: choosing between a single agent, workflows and subagents, defining tools and their permissions, memory and context strategy, handoffs, stopping rules, human approval points and evaluation.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "prompt.lint",
+        "decision.weighted_matrix"
+      ],
+      "requires": [],
+      "suggests": [
+        "prompt-engineering",
+        "llm-evaluation",
+        "threat-modeling"
+      ],
+      "path": "capabilities/agent-orchestration",
+      "hash": "cea7ee3fa31ef4558ddcb94847f310fe6c8519497bdb84f9070533dfc4c1e9b9"
     },
     {
       "name": "api-design",
@@ -85,6 +111,32 @@
       "hash": "61535024ffa4226d369b5c8a800018522ac874d12937a81c33fc8e24d477ae7f"
     },
     {
+      "name": "ci-pipeline-hardening",
+      "kind": "skill",
+      "domain": "security",
+      "version": "0.1.0",
+      "phase": "verify",
+      "summary": "Harden CI/CD workflows against injection, token abuse and supply-chain attacks.",
+      "description": "Use when reviewing or hardening CI/CD pipelines such as GitHub Actions: token permissions, script injection, pull_request_target, third-party action pinning, secrets handling, runner isolation, artifact and cache integrity, and supply-chain provenance.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "ci.workflow_lint",
+        "security.secret_scan",
+        "container.dockerfile_lint"
+      ],
+      "requires": [],
+      "suggests": [
+        "secure-code-review",
+        "devops-release"
+      ],
+      "path": "capabilities/ci-pipeline-hardening",
+      "hash": "166ba7a2251c2c6e49674861fda89477d91ad645e58d7d6c6f386bd1a287a81b"
+    },
+    {
       "name": "cloud-architecture",
       "kind": "skill",
       "domain": "engineering",
@@ -135,6 +187,32 @@
       ],
       "path": "capabilities/code-review",
       "hash": "c981ebca3340c174d21089c273584ac1b69efcd7cfae8043262207a99cd6e0ec"
+    },
+    {
+      "name": "codebase-onboarding",
+      "kind": "skill",
+      "domain": "software-engineering",
+      "version": "0.1.0",
+      "phase": "discover",
+      "summary": "Map an unfamiliar repository into architecture, entry points, commands and a starter guide.",
+      "description": "Use when getting oriented in an unfamiliar repository or explaining a codebase to someone new: architecture map, entry points, data flow, build and test commands, conventions, risky areas and a first-week guide.",
+      "risk": "low",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "code.repo_map",
+        "code.dependency_inventory",
+        "docs.markdown_check"
+      ],
+      "requires": [],
+      "suggests": [
+        "technical-documentation",
+        "repository-audit"
+      ],
+      "path": "capabilities/codebase-onboarding",
+      "hash": "629dd0f87b91362d43c82fe0e0d588fbbfa1d4d1301aea95c88a9719cb62ab75"
     },
     {
       "name": "competitive-analysis",
@@ -237,6 +315,33 @@
       ],
       "path": "capabilities/data-analysis",
       "hash": "5a598751c03ce7ce7701d74d3f552e2941e3942ebdbaa7da9f33a09e6ebd23e1"
+    },
+    {
+      "name": "data-pipeline-engineering",
+      "kind": "skill",
+      "domain": "data",
+      "version": "0.1.0",
+      "phase": "build",
+      "summary": "Build reliable, idempotent data pipelines with contracts, quality checks and safe backfills.",
+      "description": "Use when designing, building or debugging data pipelines and ETL/ELT jobs: ingestion, schema contracts, incremental loads, idempotency and backfills, data quality checks, orchestration, lineage and late or duplicate data.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "data.profile",
+        "data.validate_json",
+        "sql.schema_lint",
+        "data.query"
+      ],
+      "requires": [],
+      "suggests": [
+        "database-design",
+        "data-analysis"
+      ],
+      "path": "capabilities/data-pipeline-engineering",
+      "hash": "d3d54f9ad4d91a6dad4dbfcd7d6866604449a0aca249628d7bea40512dedc751"
     },
     {
       "name": "data-report",
@@ -364,6 +469,32 @@
       ],
       "path": "capabilities/decision-log",
       "hash": "992f7a7958bfaf369882e49781e0872876a222871e891072f8486d80b25a3bb8"
+    },
+    {
+      "name": "dependency-upgrade",
+      "kind": "skill",
+      "domain": "software-engineering",
+      "version": "0.1.0",
+      "phase": "build",
+      "summary": "Plan and execute dependency and framework upgrades with evidence and rollback.",
+      "description": "Use when upgrading dependencies, frameworks, language runtimes or SDKs, or migrating off a deprecated library: inventory, changelog and breaking-change review, staged upgrade plan, codemods, test evidence and rollback.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "code.dependency_inventory",
+        "test.parse_report",
+        "release.changelog"
+      ],
+      "requires": [],
+      "suggests": [
+        "quality-assurance",
+        "code-review"
+      ],
+      "path": "capabilities/dependency-upgrade",
+      "hash": "240c9cf55d21b0aab291c9d4bb6f0a4ad1d1042d80020c88cc56097465789c5b"
     },
     {
       "name": "design-system",
@@ -573,6 +704,33 @@
       "hash": "91fafcb68d2633ebf5ae052c1af24d03d20eda2b9e35840b800189215c1098d5"
     },
     {
+      "name": "infrastructure-as-code",
+      "kind": "skill",
+      "domain": "engineering",
+      "version": "0.1.0",
+      "phase": "build",
+      "summary": "Write and review Terraform and other IaC with secure defaults, pinned versions and safe applies.",
+      "description": "Use when writing, reviewing or refactoring infrastructure as code such as Terraform, OpenTofu, Pulumi or CloudFormation: module structure, state and environments, security defaults, drift, plan review and safe apply.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "iac.terraform_lint",
+        "container.dockerfile_lint",
+        "security.secret_scan"
+      ],
+      "requires": [],
+      "suggests": [
+        "cloud-architecture",
+        "secure-code-review",
+        "ci-pipeline-hardening"
+      ],
+      "path": "capabilities/infrastructure-as-code",
+      "hash": "12a0b926f19e15b88aea682c19d5c529c9212198e5e4fb00a721a8ba349066e0"
+    },
+    {
       "name": "knowledge-management",
       "kind": "skill",
       "domain": "productivity",
@@ -646,6 +804,61 @@
       ],
       "path": "capabilities/literature-review",
       "hash": "929c889dd30696b28cec961927f7ccac3ad7caa583b89dde144f6a7528bda391"
+    },
+    {
+      "name": "llm-evaluation",
+      "kind": "skill",
+      "domain": "ai-engineering",
+      "version": "0.1.0",
+      "phase": "verify",
+      "summary": "Build eval sets, score model outputs and compare variants with honest uncertainty.",
+      "description": "Use when measuring the quality of an LLM, prompt, RAG system or agent: building an evaluation set, choosing metrics, scoring outputs offline, comparing prompts or models with confidence intervals and reporting regressions.",
+      "risk": "low",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "eval.score",
+        "stats.compare_samples",
+        "stats.sample_size",
+        "data.profile"
+      ],
+      "requires": [],
+      "suggests": [
+        "prompt-engineering",
+        "experimental-design"
+      ],
+      "path": "capabilities/llm-evaluation",
+      "hash": "4836d2d3f7749575ea418f482699d72353d9a9675bdc85900f6d858de0386187"
+    },
+    {
+      "name": "llm-feature-launch",
+      "kind": "workflow",
+      "domain": "ai-engineering",
+      "version": "0.1.0",
+      "phase": "plan",
+      "summary": "End-to-end workflow: requirements, agent design, prompts, retrieval, evals, security review and launch.",
+      "description": "Use when taking an LLM-powered feature or AI agent from prototype to launch: requirements, agent and tool design, prompts, retrieval if needed, evaluation, security review for prompt injection and data leakage, and a release decision.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [],
+      "requires": [],
+      "suggests": [],
+      "steps": [
+        "requirements-engineering",
+        "agent-orchestration",
+        "prompt-engineering",
+        "rag-engineering",
+        "llm-evaluation",
+        "threat-modeling",
+        "release-readiness"
+      ],
+      "path": "capabilities/llm-feature-launch",
+      "hash": "a02bcc09f5e126e34fc47017d5a1b46da0db4f9d2c61ad2a4a7a68e3b27fd93d"
     },
     {
       "name": "localization",
@@ -772,6 +985,30 @@
       ],
       "path": "capabilities/mobile-engineering",
       "hash": "3d096f071e2f1db53f57a8b9bfa3bd768ae29308a187c07ba56061c814cb9f6b"
+    },
+    {
+      "name": "observability-design",
+      "kind": "skill",
+      "domain": "engineering",
+      "version": "0.1.0",
+      "phase": "build",
+      "summary": "Design logs, metrics, traces, SLOs and alerts that answer real operational questions.",
+      "description": "Use when designing or improving observability for a service: structured logs, metrics, traces, symptom-based alerting, dashboards, sampling and cost, and on-call runbooks.",
+      "risk": "low",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "logs.summarize"
+      ],
+      "requires": [],
+      "suggests": [
+        "reliability-analysis",
+        "incident-management"
+      ],
+      "path": "capabilities/observability-design",
+      "hash": "b33bbf779e120c52db3784c86a9752211708a05176db102012b8886202b9403c"
     },
     {
       "name": "performance-optimization",
@@ -976,6 +1213,31 @@
       "hash": "0490b4fd97ed5b500f6e7cdc03d184b66c4a99a47f81668ef9a4abcf38562456"
     },
     {
+      "name": "prompt-engineering",
+      "kind": "skill",
+      "domain": "ai-engineering",
+      "version": "0.1.0",
+      "phase": "build",
+      "summary": "Design, test and harden prompts with explicit task, format, examples and injection guards.",
+      "description": "Use when writing, debugging or hardening a system prompt, task prompt or prompt template for an LLM feature or agent, including output formats, examples, uncertainty handling and prompt-injection defenses.",
+      "risk": "low",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "prompt.lint",
+        "eval.score"
+      ],
+      "requires": [],
+      "suggests": [
+        "llm-evaluation",
+        "agent-orchestration"
+      ],
+      "path": "capabilities/prompt-engineering",
+      "hash": "462df83e75cc14a4a6584467b7438b103b0fe9a9b49a4b75bbcb6ce9b2657049"
+    },
+    {
       "name": "quality-assurance",
       "kind": "skill",
       "domain": "software-engineering",
@@ -1000,6 +1262,33 @@
       ],
       "path": "capabilities/quality-assurance",
       "hash": "62e0133527c6b6f9988825c3b31f99dd314dd8634ded0324c887f257402cebbf"
+    },
+    {
+      "name": "rag-engineering",
+      "kind": "skill",
+      "domain": "ai-engineering",
+      "version": "0.1.0",
+      "phase": "build",
+      "summary": "Build and debug RAG pipelines with measured retrieval quality and grounded answers.",
+      "description": "Use when building, debugging or evaluating retrieval-augmented generation: document ingestion and chunking, embeddings and hybrid search, reranking, citation grounding, freshness and access control, and retrieval and answer quality metrics.",
+      "risk": "medium",
+      "maturity": "draft",
+      "permissions": [
+        "read"
+      ],
+      "tools": [
+        "eval.score",
+        "doc.extract_text",
+        "data.profile"
+      ],
+      "requires": [],
+      "suggests": [
+        "llm-evaluation",
+        "prompt-engineering",
+        "privacy-impact-review"
+      ],
+      "path": "capabilities/rag-engineering",
+      "hash": "a3648cf58c6d28e10928976779af6119e297857d71c6dd7910005cb1ef3a3382"
     },
     {
       "name": "release-readiness",

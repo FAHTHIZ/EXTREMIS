@@ -1,0 +1,62 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "engineering",
+  "version": "0.1.0",
+  "phase": "build",
+  "summary": "Write and review Terraform and other IaC with secure defaults, pinned versions and safe applies.",
+  "keywords": [
+    "terraform",
+    "opentofu",
+    "infrastructure as code",
+    "terraform module",
+    "terraform plan review",
+    "cloud security misconfiguration"
+  ],
+  "intents": [
+    "review this terraform before we apply it",
+    "refactor our terraform into reusable modules",
+    "find security misconfigurations in our tf files",
+    "set up remote state and separate staging and production",
+    "our terraform plan wants to destroy the database, what happened",
+    "write terraform for an s3 bucket with secure defaults"
+  ],
+  "not_for": [
+    "kubernetes application debugging",
+    "choosing between cloud providers"
+  ],
+  "requires": [],
+  "suggests": [
+    "cloud-architecture",
+    "secure-code-review",
+    "ci-pipeline-hardening"
+  ],
+  "tools": [
+    "iac.terraform_lint",
+    "container.dockerfile_lint",
+    "security.secret_scan"
+  ],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "the IaC files and the target environment",
+    "a plan output for changes to existing infrastructure"
+  ],
+  "risk": "medium",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": [
+    {
+      "tool": "iac.terraform_lint",
+      "args": {
+        "path": "${tf}"
+      },
+      "expect": {
+        "counts.critical": 0
+      },
+      "description": "No public buckets or hard-coded credentials remain"
+    },
+    "Every destroy or replace in the plan is explained"
+  ]
+}

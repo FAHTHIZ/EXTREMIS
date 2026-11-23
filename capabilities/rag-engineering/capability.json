@@ -1,0 +1,54 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "ai-engineering",
+  "version": "0.1.0",
+  "phase": "build",
+  "summary": "Build and debug RAG pipelines with measured retrieval quality and grounded answers.",
+  "keywords": [
+    "retrieval augmented generation",
+    "vector search",
+    "chunking strategy",
+    "embeddings",
+    "hybrid search",
+    "grounded answers"
+  ],
+  "intents": [
+    "our rag chatbot gives answers that are not in the documents",
+    "choose a chunk size and overlap for our knowledge base",
+    "add hybrid bm25 and vector search to our retriever",
+    "measure recall at k for our document search",
+    "make the assistant cite which document each answer came from",
+    "users see documents they should not have access to in rag results"
+  ],
+  "not_for": [
+    "training an embedding model from scratch",
+    "general web search engine optimization"
+  ],
+  "requires": [],
+  "suggests": [
+    "llm-evaluation",
+    "prompt-engineering",
+    "privacy-impact-review"
+  ],
+  "tools": [
+    "eval.score",
+    "doc.extract_text",
+    "data.profile"
+  ],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "the corpus and how it changes",
+    "sample questions with known answers or source documents"
+  ],
+  "risk": "medium",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": [
+    "Retrieval was measured separately from generation",
+    "Answers cite passages and admit when the passages are insufficient",
+    "Access filtering happens before passages reach the model"
+  ]
+}

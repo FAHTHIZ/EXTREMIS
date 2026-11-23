@@ -1,0 +1,55 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "ai-engineering",
+  "version": "0.1.0",
+  "phase": "verify",
+  "summary": "Build eval sets, score model outputs and compare variants with honest uncertainty.",
+  "keywords": [
+    "llm evals",
+    "evaluation set",
+    "model comparison",
+    "regression testing for prompts",
+    "accuracy and f1",
+    "llm as judge"
+  ],
+  "intents": [
+    "set up evals for our support bot before we change models",
+    "compare gpt and claude outputs on our test questions",
+    "is the new prompt actually better or is it noise",
+    "score these model answers against the reference answers",
+    "build a golden dataset for our classifier",
+    "measure hallucination rate on our rag answers"
+  ],
+  "not_for": [
+    "training or fine-tuning",
+    "benchmarking hardware throughput",
+    "pricing page or conversion experiments"
+  ],
+  "requires": [],
+  "suggests": [
+    "prompt-engineering",
+    "experimental-design"
+  ],
+  "tools": [
+    "eval.score",
+    "stats.compare_samples",
+    "stats.sample_size",
+    "data.profile"
+  ],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "the system under test and the decision the evaluation informs",
+    "representative inputs; reference answers or a rubric"
+  ],
+  "risk": "low",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": [
+    "Every variant was run on the same items with recorded settings",
+    "Differences are reported with confidence intervals",
+    "A held-out split exists and was not used for tuning"
+  ]
+}

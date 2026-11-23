@@ -13,6 +13,7 @@ jobs:
   test:
     name: Node ${{ matrix.node }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
     strategy:
       fail-fast: false
       matrix:
@@ -42,6 +43,7 @@ jobs:
     name: Python SDK on ${{ matrix.python }}
     # ubuntu-latest (26.04) ships no Python 3.9 build; 24.04 still does.
     runs-on: ubuntu-24.04
+    timeout-minutes: 10
     strategy:
       fail-fast: false
       matrix:

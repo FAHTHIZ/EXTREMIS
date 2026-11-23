@@ -1,0 +1,54 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "software-engineering",
+  "version": "0.1.0",
+  "phase": "build",
+  "summary": "Plan and execute dependency and framework upgrades with evidence and rollback.",
+  "keywords": [
+    "dependency upgrade",
+    "framework migration",
+    "breaking changes",
+    "major version upgrade",
+    "deprecated library",
+    "codemod"
+  ],
+  "intents": [
+    "upgrade our app from react 17 to 19",
+    "move this service from node 16 to node 22",
+    "we have 40 outdated packages, plan the upgrades",
+    "migrate from moment.js to date-fns",
+    "dependabot opened a major version bump, is it safe to merge",
+    "upgrade django and fix the deprecation warnings"
+  ],
+  "not_for": [
+    "choosing a new framework for a greenfield project",
+    "security incident response",
+    "reviewing a risky pull request diff"
+  ],
+  "requires": [],
+  "suggests": [
+    "quality-assurance",
+    "code-review"
+  ],
+  "tools": [
+    "code.dependency_inventory",
+    "test.parse_report",
+    "release.changelog"
+  ],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "the manifest and lock files",
+    "a runnable test suite"
+  ],
+  "risk": "medium",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": [
+    "Test results are compared against a pre-upgrade baseline",
+    "Each breaking change in the changelogs was checked against the codebase",
+    "A rollback path is written down"
+  ]
+}

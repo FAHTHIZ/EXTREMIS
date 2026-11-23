@@ -1,0 +1,52 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "engineering",
+  "version": "0.1.0",
+  "phase": "build",
+  "summary": "Design logs, metrics, traces, SLOs and alerts that answer real operational questions.",
+  "keywords": [
+    "observability",
+    "opentelemetry",
+    "structured logging",
+    "alerting strategy",
+    "dashboards",
+    "distributed tracing"
+  ],
+  "intents": [
+    "set up opentelemetry tracing for our microservices",
+    "our alerts are too noisy, redesign them",
+    "what metrics should this api expose",
+    "add structured logging with request ids",
+    "build a dashboard for checkout latency and errors",
+    "alert on symptoms users feel instead of cpu spikes"
+  ],
+  "not_for": [
+    "debugging one specific production incident right now",
+    "web analytics for marketing",
+    "calculating error budgets"
+  ],
+  "requires": [],
+  "suggests": [
+    "reliability-analysis",
+    "incident-management"
+  ],
+  "tools": [
+    "logs.summarize"
+  ],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "service architecture and critical user journeys",
+    "current logs, metrics or alert history if they exist"
+  ],
+  "risk": "low",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": [
+    "Every paging alert has an owner and a runbook",
+    "Critical journeys have a measured indicator",
+    "Logs carry a correlation id"
+  ]
+}

@@ -30,6 +30,10 @@ Discover and use
   run <tool> [k=v ...]       run a tool                        [--input JSON] [--input-file f]
   verify                     run checks                        [--capability name] [--checks file] [--param k=v]
 
+Agents
+  agents                     list built-in specialist agents (code-reviewer, security-auditor, debugger, ...)
+  agent <name> [task]        print the agent's system prompt; with a task, also its plan and what to activate
+
 Integrate
   mcp                        serve MCP over stdio              [--expose-tools none|dynamic|all]
   export <target>            write skills/config for a host    (see: extremis export --help)
@@ -186,6 +190,26 @@ export async function main(argv = process.argv.slice(2)) {
       if (p.alternatives.length) print(`Alternatives: ${p.alternatives.map((a) => a.name).join(', ')}`);
       return 0;
     }
+    case 'agents': {
+      const list = await service.agents();
+      if (asJson) return json(list), 0;
+      for (const a of list) print(`${a.name.padEnd(20)} ${a.description.split(/[.:] /)[0].replace(/^Use (to|for) /, '').replace(/\.$/, '')}`);
+      print(`\n${list.length} agents. Brief one: extremis agent <name> "<task>"  |  Claude Code: extremis export subagents`);
+      return 0;
+    }
+    case 'agent': {
+      if (!args[0]) throw new UsageError('agent needs a name (see: extremis agents)');
+      const b = await service.agent(args[0], args.slice(1).join(' '));
+      if (asJson) return json(b), 0;
+      print(b.system_prompt);
+      if (b.task) {
+        print(`\n---\nTask: ${b.task}`);
+        if (b.plan?.steps?.length) { print(`Plan (${b.plan.strategy}${b.plan.workflow ? `: ${b.plan.workflow}` : ''}, confidence ${b.plan.confidence}):`); for (const [i, st] of b.plan.steps.entries()) print(`  ${i + 1}. [${st.phase}] ${st.id}${st.tools.length ? `  tools: ${st.tools.join(', ')}` : ''}`); }
+        print(`Activate: ${b.activate.join(', ')}`);
+        if (b.outside_profile.length) print(`Also planned (outside this agent's profile): ${b.outside_profile.join(', ')}`);
+      }
+      return 0;
+    }
     case 'show':
     case 'activate': {
       if (!args.length) throw new UsageError(`${command} needs at least one capability name`);
@@ -281,12 +305,19 @@ export async function main(argv = process.argv.slice(2)) {
       const { lintCapabilities } = await import('../src/lint.mjs');
       const lint = await lintCapabilities(results.filter((r) => r.name).map((r) => r.dir));
       for (const r of results) r.problems = [...r.problems, ...(lint.get(r.dir) || [])];
+      if (!dirs) {
+        const { loadAgents, checkAgentReferences } = await import('../src/agents.mjs');
+        const catalog = await loadCatalog({ roots: [{ dir: BUILTIN_DIR, type: 'builtin', trust: 'builtin' }], strict: false });
+        const { agents, diagnostics } = await loadAgents({ cwd, user: false, project: false });
+        const problems = [...diagnostics.map((d) => ({ level: 'error', message: d.message })), ...checkAgentReferences(agents, catalog).map((message) => ({ level: 'error', message }))];
+        results.push({ dir: 'agents', agents: agents.size, problems });
+      }
       const errors = results.reduce((n, r) => n + r.problems.filter((p) => p.level === 'error').length, 0);
       const warnings = results.reduce((n, r) => n + r.problems.filter((p) => p.level === 'warning').length, 0);
       if (asJson) json({ ok: !errors, errors, warnings, results });
       else {
         for (const r of results) for (const p of r.problems) print(`${p.level.padEnd(7)} ${r.name || r.dir}: ${p.message}`);
-        print(`${results.length} capabilities, ${errors} errors, ${warnings} warnings`);
+        print(`${results.filter((r) => !('agents' in r)).length} capabilities${results.find((r) => 'agents' in r) ? `, ${results.find((r) => 'agents' in r).agents} agents` : ''}, ${errors} errors, ${warnings} warnings`);
       }
       return errors ? 1 : 0;
     }

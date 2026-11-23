@@ -1,0 +1,54 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "ai-engineering",
+  "version": "0.1.0",
+  "phase": "plan",
+  "summary": "Design agents and multi-agent systems with scoped tools, handoffs, guardrails and evals.",
+  "keywords": [
+    "ai agent design",
+    "multi-agent system",
+    "subagents",
+    "tool calling",
+    "agent architecture",
+    "human in the loop"
+  ],
+  "intents": [
+    "design an agent that triages github issues and opens fixes",
+    "should this be one agent or several subagents",
+    "review my agent's tools and permissions for safety",
+    "plan the handoffs between a researcher agent and a writer agent",
+    "how do I stop my agent from looping forever",
+    "architect a coding agent with mcp tools"
+  ],
+  "not_for": [
+    "choosing a cloud provider",
+    "hiring or team structure"
+  ],
+  "requires": [],
+  "suggests": [
+    "prompt-engineering",
+    "llm-evaluation",
+    "threat-modeling"
+  ],
+  "tools": [
+    "prompt.lint",
+    "decision.weighted_matrix"
+  ],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "the goal the agent serves and who it acts for",
+    "available tools, data and the actions it may take"
+  ],
+  "risk": "medium",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": [
+    "Every tool has a declared permission and side effects",
+    "Irreversible actions require approval",
+    "Stop conditions and budgets are defined",
+    "An evaluation set exists before launch"
+  ]
+}

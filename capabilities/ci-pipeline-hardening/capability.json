@@ -1,0 +1,63 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "security",
+  "version": "0.1.0",
+  "phase": "verify",
+  "summary": "Harden CI/CD workflows against injection, token abuse and supply-chain attacks.",
+  "keywords": [
+    "github actions security",
+    "workflow hardening",
+    "pin actions to sha",
+    "pull_request_target",
+    "ci secrets",
+    "supply chain security"
+  ],
+  "intents": [
+    "audit our github actions workflows for security problems",
+    "is it safe to use pull_request_target in this workflow",
+    "pin all third-party actions to commit shas",
+    "reduce the GITHUB_TOKEN permissions in our ci",
+    "stop secrets from leaking in build logs",
+    "harden the release pipeline that publishes to npm"
+  ],
+  "not_for": [
+    "writing application unit tests",
+    "speeding up slow builds only",
+    "setting up deploys to staging then production"
+  ],
+  "requires": [],
+  "suggests": [
+    "secure-code-review",
+    "devops-release"
+  ],
+  "tools": [
+    "ci.workflow_lint",
+    "security.secret_scan",
+    "container.dockerfile_lint"
+  ],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "the workflow files (for example .github/workflows/*.yml)",
+    "which workflows publish, deploy or hold secrets"
+  ],
+  "risk": "medium",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": [
+    {
+      "tool": "ci.workflow_lint",
+      "args": {
+        "path": "${workflow}"
+      },
+      "expect": {
+        "counts.critical": 0
+      },
+      "description": "No script injection or pwn-request patterns remain"
+    },
+    "Every workflow has an explicit permissions block",
+    "Third-party actions are pinned to commit SHAs"
+  ]
+}

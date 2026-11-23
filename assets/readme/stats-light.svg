@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="196" viewBox="0 0 1280 196" role="img" aria-labelledby="t">
+<title id="t">EXTREMIS at a glance: 70 capabilities, 10 agents, 45 tools, 92% routing Hit@1 on the hold-out set</title>
+<style>@media (prefers-reduced-motion: no-preference) {.c{animation:up .9s cubic-bezier(.2,.7,.1,1) both}@keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}}</style>
+<g class="c" style="animation-delay:0.00s">
+<rect x="24.0" y="16" width="233.6" height="164" rx="18" fill="#FFFFFF" stroke="#E2DAF2"/>
+<rect x="46.0" y="16" width="189.6" height="3" rx="1.5" fill="#9B83DB"/>
+<g transform="translate(46.0 40)" fill="none" stroke="#9B83DB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></g>
+<text x="46.0" y="118" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="50" font-weight="800" fill="#1F1A2E" letter-spacing="-.02em">70</text>
+<text x="46.0" y="145" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#9B83DB">capabilities</text>
+<text x="46.0" y="166" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5E5675">64 skills · 6 workflows</text>
+</g>
+<g class="c" style="animation-delay:0.12s">
+<rect x="273.6" y="16" width="233.6" height="164" rx="18" fill="#FFFFFF" stroke="#E2DAF2"/>
+<rect x="295.6" y="16" width="189.6" height="3" rx="1.5" fill="#E89B77"/>
+<g transform="translate(295.6 40)" fill="none" stroke="#E89B77" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a4 4 0 1 1 0 8 4 4 0 0 1 0-8zM4 21c0-4 3.6-7 8-7s8 3 8 7"/></g>
+<text x="295.6" y="118" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="50" font-weight="800" fill="#1F1A2E" letter-spacing="-.02em">10</text>
+<text x="295.6" y="145" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#E89B77">specialist agents</text>
+<text x="295.6" y="166" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5E5675">MCP prompts · Claude subagents</text>
+</g>
+<g class="c" style="animation-delay:0.24s">
+<rect x="523.2" y="16" width="233.6" height="164" rx="18" fill="#FFFFFF" stroke="#E2DAF2"/>
+<rect x="545.2" y="16" width="189.6" height="3" rx="1.5" fill="#F2A66D"/>
+<g transform="translate(545.2 40)" fill="none" stroke="#F2A66D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-2.4z"/></g>
+<text x="545.2" y="118" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="50" font-weight="800" fill="#1F1A2E" letter-spacing="-.02em">45</text>
+<text x="545.2" y="145" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#F2A66D">built-in tools</text>
+<text x="545.2" y="166" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5E5675">permission-gated, zero deps</text>
+</g>
+<g class="c" style="animation-delay:0.36s">
+<rect x="772.8" y="16" width="233.6" height="164" rx="18" fill="#FFFFFF" stroke="#E2DAF2"/>
+<rect x="794.8" y="16" width="189.6" height="3" rx="1.5" fill="#65B88A"/>
+<g transform="translate(794.8 40)" fill="none" stroke="#65B88A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 1 0 18 9 9 0 0 1 0-18zM12 8a4 4 0 1 1 0 8 4 4 0 0 1 0-8z"/></g>
+<text x="794.8" y="118" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="50" font-weight="800" fill="#1F1A2E" letter-spacing="-.02em">92%</text>
+<text x="794.8" y="145" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#65B88A">routing Hit@1</text>
+<text x="794.8" y="166" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5E5675">hold-out set · 100% Hit@5</text>
+</g>
+<g class="c" style="animation-delay:0.48s">
+<rect x="1022.4" y="16" width="233.6" height="164" rx="18" fill="#FFFFFF" stroke="#E2DAF2"/>
+<rect x="1044.4" y="16" width="189.6" height="3" rx="1.5" fill="#8D78A7"/>
+<g transform="translate(1044.4 40)" fill="none" stroke="#8D78A7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4C10 4 6 10 5 19M5 19l7-7M9 9h7"/></g>
+<text x="1044.4" y="118" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="50" font-weight="800" fill="#1F1A2E" letter-spacing="-.02em">~2K</text>
+<text x="1044.4" y="145" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#8D78A7">tokens to browse</text>
+<text x="1044.4" y="166" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#5E5675">all 70 cards vs ~46K in full</text>
+</g>
+</svg>

@@ -1,0 +1,51 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "software-engineering",
+  "version": "0.1.0",
+  "phase": "discover",
+  "summary": "Map an unfamiliar repository into architecture, entry points, commands and a starter guide.",
+  "keywords": [
+    "codebase overview",
+    "repository walkthrough",
+    "architecture map",
+    "developer onboarding",
+    "explain this repo",
+    "where to start in the code"
+  ],
+  "intents": [
+    "explain how this repository is structured",
+    "i just joined, where do i start in this codebase",
+    "write an onboarding guide for new engineers on this repo",
+    "find the entry points and main data flow of this service",
+    "how do i build and run the tests in this project",
+    "draw an architecture overview of this monorepo"
+  ],
+  "not_for": [
+    "reviewing a specific pull request",
+    "writing end-user product documentation"
+  ],
+  "requires": [],
+  "suggests": [
+    "technical-documentation",
+    "repository-audit"
+  ],
+  "tools": [
+    "code.repo_map",
+    "code.dependency_inventory",
+    "docs.markdown_check"
+  ],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "read access to the repository"
+  ],
+  "risk": "low",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": [
+    "Build and test commands were taken from CI or verified by running them",
+    "Every architecture claim points to a file or directory"
+  ]
+}

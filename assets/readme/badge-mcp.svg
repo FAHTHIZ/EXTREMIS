@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="208" height="30" viewBox="0 0 208 30" role="img" aria-label="MCP: 7 tools + prompts">
+<title>MCP: 7 tools + prompts</title>
+<defs>
+<linearGradient id="mcp-bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#25212F"/><stop offset="1" stop-color="#17151F"/></linearGradient>
+<linearGradient id="mcp-val" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8D78A7"/><stop offset="1" stop-color="#9B83DB"/></linearGradient>
+<linearGradient id="mcp-edge" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8D78A7" stop-opacity=".6"/><stop offset=".5" stop-color="#8D78A7" stop-opacity=".15"/><stop offset="1" stop-color="#9B83DB" stop-opacity=".55"/></linearGradient>
+<linearGradient id="mcp-shine" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".22"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<clipPath id="mcp-clip"><rect width="208" height="30" rx="15"/></clipPath>
+</defs>
+<style>@media (prefers-reduced-motion: no-preference) {
+.sw{animation:sw 9s 2s cubic-bezier(.4,0,.2,1) infinite}
+@keyframes sw{0%{transform:translateX(-80px)}20%,100%{transform:translateX(288px)}}
+}</style>
+<g clip-path="url(#mcp-clip)">
+<rect width="208" height="30" fill="url(#mcp-bg)"/>
+<rect x="72.6" y="3" width="132.2" height="24" rx="12" fill="url(#mcp-val)"/>
+<rect class="sw" x="-60" y="0" width="46" height="30" fill="url(#mcp-shine)" transform="translate(-80 0)"/>
+</g>
+<rect x=".5" y=".5" width="207" height="29" rx="14.5" fill="none" stroke="url(#mcp-edge)"/>
+<g transform="translate(12 6) scale(.75)" fill="none" stroke="#8D78A7" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3v5M15 3v5M6 8h12v3a6 6 0 0 1-12 0zM12 17v4"/></g>
+<text x="38" y="18.8" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="10.5" font-weight="700" fill="#B8AECF" letter-spacing=".04em">MCP</text>
+<text x="138.7" y="19.4" text-anchor="middle" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#17151F">7 tools + prompts</text>
+</svg>

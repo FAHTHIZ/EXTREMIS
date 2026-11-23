@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schemas/capability.schema.json",
+  "kind": "skill",
+  "domain": "ai-engineering",
+  "version": "0.1.0",
+  "phase": "build",
+  "summary": "Design, test and harden prompts with explicit task, format, examples and injection guards.",
+  "keywords": [
+    "system prompt",
+    "prompt template",
+    "prompt injection defense",
+    "few-shot examples",
+    "structured output",
+    "prompt debugging"
+  ],
+  "intents": [
+    "rewrite this system prompt so the model stops ignoring the format",
+    "why does my prompt give inconsistent answers",
+    "harden this prompt against prompt injection from user documents",
+    "turn these instructions into a reusable prompt template with variables",
+    "add few-shot examples to my classification prompt",
+    "review my agent's system prompt"
+  ],
+  "not_for": [
+    "fine-tuning or training a model",
+    "writing marketing copy"
+  ],
+  "requires": [],
+  "suggests": [
+    "llm-evaluation",
+    "agent-orchestration"
+  ],
+  "tools": [
+    "prompt.lint",
+    "eval.score"
+  ],
+  "permissions": [
+    "read"
+  ],
+  "prerequisites": [
+    "the current prompt or the task it must perform",
+    "a few real inputs and the expected outputs if available"
+  ],
+  "risk": "low",
+  "maturity": "draft",
+  "provenance": "original-extremis-content",
+  "verify": [
+    {
+      "tool": "prompt.lint",
+      "args": {
+        "path": "${prompt}"
+      },
+      "expect": {
+        "counts.critical": 0
+      },
+      "description": "The prompt has no critical findings (secrets, unfilled placeholders)"
+    },
+    "Outputs were scored on the same sample inputs before and after the change"
+  ]
+}
