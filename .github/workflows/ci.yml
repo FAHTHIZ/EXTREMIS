@@ -40,7 +40,8 @@ jobs:
 
   python:
     name: Python SDK on ${{ matrix.python }}
-    runs-on: ubuntu-latest
+    # ubuntu-latest (26.04) ships no Python 3.9 build; 24.04 still does.
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
