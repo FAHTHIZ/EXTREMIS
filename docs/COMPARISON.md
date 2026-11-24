@@ -1,39 +1,47 @@
 # How EXTREMIS compares
 
-Checked on 2026-11-17 against each project's README and repository root. Star counts come from the GitHub API on that date. A dash (—) means the feature is not described in that project's README; it does not mean the project cannot do it.
+**Comparison basis:** third-party project details below were reviewed on 2026-11-17 against the projects' public READMEs and repository roots. The EXTREMIS column was refreshed for version 0.4.0 on 2026-11-24. Third-party rows are a dated documentation snapshot, not a claim that every external project's current release still has exactly the same features. Star counts are omitted because they change continuously.
 
-| | [anthropics/skills](https://github.com/anthropics/skills) | [obra/superpowers](https://github.com/obra/superpowers) | [vercel-labs/skills](https://github.com/vercel-labs/skills) | [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) | EXTREMIS |
+A dash (—) means the feature was not described in the reviewed project documentation; it does not prove the project cannot support it.
+
+| | [anthropics/skills](https://github.com/anthropics/skills) | [obra/superpowers](https://github.com/obra/superpowers) | [vercel-labs/skills](https://github.com/vercel-labs/skills) | [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) | EXTREMIS 0.4.0 |
 |---|---|---|---|---|---|
-| What it is | Example and document skills | Skills framework and development methodology | Skills installer CLI | 25 engineering skills | Capability runtime, 70 skills/workflows and 10 agents |
-| Stars | 196k | 319k | 39.8k | 118k | — |
-| Claude Code plugin marketplace | yes | yes (official and own marketplace) | — | yes | yes (`/plugin marketplace add FAHTHIZ/EXTREMIS`) |
-| Codex plugin | — | yes | — | yes | yes (repo marketplace) |
-| Installs through `npx skills add` | yes | — | is the installer | yes (documented first) | yes (gateway skill, or any capability through the `capabilities/` subpath) |
-| MCP server | — | — | — | — | yes: 7 gateway tools (including a federated skill finder) plus skills as MCP resources |
-| Loads instructions on demand through a planner | host does progressive disclosure | host does progressive disclosure, plus a SessionStart hook | — | host does progressive disclosure | `extremis_plan` picks and orders capabilities, then `extremis_activate` loads only those; the Claude Code plugin adds a ~100-token SessionStart reminder (`EXTREMIS_SESSION_HOOK=off` disables it) |
-| Multi-step workflows | — | yes (brainstorm, plan, TDD, review, finish) as skill chains | — | lifecycle grouping (define → ship) | 5 declared workflows with step order, optional steps and done criteria |
-| Executable verification | — | "verification-before-completion" skill (instructions) | — | — | `verify` checks that run built-in tools with matchers, plus manual statements |
-| Built-in tools | — | — | — | — | 41 permission-gated tools (data, code, security, docs, web, API, a11y, SEO, …) |
-| Lockfile and content hash | — | — | `skills-lock.json` v2 `computedHash` | — | `extremis-lock.json`; folder hash matches skills 1.9.0's `computedHash` byte for byte |
-| Search public skill directories | — | — | `npx skills find` (skills.sh search, names and install counts) | — | `extremis find`: skills.sh + GitHub + `.well-known` indexes, reads and scans each top SKILL.md, re-ranks on the task |
-| Install-time security scan | — | — | — | — | static scanner; dangerous findings block install |
-| Agent Skills well-known index | — | — | reads them | — | publishes one (`extremis build`) and installs from them |
-| Routing evaluation | — | — | — | routing evals (25 case files) | authored and hold-out sets with Hit@k, MRR and false activation |
-| Runtime dependencies | n/a | n/a | Node 22 (1.9.0) | n/a | none; Node ≥ 18.17 |
+| What it is | Example and document skills | Skills framework and development methodology | Skills installer CLI | Engineering skill collection | Capability layer: 70 capabilities (64 skills and 6 workflows), 10 agents and 45 tools |
+| Claude Code plugin marketplace | Yes | Yes (official and own marketplace) | — | Yes | Yes (repository marketplace) |
+| Codex plugin | — | Yes | — | Yes | Yes (repository marketplace) |
+| Installs through `npx skills add` | Yes | — | Installer | Yes | Yes (gateway skill, or a capability from `capabilities/`) |
+| MCP server | — | — | — | — | Yes: 7 gateway tools, 10 agent prompts, and capability resources |
+| Plans and activates capabilities on demand | Host progressive disclosure | Host progressive disclosure plus a SessionStart hook | — | Host progressive disclosure | `extremis_plan` selects and orders capabilities; `extremis_activate` loads the selected instructions |
+| Multi-step workflows | — | Yes (documented skill chains) | — | Lifecycle grouping | 6 declared workflows with ordered steps and completion criteria |
+| Specialist agents | — | — | — | — | 10 specialist-agent prompts, also exportable as Claude Code subagents |
+| Executable verification | — | Verification instructions | — | — | Tool-backed checks plus explicit manual checks |
+| Built-in tools | — | — | — | — | 45 permission-gated tools |
+| Lockfile and content integrity | — | — | `skills-lock.json` v2 `computedHash` | — | `extremis-lock.json`; content hash matches the skills CLI v2 folder-hash format |
+| Search public skill directories | — | — | `npx skills find` | — | `extremis find`: skills.sh, GitHub and discovery indexes; reads and scans leading candidates |
+| Install-time security scan | — | — | — | — | Static scanner; dangerous findings block installation |
+| Agent Skills well-known index | — | — | Reads indexes | — | Publishes an index and installs from supported indexes |
+| Routing evaluation | — | — | — | Routing fixtures | Authored and held-out sets with Hit@k, MRR and false-activation metrics |
+| Runtime dependencies | n/a | n/a | Node.js | n/a | No npm runtime dependencies; Node.js 18.17+ for the CLI/MCP server, Python 3.9+ client |
 
-## What the leaders do well, and what EXTREMIS took from them
+## Patterns EXTREMIS adopted
 
-- **One-line install for each host, in the first screen of the README** (superpowers, addyosmani). EXTREMIS now leads with a per-host install table.
-- **`npx skills add` as the universal path** (addyosmani lists it first). EXTREMIS is compatible: `npx skills add FAHTHIZ/EXTREMIS` installs the gateway skill, and `npx skills add https://github.com/FAHTHIZ/EXTREMIS/tree/main/capabilities --skill <name>` installs any of the 70 capabilities. Both were checked live with skills 1.9.0.
-- **Plugin manifests for Claude Code and Codex** (superpowers, addyosmani, anthropics). EXTREMIS ships `.claude-plugin/` (validated with `claude plugin validate`, installed in a clean home, MCP server reported connected) and `.codex-plugin/` with a repo marketplace (accepted by `codex plugin marketplace add`).
-- **A skills table grouped by phase or domain** (addyosmani). The README lists the catalog by domain.
+- **A clear per-host install path.** The README leads with separate routes for Claude Code, Agent Skills hosts, MCP clients, Codex, Node.js, and Python.
+- **Portable Agent Skills packages.** Capabilities use the standard `SKILL.md` format, with EXTREMIS-specific runtime metadata kept in `capability.json`.
+- **Progressive activation.** A compact catalog is used for discovery; full instructions and tool schemas are loaded only after selection.
+- **Host-specific manifests around a portable core.** The repository includes Claude Code and Codex plugin metadata while keeping MCP, CLI, JavaScript, and Python access on the shared service.
+- **Evidence over claims.** Routing metrics are labeled as retrieval metrics, and executable checks are separated from manual review.
 
 ## Where EXTREMIS is different
 
-The other projects ship instructions and rely on the host to choose and follow them. EXTREMIS adds a runtime layer: a planner that chooses and orders capabilities, permission-gated tools that do the deterministic parts (secret scanning, CSV profiling, OpenAPI diffing and so on), and checks that run those tools to confirm a result before the agent reports it as done. The cost is an extra moving part (a Node process for MCP or the CLI) that pure instruction repositories do not need.
+The other projects primarily distribute skill instructions, installation workflows, or development methodologies. EXTREMIS also provides a shared runtime layer: deterministic discovery and planning, progressive activation, permission-gated built-in tools, capability installation and integrity tracking, verification checks, specialist-agent prompts, and a federated finder for public skills.
+
+That broader surface has a cost: users run a Node.js process for the CLI or MCP server, and host-specific behavior still depends on the capabilities of the host and its compatibility with the relevant format or protocol.
 
 ## Gaps that remain
 
-- No hosted marketplace listing or official-marketplace entry yet (superpowers and anthropics/skills are in Anthropic's official marketplace).
-- Not published to npm. The registry reports the name `extremis` as unpublished (2026-05-26), so installs use `github:FAHTHIZ/EXTREMIS`.
-- Codex plugin installation itself happens in the ChatGPT desktop app; only the marketplace registration was tested from the CLI.
+- **No hosted marketplace or registry service.** EXTREMIS can publish and consume discovery indexes and install capabilities, but it does not operate a hosted package marketplace.
+- **Host compatibility is not universal.** MCP, CLI, SDK, Claude Code, Codex, and portable Agent Skills paths are distinct integration surfaces; support for one does not prove every host feature or approval flow works.
+- **Release authenticity is still separate from content integrity.** Hashes detect content drift but do not authenticate the publisher. Signed releases and registry metadata remain future work.
+- **Behavioral evaluation remains open work.** Routing fixtures measure selector behavior, not whether a model completes real tasks more accurately with a capability.
+
+See [the architecture assessment](architecture-assessment.md), [host compatibility notes](host-compatibility.md), and [marketplace integration status](marketplace-integration.md) for the boundaries and remaining work.

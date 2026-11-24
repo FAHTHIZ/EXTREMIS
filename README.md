@@ -532,7 +532,7 @@ Routing fixtures measure deterministic retrieval behavior. They do not prove tha
 | **Architecture** | [Architecture assessment and roadmap](docs/architecture-assessment.md) · [Comparison](docs/COMPARISON.md) |
 | **Security and trust** | [Security model](docs/security.md) · [Security policy](SECURITY.md) |
 | **Host support** | [Host compatibility](docs/host-compatibility.md) · [Marketplace integration](docs/marketplace-integration.md) |
-| **Capability quality** | [Skill quality](docs/skill-quality.md) · [Librarian](docs/librarian.md) · [Landscape review](docs/landscape-review.md) |
+| **Capability quality** | [Skill quality](docs/skill-quality.md) · [Discovery and planning](docs/librarian.md) · [Landscape review](docs/landscape-review.md) |
 | **Python client** | [Python README](python/README.md) |
 | **Contributing** | [Contribution guide](CONTRIBUTING.md) · [Changelog](CHANGELOG.md) |
 

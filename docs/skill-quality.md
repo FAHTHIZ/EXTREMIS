@@ -40,7 +40,7 @@ Changes that broaden triggers, alter safety boundaries, add dependencies, or cha
 
 ## Routing evaluation versus behavior evaluation
 
-EXTREMIS includes a deterministic Librarian baseline. Its routing evaluator measures whether a skill is retrieved for its own positive fixtures (Hit@1, Hit@K, and MRR) and how often it appears for negative fixtures. This assesses the selector against author-written prompts only.
+EXTREMIS includes a deterministic lexical-routing baseline. Its routing evaluator measures whether a skill is retrieved for its own positive fixtures (Hit@1, Hit@K, and MRR) and how often it appears for negative fixtures. This assesses the selector against author-written prompts only.
 
 It does **not** run an agent, grade a generated answer, compare skill-on/skill-off task outcomes, or establish causal improvement. A behavior benchmark must:
 - execute the same task with and without the candidate skill;

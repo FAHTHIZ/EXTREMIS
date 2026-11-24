@@ -1,0 +1,43 @@
+name: One-time commit-history attribution cleanup
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/_history-attribution-cleanup.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  rewrite:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out all repository history
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Prepare every active branch
+        shell: bash
+        run: |
+          git fetch --force --prune origin '+refs/heads/*:refs/remotes/origin/*'
+          current="$(git branch --show-current)"
+          while IFS= read -r remote_ref; do
+            branch="${remote_ref#refs/remotes/origin/}"
+            [ "$branch" = "HEAD" ] && continue
+            if [ "$branch" != "$current" ]; then
+              git branch --force "$branch" "$remote_ref"
+            fi
+          done < <(git for-each-ref --format='%(refname)' refs/remotes/origin)
+
+      - name: Remove obsolete co-author trailers without changing commit identities or dates
+        shell: bash
+        run: |
+          git filter-branch --force --msg-filter 'grep -v "^Co-authored-by:"' -- --branches
+          if git log --all --format=%B | grep -qi '^Co-authored-by:'; then
+            echo "A co-author trailer remains on an active branch." >&2
+            exit 1
+          fi
+          git push --force origin --all

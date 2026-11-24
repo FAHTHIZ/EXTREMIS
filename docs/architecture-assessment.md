@@ -1,4 +1,6 @@
-# EXTREMIS architectural assessment and roadmap
+# EXTREMIS architectural assessment and historical roadmap
+
+> **Status note — 2026-11-24:** This is a dated design record, not the current setup guide. Sections describing the initial state and target architecture preserve the assessment made on 2026-11-15. The implementation has since moved on. The current 0.4.0 baseline is **70 capabilities (64 skills and 6 workflows), 10 specialist agents, 45 built-in tools, and 7 MCP gateway tools**. The supported surfaces are the CLI, MCP server, JavaScript SDK, and Python client; the repository also includes Claude Code and Codex plugin manifests, a federated public-skill finder, and a generated Agent Skills discovery index. EXTREMIS is licensed under Apache-2.0. For current installation and usage, use the [README](../README.md); for current agent and finder details, use [agents](agents.md) and [skill finder](skill-finder.md).
 
 **Date:** 2026-11-15
 **Scope:** the EXTREMIS repository at commit `5ef69bd` (31 commits), the public OASIS repository (read-only), and the open-source agent capability ecosystem.
@@ -23,7 +25,7 @@ At `5ef69bd` EXTREMIS was a catalogue of 54 instruction-only Agent Skills (about
 | Evaluation | The evaluation set was also the tuning set (descriptions, keywords and `not_for` were written against it). Reported numbers were optimistic by construction. | Medium |
 | Licensing | No license file, so nobody could legally reuse the project. | High |
 
-## 2. What EXTREMIS must become
+## 2. Target for the next phase at the time of the original assessment (historical)
 
 A standalone, host-neutral **capability layer**: the host agent (OASIS first) keeps reasoning, planning and orchestration; EXTREMIS supplies the capabilities and the means to find, activate, combine, run and verify them, with minimal context cost.
 
@@ -53,7 +55,7 @@ A standalone, host-neutral **capability layer**: the host agent (OASIS first) ke
 - **Embedding models by default:** they add hundreds of MB and a GPU/CPU cost on low-resource hardware, while the research above shows BM25 is competitive at this scale. An SDK reranker hook allows hosts to add one.
 - **Python and Node implementations of the core:** duplicated logic drifts. The core is Node (OASIS and Claude Code already require it); Python hosts talk to it over MCP.
 
-## 3. Target architecture
+## 3. Target architecture recorded at the time
 
 ```text
                 Host agent (OASIS, Claude Code, Hermes, OpenHands, Codex, LangGraph, ...)
@@ -105,7 +107,7 @@ Built-in tools live in `src/tools/` (tested once, shared by many capabilities) a
 
 Compare: listing all 59 names and descriptions in a system prompt costs ~3,250 tokens (measured) and grows linearly; loading every `SKILL.md` costs ~39,000.
 
-## 4. Roadmap and status
+## 4. Roadmap and status at the time of the original assessment
 
 | Phase | Deliverable | Status |
 | --- | --- | --- |
