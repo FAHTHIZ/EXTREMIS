@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+### Documentation
+- Align the contribution guide with the current Node.js runtime, Python client, capability manifests, specialist agents, built-in tools, and Apache-2.0 license.
+- Refresh ecosystem comparisons and marketplace descriptions for the 0.4.0 feature set, and clearly label the original architecture assessment as historical.
+
+
 ## 0.4.0 — 2026-11-23
 
 ### Added
